@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core'; 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './User/register/register.component';
@@ -28,6 +30,8 @@ import { ProtectedComponent } from './Protected/protected/protected.component';
 import { HeaderComponent } from './Header/header/header.component';
 import { FooterComponent } from './Footer/footer/footer.component';
 import { BodyComponent } from './Body/body/body.component';
+
+export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLoader(http);}
 
 @NgModule({
   declarations: [
@@ -57,11 +61,16 @@ import { BodyComponent } from './Body/body/body.component';
     MatIconModule,
     MatListModule,
     ReactiveFormsModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    HttpClientModule, 
+    TranslateModule.forRoot({ loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] }})
   ],
+
   providers: [
     provideAnimationsAsync()
   ],
+
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
