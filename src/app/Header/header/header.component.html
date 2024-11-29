@@ -4,15 +4,6 @@
   </button>
   <span>ibrelleu.adrbalears.es</span>
   <span class="toolbar-item-spacer"></span>
-  <!-- <button mat-icon-button matTooltip="Like">
-      <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button matTooltip="Share">
-      <mat-icon>share</mat-icon>
-  </button>
-  <button mat-icon-button matTooltip="Notifications">
-      <mat-icon>notifications</mat-icon>
-  </button> -->
   <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
       <mat-icon>account_circle</mat-icon>
   </button>
@@ -41,27 +32,32 @@
           </mat-list-item>
           <mat-expansion-panel [class.mat-elevation-z0]="true">
               <mat-expansion-panel-header>
-                  Mobile Phone
+                  Empresas
               </mat-expansion-panel-header>
               <mat-nav-list>
                   <a mat-list-item routerLink="#">
-                      <mat-icon>apple</mat-icon><span>iOS</span>
+                      <span>Cuentas</span>
                   </a>
                   <a mat-list-item routerLink="#">
-                      <mat-icon>android</mat-icon><span>Android</span>
+                      <span>Contactos</span>
                   </a>
               </mat-nav-list>
           </mat-expansion-panel>
           <mat-expansion-panel [class.mat-elevation-z0]="true">
               <mat-expansion-panel-header>
-                  Frameworks
+                  Market place
               </mat-expansion-panel-header>
               <mat-nav-list>
-                  <a mat-list-item routerLink="#">Spring</a>
-                  <a mat-list-item routerLink="#">Hibernate</a>
-                  <a mat-list-item routerLink="#">Struts</a>
+                  <a mat-list-item routerLink="#">Proyectos cedentes</a>
+                  <a mat-list-item routerLink="#">Emprendedores</a>
+                  <a mat-list-item routerLink="#">Procesos</a>
+                  <a mat-list-item routerLink="#">Reuniones</a>
               </mat-nav-list>
           </mat-expansion-panel>
+          
+          <a mat-list-item routerLink="#">Casos de éxito</a>
+          <a mat-list-item routerLink="#">Intereses</a>
+          <a mat-list-item routerLink="#">HelpDesk</a>
       </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

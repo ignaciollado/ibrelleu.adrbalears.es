@@ -3,15 +3,20 @@
 
 footer {
   z-index: +9999;
-  background-color: #fff;
   opacity: 1;
   width: 100%;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-areas: "logoBottom localizacionBottom socialMedia textosLegales";
   text-align: left;
-  margin-bottom: .5rem;
-  margin-top: 4rem;
+  margin-bottom: 0;
+  margin-top: 2.5rem;
+  font-size: .75rem;
+  line-height: 1.5rem;
+}
+
+a {
+  color: var(--mat-sidenav-content-background-color);
 }
 
 a:visited {
@@ -53,6 +58,7 @@ a:hover {
   display: grid;
   text-align: right;
   margin-left: 6rem;
+  padding-right: .25rem;
 }
 
 @media screen and (max-width: 992px) {

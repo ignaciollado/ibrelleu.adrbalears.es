@@ -1,11 +1,14 @@
 .sidenav-container {
   height: 100%;
+  border-radius: .5rem;
 }
 
 .mat-toolbar {
   position: sticky;
   top: 0;
+  margin-bottom: 2rem;
   z-index: 1;
+  border-radius: .5rem .5rem 0 0;
 }
 
 .content {
