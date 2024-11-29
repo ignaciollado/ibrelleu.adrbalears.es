@@ -1,0 +1,80 @@
+@use '../../adr-colors';
+@use '../../utilities.scss';
+
+footer {
+  z-index: +9999;
+  background-color: #fff;
+  opacity: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-areas: "logoBottom localizacionBottom socialMedia textosLegales";
+  text-align: left;
+  margin-bottom: .5rem;
+  margin-top: 4rem;
+}
+
+a:visited {
+  color: adr-colors.$secondary-adr;
+}
+
+a:hover {
+  color: adr-colors.$secondary-adr!important;
+}
+
+.logo-adr-balears {
+  grid-area: logoBottom;
+}
+
+.localizacion-adr-balears {
+  grid-area: localizacionBottom;
+  padding-left: 7rem;
+}
+
+.bi{
+  font-size: 2rem;
+  height: auto;
+  width: 2rem;
+}
+
+.bi::before{
+  prefix: '\F8DB';
+}
+
+.social-media {
+  grid-area: socialMedia;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  padding-left: 7rem;
+}
+
+.textos-legales {
+  grid-area: textosLegales;
+  display: grid;
+  text-align: right;
+  margin-left: 6rem;
+}
+
+@media screen and (max-width: 992px) {
+  footer{
+    grid-template-columns: 100%;
+    grid-template-areas: "logoBottom" "localizacionBottom" "socialMedia" "textosLegales";
+    text-align: center;
+  }
+  .localizacion-adr-balears {
+    margin-top: 2rem;
+    padding-left: 0;
+  }
+  .social-media {
+    margin-top: 3rem;
+    padding-left: 0;
+    text-align: center;
+  }
+  .textos-legales {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding-left: 0;
+    margin-left: 0;
+    text-align: center;
+  }
+}
