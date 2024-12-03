@@ -12,7 +12,7 @@
           <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.id)" matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i></button>
         </div>
         <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
-        <a *ngSwitchCase="'url'" ngClass="small-data" href='{{ element[col.key] }}' target="_blank" title="Click to view regulation text detail">{{ element[col.key] }}</a>
+        <a *ngSwitchCase="'url'" ngClass="small-data" href='{{ element[col.key] }}' target="_blank" title="Click to edit detail">{{ element[col.key] }}</a>
         <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
       </section>
 

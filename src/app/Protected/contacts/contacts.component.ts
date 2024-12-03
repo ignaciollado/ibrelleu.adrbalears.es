@@ -24,16 +24,16 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {nif: '41000000G', name: 'Hydrogen', mainEmail: '1.0079', mainPhone: 'H', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
-  {nif: '41000000G', name: 'Helium', mainEmail: '4.0026', mainPhone: 'He', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
-  {nif: '41000000G', name: 'Lithium', mainEmail: '6.941', mainPhone: 'Li', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
-  {nif: '41000000G', name: 'Beryllium', mainEmail: '9.0122', mainPhone: 'Be', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
-  {nif: '41000000G', name: 'Boron', mainEmail: '10.811', mainPhone: 'B', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
-  {nif: '41000000G', name: 'Carbon', mainEmail: '12.0107', mainPhone: 'C', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
-  {nif: '41000000G', name: 'Nitrogen', mainEmail: '14.0067', mainPhone: 'N', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
-  {nif: '41000000G', name: 'Oxygen', mainEmail: '15.9994', mainPhone: 'O', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
-  {nif: '41000000G', name: 'Fluorine', mainEmail: '18.9984', mainPhone: 'F', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
-  {nif: '41000000G', name: 'Neon', mainEmail: '20.1797', mainPhone: 'Ne', profile: '', state: '', registrationDate: new Date(), consultant: '', delegation: '', town: '', employementStatus: '', },
+  {nif: '41000000G', name: 'Hydrogen', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Reemprenedor', state: 'Tornar a contactar', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
+  {nif: '41000000G', name: 'Helium', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Reemprenedor', state: 'Tornar a contactar', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
+  {nif: '41000000G', name: 'Lithium', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
+  {nif: '41000000G', name: 'Beryllium', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Tornar a contactar', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
+  {nif: '41000000G', name: 'Boron', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Cedent', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
+  {nif: '41000000G', name: 'Carbon', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Cedent', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
+  {nif: '41000000G', name: 'Nitrogen', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Cedent', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
+  {nif: '41000000G', name: 'Oxygen', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
+  {nif: '41000000G', name: 'Fluorine', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
+  {nif: '41000000G', name: 'Neon', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
 ];
 
 @Component({

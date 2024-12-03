@@ -43,19 +43,14 @@ export class ContactDTO {
 
 export const contactColumns = [
   {
-    key: "nif",
-    type: "readOnly",
-    label: "DNI/NIE"
-  },
-  {
-    key: "delegation",
-    type: "scope",
-    label: "Delegación"
-  },
-  {
     key: "name",
     type: "text",
     label: "Nombre completo"
+  },
+  {
+    key: "nif",
+    type: "readOnly",
+    label: "DNI/NIE"
   },
   {
     key: "mainEmail",
@@ -86,6 +81,11 @@ export const contactColumns = [
     key: "consultant",
     type: "text",
     label: "Consultor"
+  },
+  {
+    key: "delegation",
+    type: "scope",
+    label: "Delegación"
   },
   {
     key: "town",

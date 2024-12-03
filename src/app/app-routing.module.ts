@@ -9,6 +9,7 @@ import { AccountComponent } from './Protected/account/account.component';
 import { ContactsComponent } from './Protected/contacts/contacts.component';
 
 const routes: Routes = [
+  { path: 'home', component: BodyComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'body', component: BodyComponent },

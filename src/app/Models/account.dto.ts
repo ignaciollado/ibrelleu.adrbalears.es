@@ -44,7 +44,7 @@ export class AccountDTO {
 export const accountColumns = [
   {
     key: "mainContact",
-    type: "readOnly",
+    type: "url",
     label: "Contacto principal"
   },
   {
