@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'; 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { AppRoutingModule } from './app-routing.module';
@@ -17,19 +17,21 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule, Routes }   from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { RouterModule }   from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
-
+import { MatSelectModule} from '@angular/material/select';
 
 import { ProtectedComponent } from './Protected/protected/protected.component';
 import { HeaderComponent } from './Header/header/header.component';
 import { FooterComponent } from './Footer/footer/footer.component';
 import { BodyComponent } from './Body/body/body.component';
+import { AccountComponent } from './Protected/account/account.component';
+import { ContactsComponent } from './Protected/contacts/contacts.component';
 
 export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLoader(http);}
 
@@ -41,7 +43,9 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     ProtectedComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent
+    BodyComponent,
+    AccountComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -57,9 +61,11 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     MatCardModule,
     MatFormFieldModule,
     MatSidenavModule,
+    MatSelectModule,
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    MatTableModule,
     ReactiveFormsModule,
     RouterModule.forRoot([]),
     HttpClientModule, 

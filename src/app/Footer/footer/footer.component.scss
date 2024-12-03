@@ -10,9 +10,10 @@ footer {
   grid-template-areas: "logoBottom localizacionBottom socialMedia textosLegales";
   text-align: left;
   margin-bottom: 0;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   font-size: .75rem;
   line-height: 1.5rem;
+  
 }
 
 a {
@@ -20,11 +21,11 @@ a {
 }
 
 a:visited {
-  color: adr-colors.$secondary-adr;
+  color: adr-colors.$primary-adr;
 }
 
 a:hover {
-  color: adr-colors.$secondary-adr!important;
+  color: adr-colors.$secondary-adr;
 }
 
 .logo-adr-balears {

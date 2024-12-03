@@ -1,12 +1,15 @@
+@use '../../../_adr-colors';
+
 .sidenav-container {
   height: 100%;
-  border-radius: .5rem;
+  border: 1px red solid;
 }
 
 .mat-toolbar {
   position: sticky;
+  background-color: adr-colors.$primary-adr;
   top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   z-index: 1;
   border-radius: .5rem .5rem 0 0;
 }
