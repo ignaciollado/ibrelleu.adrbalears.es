@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CountriesDTO } from '../../Models/countries.dto';
+import { CountriesService } from '../../Services/countries.service';
 
 @Component({
   selector: 'adr-contact-detail',
@@ -8,11 +10,19 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ContactDetailComponent {
   items = ['Informació del contacte', 'Dades de contacte', 'Localització', 'Informació laboral i curricular', 'Documentació'];
+  perfilTecnicoItems = ['Reemprendedor', 'Cedente', 'Externo', 'Usuario de servicio PH/REC']
   expandedIndex = 0;
   isElevated: boolean = true
-  formContactDetail: FormGroup;
+  formContactDetail: FormGroup
+  countries:CountriesDTO[] = []
+  firstPanelOpenState: boolean = false;
+  secondPanelOpenState: boolean = false;
+  thirdPanelOpenState: boolean = false;
+  fourthPanelOpenState: boolean = false;
 
-  constructor() {
+
+
+  constructor( private countriesService: CountriesService) {
     this.formContactDetail = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
@@ -21,16 +31,30 @@ export class ContactDetailComponent {
       fechaNacimiento: new FormControl('', [Validators.required]),
       nacionalidad: new FormControl(''),
       perfilTecnicoCedente: new FormControl('', [Validators.required]),
+      perfil: new FormControl('', [Validators.required]),
       estadoContacto: new FormControl('', [Validators.required]),
       genero: new FormControl(''),
       motivoEstado: new FormControl(''),
-      consultor: new FormControl(''),
-      aceptaRGPD: new FormControl('')
+      consultor: new FormControl('', [Validators.required]),
+      aceptaRGPD: new FormControl(''),
+      delegacion: new FormControl('')
     });
+    this.getContries()
+  }
+
+  getContries() {
+    this.countriesService.getAll()
+      .subscribe((countries:CountriesDTO[])=> {
+        this.countries = countries
+    })
   }
 
   onSubmit() {
-    console.log(this.formContactDetail.value);
+    //console.log(this.formContactDetail.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
+  }
+
+  onFileSelected(e:Event) {
+    console.log (e)
   }
 }

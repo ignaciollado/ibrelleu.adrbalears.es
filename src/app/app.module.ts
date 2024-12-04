@@ -26,7 +26,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule} from '@angular/material/select';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
-
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
+import {MatRadioModule} from '@angular/material/radio'; 
 import { ProtectedComponent } from './Protected/protected/protected.component';
 import { HeaderComponent } from './Header/header/header.component';
 import { FooterComponent } from './Footer/footer/footer.component';
@@ -35,7 +36,8 @@ import { AccountComponent } from './Protected/account/account.component';
 import { ContactsComponent } from './Protected/contacts/contacts.component';
 import { ContactDetailComponent } from './Protected/contact-detail/contact-detail.component';
 import { AccountDetailComponent } from './Protected/account-detail/account-detail.component';
-
+import { FileUploadComponent } from './Protected/file-upload/file-upload.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar'; 
 export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLoader(http);}
 
 @NgModule({
@@ -50,7 +52,8 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     AccountComponent,
     ContactsComponent,
     ContactDetailComponent,
-    AccountDetailComponent
+    AccountDetailComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -68,6 +71,9 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     MatSidenavModule,
     MatSelectModule,
     CdkAccordionModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatProgressBarModule,
     MatToolbarModule,
     MatIconModule,
     MatListModule,

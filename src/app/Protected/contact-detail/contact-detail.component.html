@@ -1,107 +1,315 @@
 <h1>Edita el contacto</h1>
+  <mat-accordion>
+    <form [formGroup]="formContactDetail" (ngSubmit)="onSubmit()">
+      <mat-card [class.mat-elevation-z8]="isElevated">
+      <mat-expansion-panel (opened)="firstPanelOpenState = true" (closed)="firstPanelOpenState = false" [expanded]="true">
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+          Información del contacto
+        </mat-panel-title>
+        <mat-panel-description>
+          {{ firstPanelOpenState ? 'open' : 'closed' }}
+        </mat-panel-description>
+        </mat-expansion-panel-header>
+        <section>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="apellidos">
+        </mat-form-field>
+        </section>
+        <section>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>DNI/NIE</mat-label>
+          <input matInput formControlName="dni">
+          <adr-file-upload></adr-file-upload>
+        </mat-form-field>
+        </section>
+        <section>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Fecha de Nacimiento</mat-label>
+          <input matInput formControlName="fechaNacimiento" type="date">
+        </mat-form-field>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Nacionalidad</mat-label>
+          <mat-select formControlName="nacionalidad">
+            @for (country of countries; track country) {
+              <mat-option [value]="country.name.common">{{country.name.common}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        </section>
+        <section>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>¿Es perfíl técnico que actua como cedente?</mat-label>
+          <mat-select formControlName="perfilTecnicoCedente">
+            <mat-option value="SI">SI</mat-option>
+            <mat-option value="NO">NO</mat-option>
+          </mat-select>
+        </mat-form-field>
+        </section>
+        <section>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Perfíl</mat-label>
+          <mat-select formControlName="perfil" multiple>
+            @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+              <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Género</mat-label>
+          <mat-select formControlName="genero">
+            <mat-option value="Hombre">Hombre</mat-option>
+            <mat-option value="Mujer">Mujer</mat-option>
+            <mat-option value="NoBinario">No binario</mat-option>
+          </mat-select>
+        </mat-form-field>
+        </section>
+        <section>
+        <mat-form-field [style.width.px]=700>
+          <mat-label>Motiu de l'estat</mat-label>
+          <textarea matInput formControlName="motivoEstado"></textarea>
+        </mat-form-field>
+        </section> 
+        <section>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Consultor</mat-label>
+          <input matInput formControlName="consultor" type="text">
+        </mat-form-field>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Delegación</mat-label>
+          <input matInput formControlName="delegacion" type="text">
+        </mat-form-field>
+        </section>
+        <section>
+        <label class="radio-margin">¿Acepta RGPD?</label>
+          <mat-radio-group formControlName="aceptaRGPD">
+            <mat-radio-button class="radio-margin" value="SI">SI</mat-radio-button>
+            <mat-radio-button class="radio-margin" value="NO">NO</mat-radio-button>
+          </mat-radio-group>
+        </section>
+      </mat-expansion-panel>
 
-<section>
-  <cdk-accordion class="contact-accordion">
-    @for (item of items; track item; let index = $index) {
-    <cdk-accordion-item #accordionItem="cdkAccordionItem" class="contact-accordion-item">
-      <button
-        class="contact-accordion-item-header"
-        (click)="accordionItem.toggle()"
-        tabindex="0"
-        [attr.id]="'accordion-header-' + index"
-        [attr.aria-expanded]="accordionItem.expanded"
-        [attr.aria-controls]="'accordion-body-' + index">
-         <span ngClass="accordion-tab-title">{{ item }}</span>
-        <span class="contact-accordion-item-description">
-          Click to {{ accordionItem.expanded ? 'close' : 'open' }}
-        </span>
-      </button>
-      @if(accordionItem.expanded) {
-      <div
-        class="contact-accordion-item-body"
-        role="region"
-        [style.display]="accordionItem.expanded ? '' : 'none'"
-        [attr.id]="'accordion-body-' + index"
-        [attr.aria-labelledby]="'accordion-header-' + index"
-      >
-      <container-element [ngSwitch]="index">
-        <form [formGroup]="formContactDetail" (ngSubmit)="onSubmit()">
-          <mat-card [class.mat-elevation-z8]="isElevated">
-          <section *ngSwitchCase="0">
-            <h2>Información del contacto</h2>
-            <section>
-              <mat-form-field>
-                <mat-label>Nombre</mat-label>
-                <input matInput formControlName="nombre">
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Apellidos</mat-label>
-                <input matInput formControlName="apellidos">
-              </mat-form-field>
-            </section>
-            <section>
-              <mat-form-field>
-                <mat-label>DNI</mat-label>
-                <input matInput formControlName="dni">
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Documentación DNI/NIE</mat-label>
-                <input matInput type='field'>
-              </mat-form-field>
-            </section>
-            <section>
-              <mat-form-field>
-                <mat-label>Fecha de Nacimiento</mat-label>
-                <input matInput formControlName="fechaNacimiento" type="date">
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Nacionalidad</mat-label>
-                <input matInput formControlName="nacionalidad" type="text">
-              </mat-form-field>
-            </section>
-            <section>
-              <mat-form-field>
-                <mat-label>Perfíl</mat-label>
-                <input matInput formControlName="perfilTecnico" type="text">
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Nacionalidad</mat-label>
-                <input matInput formControlName="nacionalidad" type="text">
-              </mat-form-field>
-            </section>
+      <mat-expansion-panel (opened)="secondPanelOpenState = true" (closed)="secondPanelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Datos del contacto
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ secondPanelOpenState ? 'open' : 'closed' }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <section>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Prefix</mat-label>
+          <input matInput formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Teléfono principal</mat-label>
+          <input matInput formControlName="apellidos">
+        </mat-form-field>
+        </section>
+        <section>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Correo electrónico principal</mat-label>
+          <input matInput formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Teléfono secundario</mat-label>
+          <input matInput formControlName="apellidos">
+        </mat-form-field>
+        </section>
+        <section>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Correo electrónico secundario</mat-label>
+          <input matInput formControlName="nombre">
+        </mat-form-field>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Teléfono profesional</mat-label>
+          <input matInput formControlName="apellidos">
+        </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Comentaris per a contactar</mat-label>
+            <textarea matInput formControlName="motivoEstado"></textarea>
+          </mat-form-field>
+        </section> 
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Franja horària de prefèrencia de contacte</mat-label>
+            <mat-select formControlName="perfil" multiple>
+              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+                <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Twitter</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>LinkedIn</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Facebook</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+      </mat-expansion-panel>
 
-          
-            <mat-form-field>
-              <mat-label>Dirección</mat-label>
-              <input matInput formControlName="direccion">
-            </mat-form-field>
-          
-            
-          </section>
+      <mat-expansion-panel (opened)="thirdPanelOpenState = true" (closed)="thirdPanelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Localización
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ secondPanelOpenState ? 'open' : 'closed' }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Cógigo Postal</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Población</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Comarca</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Provincia</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Comunidad Autónoma</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>País</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+        </section>
+      </mat-expansion-panel>
 
-          <section *ngSwitchCase="1">
-            <h2>Datos del contacto</h2>
-          </section>
-          
-          <section *ngSwitchCase="2">
-          </section>
+      <mat-expansion-panel (opened)="fourthPanelOpenState = true" (closed)="fourthPanelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Información laboral y curricular
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ secondPanelOpenState ? 'open' : 'closed' }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Situación laboral</mat-label>
+            <mat-select formControlName="perfil" multiple>
+              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+                <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=350>
+            <mat-label>Nivel de estudios (formación completada)</mat-label>
+            <mat-select formControlName="perfil" multiple>
+              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+                <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field [style.width.px]=350>
+            <mat-label>¿Con qué entidad bancaria trabaja?</mat-label>
+            <mat-select formControlName="perfil" multiple>
+              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+                <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>¿Por cuenta propia o de otro?</mat-label>
+            <mat-select formControlName="perfil" multiple>
+              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+                <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Observacions formació completada</mat-label>
+            <textarea matInput formControlName="motivoEstado"></textarea>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-checkbox class="example-margin" [style.width.px]=350>Formació en gestió empresarial</mat-checkbox>
+          <mat-form-field [style.width.px]=350>
+            <mat-label>Tipología de formación en gestión empresarial</mat-label>
+            <mat-select formControlName="perfil" multiple>
+              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+                <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Àrees d'experiència</mat-label>
+            <mat-select formControlName="perfil" multiple>
+              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+                <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=700>
+            <mat-label>Descripció perfil formació i experiència</mat-label>
+            <textarea matInput formControlName="motivoEstado"></textarea>
+          </mat-form-field>
+        </section>
+        <section>
+          <adr-file-upload></adr-file-upload>
+        </section>
+      </mat-expansion-panel>
 
-          <section *ngSwitchCase="3">
-          </section>
-        
-          <button mat-raised-button type="submit">Guardar</button>
-        </mat-card>
-        </form>
-      
-      </container-element>
-
-     
-      
-      
-      </div>
-      }
-    </cdk-accordion-item>
-    }
-  </cdk-accordion>
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
+  </mat-card>
+  </form>
+  </mat-accordion>
   
-</section>
+<!-- </section> -->
