@@ -1,0 +1,107 @@
+<h1>Edita el contacto</h1>
+
+<section>
+  <cdk-accordion class="contact-accordion">
+    @for (item of items; track item; let index = $index) {
+    <cdk-accordion-item #accordionItem="cdkAccordionItem" class="contact-accordion-item">
+      <button
+        class="contact-accordion-item-header"
+        (click)="accordionItem.toggle()"
+        tabindex="0"
+        [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded"
+        [attr.aria-controls]="'accordion-body-' + index">
+         <span ngClass="accordion-tab-title">{{ item }}</span>
+        <span class="contact-accordion-item-description">
+          Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+        </span>
+      </button>
+      @if(accordionItem.expanded) {
+      <div
+        class="contact-accordion-item-body"
+        role="region"
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-' + index"
+        [attr.aria-labelledby]="'accordion-header-' + index"
+      >
+      <container-element [ngSwitch]="index">
+        <form [formGroup]="formContactDetail" (ngSubmit)="onSubmit()">
+          <mat-card [class.mat-elevation-z8]="isElevated">
+          <section *ngSwitchCase="0">
+            <h2>Información del contacto</h2>
+            <section>
+              <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Apellidos</mat-label>
+                <input matInput formControlName="apellidos">
+              </mat-form-field>
+            </section>
+            <section>
+              <mat-form-field>
+                <mat-label>DNI</mat-label>
+                <input matInput formControlName="dni">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Documentación DNI/NIE</mat-label>
+                <input matInput type='field'>
+              </mat-form-field>
+            </section>
+            <section>
+              <mat-form-field>
+                <mat-label>Fecha de Nacimiento</mat-label>
+                <input matInput formControlName="fechaNacimiento" type="date">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Nacionalidad</mat-label>
+                <input matInput formControlName="nacionalidad" type="text">
+              </mat-form-field>
+            </section>
+            <section>
+              <mat-form-field>
+                <mat-label>Perfíl</mat-label>
+                <input matInput formControlName="perfilTecnico" type="text">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Nacionalidad</mat-label>
+                <input matInput formControlName="nacionalidad" type="text">
+              </mat-form-field>
+            </section>
+
+          
+            <mat-form-field>
+              <mat-label>Dirección</mat-label>
+              <input matInput formControlName="direccion">
+            </mat-form-field>
+          
+            
+          </section>
+
+          <section *ngSwitchCase="1">
+            <h2>Datos del contacto</h2>
+          </section>
+          
+          <section *ngSwitchCase="2">
+          </section>
+
+          <section *ngSwitchCase="3">
+          </section>
+        
+          <button mat-raised-button type="submit">Guardar</button>
+        </mat-card>
+        </form>
+      
+      </container-element>
+
+     
+      
+      
+      </div>
+      }
+    </cdk-accordion-item>
+    }
+  </cdk-accordion>
+  
+</section>

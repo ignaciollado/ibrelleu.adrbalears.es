@@ -1,0 +1,65 @@
+section {
+  width: 95vw;
+  margin: auto;
+  padding-bottom: 5vh;
+}
+
+.contact-accordion {
+  display: block;
+}
+
+.accordion-tab-title {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.contact-accordion-item {
+  display: block;
+  border: solid 1px #ccc;
+}
+
+.contact-accordion-item + .contact-accordion-item {
+  border-top: none;
+}
+
+.contact-accordion-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 16px;
+  text-align: left;
+
+}
+
+.contact-accordion-item-description {
+  font-size: 0.85em;
+  color: #999;
+}
+
+.contact-accordion-item-body {
+  padding: 16px;
+}
+
+.contact-accordion-item-header:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+
+.contact-accordion-item:first-child {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.contact-accordion-item:last-child {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

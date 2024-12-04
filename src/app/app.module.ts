@@ -25,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule} from '@angular/material/select';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
 
 import { ProtectedComponent } from './Protected/protected/protected.component';
 import { HeaderComponent } from './Header/header/header.component';
@@ -32,6 +33,8 @@ import { FooterComponent } from './Footer/footer/footer.component';
 import { BodyComponent } from './Body/body/body.component';
 import { AccountComponent } from './Protected/account/account.component';
 import { ContactsComponent } from './Protected/contacts/contacts.component';
+import { ContactDetailComponent } from './Protected/contact-detail/contact-detail.component';
+import { AccountDetailComponent } from './Protected/account-detail/account-detail.component';
 
 export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLoader(http);}
 
@@ -45,7 +48,9 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     FooterComponent,
     BodyComponent,
     AccountComponent,
-    ContactsComponent
+    ContactsComponent,
+    ContactDetailComponent,
+    AccountDetailComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -62,6 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     MatFormFieldModule,
     MatSidenavModule,
     MatSelectModule,
+    CdkAccordionModule,
     MatToolbarModule,
     MatIconModule,
     MatListModule,

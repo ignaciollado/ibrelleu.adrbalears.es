@@ -73,19 +73,20 @@ a:hover {
     text-align: center;
   }
   .localizacion-adr-balears {
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding-left: 0;
   }
   .social-media {
-    margin-top: 3rem;
+    margin-top: 1rem;
     padding-left: 0;
     text-align: center;
   }
   .textos-legales {
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding-left: 0;
     margin-left: 0;
     text-align: center;
+    grid-template-columns: 1fr;
   }
 }

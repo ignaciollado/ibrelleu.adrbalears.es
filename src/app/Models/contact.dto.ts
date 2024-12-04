@@ -44,7 +44,7 @@ export class ContactDTO {
 export const contactColumns = [
   {
     key: "name",
-    type: "text",
+    type: "url",
     label: "Nombre completo"
   },
   {
