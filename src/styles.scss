@@ -2,32 +2,33 @@
 @use 'adr-colors';
 @use '@angular/material' as mat;
 //@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
-
-html, body { height: 100%; }
-
-body { margin: 0;     
-  font-size:100%;
-  vertical-align: baseline;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 99%;
+  width: auto;
+}
+body { 
   font-family: "Inter", sans-serif; 
-  border: 1px solid adr-colors.$primary-adr;
-  margin: .1rem;
-  border-radius: .5rem;
+/*   border: 1px solid adr-colors.$primary-adr; */
+  /* margin: .1rem; */
+ /*  border-radius: .5rem; */
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  display: flex;
+  flex-direction: column;
 }
 
 html {
-  margin: auto;
-  font-size: 18px;
+ /*  font-size: 18px; */
   line-height: 2rem;
-  max-width: 100%;
   color-scheme: light;
   color: adr-colors.$primary-adr;
 }
 
-body {
-  background: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-}
 
 a {
   color: #fff;

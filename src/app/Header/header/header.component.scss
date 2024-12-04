@@ -1,8 +1,12 @@
 @use '../../../_adr-colors';
 
-.sidenav-container {
+/* .sidenav-container {
   height: 100%;
   border: 1px red solid;
+} */
+
+mat-sidenav, mat-expansion-panel {
+  background-color: adr-colors.$secondary-adr;
 }
 
 .mat-toolbar {
@@ -11,7 +15,7 @@
   top: 0;
   margin-bottom: 0;
   z-index: 1;
-  border-radius: .5rem .5rem 0 0;
+  /* border-radius: .5rem .5rem 0 0; */
 }
 
 .content {

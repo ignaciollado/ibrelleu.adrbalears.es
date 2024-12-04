@@ -1,5 +1,6 @@
+@use '../../../_adr-colors';
+
 section {
-  /* min-height: 50vh; */
   width: 95vw;
   margin: auto;
   padding-bottom: 5vh;
@@ -7,6 +8,14 @@ section {
 
 mat-table {
   width: 100%;
+}
+
+.url-link {
+  color: adr-colors.$secondary-adr;
+}
+
+.url-link:hover {
+  text-decoration:lch(from color l c h);
 }
 
 .mat-column-demo-position {

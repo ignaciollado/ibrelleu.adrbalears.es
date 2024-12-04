@@ -4,20 +4,25 @@
 footer {
   z-index: +9999;
   opacity: 1;
-  width: 100%;
   display: grid;
   grid-template-columns: 100%;
   grid-template-areas: "logoBottom" "localizacionBottom" "socialMedia" "textosLegales";
   text-align: left;
   margin-bottom: 0;
-  margin-top: 2rem;
+  margin-top: 0;
+  padding: 1rem;
   font-size: .75rem;
   line-height: 1.5rem;
-  
+  background-color: adr-colors.$primary-adr;
+  color: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 a {
-  color: var(--mat-sidenav-content-background-color);
+  color: #fff!important;
 }
 
 a:visited {
