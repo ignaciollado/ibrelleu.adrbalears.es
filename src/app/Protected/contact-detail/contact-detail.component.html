@@ -1,14 +1,15 @@
-<h1>Edita el contacto</h1>
+
   <mat-accordion>
     <form [formGroup]="formContactDetail" (ngSubmit)="onSubmit()">
       <mat-card [class.mat-elevation-z8]="isElevated">
+      <h1>Edita el contacto</h1>  
       <mat-expansion-panel (opened)="firstPanelOpenState = true" (closed)="firstPanelOpenState = false" [expanded]="true">
         <mat-expansion-panel-header>
-        <mat-panel-title>
+        <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
           Información del contacto
         </mat-panel-title>
-        <mat-panel-description>
-          {{ firstPanelOpenState ? 'open' : 'closed' }}
+        <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+          <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
         </mat-panel-description>
         </mat-expansion-panel-header>
         <section>
@@ -55,7 +56,7 @@
         <mat-form-field [style.width.px]=350>
           <mat-label>Perfíl</mat-label>
           <mat-select formControlName="perfil" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
               <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
             }
           </mat-select>
@@ -96,11 +97,11 @@
 
       <mat-expansion-panel (opened)="secondPanelOpenState = true" (closed)="secondPanelOpenState = false">
         <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title [ngClass]="secondPanelOpenState ? 'opened' : 'closed'">
             Datos del contacto
           </mat-panel-title>
-          <mat-panel-description>
-            {{ secondPanelOpenState ? 'open' : 'closed' }}
+          <mat-panel-description [ngClass]="secondPanelOpenState ? 'opened' : 'closed'">
+            {{ secondPanelOpenState ? 'opened' : 'closed' }}
           </mat-panel-description>
         </mat-expansion-panel-header>
         <section>
@@ -143,7 +144,7 @@
           <mat-form-field [style.width.px]=700>
             <mat-label>Franja horària de prefèrencia de contacte</mat-label>
             <mat-select formControlName="perfil" multiple>
-              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+              @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
                 <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
               }
             </mat-select>
@@ -171,10 +172,10 @@
 
       <mat-expansion-panel (opened)="thirdPanelOpenState = true" (closed)="thirdPanelOpenState = false">
         <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title [ngClass]="thirdPanelOpenState ? 'opened' : 'closed'">
             Localización
           </mat-panel-title>
-          <mat-panel-description>
+          <mat-panel-description [ngClass]="thirdPanelOpenState ? 'opened' : 'closed'">
             {{ secondPanelOpenState ? 'open' : 'closed' }}
           </mat-panel-description>
         </mat-expansion-panel-header>
@@ -224,10 +225,10 @@
 
       <mat-expansion-panel (opened)="fourthPanelOpenState = true" (closed)="fourthPanelOpenState = false">
         <mat-expansion-panel-header>
-          <mat-panel-title>
+          <mat-panel-title [ngClass]="fourthPanelOpenState ? 'opened' : 'closed'">
             Información laboral y curricular
           </mat-panel-title>
-          <mat-panel-description>
+          <mat-panel-description [ngClass]="fourthPanelOpenState ? 'opened' : 'closed'">
             {{ secondPanelOpenState ? 'open' : 'closed' }}
           </mat-panel-description>
         </mat-expansion-panel-header>
@@ -235,7 +236,7 @@
           <mat-form-field [style.width.px]=700>
             <mat-label>Situación laboral</mat-label>
             <mat-select formControlName="perfil" multiple>
-              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+              @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
                 <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
               }
             </mat-select>
@@ -245,7 +246,7 @@
           <mat-form-field [style.width.px]=350>
             <mat-label>Nivel de estudios (formación completada)</mat-label>
             <mat-select formControlName="perfil" multiple>
-              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+              @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
                 <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
               }
             </mat-select>
@@ -253,7 +254,7 @@
           <mat-form-field [style.width.px]=350>
             <mat-label>¿Con qué entidad bancaria trabaja?</mat-label>
             <mat-select formControlName="perfil" multiple>
-              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+              @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
                 <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
               }
             </mat-select>
@@ -263,7 +264,7 @@
           <mat-form-field [style.width.px]=700>
             <mat-label>¿Por cuenta propia o de otro?</mat-label>
             <mat-select formControlName="perfil" multiple>
-              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+              @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
                 <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
               }
             </mat-select>
@@ -280,7 +281,7 @@
           <mat-form-field [style.width.px]=350>
             <mat-label>Tipología de formación en gestión empresarial</mat-label>
             <mat-select formControlName="perfil" multiple>
-              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+              @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
                 <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
               }
             </mat-select>
@@ -290,7 +291,7 @@
           <mat-form-field [style.width.px]=700>
             <mat-label>Àrees d'experiència</mat-label>
             <mat-select formControlName="perfil" multiple>
-              @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+              @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
                 <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
               }
             </mat-select>
@@ -311,5 +312,3 @@
   </mat-card>
   </form>
   </mat-accordion>
-  
-<!-- </section> -->

@@ -9,8 +9,9 @@ import { CountriesService } from '../../Services/countries.service';
   styleUrl: './contact-detail.component.scss'
 })
 export class ContactDetailComponent {
-  items = ['Informació del contacte', 'Dades de contacte', 'Localització', 'Informació laboral i curricular', 'Documentació'];
-  perfilTecnicoItems = ['Reemprendedor', 'Cedente', 'Externo', 'Usuario de servicio PH/REC']
+  perfilTecnicoItems_es = ['Reemprendedor', 'Cedente', 'Externo', 'Usuario de servicio PH/REC']
+  perfilTecnicoItems_ca = ['Reemprenedor', 'Cedent', 'Extern', 'Usuari de serveis PH/REC']
+
   expandedIndex = 0;
   isElevated: boolean = true
   formContactDetail: FormGroup
@@ -19,8 +20,6 @@ export class ContactDetailComponent {
   secondPanelOpenState: boolean = false;
   thirdPanelOpenState: boolean = false;
   fourthPanelOpenState: boolean = false;
-
-
 
   constructor( private countriesService: CountriesService) {
     this.formContactDetail = new FormGroup({
