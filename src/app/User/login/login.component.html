@@ -1,18 +1,29 @@
-<h1>Login</h1>
-<mat-card>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input matInput type="email" formControlName="email" name="email" required>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password" name="password" required>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Login</button>
-  </form>
-</mat-card>
+<section ngClass="center">
+  <h1>User login</h1>
+  <mat-card>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <section>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" name="email" required>
+        </mat-form-field>
+      </section>
+      <section>
+        <mat-form-field [style.width.px]=350>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" name="password" required>
+        </mat-form-field>
+      </section>
+      <section>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </section>
 
-<div *ngIf="loginForm.get('emial')!.invalid && loginForm.get('emial')!.touched">
-  Username is required.
-</div>
+    <section ngClass="info-msg" *ngIf="loginForm.get('email')!.invalid && loginForm.get('email')!.touched">
+      Email is required.
+    </section>
+    <section ngClass="info-msg" *ngIf="loginForm.get('password')!.invalid && loginForm.get('password')!.touched">
+      Password is required.
+    </section>
+  </form>
+  </mat-card>
+</section>
