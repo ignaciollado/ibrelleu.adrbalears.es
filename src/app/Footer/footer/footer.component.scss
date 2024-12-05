@@ -2,11 +2,11 @@
 @use '../../../utilities.scss';
 
 footer {
-  z-index: +9999;
+  z-index: +1;
   opacity: 1;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-areas: "logoBottom" "localizacionBottom" "socialMedia" "textosLegales";
+  /* grid-template-columns: 100%; */
+  grid-template-areas: "logoBottom localizacionBottom" "logoBottom textosLegales";
   text-align: left;
   margin-bottom: 0;
   margin-top: 0;
@@ -15,7 +15,7 @@ footer {
   line-height: 1.5rem;
   background-color: adr-colors.$primary-adr;
   color: #fff;
-  position: fixed;
+  position:static;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -35,13 +35,11 @@ a:hover {
 
 .logo-adr-balears {
   grid-area: logoBottom;
-  text-align: center;
 }
 
 .localizacion-adr-balears {
   grid-area: localizacionBottom;
   padding-left: 0;
-  text-align: center;
 }
 
 .bi{
@@ -59,7 +57,7 @@ a:hover {
   display: grid;
   grid-template-columns: auto auto auto auto;
   padding-left: 0;
-  text-align: center;
+  text-align: left;
 }
 
 .textos-legales {
