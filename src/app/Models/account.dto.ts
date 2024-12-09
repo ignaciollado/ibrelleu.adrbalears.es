@@ -45,17 +45,17 @@ export const accountColumns = [
   {
     key: "mainContact",
     type: "url",
-    label: "Contacto principal"
+    label: "Contacte principal"
   },
   {
     key: "legalForm",
     type: "readOnly",
-    label: "forma jurídica"
+    label: "Forma jurídica"
   },
   {
     key: "companyName",
     type: "readOnly",
-    label: "Razón social"
+    label: "Raó Social"
   },
   {
     key: "nif",
@@ -75,12 +75,12 @@ export const accountColumns = [
   {
     key: "activityType",
     type: "readOnly",
-    label: "Actividad"
+    label: "Activitat"
   },
   {
     key: "town",
     type: "readOnly",
-    label: "Población"
+    label: "Població"
   },
   {
     key: "consultant",
@@ -90,12 +90,12 @@ export const accountColumns = [
   {
     key: "delegation",
     type: "scope",
-    label: "Delegación"
+    label: "Delegació"
   },
   {
     key: "registrationDate",
     type: "date",
-    label: "Fecha de alta"
+    label: "Data d'entrada"
   },  
   {
     key: "isEdit",

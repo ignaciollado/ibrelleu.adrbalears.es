@@ -12,14 +12,14 @@ export class ContactDetailComponent {
   perfilTecnicoItems_es = ['Reemprendedor', 'Cedente', 'Externo', 'Usuario de servicio PH/REC']
   perfilTecnicoItems_ca = ['Reemprenedor', 'Cedent', 'Extern', 'Usuari de serveis PH/REC']
 
-  expandedIndex = 0;
+  expandedIndex = 0
   isElevated: boolean = true
   formContactDetail: FormGroup
   countries:CountriesDTO[] = []
-  firstPanelOpenState: boolean = false;
-  secondPanelOpenState: boolean = false;
-  thirdPanelOpenState: boolean = false;
-  fourthPanelOpenState: boolean = false;
+  firstPanelOpenState: boolean = false
+  secondPanelOpenState: boolean = false
+  thirdPanelOpenState: boolean = false
+  fourthPanelOpenState: boolean = false
 
   constructor( private countriesService: CountriesService) {
     this.formContactDetail = new FormGroup({
@@ -37,7 +37,8 @@ export class ContactDetailComponent {
       consultor: new FormControl('', [Validators.required]),
       aceptaRGPD: new FormControl(''),
       delegacion: new FormControl('')
-    });
+    })
+    
     this.getContries()
   }
 

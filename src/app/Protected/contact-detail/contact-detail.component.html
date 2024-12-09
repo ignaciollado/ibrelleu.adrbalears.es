@@ -1,4 +1,4 @@
-
+<section>
   <mat-accordion>
     <form [formGroup]="formContactDetail" (ngSubmit)="onSubmit()">
       <mat-card [class.mat-elevation-z8]="isElevated">
@@ -26,7 +26,7 @@
         <mat-form-field [style.width.px]=700>
           <mat-label>DNI/NIE</mat-label>
           <input matInput formControlName="dni">
-          <adr-file-upload></adr-file-upload>
+         <!--  <adr-file-upload></adr-file-upload> -->
         </mat-form-field>
         </section>
         <section>
@@ -64,9 +64,9 @@
         <mat-form-field [style.width.px]=350>
           <mat-label>Género</mat-label>
           <mat-select formControlName="genero">
-            <mat-option value="Hombre">Hombre</mat-option>
-            <mat-option value="Mujer">Mujer</mat-option>
-            <mat-option value="NoBinario">No binario</mat-option>
+            <mat-option value="Hombre">Home</mat-option>
+            <mat-option value="Mujer">Dona</mat-option>
+            <mat-option value="Otros">Altres</mat-option>
           </mat-select>
         </mat-form-field>
         </section>
@@ -312,3 +312,4 @@
   </mat-card>
   </form>
   </mat-accordion>
+</section>

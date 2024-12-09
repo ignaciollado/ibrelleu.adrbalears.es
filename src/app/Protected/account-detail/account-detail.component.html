@@ -1,1 +1,215 @@
-<p>account-detail works!</p>
+<section>
+  <mat-accordion>
+    <form [formGroup]="formAccountDetail" (ngSubmit)="onSubmit()">
+      <mat-card [class.mat-elevation-z8]="isElevated">
+      <h1>Edita compte</h1>  
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+      Identificació
+    </mat-panel-title>
+    <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+      <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+    </mat-panel-description>
+    </mat-expansion-panel-header>
+    <section>
+      <mat-form-field [style.width.px]=350>
+        <mat-label>Forma jurídica</mat-label>
+          <mat-select formControlName="perfilTecnicoCedente">
+            <mat-option value="0" label="Associació Sense Ànim de Lucre (ASAL)">
+              Associació Sense Ànim de Lucre (ASAL)
+            </mat-option>
+            
+            <mat-option value="1" label="Comunitat de Bens (CB)">
+              Comunitat de Bens (CB)
+            </mat-option>
+            
+            <mat-option value="2" label="Empresa Individual (EI)">
+              Empresa Individual (EI)
+            </mat-option>
+            
+            <mat-option value="3" label="Fundació (FUND)">
+              Fundació (FUND)
+            </mat-option>
+            
+            <mat-option value="4" label="Societat Anònima (SA)">
+              Societat Anònima (SA)
+            </mat-option>
+            
+            <mat-option value="5" label="Societat Cooperativa (SCCL)">
+              Societat Cooperativa (SCCL)
+            </mat-option>
+            
+            <mat-option value="6" label="Societat Civil Privada (SCP)">
+              Societat Civil Privada (SCP)
+            </mat-option>
+            
+            <mat-option value="7" label="Societat Limitada Professional Unipersonal (SLPU)">
+              Societat Limitada Professional Unipersonal (SLPU)
+            </mat-option>
+            
+            <mat-option value="8" label="Societat Anònima Laboral (SAL)">
+              Societat Anònima Laboral (SAL)
+            </mat-option>
+            
+            <mat-option value="9" label="Societat Limitada (SL)">
+              Societat Limitada (SL)
+            </mat-option>
+            
+            <mat-option value="10" label="Societat Limitada Laboral (SLL)">
+              Societat Limitada Laboral (SLL)
+            </mat-option>
+            
+            <mat-option value="11" label="Societat Limitada Nova Empresa (SLNE)">
+              Societat Limitada Nova Empresa (SLNE)
+            </mat-option>
+            
+            <mat-option value="12" label="Societat Limitada Unipersonal (SLU)">
+              Societat Limitada Unipersonal (SLU)
+            </mat-option>
+            
+            <mat-option value="13" label="Societat Agrària de Transformació (SAT)">
+              Societat Agrària de Transformació (SAT)
+            </mat-option>
+            
+            <mat-option value="14" label="Societat Limitada Professional (SLP)">
+              Societat Limitada Professional (SLP)
+            </mat-option>
+            
+            <mat-option value="15" label="Societat Limitada Deportiva (SLD)">
+              Societat Limitada Deportiva (SLD)
+            </mat-option>
+            
+            <mat-option value="16" label="Societat Anònima Deportiva (SAD)">
+              Societat Anònima Deportiva (SAD)
+            </mat-option>
+            
+            <mat-option value="17" label="Societat Limitada Municipal (SLM)">
+              Societat Limitada Municipal (SLM)
+            </mat-option>
+            
+            <mat-option value="18" label="Societat Anònima Municipal (SAM)">
+              Societat Anònima Municipal (SAM)
+            </mat-option>
+            
+          </mat-select>
+      </mat-form-field>
+      <mat-form-field [style.width.px]=350>
+        <mat-label>Contacte principal</mat-label>
+        <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+      </mat-form-field>
+    </section>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+  <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+    Localització (Raó Social)
+  </mat-panel-title>
+  <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+    <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+  </mat-panel-description>
+  </mat-expansion-panel-header>
+  <section>
+    <mat-form-field [style.width.px]=350>
+      <mat-label>Adreça</mat-label>
+      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+    </mat-form-field>
+    <mat-form-field [style.width.px]=350>
+      <mat-label>Codi postal</mat-label>
+      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+    </mat-form-field>
+  </section>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+      Dades de contacte
+    </mat-panel-title>
+    <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+      <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+      <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        Detall de l'activitat
+      </mat-panel-title>
+      <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+      </mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+      <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        Detall exportació/importació
+      </mat-panel-title>
+      <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+      </mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+      <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        Estructura i organització
+      </mat-panel-title>
+      <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+      </mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+      <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        Estructura econòmica
+      </mat-panel-title>
+      <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+      </mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+      <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        Documentació
+      </mat-panel-title>
+      <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+      </mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+      <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        Usuari de
+      </mat-panel-title>
+      <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+      </mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+      <mat-panel-title [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        Reunions
+      </mat-panel-title>
+      <mat-panel-description [ngClass]="firstPanelOpenState == true ? 'opened' : 'closed'">
+        <span>{{ firstPanelOpenState ? 'opened' : 'closed' }}</span>
+      </mat-panel-description>
+  </mat-expansion-panel-header>
+</mat-expansion-panel>
+
+</mat-card>
+    </form>
+</mat-accordion>

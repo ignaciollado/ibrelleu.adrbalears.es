@@ -8,14 +8,10 @@
   box-sizing: border-box;
 }
 html, body {
-  height: 99%;
   width: auto;
 }
 body { 
   font-family: "Inter", sans-serif; 
-/*   border: 1px solid adr-colors.$primary-adr; */
-  /* margin: .1rem; */
- /*  border-radius: .5rem; */
   background: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   display: flex;
@@ -23,12 +19,10 @@ body {
 }
 
 html {
- /*  font-size: 18px; */
   line-height: 2rem;
   color-scheme: light;
   color: adr-colors.$primary-adr;
 }
-
 
 a {
   color: #fff;
@@ -37,4 +31,15 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+/* mat-sidenav-content{
+  border: 1px solid adr-colors.$secondary-adr;
+  height: (80vh)!important;
+}
+ */
+.base-structure {
+  display: grid;
+  grid-template-rows: 10vH 80vH 10vH;
+
 }

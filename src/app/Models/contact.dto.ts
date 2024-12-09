@@ -45,7 +45,7 @@ export const contactColumns = [
   {
     key: "name",
     type: "url",
-    label: "Nombre completo"
+    label: "Nom complet"
   },
   {
     key: "nif",
@@ -55,27 +55,27 @@ export const contactColumns = [
   {
     key: "mainEmail",
     type: "mail",
-    label: "Correo electrónico principal"
+    label: "Correu electrònic principal"
   },
   {
     key: "mainPhone",
     type: "text",
-    label: "Teléfono principal"
+    label: "Telèfon principal"
   },
   {
     key: "profile",
     type: "text",
-    label: "Perfíl"
+    label: "Perfil"
   },
   {
     key: "state",
     type: "text",
-    label: "Estado contacto"
+    label: "Estat contacte"
   },
   {
     key: "registrationDate",
     type: "date",
-    label: "Fecha de alta"
+    label: "Data d'entrada"
   },
   {
     key: "consultant",
@@ -85,17 +85,17 @@ export const contactColumns = [
   {
     key: "delegation",
     type: "scope",
-    label: "Delegación"
+    label: "Delegació"
   },
   {
     key: "town",
     type: "text",
-    label: "Población"
+    label: "Població"
   },
   {
     key: "employementStatus",
     type: "text",
-    label: "Estado"
+    label: "Situació laboral"
   },  
   {
     key: "isEdit",
