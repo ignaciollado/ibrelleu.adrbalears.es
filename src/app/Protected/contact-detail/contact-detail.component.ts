@@ -12,6 +12,12 @@ export class ContactDetailComponent {
   perfilTecnicoItems_es = ['Reemprendedor', 'Cedente', 'Externo', 'Usuario de servicio PH/REC']
   perfilTecnicoItems_ca = ['Reemprenedor', 'Cedent', 'Extern', 'Usuari de serveis PH/REC']
 
+  estadoContacto_es = ['Pendiente de contactar', 'Activo', 'Volver a contactar', 'Cita programada', 'Cancelado']
+  estadoContacto_ca = ['Pendent de contactar', 'Actiu', 'Tornar a contactar', 'Cita programada', 'Cancel·lat']
+
+  timeFrame_es = ['Mañana', 'Tarde', 'Todo el día']
+  timeFrame_ca = ['Matí', 'Tarda', 'Tot el día']
+
   expandedIndex = 0
   isElevated: boolean = true
   formContactDetail: FormGroup
@@ -36,7 +42,21 @@ export class ContactDetailComponent {
       motivoEstado: new FormControl(''),
       consultor: new FormControl('', [Validators.required]),
       aceptaRGPD: new FormControl(''),
-      delegacion: new FormControl('')
+      delegacion: new FormControl(''),
+      prefijo: new FormControl(''),
+      mainPhone: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
+      mainMail: new FormControl('', [Validators.required, Validators.email]),
+      secondaryPhone: new FormControl('', [ Validators.minLength(9), Validators.maxLength(9)]),
+      secondaryMail: new FormControl('', [ Validators.email]),
+      contactingComments: new FormControl(''),
+      socialNetTwitter: new FormControl(''),
+      socialNetLinkedIn: new FormControl(''),
+      socialNetFacebook: new FormControl(''),
+      localizationAddress: new FormControl('', [Validators.required, Validators.maxLength(150)]),
+      localizationCP: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
+      localizationCity: new FormControl(''),
+      localizationCCAA: new FormControl('Illes Balears'),
+      localizationCountry: new FormControl ('España')
     })
     
     this.getContries()

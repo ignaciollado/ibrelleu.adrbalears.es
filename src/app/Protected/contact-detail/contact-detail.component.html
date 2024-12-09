@@ -23,17 +23,25 @@
         </mat-form-field>
         </section>
         <section>
-        <mat-form-field [style.width.px]=700>
+        <mat-form-field [style.width.px]=350>
           <mat-label>DNI/NIE</mat-label>
           <input matInput formControlName="dni">
          <!--  <adr-file-upload></adr-file-upload> -->
         </mat-form-field>
-        </section>
-        <section>
         <mat-form-field [style.width.px]=350>
           <mat-label>Fecha de Nacimiento</mat-label>
           <input matInput formControlName="fechaNacimiento" type="date">
         </mat-form-field>
+        </section>
+        <section>
+          <mat-form-field [style.width.px]=350>
+            <mat-label>Género</mat-label>
+            <mat-select formControlName="genero">
+              <mat-option value="Hombre">Home</mat-option>
+              <mat-option value="Mujer">Dona</mat-option>
+              <mat-option value="Otros">Altres</mat-option>
+            </mat-select>
+          </mat-form-field>
         <mat-form-field [style.width.px]=350>
           <mat-label>Nacionalidad</mat-label>
           <mat-select formControlName="nacionalidad">
@@ -53,22 +61,22 @@
         </mat-form-field>
         </section>
         <section>
-        <mat-form-field [style.width.px]=350>
+          <mat-form-field [style.width.px]=350>
+            <mat-label>Estat contacte</mat-label>
+            <mat-select formControlName="genero">
+              @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
+                <mat-option [value]="estadoContactoItem">{{estadoContactoItem}}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>          
+          <mat-form-field [style.width.px]=350>
           <mat-label>Perfíl</mat-label>
           <mat-select formControlName="perfil" multiple>
             @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
               <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
             }
           </mat-select>
-        </mat-form-field>
-        <mat-form-field [style.width.px]=350>
-          <mat-label>Género</mat-label>
-          <mat-select formControlName="genero">
-            <mat-option value="Hombre">Home</mat-option>
-            <mat-option value="Mujer">Dona</mat-option>
-            <mat-option value="Otros">Altres</mat-option>
-          </mat-select>
-        </mat-form-field>
+          </mat-form-field>
         </section>
         <section>
         <mat-form-field [style.width.px]=700>
@@ -107,27 +115,27 @@
         <section>
         <mat-form-field [style.width.px]=350>
           <mat-label>Prefix</mat-label>
-          <input matInput formControlName="nombre">
+          <input matInput formControlName="prefijo">
         </mat-form-field>
         <mat-form-field [style.width.px]=350>
           <mat-label>Teléfono principal</mat-label>
-          <input matInput formControlName="apellidos">
+          <input matInput formControlName="mainPhone" minlength="9" maxlength="9">
         </mat-form-field>
         </section>
         <section>
         <mat-form-field [style.width.px]=350>
           <mat-label>Correo electrónico principal</mat-label>
-          <input matInput formControlName="nombre">
+          <input matInput formControlName="mainMail">
         </mat-form-field>
         <mat-form-field [style.width.px]=350>
           <mat-label>Teléfono secundario</mat-label>
-          <input matInput formControlName="apellidos">
+          <input matInput formControlName="secondPhone">
         </mat-form-field>
         </section>
         <section>
         <mat-form-field [style.width.px]=350>
           <mat-label>Correo electrónico secundario</mat-label>
-          <input matInput formControlName="nombre">
+          <input matInput formControlName="secondMail">
         </mat-form-field>
         <mat-form-field [style.width.px]=350>
           <mat-label>Teléfono profesional</mat-label>
@@ -144,8 +152,8 @@
           <mat-form-field [style.width.px]=700>
             <mat-label>Franja horària de prefèrencia de contacte</mat-label>
             <mat-select formControlName="perfil" multiple>
-              @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
-                <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+              @for (timeFrame of timeFrame_ca; track timeFrame) {
+                <mat-option [value]="timeFrame">{{timeFrame}}</mat-option>
               }
             </mat-select>
           </mat-form-field>
@@ -153,19 +161,19 @@
         <section>
           <mat-form-field [style.width.px]=700>
             <mat-label>Twitter</mat-label>
-            <input matInput formControlName="nombre">
+            <input matInput formControlName="socialNetTwitter">
           </mat-form-field>
         </section>
         <section>
           <mat-form-field [style.width.px]=700>
             <mat-label>LinkedIn</mat-label>
-            <input matInput formControlName="nombre">
+            <input matInput formControlName="socialNetLinkedIb">
           </mat-form-field>
         </section>
         <section>
           <mat-form-field [style.width.px]=700>
             <mat-label>Facebook</mat-label>
-            <input matInput formControlName="nombre">
+            <input matInput formControlName="socialNetFacebook">
           </mat-form-field>
         </section>
       </mat-expansion-panel>
@@ -182,43 +190,31 @@
         <section>
           <mat-form-field [style.width.px]=700>
             <mat-label>Dirección</mat-label>
-            <input matInput formControlName="nombre">
+            <input matInput formControlName="localizationAddress">
           </mat-form-field>
         </section>
         <section>
           <mat-form-field [style.width.px]=700>
             <mat-label>Cógigo Postal</mat-label>
-            <input matInput formControlName="nombre">
+            <input matInput formControlName="localizationCP">
           </mat-form-field>
         </section>
         <section>
           <mat-form-field [style.width.px]=700>
             <mat-label>Población</mat-label>
-            <input matInput formControlName="nombre">
-          </mat-form-field>
-        </section>
-        <section>
-          <mat-form-field [style.width.px]=700>
-            <mat-label>Comarca</mat-label>
-            <input matInput formControlName="nombre">
-          </mat-form-field>
-        </section>
-        <section>
-          <mat-form-field [style.width.px]=700>
-            <mat-label>Provincia</mat-label>
-            <input matInput formControlName="nombre">
+            <input matInput formControlName="localizationCity">
           </mat-form-field>
         </section>
         <section>
           <mat-form-field [style.width.px]=700>
             <mat-label>Comunidad Autónoma</mat-label>
-            <input matInput formControlName="nombre">
+            <input matInput formControlName="localizationCCAA">
           </mat-form-field>
         </section>
         <section>
           <mat-form-field [style.width.px]=700>
             <mat-label>País</mat-label>
-            <input matInput formControlName="nombre">
+            <input matInput formControlName="localizationCountry">
           </mat-form-field>
         </section>
       </mat-expansion-panel>
