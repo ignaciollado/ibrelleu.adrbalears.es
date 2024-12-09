@@ -16,6 +16,14 @@ export class AccountDetailComponent {
   secondPanelOpenState: boolean = false;
   thirdPanelOpenState: boolean = false;
   fourthPanelOpenState: boolean = false;
+  fithPanelOpenState: boolean = false;
+  sixthPanelOpenState: boolean = false;
+  seventhPanelOpenState: boolean = false;
+  eighthPanelOpenState: boolean = false;
+  ninethPanelOpenState: boolean = false;
+  tenthPanelOpenState: boolean = false;
+  eleventhPanelOpenState: boolean = false;
+
 
   constructor( private countriesService: CountriesService) {
     this.formAccountDetail = new FormGroup({
