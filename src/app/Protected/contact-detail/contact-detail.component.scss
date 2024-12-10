@@ -5,70 +5,12 @@ h1 {
   margin: .5rem;
 }
 
-mat-accordion, mat-expansion-panel {
-  margin: auto;
-}
-
-.opened {
-  background-color: adr-colors.$secondary-adr;
-  color: #fff;
-  padding: .25rem;
-  padding-left: 16px;
-  letter-spacing: .1rem;
-}
-.closed {
-  background-color: grey;
-  color: #fff;
-  padding: .25rem;
-}
-.contact-accordion {
-  display: block;
-}
-.accordion-tab-title {
-  color: #fff;
-  font-size: 1rem;
-}
-.contact-accordion-item {
-  display: block;
-  border: solid 1px #ccc;
-}
-.contact-accordion-item + .contact-accordion-item {
-  border-top: none;
-}
-.contact-accordion-item-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 16px;
-  text-align: left;
-}
-.contact-accordion-item-description {
-  font-size: 0.85em;
-  color: #999;
-}
-.contact-accordion-item-body {
-  padding: 16px;
-}
-.contact-accordion-item-header:hover {
-  cursor: pointer;
-  background-color: #eee;
-}
-.contact-accordion-item:first-child {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
-.contact-accordion-item:last-child {
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
 mat-card {
   width: 100%;
 }
 form {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  width: 100%;
 }
 .radio-margin {
   margin: 0 10px;

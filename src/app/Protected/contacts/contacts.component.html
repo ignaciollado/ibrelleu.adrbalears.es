@@ -1,8 +1,8 @@
 <h1>Contactos</h1>
-<section>
+<!-- <section>
   <mat-form-field [style.width.px]=350>
     <mat-label>Estat contacte</mat-label>
-    <mat-select formControlName="perfilTecnicoCedente">
+    <mat-select>
       <mat-option value="0" label="Pendent de contactar">Pendent de contactar</mat-option>
       <mat-option value="1" label="Actiu">Actiu</mat-option>
       <mat-option value="2" label="Tornar a contactar">Tornar a contactar</mat-option>
@@ -14,7 +14,7 @@
     <mat-label>Filter contacts</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
   </mat-form-field>
-</section>
+</section> -->
 <section>
   <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">

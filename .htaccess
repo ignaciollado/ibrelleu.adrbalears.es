@@ -1,0 +1,31 @@
+##
+## DHGENERATED
+## NO EDITAR MANUALMENTE!!!!
+##
+<IfModule mod_python.c>
+	AddHandler mod_python .py
+	PythonHandler mod_python.publisher
+	PythonDebug On
+	Options +ExecCGI
+	AddHandler wsgi-script .wsgi
+</IfModule>
+
+
+<IfModule mod_rewrite.c>
+#RewriteEngine On
+#RedirectMatch 301 ^/((?!\.well-known).*)$ https://adrbalears.es/$1
+# Redirect Trailing Slashes If Not A Folder...
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} (.+)/$
+#RewriteRule ^ %1 [L,R=301]
+
+# Handle Front Controller...
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [L]
+
+##REGLAS_NODE##
+
+##FIN_REGLAS_NODE##
+
+</IfModule>

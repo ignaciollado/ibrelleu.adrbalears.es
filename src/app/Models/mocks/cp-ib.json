@@ -1,8 +1,8 @@
 {
   "Mallorca": {
-    "Sóller": {},
-    "Inca": {},
-    "Manacor": {},
+    "Sóller": {"":[]},
+    "Inca": {"":[]},
+    "Manacor": {"":[]},
     "Palma de Mallorca":{
     "07001": ["ALMOINA,Plaça","ALMUDAINA","ALT MURADA","ANTONI PLANAS I FRANCH","ARGENTERIA","ARGENTERS","BALA ROJA","BANC","BASTIO DEL PRINCEP","BASTIO D'EN BERARD","BLANQUERS","BOSSERIA",
               "BOTONS","BROSSA, D'EN,Costa","CADENA","CALATRAVA","CALDERS, D'EN","CALL","CAMPANA","CAN ANDREU","CAN ANGLADA","CAN BERGA, DE,Costa","CAN BRONDO","CAN CONRADO","CAN DANUS",
@@ -17,7 +17,7 @@
               "SANT DOMINGO","SANT FRANCESC, DE,Convent","SANT FRANCESC,Plaça","SANT JERONI,Plaça","SANT NICOLAU","SANT PERE NOLASC","SANT ROC","SANT SEBASTIA","SEMINARI","SEO, LA",
               "SET CANTONS","SEU, DE LA,Costa","SOL","SOLEDAT","TEATRE, DE,Costa","TEMPLE","TORRE DE L'AMOR","TOUS I MAROTO","UNIO","VALERO","VALLESPIR","VEINAT","VENT","VICENÇ MUT","VICTORIA",
               "VIDRIERIA","WEYLER,Plaça"],
-    "07002" : ["ALARO","ALEXANDRE JAUME,Plaça","ALEXANDRE ROSSELLO,Avinguda","AMPLE DE LA MERCE","ARTESANIA,Plaça","BALLESTER, D'EN,Travesa","BALLESTER,Travesia","BANC DE L'OLI,Plaça","BARTOMEU FERRA",
+    "07002": ["ALARO","ALEXANDRE JAUME,Plaça","ALEXANDRE ROSSELLO,Avinguda","AMPLE DE LA MERCE","ARTESANIA,Plaça","BALLESTER, D'EN,Travesa","BALLESTER,Travesia","BANC DE L'OLI,Plaça","BARTOMEU FERRA",
     "BASTIO D'EN SANOGUERA",
     "BISBE PERELLO",
     "BOSC, D'EN",
@@ -112,20 +112,24 @@
               "OMS","PALMA, LA","PARE BARTOMEU POU","PARE FRANCESC MOLINA","PARELLADES","PERE DEZCALLAR I NET","PERE MARTELL","PLAÇA DE TOROS","POLS, DE LA,Costa","PORTA DE JESUS","POSADA DE LA REAL",
               "RAMBLA DELS DUCS DE PALMA DE MALLORCA","RAMON BERENGUER III","RAMON MUNTANER (Impares del 1 al 41) (Pares del 2 al 38)","RAMON ROTGER MONER,Plaça","REINA ESCLARAMUNDA","REVEREND ANTONI TAULER",
               "RIERA","ROSA","SAGRISTIA SANT JAUME","SANTA MAGDALENA, DE,Convent","SANTA PAGESA,Plaça","SANT ELIES","SANT JOAN DE LA SALLE","SANT JOAQUIM (Impares del 1 al 19) (Pares del 2 al 14)",
-              "SASTRE ROIG","SINTES, D'EN,Costa","TERESES","TESEU VALENTI","TICIA","TRENTA-UN DE DESEMBRE (Impares)" ]
-}
-},
+              "SASTRE ROIG","SINTES, D'EN,Costa","TERESES","TESEU VALENTI","TICIA","TRENTA-UN DE DESEMBRE (Impares)"],
+    "07004": [],
+    "07005": [],
+    "07006": [],
+    "07007": []
+  }
+  },
   "Menorca": {
-    "Mahón": {},
-    "Ciutadella de Menorca": {},
-    "Alaior": {}
+    "Mahón": {"":[]},
+    "Ciutadella de Menorca": {"":[]},
+    "Alaior": {"":[]}
   },
   "Ibiza": {
-    "Ibiza": {},
-    "San Antonio Abad": {},
-    "Santa Eulalia del Río": {}
+    "Ibiza": {"":[]},
+    "Sant Antoni Abad": {"":[]},
+    "Santa Eulalia del Río": {"":[]}
   },
   "Formentera": {
-    "Formentera": {}
+    "Formentera": {"":[]}
   }
 }

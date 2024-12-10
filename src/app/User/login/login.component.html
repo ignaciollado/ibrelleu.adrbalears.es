@@ -3,13 +3,13 @@
   <mat-card>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <section>
-        <mat-form-field [style.width.px]=350>
+        <mat-form-field>
           <mat-label>Email</mat-label>
           <input matInput type="email" formControlName="email" name="email" required>
         </mat-form-field>
       </section>
       <section>
-        <mat-form-field [style.width.px]=350>
+        <mat-form-field>
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="password" name="password" required>
         </mat-form-field>

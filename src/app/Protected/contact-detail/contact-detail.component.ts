@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
+import { CpibDTO } from '../../Models/cpib.dto';
+/* import { CpibService } from '../../Services/cp-ib.service'; */
 
 @Component({
   selector: 'adr-contact-detail',
   templateUrl: './contact-detail.component.html',
   styleUrl: './contact-detail.component.scss'
 })
+
 export class ContactDetailComponent {
   perfilTecnicoItems_es = ['Reemprendedor', 'Cedente', 'Externo', 'Usuario de servicio PH/REC']
   perfilTecnicoItems_ca = ['Reemprenedor', 'Cedent', 'Extern', 'Usuari de serveis PH/REC']
@@ -60,6 +63,7 @@ export class ContactDetailComponent {
     })
     
     this.getContries()
+    /* this.getCpIB() */
   }
 
   getContries() {
@@ -69,8 +73,15 @@ export class ContactDetailComponent {
     })
   }
 
+/*   getCpIB() {
+    this.cpibService.getCPList()
+      .subscribe((cpItem:CpibDTO[])=> {
+        console.log(cpItem)
+    })
+  } */
+
   onSubmit() {
-    //console.log(this.formContactDetail.value);
+    console.log(this.formContactDetail.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
