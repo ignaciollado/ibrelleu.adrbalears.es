@@ -117,6 +117,36 @@
               <mat-radio-button value="NO">NO</mat-radio-button>
             </mat-radio-group>
           </section>
+          <section>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Any de constitució de l'empresa</mat-label>
+              <input matInput formControlName="consultor" type="text">
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Any D’entrada a l’empresa</mat-label>
+              <input matInput formControlName="delegacion" type="text">
+            </mat-form-field>
+          </section>
+          <section>
+            <mat-form-field [style.width.px]=700>
+              <mat-label>Fundació de l'empresa</mat-label>
+              <mat-select formControlName="perfilTecnicoCedente">
+                <mat-option value="Creació" label="Creació">Creació</mat-option>
+                <mat-option value="Successió" label="Successió">Successió</mat-option>
+                <mat-option value="Adquisició" label="Adquisició">Adquisició</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </section>
+          <section>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Consultor</mat-label>
+              <input matInput formControlName="consultor" type="text">
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Delegació</mat-label>
+              <input matInput formControlName="delegacion" type="text">
+            </mat-form-field>
+          </section>
         </mat-tab>
         <mat-tab label="Localització (Raó social)">
     <mat-form-field [style.width.px]=350>
