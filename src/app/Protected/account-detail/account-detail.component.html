@@ -1,10 +1,8 @@
-<section>
-  <h1>Edita compte</h1>
-    <form [formGroup]="formAccountDetail" (ngSubmit)="onSubmit()">
-      <mat-card [class.mat-elevation-z8]="isElevated">
-      <mat-tab-group animationDuration = "1500ms">
+<h1>Edita compte</h1>
+<form [formGroup]="formAccountDetail" (ngSubmit)="onSubmit()">
+  <mat-tab-group animationDuration = "1000ms">
         <mat-tab label="Identificació">
-          <section>
+          <section ngClass="info-account">
             <mat-form-field [style.width.px]=350>
               <mat-label>Forma jurídica</mat-label>
               <mat-select formControlName="perfilTecnicoCedente">
@@ -72,7 +70,7 @@
               <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
           </section>
-          <section>
+          <section ngClass="info-account">
             <mat-form-field [style.width.px]=350>
               <mat-label>Raó Social</mat-label>
               <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
@@ -82,18 +80,20 @@
               <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
           </section>
-          <section>
+          <section ngClass="info-account">
             <mat-form-field [style.width.px]=700>
               <mat-label>Nom Comercial</mat-label>
               <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field><br>
-            <mat-label>Gestiona parades de mercat disponibles?</mat-label>
+            <section>
+              <mat-label>Gestiona parades de mercat disponibles?</mat-label>
               <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
                 <mat-radio-button value="SI">SI</mat-radio-button>
                 <mat-radio-button value="NO">NO</mat-radio-button>
               </mat-radio-group>
+            </section>
           </section>
-          <section>
+          <section ngClass="info-account">
             <mat-label>Empresa o entitat col·laboradora?</mat-label>
             <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
               <mat-radio-button value="SI">SI</mat-radio-button>
@@ -105,7 +105,7 @@
               <mat-radio-button value="NO">NO</mat-radio-button>
             </mat-radio-group>
           </section>
-          <section>
+          <section ngClass="info-account">
             <mat-label>Gestiona les concessions administratives de les instal·lacions esportives municipals?</mat-label>
             <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
               <mat-radio-button value="SI">SI</mat-radio-button>
@@ -117,7 +117,7 @@
               <mat-radio-button value="NO">NO</mat-radio-button>
             </mat-radio-group>
           </section>
-          <section>
+          <section ngClass="info-account">
             <mat-form-field [style.width.px]=350>
               <mat-label>Any de constitució de l'empresa</mat-label>
               <input matInput formControlName="consultor" type="text">
@@ -127,7 +127,7 @@
               <input matInput formControlName="delegacion" type="text">
             </mat-form-field>
           </section>
-          <section>
+          <section ngClass="info-account">
             <mat-form-field [style.width.px]=700>
               <mat-label>Fundació de l'empresa</mat-label>
               <mat-select formControlName="perfilTecnicoCedente">
@@ -137,7 +137,7 @@
               </mat-select>
             </mat-form-field>
           </section>
-          <section>
+          <section ngClass="info-account">
             <mat-form-field [style.width.px]=350>
               <mat-label>Consultor</mat-label>
               <input matInput formControlName="consultor" type="text">
@@ -149,111 +149,166 @@
           </section>
         </mat-tab>
         <mat-tab label="Localització (Raó social)">
-    <mat-form-field [style.width.px]=350>
-      <mat-label>Adreça</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>
-    <mat-form-field [style.width.px]=350>
-      <mat-label>Codi postal</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>    
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Adreça</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Codi postal</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>  
+          </section>
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Població</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field> 
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Provincia</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+          </section>
         </mat-tab>
         <mat-tab label="Dades de contacte">
-    <mat-form-field [style.width.px]=350>
-      <mat-label>Correu electrònic</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>
-    <mat-form-field [style.width.px]=350>
-      <mat-label>Telèfon principal</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>    
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Correu electrònic</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Telèfon principal</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>    
+          </section>
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=700>
+              <mat-label>Web</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+          </section>
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Instagram</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>LinkedIn</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>    
+          </section>
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Twitter</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Youtube</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>    
+          </section>
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Altres Xarxes</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Facebook</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>    
+          </section>          
         </mat-tab>
         <mat-tab label="Contactes">
-    <mat-form-field [style.width.px]=350>
-      <mat-label>Nom complet</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>
-    <mat-form-field [style.width.px]=350>
-      <mat-label>DNI/NIE</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Nom complet</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>DNI/NIE</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+          </section>
         </mat-tab>
         <mat-tab label="Detall de l'activitat">
-    <mat-form-field [style.width.px]=350>
-      <mat-label>Sector principal</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>
-    <mat-form-field [style.width.px]=350>
-      <mat-label>Activitat principal</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>    
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Sector principal</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Activitat principal</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field> 
+          </section>
+    
         </mat-tab>
         <mat-tab label="Detall exportació/importació">
-    <mat-form-field [style.width.px]=350>
-      <mat-label>Sector principal</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>
-    <mat-form-field [style.width.px]=350>
-      <mat-label>Activitat principal</mat-label>
-      <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-    </mat-form-field>    
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Sector principal</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Activitat principal</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>    
+          </section>
         </mat-tab>
         <mat-tab label="Estructura econòmica">
-    <section>
-      <mat-form-field [style.width.px]=350>
-        <mat-label>Comentari sobre el finançament de l'empresa</mat-label>
-        <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-      </mat-form-field>
-      <mat-form-field [style.width.px]=350>
-        <mat-label>L'empresa té deutes?</mat-label>
-        <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-      </mat-form-field>
-    </section>
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Comentari sobre el finançament de l'empresa</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>L'empresa té deutes?</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+          </section>
         </mat-tab>
         <mat-tab label="Documentació">
-    <section>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Liquidació anual de l'IVA (model 390) dels 3 últims anys</mat-checkbox>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Liquidació IRPF (model 190) dels 3 últims anys</mat-checkbox>
-    </section>
-    <section>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Declaració IRPF (model 100) dels 3 últims anys</mat-checkbox>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Pagaments a compte IRPF (model 130 o 131) del 4rt Trimestre últim any</mat-checkbox>
-    </section>
-    <section>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Fotocòpia CIF empresa</mat-checkbox>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Escriptures de constitució i modificació</mat-checkbox>
-    </section>
-    <section>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Escriptures poders de la societat (si escau)</mat-checkbox>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Pèrdues i guanys dels 3 últims anys</mat-checkbox>
-    </section>
-    <section>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Balanç de situació dels 3 últims anys</mat-checkbox>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Impost de societats (model 200) dels 3 últims anys</mat-checkbox>
-    </section>
+          <section ngClass="info-account">
+            <mat-checkbox class="example-margin" [style.width.px]=350>Liquidació anual de l'IVA (model 390) dels 3 últims anys</mat-checkbox>
+            <mat-checkbox class="example-margin" [style.width.px]=350>Liquidació IRPF (model 190) dels 3 últims anys</mat-checkbox>
+          </section>
+          <section ngClass="info-account">
+            <mat-checkbox class="example-margin" [style.width.px]=350>Declaració IRPF (model 100) dels 3 últims anys</mat-checkbox>
+            <mat-checkbox class="example-margin" [style.width.px]=350>Pagaments a compte IRPF (model 130 o 131) del 4rt Trimestre últim any</mat-checkbox>
+          </section>
+          <section ngClass="info-account">
+            <mat-checkbox class="example-margin" [style.width.px]=350>Fotocòpia CIF empresa</mat-checkbox>
+            <mat-checkbox class="example-margin" [style.width.px]=350>Escriptures de constitució i modificació</mat-checkbox>
+          </section>
+          <section ngClass="info-account">
+            <mat-checkbox class="example-margin" [style.width.px]=350>Escriptures poders de la societat (si escau)</mat-checkbox>
+            <mat-checkbox class="example-margin" [style.width.px]=350>Pèrdues i guanys dels 3 últims anys</mat-checkbox>
+          </section>
+          <section ngClass="info-account">
+            <mat-checkbox class="example-margin" [style.width.px]=350>Balanç de situació dels 3 últims anys</mat-checkbox>
+            <mat-checkbox class="example-margin" [style.width.px]=350>Impost de societats (model 200) dels 3 últims anys</mat-checkbox>
+          </section>
         </mat-tab>
         <mat-tab label="Usuari de">
-    <section>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Projectes Cedents</mat-checkbox>
-      <mat-checkbox class="example-margin" [style.width.px]=350>Projectes Reempresa</mat-checkbox>
-    </section>    
+          <section ngClass="info-account">
+            <mat-checkbox class="example-margin" [style.width.px]=350>Projectes Cedents</mat-checkbox>
+            <mat-checkbox class="example-margin" [style.width.px]=350>Projectes Reempresa</mat-checkbox>
+          </section>    
         </mat-tab>
         <mat-tab label="Reunions">
-    <section>
-      <mat-form-field [style.width.px]=350>
-        <mat-label>Tema </mat-label>
-        <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-      </mat-form-field>
-      <mat-form-field [style.width.px]=350>
-        <mat-label>Referent a</mat-label>
-        <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-      </mat-form-field>
-    </section>    
+          <section ngClass="info-account">
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Tema </mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+            <mat-form-field [style.width.px]=350>
+              <mat-label>Referent a</mat-label>
+              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+            </mat-form-field>
+          </section>    
         </mat-tab>
-      </mat-tab-group>
-      <section>
-        <button mat-raised-button color="primary" type="submit">Guardar</button>
-      </section>
-    </mat-card>
-  </form>
-</section>
+  </mat-tab-group>
+  <section ngClass="info-account">
+    <button mat-raised-button color="primary" type="submit" ngClass="info-account">Guardar</button>
+  </section>
+</form>

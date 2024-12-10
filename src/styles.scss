@@ -33,13 +33,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* mat-sidenav-content{
-  border: 1px solid adr-colors.$secondary-adr;
-  height: (80vh)!important;
-}
- */
 .base-structure {
   display: grid;
-  grid-template-rows: 10vH 80vH 10vH;
-
+  grid-template-rows: 10vh 80vh 10vh;
 }

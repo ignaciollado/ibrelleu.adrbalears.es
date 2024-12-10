@@ -4,16 +4,20 @@
 h1 {
   margin: .5rem;
 }
-
-mat-card {
-  width: 100%;
+mat-tab-group {
+  min-height: 65vh;
+}
+.info-account {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+.info-account-left {
+  text-align: left;
 }
 form {
   margin-bottom: 2rem;
 }
 .radio-margin {
   margin: 0 10px;
-}
-section {
-  border: 1px solid blue;
 }
