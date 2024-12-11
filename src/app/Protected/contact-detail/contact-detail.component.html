@@ -1,5 +1,4 @@
-
-<h1>Edita el contacto</h1>
+<!-- <h1>Edita el contacto</h1> -->
   <form [formGroup]="formContactDetail" (ngSubmit)="onSubmit()">
     <mat-tab-group animationDuration="1000ms">
       <mat-tab label="Información del contacto">
@@ -268,7 +267,7 @@
       </mat-tab>
     </mat-tab-group>
     <section ngClass="info-contact">
-      <button mat-raised-button color="primary" type="submit" ngClass="info-contact">Guardar</button>
+      <button mat-raised-button color="primary" type="submit" ngClass="info-contact">Guardar {{formContactDetail.status}}</button>
     </section>
   </form>
 
