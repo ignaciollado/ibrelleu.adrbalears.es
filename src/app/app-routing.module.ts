@@ -9,6 +9,8 @@ import { AccountComponent } from './Protected/account/account.component';
 import { ContactsComponent } from './Protected/contacts/contacts.component';
 import { AccountDetailComponent } from './Protected/account-detail/account-detail.component';
 import { ContactDetailComponent } from './Protected/contact-detail/contact-detail.component';
+import { SuccessStoriesComponent } from './successStories/success-stories/success-stories.component';
+import { SuccessStoriesDetailComponent } from './successStories/success-stories-detail/success-stories-detail.component';
 
 const routes: Routes = [
   { path: 'home', component: BodyComponent},
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'contact-detail/:id', component: ContactDetailComponent},
   { path: 'account-detail/:id', component: AccountDetailComponent},
   { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
+  { path: 'success-stories', component: SuccessStoriesComponent},
+  { path: 'success-stories-detail/:id', component: SuccessStoriesDetailComponent},
   { path: '', redirectTo: '/body', pathMatch: 'full' }
 ];
 

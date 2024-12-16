@@ -6,7 +6,7 @@ export class AccountDTO {
   companyName: string
   tradeMarkName: string
   sector: string
-  registrationDate: Date
+  registrationDate: string
   consultant: string
   delegation: string
   town: string
@@ -20,7 +20,7 @@ export class AccountDTO {
     companyName: string,
     tradeMarkName: string,
     sector: string,
-    registrationDate: Date,
+    registrationDate: string,
     consultant: string,
     delegation: string,
     town: string,

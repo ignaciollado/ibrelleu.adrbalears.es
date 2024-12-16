@@ -1,0 +1,5 @@
+@use '../../../_adr-colors';
+
+a {
+  color: adr-colors.$secondary-adr;
+}

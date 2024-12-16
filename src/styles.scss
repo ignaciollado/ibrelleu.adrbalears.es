@@ -33,7 +33,11 @@ a:hover {
   text-decoration: underline;
 }
 
-/* .base-structure {
-  display: grid;
-  grid-template-rows: 10vh 80vh 10vh;
-} */
+.large-box {
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid adr-colors.$secondary-adr!important;
+  min-height: 75vh;
+  margin-bottom: .5rem;
+}
