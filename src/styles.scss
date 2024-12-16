@@ -33,11 +33,20 @@ a:hover {
   text-decoration: underline;
 }
 
+.detail-format {
+  margin: auto;
+  text-align: center;
+}
+
 .large-box {
   margin: 16px;
   padding: 16px;
   border-radius: 8px;
-  border: 1px solid adr-colors.$secondary-adr!important;
+  border: 1px solid adr-colors.$secondary-adr;
   min-height: 75vh;
   margin-bottom: .5rem;
+}
+
+.large-box:hover {
+  background-color: adr-colors.$secondary-adr-light;
 }

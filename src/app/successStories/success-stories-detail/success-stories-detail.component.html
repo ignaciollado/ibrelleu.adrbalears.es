@@ -1,9 +1,16 @@
 <h1>success-stories-detail works!</h1>
-
+<form [formGroup]="formSuccessStories" (ngSubmit)="onSubmit()">
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
   <mat-tab label="Dades generals">
-    <section ngClass="large-box">
-      Content 1
+    <section ngClass="large-box detail-format">
+      <mat-form-field [style.width.px]=350>
+        <mat-label>Codi</mat-label>
+        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+      </mat-form-field>
+      <mat-form-field [style.width.px]=350>
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nombre" aria-label="Nombre" >
+      </mat-form-field>    
     </section>
   </mat-tab>
   <mat-tab label="Acord">
@@ -32,3 +39,7 @@
     </section>
   </mat-tab>
 </mat-tab-group>
+<section ngClass="info-account">
+  <button mat-raised-button color="primary" type="submit" ngClass="info-account">Guardar {{formSuccessStories.status}}</button>
+</section>
+</form>

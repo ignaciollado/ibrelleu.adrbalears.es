@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import {MatTableModule} from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 import { successStoriesColumns, SuccessStoriesDTO } from '../../Models/success-stories.dto';
 import { DataService } from '../../Services/data.service';

@@ -11,7 +11,7 @@ import { CountriesService } from '../../Services/countries.service';
 export class AccountDetailComponent {
   isElevated: boolean = true
   formAccountDetail: FormGroup
-  countries:CountriesDTO[] = []
+  countries: CountriesDTO[] = []
 
   constructor( private countriesService: CountriesService) {
     this.formAccountDetail = new FormGroup({
@@ -43,7 +43,7 @@ export class AccountDetailComponent {
   }
 
   onSubmit() {
-    //console.log(this.formContactDetail.value);
+    console.log(this.formAccountDetail.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 }
