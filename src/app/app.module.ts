@@ -41,6 +41,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SuccessStoriesComponent } from './successStories/success-stories/success-stories.component';
 import { SuccessStoriesDetailComponent } from './successStories/success-stories-detail/success-stories-detail.component';
+import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-external-user.component';
 export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLoader(http);}
 
 @NgModule({
@@ -58,7 +59,8 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     AccountDetailComponent,
     FileUploadComponent,
     SuccessStoriesComponent,
-    SuccessStoriesDetailComponent
+    SuccessStoriesDetailComponent,
+    SignUpExternalUserComponent
   ],
   imports: [
     BrowserAnimationsModule,

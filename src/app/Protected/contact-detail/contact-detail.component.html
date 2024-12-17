@@ -4,27 +4,27 @@
       <mat-tab label="Información del contacto">
         <section ngClass="large-box detail-format">
           <section >
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Nombre</mat-label>
                 <input matInput formControlName="nombre">
               </mat-form-field>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Apellidos</mat-label>
                 <input matInput formControlName="apellidos">
               </mat-form-field>
           </section>
           <section >
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>DNI/NIE</mat-label>
                 <input matInput formControlName="dni">
               </mat-form-field>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Fecha de Nacimiento</mat-label>
-                <input matInput formControlName="fechaNacimiento" type="date">
+                <input matInput formControlName="dob" type="date">
               </mat-form-field>
           </section>
-          <section >
-                <mat-form-field [style.width.px]=350>
+          <section>
+                <mat-form-field>
                   <mat-label>Género</mat-label>
                   <mat-select formControlName="genero">
                     <mat-option value="Hombre">Home</mat-option>
@@ -32,7 +32,7 @@
                     <mat-option value="Otros">Altres</mat-option>
                   </mat-select>
                 </mat-form-field>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Nacionalidad</mat-label>
                 <mat-select formControlName="nacionalidad">
                   @for (country of countries; track country) {
@@ -42,7 +42,7 @@
               </mat-form-field>
           </section>
           <section >
-              <mat-form-field [style.width.px]=700>
+              <mat-form-field>
                 <mat-label>¿Es perfíl técnico que actua como cedente?</mat-label>
                 <mat-select formControlName="perfilTecnicoCedente">
                   <mat-option value="SI">SI</mat-option>
@@ -51,7 +51,7 @@
               </mat-form-field>
           </section>
           <section >
-                <mat-form-field [style.width.px]=350>
+                <mat-form-field>
                   <mat-label>Estat contacte</mat-label>
                   <mat-select formControlName="genero">
                     @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
@@ -59,7 +59,7 @@
                     }
                   </mat-select>
                 </mat-form-field>          
-                <mat-form-field [style.width.px]=350>
+                <mat-form-field>
                 <mat-label>Perfíl</mat-label>
                 <mat-select formControlName="perfil" multiple>
                   @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
@@ -69,17 +69,17 @@
                 </mat-form-field>
           </section>
           <section >
-              <mat-form-field [style.width.px]=700>
+              <mat-form-field>
                 <mat-label>Motiu de l'estat</mat-label>
                 <textarea matInput formControlName="motivoEstado"></textarea>
               </mat-form-field>
           </section> 
           <section >
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Consultor</mat-label>
                 <input matInput formControlName="consultor" type="text">
               </mat-form-field>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Delegación</mat-label>
                 <input matInput formControlName="delegacion" type="text">
               </mat-form-field>
@@ -96,43 +96,43 @@
       <mat-tab label="Datos del contacto">
       <section ngClass="large-box detail-format">
         <section>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Prefix</mat-label>
                 <input matInput formControlName="prefijo">
               </mat-form-field>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Teléfono principal</mat-label>
                 <input matInput formControlName="mainPhone" minlength="9" maxlength="9">
               </mat-form-field>
         </section>
         <section>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Correo electrónico principal</mat-label>
                 <input matInput formControlName="mainMail">
               </mat-form-field>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Teléfono secundario</mat-label>
                 <input matInput formControlName="secondaryPhone">
               </mat-form-field>
         </section>
         <section>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Correo electrónico secundario</mat-label>
                 <input matInput formControlName="secondaryMail">
               </mat-form-field>
-              <mat-form-field [style.width.px]=350>
+              <mat-form-field>
                 <mat-label>Teléfono profesional</mat-label>
                 <input matInput formControlName="apellidos">
               </mat-form-field>
         </section>
         <section>
-                <mat-form-field [style.width.px]=700>
+                <mat-form-field>
                   <mat-label>Comentaris per a contactar</mat-label>
                   <textarea matInput formControlName="motivoEstado"></textarea>
                 </mat-form-field>
         </section> 
         <section>
-                <mat-form-field [style.width.px]=700>
+                <mat-form-field>
                   <mat-label>Franja horària de prefèrencia de contacte</mat-label>
                   <mat-select formControlName="perfil" multiple>
                     @for (timeFrame of timeFrame_ca; track timeFrame) {
@@ -142,19 +142,19 @@
                 </mat-form-field>
         </section>
         <section>
-                <mat-form-field [style.width.px]=700>
+                <mat-form-field>
                   <mat-label>Twitter</mat-label>
                   <input matInput formControlName="socialNetTwitter">
                 </mat-form-field>
         </section>
         <section>
-                <mat-form-field [style.width.px]=700>
+                <mat-form-field>
                   <mat-label>LinkedIn</mat-label>
                   <input matInput formControlName="socialNetLinkedIn">
                 </mat-form-field>
         </section>
         <section>
-                <mat-form-field [style.width.px]=700>
+                <mat-form-field>
                   <mat-label>Facebook</mat-label>
                   <input matInput formControlName="socialNetFacebook">
                 </mat-form-field>
@@ -164,31 +164,31 @@
       <mat-tab label="Localización">
         <section ngClass="large-box detail-format">
           <section>
-              <mat-form-field [style.width.px]=700>
+              <mat-form-field>
                 <mat-label>Dirección</mat-label>
                 <input matInput formControlName="localizationAddress">
               </mat-form-field>
           </section>
           <section>
-              <mat-form-field [style.width.px]=700>
+              <mat-form-field>
                 <mat-label>Cógigo Postal</mat-label>
-                <input matInput formControlName="localizationCP">
+                <input matInput formControlName="zipCode"  maxlength="5" minlength="5">
               </mat-form-field>
           </section>
           <section>
-              <mat-form-field [style.width.px]=700>
+              <mat-form-field>
                 <mat-label>Población</mat-label>
                 <input matInput formControlName="localizationCity">
               </mat-form-field>
           </section>
           <section>
-              <mat-form-field [style.width.px]=700>
+              <mat-form-field>
                 <mat-label>Comunidad Autónoma</mat-label>
                 <input matInput formControlName="localizationCCAA">
               </mat-form-field>
           </section>
           <section>
-              <mat-form-field [style.width.px]=700>
+              <mat-form-field>
                 <mat-label>País</mat-label>
                 <input matInput formControlName="localizationCountry">
               </mat-form-field>
@@ -198,7 +198,7 @@
       <mat-tab label="Información laboral y curricular">
         <section ngClass="large-box detail-format">
           <section>
-            <mat-form-field [style.width.px]=700>
+            <mat-form-field>
               <mat-label>Situación laboral</mat-label>
               <mat-select formControlName="perfil" multiple>
                 @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
@@ -208,7 +208,7 @@
             </mat-form-field>
           </section>
           <section>
-            <mat-form-field [style.width.px]=350>
+            <mat-form-field>
               <mat-label>Nivel de estudios (formación completada)</mat-label>
               <mat-select formControlName="perfil" multiple>
                 @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
@@ -216,7 +216,7 @@
                 }
               </mat-select>
             </mat-form-field>
-            <mat-form-field [style.width.px]=350>
+            <mat-form-field>
               <mat-label>¿Con qué entidad bancaria trabaja?</mat-label>
               <mat-select formControlName="perfil" multiple>
                 @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
@@ -226,7 +226,7 @@
             </mat-form-field>
           </section>
           <section>
-            <mat-form-field [style.width.px]=700>
+            <mat-form-field>
               <mat-label>¿Por cuenta propia o de otro?</mat-label>
               <mat-select formControlName="perfil" multiple>
                 @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
@@ -236,14 +236,14 @@
             </mat-form-field>
           </section>
           <section>
-            <mat-form-field [style.width.px]=700>
+            <mat-form-field>
               <mat-label>Observacions formació completada</mat-label>
               <textarea matInput formControlName="motivoEstado"></textarea>
             </mat-form-field>
           </section>
           <section>
-            <mat-checkbox class="example-margin" [style.width.px]=350>Formació en gestió empresarial</mat-checkbox>
-            <mat-form-field [style.width.px]=350>
+            <mat-checkbox class="example-margin">Formació en gestió empresarial</mat-checkbox>
+            <mat-form-field>
               <mat-label>Tipología de formación en gestión empresarial</mat-label>
               <mat-select formControlName="perfil" multiple>
                 @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
@@ -253,7 +253,7 @@
             </mat-form-field>
           </section>
           <section>
-            <mat-form-field [style.width.px]=700>
+            <mat-form-field>
               <mat-label>Àrees d'experiència</mat-label>
               <mat-select formControlName="perfil" multiple>
                 @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
@@ -263,7 +263,7 @@
             </mat-form-field>
           </section>
           <section>
-            <mat-form-field [style.width.px]=700>
+            <mat-form-field>
               <mat-label>Descripció perfil formació i experiència</mat-label>
               <textarea matInput formControlName="motivoEstado"></textarea>
             </mat-form-field>

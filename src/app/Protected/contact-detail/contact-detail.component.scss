@@ -1,6 +1,13 @@
 @use '@angular/material' as mat;
 @use '../../../adr-colors';
 
+mat-tab {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: start;
+  padding: 1rem;
+}
+
 h1 {
   margin: .5rem;
 }

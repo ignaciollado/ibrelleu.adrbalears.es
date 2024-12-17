@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
 import { CpibDTO } from '../../Models/cpib.dto';
-/* import { CpibService } from '../../Services/cp-ib.service'; */
+import { CpibService } from '../../Services/cp-ib.service';
 
 @Component({
   selector: 'adr-contact-detail',
@@ -36,7 +36,7 @@ export class ContactDetailComponent {
       apellidos: new FormControl('', [Validators.required]),
       dni: new FormControl('', [Validators.required]),
       direccion: new FormControl('', [Validators.required]),
-      fechaNacimiento: new FormControl('', [Validators.required]),
+      dob: new FormControl('', [Validators.required]),
       nacionalidad: new FormControl(''),
       perfilTecnicoCedente: new FormControl('', [Validators.required]),
       perfil: new FormControl('', [Validators.required]),
@@ -56,7 +56,7 @@ export class ContactDetailComponent {
       socialNetLinkedIn: new FormControl(''),
       socialNetFacebook: new FormControl(''),
       localizationAddress: new FormControl('', [Validators.required, Validators.maxLength(150)]),
-      localizationCP: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
+      zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
       localizationCity: new FormControl(''),
       localizationCCAA: new FormControl('Illes Balears'),
       localizationCountry: new FormControl ('España')
@@ -73,12 +73,12 @@ export class ContactDetailComponent {
     })
   }
 
-/*   getCpIB() {
+/*    getCpIB() {
     this.cpibService.getCPList()
       .subscribe((cpItem:CpibDTO[])=> {
         console.log(cpItem)
     })
-  } */
+  }  */
 
   onSubmit() {
     console.log(this.formContactDetail.value);
