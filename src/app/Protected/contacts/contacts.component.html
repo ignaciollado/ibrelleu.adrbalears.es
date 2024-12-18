@@ -1,20 +1,18 @@
 <h1>Contactos</h1>
-<!-- <section>
-  <mat-form-field [style.width.px]=350>
+<section ngClass="filter-area">
+  <mat-form-field >
     <mat-label>Estat contacte</mat-label>
-    <mat-select>
-      <mat-option value="0" label="Pendent de contactar">Pendent de contactar</mat-option>
-      <mat-option value="1" label="Actiu">Actiu</mat-option>
-      <mat-option value="2" label="Tornar a contactar">Tornar a contactar</mat-option>
-      <mat-option value="3" label="Cita programada">Cita programada</mat-option>
-      <mat-option value="4" label="Cancel·lat">Cancel·lat</mat-option>
+    <mat-select (selectionChange)="selectedValue($event)">
+        @for (contactStateItem of contactStates; track contactStateItem['value']) {
+          <mat-option [value]="contactStateItem">{{contactStateItem['label']}}</mat-option>
+        }
     </mat-select>
   </mat-form-field>
-  <mat-form-field [style.width.px]=350>
+  <mat-form-field >
     <mat-label>Filter contacts</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
   </mat-form-field>
-</section> -->
+</section>
 <section>
   <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
@@ -29,6 +27,7 @@
         </div>
         <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
         <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key]}}</span>
+        <span *ngSwitchCase="'email'" ngClass="full-view">{{element[col.key]}}</span>
         <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/contact-detail/', element[col.key]]" title="Click to view & edit contact detail">{{ element[col.key] }}</a>
         <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
       </section>

@@ -37,21 +37,29 @@ export interface PeriodicElement {
 export class AccountComponent {
   ambitos: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
   columnsDisplayed: string[] = accountColumns.map((col) => col.key)
+  legalFormList: any[] = []
   columnsSchema: any = accountColumns
   dataSource: any
   valid: any = {}
-  pxValue: number = 450
 
 
   constructor( private dataService: DataService) {
-    this.getAllAccounts()
+    this.loadAllAccounts()
+    this.loadLegalFormList()
   }
 
 
-  getAllAccounts() {
+  loadAllAccounts() {
     this.dataService.getAllAccounts()
       .subscribe((accounts: AccountDTO[])=> {
         this.dataSource = accounts
+      })
+  }
+
+  loadLegalFormList() {
+    this.dataService.getAllLegalForms()
+      .subscribe((legalItems: AccountDTO[])=> {
+        this.legalFormList = legalItems
       })
   }
 

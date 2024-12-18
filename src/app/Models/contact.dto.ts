@@ -54,7 +54,7 @@ export const contactColumns = [
   },
   {
     key: "mainEmail",
-    type: "mail",
+    type: "email",
     label: "Correu electrònic principal"
   },
   {

@@ -11,7 +11,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { contactColumns, ContactDTO } from '../../Models/contact.dto';
 import { DataService } from '../../Services/data.service';
 
-
 export interface PeriodicElement {
   name: string;
   nif: string;
@@ -34,21 +33,29 @@ export interface PeriodicElement {
 
 export class ContactsComponent {
   ambitos: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
+  contactStates: any[] = []
   columnsDisplayed: string[] = contactColumns.map((col) => col.key);
   columnsSchema: any = contactColumns;
   dataSource: any
   valid: any = {}
 
   constructor( private dataService: DataService ) {
-    this.getAllContacts()
+    this.loadAllContacs()
+    this.loadContactStates()
   }
 
-  getAllContacts() {
+  loadAllContacs() {
       this.dataService.getAllContacts()
         .subscribe((contacts: ContactDTO[])=> {
           this.dataSource = contacts
-        })
-    }
+      })
+  }
+  loadContactStates() {
+    this.dataService.getAllLegalForms()
+      .subscribe((contactStateItems: any[])=> {
+        this.contactStates = contactStateItems
+    })
+  }
 
   editRow(row: ContactDTO) {
     console.log (row)
@@ -63,5 +70,15 @@ export class ContactsComponent {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  selectedValue(contactState: any) {
+    console.log ("valor seleccionado: ", contactState.value)
+    this.dataService.getAllContacts()
+    .subscribe((contacts: ContactDTO[])=> {
+      const matchedContacts:ContactDTO[] = contacts.filter((item:ContactDTO) => {return item.state === contactState.value})
+      console.log (matchedContacts)
+      this.dataSource = matchedContacts
+    })
+  } 
  
 }

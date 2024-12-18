@@ -6,6 +6,12 @@ section {
   padding-bottom: 5vh;
 }
 
+.filter-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: .5rem;
+}
+
 mat-table {
   width: 100%;
 }
@@ -38,4 +44,10 @@ mat-table {
   width: 32px;
   text-align: center;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 760px) {
+  .filter-area {
+    grid-template-columns: 1fr;
+  }
 }

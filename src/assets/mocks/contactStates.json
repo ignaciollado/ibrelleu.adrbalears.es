@@ -1,0 +1,7 @@
+[
+  {"value":"0", "label":"Pendent de contactar"},
+  {"value":"1", "label":"Actiu"},
+  {"value":"2", "label":"Tornar a contactar"},
+  {"value":"3", "label":"Cita programada"},
+  {"value":"4", "label":"Cancel·lat"}
+]

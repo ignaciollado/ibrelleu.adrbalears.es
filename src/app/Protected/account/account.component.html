@@ -1,9 +1,12 @@
 <h1>Cuentas</h1>
-<section>
-  <mat-form-field [style.width.px]=pxValue>
+<section ngClass="filter-area">
+  <mat-form-field>
     <mat-label>Forma jurídica</mat-label>
       <mat-select multiple (selectionChange)="selectedValue($event)" #formaJuridica>
-        <mat-option value="0" label="Associació Sense Ànim de Lucre (ASAL)">Associació Sense Ànim de Lucre (ASAL)</mat-option>
+        @for (legalFormItem of legalFormList; track legalFormItem['value']) {
+          <mat-option [value]="legalFormItem">{{legalFormItem['label']}}</mat-option>
+        }
+       <!--  <mat-option value="0" label="Associació Sense Ànim de Lucre (ASAL)">Associació Sense Ànim de Lucre (ASAL)</mat-option>
         <mat-option value="1" label="Comunitat de Bens (CB)">Comunitat de Bens (CB)</mat-option>
         <mat-option value="2" label="Empresa Individual (EI)">Empresa Individual (EI)</mat-option>
         <mat-option value="3" label="Fundació (FUND)">Fundació (FUND)</mat-option>
@@ -21,10 +24,10 @@
         <mat-option value="15" label="Societat Limitada Deportiva (SLD)">Societat Limitada Deportiva (SLD)</mat-option>
         <mat-option value="16" label="Societat Anònima Deportiva (SAD)">Societat Anònima Deportiva (SAD)</mat-option>
         <mat-option value="17" label="Societat Limitada Municipal (SLM)">Societat Limitada Municipal (SLM)</mat-option>
-        <mat-option value="18" label="Societat Anònima Municipal (SAM)">Societat Anònima Municipal (SAM)</mat-option>
+        <mat-option value="18" label="Societat Anònima Municipal (SAM)">Societat Anònima Municipal (SAM)</mat-option> -->
       </mat-select>
   </mat-form-field>
-  <mat-form-field [style.width.px]=350>
+  <mat-form-field>
     <mat-label>Filter accounts</mat-label>
     <input matInput (keypress)="applyFilter($event)" placeholder="Ex. my free text" #input>
   </mat-form-field>

@@ -35,5 +35,15 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError))
   }
 
+  getAllLegalForms(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}legalForm.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  }
+  getAllContactStates(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}contactStates.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  }
 
 }
