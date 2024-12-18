@@ -9,6 +9,9 @@ import {
 import {MatTableModule} from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 import { contactColumns, ContactDTO } from '../../Models/contact.dto';
+import { DataService } from '../../Services/data.service';
+
+
 export interface PeriodicElement {
   name: string;
   nif: string;
@@ -23,19 +26,6 @@ export interface PeriodicElement {
   employementStatus: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {nif: '41000000G', name: 'Hydrogen', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Reemprenedor', state: 'Tornar a contactar', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-  {nif: '41000000G', name: 'Helium', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Reemprenedor', state: 'Tornar a contactar', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-  {nif: '41000000G', name: 'Lithium', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-  {nif: '41000000G', name: 'Beryllium', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Tornar a contactar', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-  {nif: '41000000G', name: 'Boron', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Cedent', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-  {nif: '41000000G', name: 'Carbon', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Cedent', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-  {nif: '41000000G', name: 'Nitrogen', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Cedent', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-  {nif: '41000000G', name: 'Oxygen', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-  {nif: '41000000G', name: 'Fluorine', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-  {nif: '41000000G', name: 'Neon', mainEmail: 'mainmail@dominio.com', mainPhone: '971971971', profile: 'Extern', state: 'Actiu', registrationDate: new Date(), consultant: 'Marta Riutord', delegation: 'Mallorca - Central', town: 'Palma', employementStatus: 'Activo' },
-];
-
 @Component({
   selector: 'adr-contacts',
   templateUrl: './contacts.component.html',
@@ -46,8 +36,19 @@ export class ContactsComponent {
   ambitos: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
   columnsDisplayed: string[] = contactColumns.map((col) => col.key);
   columnsSchema: any = contactColumns;
-  dataSource: any = ELEMENT_DATA;
+  dataSource: any
   valid: any = {}
+
+  constructor( private dataService: DataService ) {
+    this.getAllContacts()
+  }
+
+  getAllContacts() {
+      this.dataService.getAllContacts()
+        .subscribe((contacts: ContactDTO[])=> {
+          this.dataSource = contacts
+        })
+    }
 
   editRow(row: ContactDTO) {
     console.log (row)

@@ -4,6 +4,7 @@ import { catchError, Observable } from 'rxjs';
 import { SuccessStoriesDTO } from '../Models/success-stories.dto';
 import { SharedService } from './shared.service';
 import { AccountDTO } from '../Models/account.dto';
+import { ContactDTO } from '../Models/contact.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,12 @@ export class DataService {
   getAllAccounts(): Observable<AccountDTO[]> {
     return this.http
       .get<AccountDTO[]>(`${this.urlAPIMock}accounts.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  }
+
+  getAllContacts(): Observable<ContactDTO[]> {
+    return this.http
+      .get<ContactDTO[]>(`${this.urlAPIMock}contacts.json`)
       .pipe(catchError(this.sharedService.handleError))
   }
 

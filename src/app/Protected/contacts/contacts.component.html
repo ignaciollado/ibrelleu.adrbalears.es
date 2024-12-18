@@ -28,7 +28,7 @@
           <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.id)" matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i></button>
         </div>
         <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
-        <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key] | date:'short'}}</span>
+        <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key]}}</span>
         <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/contact-detail/', element[col.key]]" title="Click to view & edit contact detail">{{ element[col.key] }}</a>
         <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
       </section>
