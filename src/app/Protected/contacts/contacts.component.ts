@@ -48,12 +48,25 @@ export class ContactsComponent {
       this.dataService.getAllContacts()
         .subscribe((contacts: ContactDTO[])=> {
           this.dataSource = contacts
+          this.dataSource.map((item:ContactDTO)=> {
+           console.log( item.state,  this.filterContactStates(item.state) )
+           /* item.state = this.contactStates[item.state]['label'] */
+          })
       })
   }
   loadContactStates() {
     this.dataService.getAllLegalForms()
       .subscribe((contactStateItems: any[])=> {
         this.contactStates = contactStateItems
+    })
+  }
+
+  filterContactStates(valueToFilter:any) {
+    this.dataService.getAllLegalForms()
+      .subscribe((contactStateItems: any[])=> {
+        return contactStateItems.filter((stateItem:any) => {
+          console.log (stateItem.value, valueToFilter)
+          stateItem.value === valueToFilter})
     })
   }
 
@@ -72,10 +85,10 @@ export class ContactsComponent {
   }
 
   selectedValue(contactState: any) {
-    console.log ("valor seleccionado: ", contactState.value)
+    console.log ("valor seleccionado: ", contactState.value.value)
     this.dataService.getAllContacts()
     .subscribe((contacts: ContactDTO[])=> {
-      const matchedContacts:ContactDTO[] = contacts.filter((item:ContactDTO) => {return item.state === contactState.value})
+      const matchedContacts:ContactDTO[] = contacts.filter((item:ContactDTO) => {return item.state === contactState.value.value})
       console.log (matchedContacts)
       this.dataSource = matchedContacts
     })
