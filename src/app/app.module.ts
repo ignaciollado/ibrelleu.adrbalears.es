@@ -25,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule} from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatCheckboxModule } from '@angular/material/checkbox'; 
 import { MatRadioModule } from '@angular/material/radio'; 
@@ -77,6 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     MatFormFieldModule,
     MatSidenavModule,
     MatSelectModule,
+    MatAutocompleteModule,
     CdkAccordionModule,
     MatCheckboxModule,
     MatRadioModule,

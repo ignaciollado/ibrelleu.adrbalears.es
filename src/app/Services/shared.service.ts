@@ -1,7 +1,7 @@
 import { HttpErrorResponse,HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { CpibDTO } from '../Models/cpib.dto';
+import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
 import { catchError } from 'rxjs/operators';
 
 export interface ResponseError {
@@ -54,9 +54,9 @@ export class SharedService {
     }
   }
 
-  getAllYears(): Observable<CpibDTO[]> {
+  getAllYears(): Observable<ZipCodesIBDTO[]> {
     return this.http
-      .get<CpibDTO[]>(`${this.urlAPiMock}cp-ib.json`)
+      .get<ZipCodesIBDTO[]>(`${this.urlAPiMock}cp-ib.json`)
   }
 
   errorLog(error: ResponseError): void {

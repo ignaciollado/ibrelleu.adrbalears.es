@@ -5,6 +5,9 @@ import { SuccessStoriesDTO } from '../Models/success-stories.dto';
 import { SharedService } from './shared.service';
 import { AccountDTO } from '../Models/account.dto';
 import { ContactDTO } from '../Models/contact.dto';
+import { LegalFormDTO } from '../Models/legal-form.dto';
+import { ContactStatesDTO } from '../Models/contact-states.dto';
+import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -35,15 +38,34 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError))
   }
 
-  getAllLegalForms(): Observable<any[]> {
+  getAllLegalForms(): Observable<LegalFormDTO[]> {
     return this.http
-      .get<any[]>(`${this.urlAPIMock}legalForm.json`)
+      .get<LegalFormDTO[]>(`${this.urlAPIMock}legalForm.json`)
       .pipe(catchError(this.sharedService.handleError))
   }
-  getAllContactStates(): Observable<any[]> {
+  getAllContactStates(): Observable<ContactStatesDTO[]> {
     return this.http
-      .get<any[]>(`${this.urlAPIMock}contactStates.json`)
+      .get<ContactStatesDTO[]>(`${this.urlAPIMock}contactStates.json`)
       .pipe(catchError(this.sharedService.handleError))
   }
-
+  getAllZipCodes(): Observable<ZipCodesIBDTO[]> {
+    return this.http
+      .get<ZipCodesIBDTO[]>(`${this.urlAPIMock}zipCodesIB.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  }
+  getAllEmployementsStatus(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}employmentStatus.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  }
+  getAllLevelsOfEducation(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}levelOfEducation.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  }
+  getAllWorkingModes(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}workingMode.json`)
+      .pipe(catchError(this.sharedService.handleError))
+  }
 }

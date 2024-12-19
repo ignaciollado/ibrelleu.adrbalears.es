@@ -40,15 +40,20 @@
       <input matInput formControlName="localizationAddress">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Cógigo Postal</mat-label>
-      <input matInput formControlName="zipCode" maxlength="5" minlength="5">
+      <mat-label>Código Postal</mat-label>
+      <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        @for (option of filteredOptions | async; track option) {
+          <mat-option [value]="option">{{option.zipCode}} {{option.town}}</mat-option>
+        }
+      </mat-autocomplete>
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
       <mat-label>Población</mat-label>
-    <input matInput formControlName="localizationCity">
+    <input matInput formControlName="localizationCity" readonly="readonly">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Provincia</mat-label>
+      <mat-label>Illa</mat-label>
       <input matInput formControlName="localizationCCAA">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
@@ -69,7 +74,7 @@
       <br>
       <br>
       <section id="lbl_lopd_pas0" style="font-size:85%"><i>*Amb l'enviament d'aquest formulari confirmeu que heu llegit la següent Informació bàsica sobre Protecció de Dades:</i><br>
-        <br><b>Responsable:</b>Agència de desenvolupament regional de les Illes Balears.
+        <br><b>Responsable:</b> Agència de desenvolupament regional de les Illes Balears.
         <br><b>Finalitat:</b> L'atenció i gestió dels serveis que ofereix l'Agència de desenvolupament regional de les Illes Balears i el registre dels interessats per a la prestació de serveis d'Ibrelleu, i establir i mantenir relacions comercials.
         <br><b>Legitimació:</b> La legitimació es realitza a través del consentiment de l'interessat/da; la prestació del consentiment de l'interessat/da al servei d'Ibrelleu per a l'alta en serveis de promocionals, i l'interès legítim per al desenvolupament de relacions comercials.
         <br><b>Destinataris:</b> En qualitat de corresponsables del tractament, les institucions i entitats col·laboradores per tal que puguin treballar al seu favor així com les fundacions, gremis i associacions implicades per a l'establiment de relacions comercials.

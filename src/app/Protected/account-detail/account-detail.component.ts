@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
+import { DataService } from '../../Services/data.service';
+import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'adr-account-detail',
@@ -12,8 +15,11 @@ export class AccountDetailComponent {
   isElevated: boolean = true
   formAccountDetail: FormGroup
   countries: CountriesDTO[] = []
-
-  constructor( private countriesService: CountriesService) {
+  zipCodeList: ZipCodesIBDTO[] = []
+  filteredOptions: Observable<ZipCodesIBDTO[]>
+  options: ZipCodesIBDTO[] = []
+  
+  constructor( private dataService: DataService, private countriesService: CountriesService ) {
     this.formAccountDetail = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
@@ -29,13 +35,28 @@ export class AccountDetailComponent {
       consultor: new FormControl('', [Validators.required]),
       aceptaRGPD: new FormControl(''),
       delegacion: new FormControl(''),
-      paradesMercat: new FormControl('')
+      paradesMercat: new FormControl(''),
+      zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
+      localizationCity: new FormControl(''),
+      localizationCCAA: new FormControl(''),
+      localizationCountry: new FormControl ('España')
     })
     
-    this.getContries()
+    this.getCountries()
+    this.getAllZipCodes()
   }
 
-  getContries() {
+  ngOnInit() {
+    this.filteredOptions = this.formAccountDetail.get('zipCode').valueChanges.pipe(
+      startWith(''),
+      map(value => {
+        const name = typeof value === 'string' ? value : value;
+        return name ? this._filter(name as string) : this.options.slice();
+      }),
+    );
+  }
+
+  getCountries() {
     this.countriesService.getAll()
       .subscribe((countries:CountriesDTO[])=> {
         this.countries = countries
@@ -46,4 +67,28 @@ export class AccountDetailComponent {
     console.log(this.formAccountDetail.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
+
+  getAllZipCodes() {
+      this.dataService.getAllZipCodes()
+        .subscribe((zpCodes:ZipCodesIBDTO[])=> {
+          this.zipCodeList = zpCodes
+          this.options = zpCodes
+          console.log (this.options)
+        })
+    }
+  
+    selectedValue(event: any) {
+      console.log ("zp seleccionado: ", this.formAccountDetail.get('zipCode').value)
+      this.formAccountDetail.get('localizationCity').setValue(this.formAccountDetail.get('zipCode').value['town'])
+      this.formAccountDetail.get('localizationCCAA').setValue(this.formAccountDetail.get('zipCode').value['island'])
+    }
+  
+    displayFn(zpCode: ZipCodesIBDTO): string {
+      return zpCode && zpCode.zipCode ? zpCode.zipCode : '';
+    }
+  
+    private _filter(name: string): ZipCodesIBDTO[] {
+      const filterValue = name;
+      return this.options.filter(option => option.zipCode.includes(filterValue));
+    }
 }

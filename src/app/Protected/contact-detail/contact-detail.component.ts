@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
-import { CpibDTO } from '../../Models/cpib.dto';
-import { CpibService } from '../../Services/cp-ib.service';
+import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
+import { DataService } from '../../Services/data.service';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'adr-contact-detail',
@@ -24,13 +25,15 @@ export class ContactDetailComponent {
   expandedIndex = 0
   isElevated: boolean = true
   formContactDetail: FormGroup
-  countries:CountriesDTO[] = []
-  firstPanelOpenState: boolean = false
-  secondPanelOpenState: boolean = false
-  thirdPanelOpenState: boolean = false
-  fourthPanelOpenState: boolean = false
+  countries: CountriesDTO[] = []
+  zipCodeList: ZipCodesIBDTO[] = []
+  employmentStatusList: any[] = []
+  levelOfEducationList: any[] = []
+  workingModeList: any[] = []
+  filteredOptions: Observable<ZipCodesIBDTO[]>
+  options: ZipCodesIBDTO[] = []
 
-  constructor( private countriesService: CountriesService) {
+  constructor( private dataService: DataService, private countriesService: CountriesService) {
     this.formContactDetail = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
@@ -58,27 +61,57 @@ export class ContactDetailComponent {
       localizationAddress: new FormControl('', [Validators.required, Validators.maxLength(150)]),
       zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
       localizationCity: new FormControl(''),
-      localizationCCAA: new FormControl('Illes Balears'),
-      localizationCountry: new FormControl ('España')
+      localizationCCAA: new FormControl(''),
+      localizationCountry: new FormControl ('España'),
+      employmentStatus: new FormControl(''),
+      levelOfEducation: new FormControl(''),
+      workingMode: new FormControl('')
     })
     
-    this.getContries()
-    /* this.getCpIB() */
+    this.getCountries()
+    this.getAllZipCodes()
+    this.getEmployementStatusList()
+    this.getLevelOfEducationList()
+    this.getWorkingModes()
   }
 
-  getContries() {
+  ngOnInit() {
+      this.filteredOptions = this.formContactDetail.get('zipCode').valueChanges.pipe(
+        startWith(''),
+        map(value => {
+          const name = typeof value === 'string' ? value : value;
+          return name ? this._filter(name as string) : this.options.slice();
+        }),
+      );
+  }
+
+  getCountries() {
     this.countriesService.getAll()
       .subscribe((countries:CountriesDTO[])=> {
         this.countries = countries
     })
   }
 
-/*    getCpIB() {
-    this.cpibService.getCPList()
-      .subscribe((cpItem:CpibDTO[])=> {
-        console.log(cpItem)
-    })
-  }  */
+  getEmployementStatusList() {
+    this.dataService.getAllEmployementsStatus()
+      .subscribe((employStatus:any[])=> {
+        this.employmentStatusList = employStatus
+      })
+  }
+
+  getLevelOfEducationList() {
+    this.dataService.getAllLevelsOfEducation()
+      .subscribe((levelOFEd:any[])=> {
+        this.levelOfEducationList = levelOFEd
+      })
+  }
+
+  getWorkingModes() {
+    this.dataService.getAllWorkingModes()
+      .subscribe((workingMode:any[])=> {
+        this.workingModeList = workingMode
+      })
+  }
 
   onSubmit() {
     console.log(this.formContactDetail.value);
@@ -87,5 +120,28 @@ export class ContactDetailComponent {
 
   onFileSelected(e:Event) {
     console.log (e)
+  }
+
+  getAllZipCodes() {
+    this.dataService.getAllZipCodes()
+      .subscribe((zpCodes:ZipCodesIBDTO[])=> {
+        this.zipCodeList = zpCodes
+        this.options = zpCodes
+      })
+  }
+
+  selectedValue(event: any) {
+    console.log ("zp seleccionado: ", this.formContactDetail.get('zipCode').value)
+    this.formContactDetail.get('localizationCity').setValue(this.formContactDetail.get('zipCode').value['town'])
+    this.formContactDetail.get('localizationCCAA').setValue(this.formContactDetail.get('zipCode').value['island'])
+  }
+
+  displayFn(zpCode: ZipCodesIBDTO): string {
+    return zpCode && zpCode.zipCode ? zpCode.zipCode : '';
+  }
+
+  private _filter(name: string): ZipCodesIBDTO[] {
+    const filterValue = name;
+    return this.options.filter(option => option.zipCode.includes(filterValue));
   }
 }

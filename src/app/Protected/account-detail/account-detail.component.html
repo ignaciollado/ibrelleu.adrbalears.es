@@ -147,16 +147,25 @@
               <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
             <mat-form-field>
-              <mat-label>Codi postal</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>  
+              <mat-label>Código Postal</mat-label>
+              <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                @for (option of filteredOptions | async; track option) {
+                  <mat-option [value]="option">{{option.zipCode}} {{option.town}}</mat-option>
+                }
+              </mat-autocomplete>
+          </mat-form-field>
             <mat-form-field>
               <mat-label>Població</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="localizationCity" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field> 
             <mat-form-field>
-              <mat-label>Provincia</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <mat-label>Illa</mat-label>
+              <input matInput formControlName="localizationCCAA">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>País</mat-label>
+              <input matInput formControlName="localizationCountry">
             </mat-form-field>
           </section>
         </mat-tab>

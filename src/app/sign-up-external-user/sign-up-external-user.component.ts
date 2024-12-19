@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {map, startWith} from 'rxjs/operators';
 import { DataService } from '../Services/data.service';
 import { ContactDTO } from '../Models/contact.dto';
 import { AccountDTO } from '../Models/account.dto';
 import { Router } from '@angular/router';
+import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'adr-sign-up-external-user',
@@ -12,7 +15,10 @@ import { Router } from '@angular/router';
 })
 export class SignUpExternalUserComponent {
   public mustShowField: boolean = false
-
+  public zipCodeList: ZipCodesIBDTO[] = []
+  filteredOptions: Observable<ZipCodesIBDTO[]>
+  options: ZipCodesIBDTO[] = []
+  
   profileForm = new FormGroup({
     dni: new FormControl('', [Validators.required]),
     firstName: new FormControl('', [Validators.required]),
@@ -24,12 +30,24 @@ export class SignUpExternalUserComponent {
     localizationAddress: new FormControl(''),
     zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
     localizationCity: new FormControl(''),
-    localizationCCAA: new FormControl('Illes Balears'),
+    localizationCCAA: new FormControl(''),
     userProfile: new FormControl('', [Validators.required]),
     acceptTerms: new FormControl(false, [Validators.required])
   });
 
-  constructor( private dataService: DataService, private router: Router ) {}
+  constructor( private dataService: DataService, private router: Router ) {
+    this.getAllZipCodes()
+  }
+
+  ngOnInit() {
+    this.filteredOptions = this.profileForm.get('zipCode').valueChanges.pipe(
+      startWith(''),
+      map(value => {
+        const name = typeof value === 'string' ? value : value;
+        return name ? this._filter(name as string) : this.options.slice();
+      }),
+    );
+  }
 
   validateDNI(event:any) {
     console.log (this.profileForm.get('dni').value)
@@ -53,6 +71,7 @@ export class SignUpExternalUserComponent {
               this.router.navigate(['accounts'])
             } else {
               this.mustShowField = true
+              this.getAllZipCodes()
             }
           })
         }
@@ -86,4 +105,27 @@ export class SignUpExternalUserComponent {
     /* } */
   }
 
+  getAllZipCodes() {
+    this.dataService.getAllZipCodes()
+      .subscribe((zpCodes:ZipCodesIBDTO[])=> {
+        this.zipCodeList = zpCodes
+        this.options = zpCodes
+      })
+  }
+
+  selectedValue(event: any) {
+    console.log ("zp seleccionado: ", this.profileForm.get('zipCode').value)
+    this.profileForm.get('localizationCity').setValue(this.profileForm.get('zipCode').value['town'])
+    this.profileForm.get('localizationCCAA').setValue(this.profileForm.get('zipCode').value['island'])
+  }
+
+  displayFn(zpCode: ZipCodesIBDTO): string {
+    return zpCode && zpCode.zipCode ? zpCode.zipCode : '';
+  }
+
+  private _filter(name: string): ZipCodesIBDTO[] {
+    const filterValue = name;
+
+    return this.options.filter(option => option.zipCode.includes(filterValue));
+  }
 }

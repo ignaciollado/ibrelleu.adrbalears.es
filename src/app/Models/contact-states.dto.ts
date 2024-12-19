@@ -1,55 +1,26 @@
 // To parse this data:
 //
-//   import { Convert, Cpib } from "./file";
+//   import { Convert } from "./file";
 //
-//   const cpib = Convert.toCpib(json);
+//   const contactStatesDTO = Convert.toContactStatesDTO(json);
 //
 // These functions will throw an error if the JSON doesn't
 // match the expected interface, even if the JSON is valid.
 
-export interface CpibDTO {
-  Mallorca:   Mallorca;
-  Menorca:    Menorca;
-  Ibiza:      Ibiza;
-  Formentera: Formentera;
-}
-
-export interface Formentera {
-  Formentera: IbizaClass;
-}
-
-export interface IbizaClass {
-  "": any[];
-}
-
-export interface Ibiza {
-  Ibiza:                   IbizaClass;
-  "Sant Antoni Abad":      IbizaClass;
-  "Santa Eulalia del Río": IbizaClass;
-}
-
-export interface Mallorca {
-  Sóller:              IbizaClass;
-  Inca:                IbizaClass;
-  Manacor:             IbizaClass;
-  "Palma de Mallorca": { [key: string]: string[] };
-}
-
-export interface Menorca {
-  Mahón:                   IbizaClass;
-  "Ciutadella de Menorca": IbizaClass;
-  Alaior:                  IbizaClass;
+export interface ContactStatesDTO {
+  value: string;
+  label: string;
 }
 
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-  public static toCpib(json: string): CpibDTO {
-      return cast(JSON.parse(json), r("Cpib"));
+  public static toContactStatesDTO(json: string): ContactStatesDTO[] {
+      return cast(JSON.parse(json), a(r("ContactStatesDTO")));
   }
 
-  public static cpibToJson(value: CpibDTO): string {
-      return JSON.stringify(uncast(value, r("Cpib")), null, 2);
+  public static contactStatesDTOToJson(value: ContactStatesDTO[]): string {
+      return JSON.stringify(uncast(value, a(r("ContactStatesDTO"))), null, 2);
   }
 }
 
@@ -206,32 +177,8 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-  "Cpib": o([
-      { json: "Mallorca", js: "Mallorca", typ: r("Mallorca") },
-      { json: "Menorca", js: "Menorca", typ: r("Menorca") },
-      { json: "Ibiza", js: "Ibiza", typ: r("Ibiza") },
-      { json: "Formentera", js: "Formentera", typ: r("Formentera") },
-  ], false),
-  "Formentera": o([
-      { json: "Formentera", js: "Formentera", typ: r("IbizaClass") },
-  ], false),
-  "IbizaClass": o([
-      { json: "", js: "", typ: a("any") },
-  ], false),
-  "Ibiza": o([
-      { json: "Ibiza", js: "Ibiza", typ: r("IbizaClass") },
-      { json: "Sant Antoni Abad", js: "Sant Antoni Abad", typ: r("IbizaClass") },
-      { json: "Santa Eulalia del Río", js: "Santa Eulalia del Río", typ: r("IbizaClass") },
-  ], false),
-  "Mallorca": o([
-      { json: "Sóller", js: "Sóller", typ: r("IbizaClass") },
-      { json: "Inca", js: "Inca", typ: r("IbizaClass") },
-      { json: "Manacor", js: "Manacor", typ: r("IbizaClass") },
-      { json: "Palma de Mallorca", js: "Palma de Mallorca", typ: m(a("")) },
-  ], false),
-  "Menorca": o([
-      { json: "Mahón", js: "Mahón", typ: r("IbizaClass") },
-      { json: "Ciutadella de Menorca", js: "Ciutadella de Menorca", typ: r("IbizaClass") },
-      { json: "Alaior", js: "Alaior", typ: r("IbizaClass") },
+  "ContactStatesDTO": o([
+      { json: "value", js: "value", typ: "" },
+      { json: "label", js: "label", typ: "" },
   ], false),
 };

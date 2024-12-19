@@ -10,6 +10,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 import { accountColumns, AccountDTO } from '../../Models/account.dto';
 import { DataService } from '../../Services/data.service';
+import { LegalFormDTO } from '../../Models/legal-form.dto';
 
 export interface PeriodicElement {
   id: number
@@ -58,7 +59,7 @@ export class AccountComponent {
 
   loadLegalFormList() {
     this.dataService.getAllLegalForms()
-      .subscribe((legalItems: AccountDTO[])=> {
+      .subscribe((legalItems: LegalFormDTO[])=> {
         this.legalFormList = legalItems
       })
   }
