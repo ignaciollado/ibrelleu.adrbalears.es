@@ -30,6 +30,7 @@ export class SignUpExternalUserComponent {
     localizationAddress: new FormControl(''),
     zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
     localizationCity: new FormControl(''),
+    councilCity: new FormControl(''),
     localizationCCAA: new FormControl(''),
     userProfile: new FormControl('', [Validators.required]),
     acceptTerms: new FormControl(false, [Validators.required])
@@ -114,8 +115,9 @@ export class SignUpExternalUserComponent {
   }
 
   selectedValue(event: any) {
-    console.log ("zp seleccionado: ", this.profileForm.get('zipCode').value)
+    console.log ("zp seleccionado: ", this.profileForm.get('zipCode').value, this.profileForm.get('zipCode').value.length)
     this.profileForm.get('localizationCity').setValue(this.profileForm.get('zipCode').value['town'])
+    this.profileForm.get('councilCity').setValue(this.profileForm.get('zipCode').value['council'])
     this.profileForm.get('localizationCCAA').setValue(this.profileForm.get('zipCode').value['island'])
   }
 
@@ -125,7 +127,8 @@ export class SignUpExternalUserComponent {
 
   private _filter(name: string): ZipCodesIBDTO[] {
     const filterValue = name;
-
     return this.options.filter(option => option.zipCode.includes(filterValue));
   }
+
+  updateField(): void { console.log('Field is updated!');  }
 }

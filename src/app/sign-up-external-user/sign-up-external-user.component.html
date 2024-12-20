@@ -1,7 +1,7 @@
 <h1>Dona’t d’alta</h1>
 
 <section ngClass="large-box">
-  <p>Gaudeix del servei de Reempresa omplint el següent formulari:</p>
+  <p>Dona't d'alta en el nostre servei de IBrelleu emplenant aquest formulari:</p>
   <form [formGroup]="profileForm" (ngSubmit)="validateForm()" [ngClass]="{'full-form': mustShowField}">
     <mat-form-field>
       <mat-label>DNI/NIE</mat-label>
@@ -50,11 +50,15 @@
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
       <mat-label>Población</mat-label>
-    <input matInput formControlName="localizationCity" readonly="readonly">
+      <input matInput formControlName="localizationCity" readonly="readonly">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
+      <mat-label>Municipio</mat-label>
+      <input matInput formControlName="councilCity" readonly="readonly">
+    </mat-form-field>    
+    <mat-form-field *ngIf="mustShowField">
       <mat-label>Illa</mat-label>
-      <input matInput formControlName="localizationCCAA">
+      <input matInput formControlName="localizationCCAA" readonly="readonly">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
       <mat-label>Qui és el teu perfil?</mat-label>

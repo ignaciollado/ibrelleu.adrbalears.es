@@ -1,0 +1,9 @@
+[
+  {"value":"Agropecuari", "label":"Agropecuari"},
+	{"value":"Altres sectors", "label":"Altres sectors"},
+	{"value":"Comerç", "label":"Comerç"},
+	{"value":"Construcció, reformes i immobiliària", "label":"Construcció, reformes i immobiliària"},
+	{"value":"Hostaleria", "label":"Hostaleria"},
+	{"value":"Indústria", "label":"Indústria"},
+	{"value":"Serveis", "label":"Serveis"}
+]
