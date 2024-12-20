@@ -1,132 +1,82 @@
 <!-- <h1>Edita compte</h1> -->
-<form [formGroup]="formAccountDetail" (ngSubmit)="onSubmit()">
+<form [formGroup]="theForm" (ngSubmit)="onSubmit()">
   <mat-tab-group animationDuration = "500ms" mat-stretch-tabs="false" mat-align-tabs="center">
         <mat-tab label="Identificació">
           <section>
               <mat-form-field>
                 <mat-label>Forma jurídica</mat-label>
-                <mat-select formControlName="perfilTecnicoCedente">
-              <mat-option value="0" label="Associació Sense Ànim de Lucre (ASAL)">
-                Associació Sense Ànim de Lucre (ASAL)
-              </mat-option>
-              <mat-option value="1" label="Comunitat de Bens (CB)">
-                Comunitat de Bens (CB)
-              </mat-option>
-              <mat-option value="2" label="Empresa Individual (EI)">
-                Empresa Individual (EI)
-              </mat-option>
-              <mat-option value="3" label="Fundació (FUND)">
-                Fundació (FUND)
-              </mat-option>
-              <mat-option value="4" label="Societat Anònima (SA)">
-                Societat Anònima (SA)
-              </mat-option>
-              <mat-option value="5" label="Societat Cooperativa (SCCL)">
-                Societat Cooperativa (SCCL)
-              </mat-option>
-              <mat-option value="6" label="Societat Civil Privada (SCP)">
-                Societat Civil Privada (SCP)
-              </mat-option>
-              <mat-option value="7" label="Societat Limitada Professional Unipersonal (SLPU)">
-                Societat Limitada Professional Unipersonal (SLPU)
-              </mat-option>
-              <mat-option value="8" label="Societat Anònima Laboral (SAL)">
-                Societat Anònima Laboral (SAL)
-              </mat-option>
-              <mat-option value="9" label="Societat Limitada (SL)">
-                Societat Limitada (SL)
-              </mat-option>
-              <mat-option value="10" label="Societat Limitada Laboral (SLL)">
-                Societat Limitada Laboral (SLL)
-              </mat-option>
-              <mat-option value="11" label="Societat Limitada Nova Empresa (SLNE)">
-                Societat Limitada Nova Empresa (SLNE)
-              </mat-option>
-              <mat-option value="12" label="Societat Limitada Unipersonal (SLU)">
-                Societat Limitada Unipersonal (SLU)
-              </mat-option>
-              <mat-option value="13" label="Societat Agrària de Transformació (SAT)">
-                Societat Agrària de Transformació (SAT)
-              </mat-option>
-              <mat-option value="14" label="Societat Limitada Professional (SLP)">
-                Societat Limitada Professional (SLP)
-              </mat-option>
-              <mat-option value="15" label="Societat Limitada Deportiva (SLD)">
-                Societat Limitada Deportiva (SLD)
-              </mat-option>
-              <mat-option value="16" label="Societat Anònima Deportiva (SAD)">
-                Societat Anònima Deportiva (SAD)
-              </mat-option>
-              <mat-option value="17" label="Societat Limitada Municipal (SLM)">
-                Societat Limitada Municipal (SLM)
-              </mat-option>
-              <mat-option value="18" label="Societat Anònima Municipal (SAM)">
-                Societat Anònima Municipal (SAM)
-              </mat-option>
+                <mat-select formControlName="legalFormat">
+                  @for (legalFormItem of  legalFormList; track legalFormItem) {
+                    <mat-option [value]="legalFormItem.value">{{legalFormItem.label}}</mat-option>
+                  }
                 </mat-select>
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Contacte principal</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="mainContact" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>Raó Social</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
               <mat-form-field>
                 <mat-label>NIF</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="nif" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>Nom Comercial</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field><br>
-
+                <input matInput formControlName="tradeName" aria-label="Contacte principal és un camp obligatori." >
+              </mat-form-field>
+              <article>
                 <mat-label>Gestiona parades de mercat disponibles?</mat-label>
                 <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
                   <mat-radio-button value="SI">SI</mat-radio-button>
                   <mat-radio-button value="NO">NO</mat-radio-button>
                 </mat-radio-group>
-
-              <mat-label>Empresa o entitat col·laboradora?</mat-label>
-              <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
-                <mat-radio-button value="SI">SI</mat-radio-button>
-                <mat-radio-button value="NO">NO</mat-radio-button>
-              </mat-radio-group><br>
-              <mat-label>Gestiona establiments comercials de titularitat municipal disponible?</mat-label>
-              <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
-                <mat-radio-button value="SI">SI</mat-radio-button>
-                <mat-radio-button value="NO">NO</mat-radio-button>
-              </mat-radio-group>
-
-              <mat-label>Gestiona les concessions administratives de les instal·lacions esportives municipals?</mat-label>
-              <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
-                <mat-radio-button value="SI">SI</mat-radio-button>
-                <mat-radio-button value="NO">NO</mat-radio-button>
-              </mat-radio-group><br>
-              <mat-label>Empresa en funcionament?</mat-label>
-              <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
-                <mat-radio-button value="SI">SI</mat-radio-button>
-                <mat-radio-button value="NO">NO</mat-radio-button>
-              </mat-radio-group>
-
+              </article>
+              <article>
+                <mat-label>Empresa o entitat col·laboradora?</mat-label>
+                <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
+                  <mat-radio-button value="SI">SI</mat-radio-button>
+                  <mat-radio-button value="NO">NO</mat-radio-button>
+                </mat-radio-group>
+              </article>
+              <article>
+                <mat-label>Gestiona establiments comercials de titularitat municipal disponible?</mat-label>
+                <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
+                  <mat-radio-button value="SI">SI</mat-radio-button>
+                  <mat-radio-button value="NO">NO</mat-radio-button>
+                </mat-radio-group>
+              </article>
+              <article>
+                <mat-label>Gestiona les concessions administratives de les instal·lacions esportives municipals?</mat-label>
+                <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
+                  <mat-radio-button value="SI">SI</mat-radio-button>
+                  <mat-radio-button value="NO">NO</mat-radio-button>
+                </mat-radio-group>
+              </article>
+              <article>
+                <mat-label>Empresa en funcionament?</mat-label>
+                <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
+                  <mat-radio-button value="SI">SI</mat-radio-button>
+                  <mat-radio-button value="NO">NO</mat-radio-button>
+                </mat-radio-group>
+              </article>
               <mat-form-field>
                 <mat-label>Any de constitució de l'empresa</mat-label>
                 <input matInput formControlName="consultor" type="text">
               </mat-form-field>
               <mat-form-field>
-                <mat-label>Any D’entrada a l’empresa</mat-label>
-                <input matInput formControlName="delegacion" type="text">
+                <mat-label>Any D'entrada a l'empresa</mat-label>
+                <input matInput formControlName="incomingYear" type="text">
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>Fundació de l'empresa</mat-label>
-                <mat-select formControlName="perfilTecnicoCedente">
-                  <mat-option value="Creació" label="Creació">Creació</mat-option>
-                  <mat-option value="Successió" label="Successió">Successió</mat-option>
-                  <mat-option value="Adquisició" label="Adquisició">Adquisició</mat-option>
+                <mat-select formControlName="companyFundationMode">
+
                 </mat-select>
               </mat-form-field>
 
@@ -144,7 +94,7 @@
           <section>
             <mat-form-field>
               <mat-label>Adreça</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="mainContact" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
             <mat-form-field>
               <mat-label>Código Postal</mat-label>
@@ -178,43 +128,43 @@
             
               <mat-form-field>
                 <mat-label>Correu electrònic</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Telèfon principal</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>    
 
               <mat-form-field>
                 <mat-label>Web</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>Instagram</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
               <mat-form-field>
                 <mat-label>LinkedIn</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>    
 
               <mat-form-field>
                 <mat-label>Twitter</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Youtube</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>    
 
               <mat-form-field>
                 <mat-label>Altres Xarxes</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Facebook</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>    
 
           </section>
@@ -224,11 +174,11 @@
             <section>
               <mat-form-field>
                 <mat-label>Nom complet</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
               <mat-form-field>
                 <mat-label>DNI/NIE</mat-label>
-                <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
               </mat-form-field>
             </section>
           </section>
@@ -237,11 +187,11 @@
           <section>
             <mat-form-field>
               <mat-label>Sector principal</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
             <mat-form-field>
               <mat-label>Activitat principal</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field> 
           </section>
         </mat-tab>
@@ -249,11 +199,11 @@
           <section>
             <mat-form-field>
               <mat-label>Sector principal</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
             <mat-form-field>
               <mat-label>Activitat principal</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>    
           </section>
         </mat-tab>
@@ -261,11 +211,11 @@
           <section>
             <mat-form-field>
               <mat-label>Comentari sobre el finançament de l'empresa</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
             <mat-form-field>
               <mat-label>L'empresa té deutes?</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
           </section>
         </mat-tab>
@@ -297,16 +247,21 @@
           <section>
             <mat-form-field>
               <mat-label>Tema </mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
             <mat-form-field>
               <mat-label>Referent a</mat-label>
-              <input matInput formControlName="nombre" aria-label="Contacte principal és un camp obligatori." >
+              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
             </mat-form-field>
           </section>    
         </mat-tab>   
   </mat-tab-group>
-  <section ngClass="button-submit">
-    <button mat-raised-button color="primary" type="submit">Guardar {{formAccountDetail.status}}</button>
-  </section>
+  <div ngClass="centered-item">
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
+  </div>
+  <div ngClass="centered-item">
+    <small ngClass="centered-item">
+      Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched: {{theForm.touched}} | Dirty: {{theForm.dirty}} 
+    </small>
+  </div>
 </form>

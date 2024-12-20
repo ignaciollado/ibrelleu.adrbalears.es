@@ -4,6 +4,7 @@ import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
 import { DataService } from '../../Services/data.service';
 import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
+import { LegalFormDTO } from '../../Models/legal-form.dto';
 import { map, Observable, startWith } from 'rxjs';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
 
@@ -14,42 +15,41 @@ import { CanComponentDeactivate } from '../../can-deactivate.guard';
 })
 export class AccountDetailComponent  implements CanComponentDeactivate {
   isElevated: boolean = true
-  formAccountDetail: FormGroup
+  theForm: FormGroup
   countries: CountriesDTO[] = []
   zipCodeList: ZipCodesIBDTO[] = []
+  legalFormList: any[] = []
   filteredOptions: Observable<ZipCodesIBDTO[]>
   options: ZipCodesIBDTO[] = []
   
   constructor( private dataService: DataService, private countriesService: CountriesService ) {
-    this.formAccountDetail = new FormGroup({
-      nombre: new FormControl('', [Validators.required]),
-      apellidos: new FormControl('', [Validators.required]),
-      dni: new FormControl('', [Validators.required]),
-      direccion: new FormControl('', [Validators.required]),
-      fechaNacimiento: new FormControl('', [Validators.required]),
-      nacionalidad: new FormControl(''),
-      perfilTecnicoCedente: new FormControl('', [Validators.required]),
-      perfil: new FormControl('', [Validators.required]),
-      estadoContacto: new FormControl('', [Validators.required]),
-      genero: new FormControl(''),
-      motivoEstado: new FormControl(''),
-      consultor: new FormControl('', [Validators.required]),
-      aceptaRGPD: new FormControl(''),
-      delegacion: new FormControl(''),
+    this.theForm = new FormGroup({
+      legalFormat: new FormControl('', [Validators.required]),
+      mainContact: new FormControl('', [Validators.required]),
+      companyName: new FormControl('', [Validators.required]),
+      nif: new FormControl('', [Validators.required]),
+      tradeName: new FormControl(''),
       paradesMercat: new FormControl(''),
+      creationYear: new FormControl('', [Validators.minLength(4), Validators.maxLength(4)]),
+      incomingYear: new FormControl('', [Validators.minLength(4), Validators.maxLength(4)]),
+      companyFundationMode:  new FormControl(''),
       zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
       localizationCity: new FormControl({value:'', disabled: true }),
       councilCity: new FormControl({value:'', disabled: true }),
       localizationCCAA: new FormControl({value:'', disabled: true }),
       localizationCountry: new FormControl ({value:'España', disabled: true }),
+      consultor: new FormControl('', [Validators.required]),
+      delegacion: new FormControl(''),
+      direccion: new FormControl('', [Validators.required])
     })
     
     this.getCountries()
     this.getAllZipCodes()
+    this.loadLegalFormList()
   }
 
   ngOnInit() {
-    this.filteredOptions = this.formAccountDetail.get('zipCode').valueChanges.pipe(
+    this.filteredOptions = this.theForm.get('zipCode').valueChanges.pipe(
       startWith(''),
       map(value => {
         const name = typeof value === 'string' ? value : value;
@@ -59,10 +59,17 @@ export class AccountDetailComponent  implements CanComponentDeactivate {
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
-    if (this.formAccountDetail.dirty) 
+    if (this.theForm.dirty) 
       { return confirm('You have unsaved changes. Do you really want to leave?'); } 
     return true;
   }
+
+  loadLegalFormList() {
+      this.dataService.getAllLegalForms()
+        .subscribe((legalItems: LegalFormDTO[])=> {
+          this.legalFormList = legalItems
+        })
+    }
 
   getCountries() {
     this.countriesService.getAll()
@@ -72,7 +79,7 @@ export class AccountDetailComponent  implements CanComponentDeactivate {
   }
 
   onSubmit() {
-    console.log(this.formAccountDetail.value);
+    console.log(this.theForm.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
@@ -86,9 +93,9 @@ export class AccountDetailComponent  implements CanComponentDeactivate {
     }
   
     selectedValue(event: any) {
-      console.log ("zp seleccionado: ", this.formAccountDetail.get('zipCode').value)
-      this.formAccountDetail.get('localizationCity').setValue(this.formAccountDetail.get('zipCode').value['town'])
-      this.formAccountDetail.get('localizationCCAA').setValue(this.formAccountDetail.get('zipCode').value['island'])
+      console.log ("zp seleccionado: ", this.theForm.get('zipCode').value)
+      this.theForm.get('localizationCity').setValue(this.theForm.get('zipCode').value['town'])
+      this.theForm.get('localizationCCAA').setValue(this.theForm.get('zipCode').value['island'])
     }
   
     displayFn(zpCode: ZipCodesIBDTO): string {

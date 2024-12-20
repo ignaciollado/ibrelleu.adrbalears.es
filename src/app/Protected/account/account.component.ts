@@ -12,23 +12,6 @@ import { accountColumns, AccountDTO } from '../../Models/account.dto';
 import { DataService } from '../../Services/data.service';
 import { LegalFormDTO } from '../../Models/legal-form.dto';
 
-export interface PeriodicElement {
-  id: number
-  mainContact: string
-  nif: string
-  legalForm: string
-  companyName: string
-  tradeMarkName: string
-  sector: string
-  registrationDate: Date
-  consultant: string
-  delegation: string
-  town: string
-  activityType: string
-}
-
-
-
 @Component({
   selector: 'adr-account',
   templateUrl: './account.component.html',

@@ -1,9 +1,8 @@
 <!-- <h1>Edita el contacto</h1> -->
-  <form [formGroup]="formContactDetail" (ngSubmit)="onSubmit()">
+  <form [formGroup]="theForm" (ngSubmit)="onSubmit()">
     <mat-tab-group animationDuration = "500ms" mat-stretch-tabs="false" mat-align-tabs="center">
       <mat-tab label="Información del contacto">
         <section>
-
               <mat-form-field>
                 <mat-label>Nombre</mat-label>
                 <input matInput formControlName="nombre">
@@ -232,8 +231,13 @@
         </section>
       </mat-tab>
     </mat-tab-group>
-    <section>
-      <button mat-raised-button color="primary" type="submit">Guardar {{formContactDetail.status}}</button>
-    </section>
+    <div ngClass="centered-item">
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+    <div ngClass="centered-item">
+      <small ngClass="centered-item">
+        Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched: {{theForm.touched}} | Dirty: {{theForm.dirty}} 
+      </small>
+    </div>
   </form>
 

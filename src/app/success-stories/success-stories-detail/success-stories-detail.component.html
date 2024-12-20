@@ -1,5 +1,5 @@
 <h1>success-stories-detail works!</h1>
-<form [formGroup]="formSuccessStories" (ngSubmit)="onSubmit()">
+<form [formGroup]="theForm" (ngSubmit)="onSubmit()">
 <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
   <mat-tab label="Dades generals">
     <section>
@@ -42,7 +42,7 @@
       <mat-form-field>
         <mat-label>Código Postal</mat-label>
         <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto"/>
-        <small *ngIf="formSuccessStories.get('zipCode').errors">min length: 5 digits</small>
+        <small *ngIf="theForm.get('zipCode').errors">min length: 5 digits</small>
 
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
           @for (option of filteredOptions | async; track option) {
@@ -102,16 +102,12 @@
       Content 6
   </mat-tab>
 </mat-tab-group>
-<section ngClass="info-account">
-  <button mat-raised-button color="primary" type="submit" ngClass="info-account" [disabled]="!formSuccessStories.valid">Guardar</button>
-</section>
-<section>
-  <small>
-  Status: {{formSuccessStories.status}}<br>
-  Valid: {{formSuccessStories.valid}}<br>
-  Pristine: {{formSuccessStories.pristine}}<br> 
-  Touched: {{formSuccessStories.touched}}<br> 
-  Dirty: {{formSuccessStories.dirty}}<br> 
-</small>
-</section>
+<div ngClass="centered-item">
+  <button mat-raised-button color="primary" type="submit">Guardar</button>
+</div>
+<div ngClass="centered-item">
+  <small ngClass="centered-item">
+    Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched: {{theForm.touched}} | Dirty: {{theForm.dirty}} 
+  </small>
+</div>
 </form>

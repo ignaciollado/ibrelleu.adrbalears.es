@@ -38,15 +38,23 @@ a:hover {
   text-align: center;
 }
 
-.large-box {
+/* .large-box {
   margin: 16px;
   padding: 16px;
   border-radius: 8px;
   border: 1px solid adr-colors.$secondary-adr;
   min-height: 75vh;
   margin-bottom: .5rem;
+} */
+
+.centered-item {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  background-color: adr-colors.$secondary-adr;
+  color: #fff;
 }
 
-/* .large-box:hover {
-  background-color: adr-colors.$secondary-adr-light;
-} */
+mat-tab-group {
+  min-height: 75vh;
+}

@@ -25,7 +25,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
 
   expandedIndex = 0
   isElevated: boolean = true
-  formContactDetail: FormGroup
+  theForm: FormGroup
   countries: CountriesDTO[] = []
   zipCodeList: ZipCodesIBDTO[] = []
   employmentStatusList: any[] = []
@@ -35,7 +35,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   options: ZipCodesIBDTO[] = []
 
   constructor( private dataService: DataService, private countriesService: CountriesService) {
-    this.formContactDetail = new FormGroup({
+    this.theForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
       dni: new FormControl('', [Validators.required]),
@@ -78,7 +78,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   ngOnInit() {
-      this.filteredOptions = this.formContactDetail.get('zipCode').valueChanges.pipe(
+      this.filteredOptions = this.theForm.get('zipCode').valueChanges.pipe(
         startWith(''),
         map(value => {
           const name = typeof value === 'string' ? value : value;
@@ -88,7 +88,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
-    if (this.formContactDetail.dirty) 
+    if (this.theForm.dirty) 
       { return confirm('You have unsaved changes. Do you really want to leave?'); } 
     return true;
   }
@@ -122,7 +122,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   onSubmit() {
-    console.log(this.formContactDetail.value);
+    console.log(this.theForm.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
@@ -139,9 +139,9 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   selectedValue(event: any) {
-    console.log ("zp seleccionado: ", this.formContactDetail.get('zipCode').value)
-    this.formContactDetail.get('localizationCity').setValue(this.formContactDetail.get('zipCode').value['town'])
-    this.formContactDetail.get('localizationCCAA').setValue(this.formContactDetail.get('zipCode').value['island'])
+    console.log ("zp seleccionado: ", this.theForm.get('zipCode').value)
+    this.theForm.get('localizationCity').setValue(this.theForm.get('zipCode').value['town'])
+    this.theForm.get('localizationCCAA').setValue(this.theForm.get('zipCode').value['island'])
   }
 
   displayFn(zpCode: ZipCodesIBDTO): string {

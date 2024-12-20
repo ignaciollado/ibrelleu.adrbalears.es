@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   submitted: boolean = true
-  formSuccessStories: FormGroup
+  theForm: FormGroup
   countries: CountriesDTO[] = []
   id: string
   public zipCodeList: ZipCodesIBDTO[] = []
@@ -24,7 +24,7 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   options: ZipCodesIBDTO[] = []
 
   constructor( private dataService: DataService, private countriesService: CountriesService, private route: ActivatedRoute ) {
-    this.formSuccessStories = new FormGroup({
+    this.theForm = new FormGroup({
       id: new FormControl(''),
       nombre: new FormControl('', [Validators.required]),
       localizationAddress: new FormControl(''),
@@ -41,40 +41,40 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
     this.id = this.route.snapshot.paramMap.get('id')
     this.getAllZipCodes()
 
-    this.formSuccessStories.statusChanges.subscribe(newStaus => {
+    this.theForm.statusChanges.subscribe(newStaus => {
       console.log('form Status changed event')
-      console.log(newStaus, this.formSuccessStories.pristine, this.formSuccessStories.invalid)
+      console.log(newStaus, this.theForm.pristine, this.theForm.invalid)
     })
   }
 
   ngOnInit() {
-    this.filteredOptions = this.formSuccessStories.get('zipCode').valueChanges.pipe(
+    this.filteredOptions = this.theForm.get('zipCode').valueChanges.pipe(
       startWith(''),
       map(value => {
         const name = typeof value === 'string' ? value : value;
         return name ? this._filter(name as string) : this.options.slice();
       }),
     );
-    this.formSuccessStories.get('id').setValue(this.id)
+    this.theForm.get('id').setValue(this.id)
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
-    if (this.formSuccessStories.dirty) 
+    if (this.theForm.dirty) 
       { return confirm('You have unsaved changes. Do you really want to leave?'); } 
     return true;
   }
 
   get f(): { [key: string]: AbstractControl} {
-    console.log (this.formSuccessStories.status)
-    return this.formSuccessStories.controls
+    console.log (this.theForm.status)
+    return this.theForm.controls
   }
 
   onSubmit() {
   this.submitted = true
-  if (this.formSuccessStories.invalid) {
+  if (this.theForm.invalid) {
     return;
   }
-  console.log(this.formSuccessStories.value);
+  console.log(this.theForm.value);
   // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
@@ -87,10 +87,10 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   }
   
   selectedValue(event: any) {
-    console.log ("zp seleccionado: ", this.formSuccessStories.get('zipCode').value, this.formSuccessStories.get('zipCode').value.length)
-    this.formSuccessStories.get('localizationCity').setValue(this.formSuccessStories.get('zipCode').value['town'])
-    this.formSuccessStories.get('councilCity').setValue(this.formSuccessStories.get('zipCode').value['council'])
-    this.formSuccessStories.get('localizationCCAA').setValue(this.formSuccessStories.get('zipCode').value['island'])
+    console.log ("zp seleccionado: ", this.theForm.get('zipCode').value, this.theForm.get('zipCode').value.length)
+    this.theForm.get('localizationCity').setValue(this.theForm.get('zipCode').value['town'])
+    this.theForm.get('councilCity').setValue(this.theForm.get('zipCode').value['council'])
+    this.theForm.get('localizationCCAA').setValue(this.theForm.get('zipCode').value['island'])
   }
   
   displayFn(zpCode: ZipCodesIBDTO): string {
