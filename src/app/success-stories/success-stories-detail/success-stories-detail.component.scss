@@ -1,0 +1,14 @@
+@use '../../../adr-colors';
+
+mat-tab-group {
+  min-height: 78vh;
+}
+
+section {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+}

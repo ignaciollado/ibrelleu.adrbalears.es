@@ -1,0 +1,98 @@
+<h1>success-stories-detail works!</h1>
+<form [formGroup]="formSuccessStories" (ngSubmit)="onSubmit()">
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+  <mat-tab label="Dades generals">
+    <section>
+      <mat-form-field>
+        <mat-label>Codi</mat-label>
+        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nombre" aria-label="Nombre" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Tipologia de la Reempresa</mat-label>
+        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Procés</mat-label>
+        <input matInput formControlName="nombre" aria-label="Nombre" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Projecte Reempresa</mat-label>
+        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Projecte Cedent</mat-label>
+        <input matInput formControlName="nombre" aria-label="Nombre" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Sector principal</mat-label>
+        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Activitat</mat-label>
+        <input matInput formControlName="nombre" aria-label="Nombre" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Código Postal</mat-label>
+        <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          @for (option of filteredOptions | async; track option) {
+            <mat-option [value]="option">{{option.zipCode}} {{option.town}}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Población</mat-label>
+        <input matInput formControlName="localizationCity" readonly="readonly">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Municipio</mat-label>
+        <input matInput formControlName="councilCity" readonly="readonly">
+      </mat-form-field>    
+      <mat-form-field>
+        <mat-label>Illa</mat-label>
+        <input matInput formControlName="localizationCCAA" readonly="readonly">
+      </mat-form-field>
+    </section>
+  </mat-tab>
+
+  <mat-tab label="Acord">
+     <section>
+      <mat-form-field>
+        <mat-label>Data de la cessió</mat-label>
+        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Tipologia de contracte</mat-label>
+        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+      </mat-form-field>
+     </section>
+  </mat-tab>
+
+  <mat-tab label="Dades projecte Reemprenedor">
+      Content 3
+  </mat-tab>
+
+  <mat-tab label="Testimonial">
+      Content 4
+  </mat-tab>
+
+  <mat-tab label="Seguiment">
+      Content 5
+  </mat-tab>
+
+  <mat-tab label="Documentació">
+      Content 6
+  </mat-tab>
+</mat-tab-group>
+<section ngClass="info-account">
+  <button mat-raised-button color="primary" type="submit" ngClass="info-account">Guardar {{formSuccessStories.status}}</button>
+</section>
+</form>

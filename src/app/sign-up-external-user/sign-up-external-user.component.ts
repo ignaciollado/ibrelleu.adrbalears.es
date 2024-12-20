@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import { DataService } from '../Services/data.service';
 import { ContactDTO } from '../Models/contact.dto';

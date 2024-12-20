@@ -9,7 +9,7 @@
       <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
         <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
         <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key] | date:'short'}}</span>
-        <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/success-stories-detail/', element[col.key]]" title="Click to view & edit account detail">{{ element[col.key] }}</a>
+        <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/success-stories-detail/', element[col.key]]" title="Click to view & edit details">{{ element[col.key] }}</a>
         <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
       </section>
 

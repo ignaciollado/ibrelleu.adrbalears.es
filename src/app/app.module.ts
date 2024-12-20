@@ -40,8 +40,8 @@ import { AccountDetailComponent } from './Protected/account-detail/account-detai
 import { FileUploadComponent } from './Protected/file-upload/file-upload.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTabsModule } from '@angular/material/tabs';
-import { SuccessStoriesComponent } from './successStories/success-stories/success-stories.component';
-import { SuccessStoriesDetailComponent } from './successStories/success-stories-detail/success-stories-detail.component';
+import { SuccessStoriesComponent } from './success-stories/success-stories/success-stories.component';
+import { SuccessStoriesDetailComponent } from './success-stories/success-stories-detail/success-stories-detail.component';
 import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-external-user.component';
 export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLoader(http);}
 

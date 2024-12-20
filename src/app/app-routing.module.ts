@@ -9,8 +9,8 @@ import { AccountComponent } from './Protected/account/account.component';
 import { ContactsComponent } from './Protected/contacts/contacts.component';
 import { AccountDetailComponent } from './Protected/account-detail/account-detail.component';
 import { ContactDetailComponent } from './Protected/contact-detail/contact-detail.component';
-import { SuccessStoriesComponent } from './successStories/success-stories/success-stories.component';
-import { SuccessStoriesDetailComponent } from './successStories/success-stories-detail/success-stories-detail.component';
+import { SuccessStoriesComponent } from './success-stories/success-stories/success-stories.component';
+import { SuccessStoriesDetailComponent } from './success-stories/success-stories-detail/success-stories-detail.component';
 import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-external-user.component';
 
 const routes: Routes = [
