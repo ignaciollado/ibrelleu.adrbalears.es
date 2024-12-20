@@ -41,7 +41,8 @@
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
       <mat-label>Código Postal</mat-label>
-      <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto">
+      <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto" />
+      <small *ngIf="profileForm.get('zipCode').errors">min length: 5 digits</small>
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         @for (option of filteredOptions | async; track option) {
           <mat-option [value]="option">{{option.zipCode}} {{option.town}}</mat-option>

@@ -2,7 +2,7 @@
   <form [formGroup]="formContactDetail" (ngSubmit)="onSubmit()">
     <mat-tab-group animationDuration = "500ms" mat-stretch-tabs="false" mat-align-tabs="center">
       <mat-tab label="Información del contacto">
-        <section ngClass="large-box">
+        <section>
 
               <mat-form-field>
                 <mat-label>Nombre</mat-label>
@@ -87,7 +87,7 @@
         </section>
       </mat-tab>
       <mat-tab label="Datos del contacto">
-        <section ngClass="large-box">
+        <section>
               <mat-form-field>
                 <mat-label>Prefix</mat-label>
                 <input matInput formControlName="prefijo">
@@ -145,7 +145,7 @@
         </section>
       </mat-tab>
       <mat-tab label="Localización">
-        <section ngClass="large-box">
+        <section>
               <mat-form-field>
                 <mat-label>Dirección</mat-label>
                 <input matInput formControlName="localizationAddress">
@@ -164,6 +164,10 @@
                 <input matInput formControlName="localizationCity">
               </mat-form-field>
               <mat-form-field>
+                <mat-label>Municipio</mat-label>
+                <input matInput formControlName="councilCity" readonly="readonly">
+              </mat-form-field>  
+              <mat-form-field>
                 <mat-label>Illa</mat-label>
                 <input matInput formControlName="localizationCCAA">
               </mat-form-field>
@@ -174,7 +178,7 @@
         </section>
       </mat-tab>
       <mat-tab label="Información laboral y curricular">
-        <section ngClass="large-box">
+        <section>
             <mat-form-field>
               <mat-label>Situación laboral</mat-label>
               <mat-select formControlName="employmentStatus">

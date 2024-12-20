@@ -29,11 +29,11 @@ export class SignUpExternalUserComponent {
     mainMail: new FormControl('', [Validators.required, Validators.email]),
     localizationAddress: new FormControl(''),
     zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
-    localizationCity: new FormControl(''),
-    councilCity: new FormControl(''),
-    localizationCCAA: new FormControl(''),
+    localizationCity: new FormControl({value:'', disabled: true }),
+    councilCity: new FormControl({value:'', disabled: true }),
+    localizationCCAA: new FormControl({value:'', disabled: true }),
     userProfile: new FormControl('', [Validators.required]),
-    acceptTerms: new FormControl(false, [Validators.required])
+    acceptTerms: new FormControl(false, [Validators.requiredTrue])
   });
 
   constructor( private dataService: DataService, private router: Router ) {

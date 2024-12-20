@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import { DataService } from '../../Services/data.service';
-import { successStoriesColumns, SuccessStoriesDTO } from '../../Models/success-stories.dto';
-import { SharedService } from '../../Services/shared.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
 import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
@@ -16,8 +14,8 @@ import { Observable } from 'rxjs';
   templateUrl: './success-stories-detail.component.html',
   styleUrl: './success-stories-detail.component.scss'
 })
-export class SuccessStoriesDetailComponent {
-  isElevated: boolean = true
+export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
+  submitted: boolean = true
   formSuccessStories: FormGroup
   countries: CountriesDTO[] = []
   id: string
@@ -29,20 +27,24 @@ export class SuccessStoriesDetailComponent {
     this.formSuccessStories = new FormGroup({
       id: new FormControl(''),
       nombre: new FormControl('', [Validators.required]),
-
       localizationAddress: new FormControl(''),
-      zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
-      localizationCity: new FormControl(''),
-      councilCity: new FormControl(''),
-      localizationCCAA: new FormControl(''),
+      zipCode: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+      localizationCity: new FormControl({value:'', disabled: true }),
+      councilCity: new FormControl({value:'', disabled: true }),
+      localizationCCAA: new FormControl({value:'', disabled: true }),
+      transferDate: new FormControl('', [Validators.required]),
 
       consultor: new FormControl('', [Validators.required]),
       delegacion: new FormControl(''),
 
     })
     this.id = this.route.snapshot.paramMap.get('id')
-    this.getCountries()
     this.getAllZipCodes()
+
+    this.formSuccessStories.statusChanges.subscribe(newStaus => {
+      console.log('form Status changed event')
+      console.log(newStaus, this.formSuccessStories.pristine, this.formSuccessStories.invalid)
+    })
   }
 
   ngOnInit() {
@@ -53,18 +55,27 @@ export class SuccessStoriesDetailComponent {
         return name ? this._filter(name as string) : this.options.slice();
       }),
     );
+    this.formSuccessStories.get('id').setValue(this.id)
   }
 
-  getCountries() {
-    this.countriesService.getAll()
-      .subscribe((countries:CountriesDTO[])=> {
-        this.countries = countries
-    })
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
+    if (this.formSuccessStories.dirty) 
+      { return confirm('You have unsaved changes. Do you really want to leave?'); } 
+    return true;
+  }
+
+  get f(): { [key: string]: AbstractControl} {
+    console.log (this.formSuccessStories.status)
+    return this.formSuccessStories.controls
   }
 
   onSubmit() {
-   console.log(this.formSuccessStories.value);
-    // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
+  this.submitted = true
+  if (this.formSuccessStories.invalid) {
+    return;
+  }
+  console.log(this.formSuccessStories.value);
+  // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
   getAllZipCodes() {

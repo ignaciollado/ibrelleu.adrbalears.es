@@ -5,6 +5,7 @@ import { CountriesService } from '../../Services/countries.service';
 import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 import { DataService } from '../../Services/data.service';
 import { map, Observable, startWith } from 'rxjs';
+import { CanComponentDeactivate } from '../../can-deactivate.guard';
 
 @Component({
   selector: 'adr-contact-detail',
@@ -12,7 +13,7 @@ import { map, Observable, startWith } from 'rxjs';
   styleUrl: './contact-detail.component.scss'
 })
 
-export class ContactDetailComponent {
+export class ContactDetailComponent implements CanComponentDeactivate {
   perfilTecnicoItems_es = ['Reemprendedor', 'Cedente', 'Externo', 'Usuario de servicio PH/REC']
   perfilTecnicoItems_ca = ['Reemprenedor', 'Cedent', 'Extern', 'Usuari de serveis PH/REC']
 
@@ -60,9 +61,10 @@ export class ContactDetailComponent {
       socialNetFacebook: new FormControl(''),
       localizationAddress: new FormControl('', [Validators.required, Validators.maxLength(150)]),
       zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
-      localizationCity: new FormControl(''),
-      localizationCCAA: new FormControl(''),
-      localizationCountry: new FormControl ('España'),
+      localizationCity: new FormControl({value:'', disabled: true}),
+      councilCity: new FormControl({value:'', disabled: true}),
+      localizationCCAA: new FormControl({value:'', disabled: true}),
+      localizationCountry: new FormControl ({value:'España', disabled: true}),
       employmentStatus: new FormControl(''),
       levelOfEducation: new FormControl(''),
       workingMode: new FormControl('')
@@ -83,6 +85,12 @@ export class ContactDetailComponent {
           return name ? this._filter(name as string) : this.options.slice();
         }),
       );
+  }
+
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
+    if (this.formContactDetail.dirty) 
+      { return confirm('You have unsaved changes. Do you really want to leave?'); } 
+    return true;
   }
 
   getCountries() {

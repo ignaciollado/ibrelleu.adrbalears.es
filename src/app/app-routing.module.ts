@@ -12,6 +12,7 @@ import { ContactDetailComponent } from './Protected/contact-detail/contact-detai
 import { SuccessStoriesComponent } from './success-stories/success-stories/success-stories.component';
 import { SuccessStoriesDetailComponent } from './success-stories/success-stories-detail/success-stories-detail.component';
 import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-external-user.component';
+import { CanDeactivateGuard } from './can-deactivate.guard';
 
 const routes: Routes = [
   { path: 'home', component: BodyComponent},
@@ -20,11 +21,11 @@ const routes: Routes = [
   { path: 'body', component: BodyComponent },
   { path: 'accounts', component: AccountComponent },
   { path: 'contacts', component: ContactsComponent },
-  { path: 'contact-detail/:id', component: ContactDetailComponent},
-  { path: 'account-detail/:id', component: AccountDetailComponent},
+  { path: 'contact-detail/:id', component: ContactDetailComponent, canDeactivate: [CanDeactivateGuard]},
+  { path: 'account-detail/:id', component: AccountDetailComponent, canDeactivate: [CanDeactivateGuard]},
   { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
   { path: 'success-stories', component: SuccessStoriesComponent},
-  { path: 'success-stories-detail/:id', component: SuccessStoriesDetailComponent},
+  { path: 'success-stories-detail/:id', component: SuccessStoriesDetailComponent, canDeactivate: [CanDeactivateGuard]},
   { path: 'sign-up-external-user', component: SignUpExternalUserComponent},
   { path: '', redirectTo: '/body', pathMatch: 'full' }
 ];

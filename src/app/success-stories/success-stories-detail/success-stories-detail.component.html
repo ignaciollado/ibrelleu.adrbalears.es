@@ -5,16 +5,16 @@
     <section>
       <mat-form-field>
         <mat-label>Codi</mat-label>
-        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+        <input matInput formControlName="id" aria-label="id" readonly>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Nom</mat-label>
+        <mat-label>Nom del cas</mat-label>
         <input matInput formControlName="nombre" aria-label="Nombre" >
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Tipologia de la Reempresa</mat-label>
-        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+        <input matInput formControlName="id" aria-label="id" readonly>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Procés</mat-label>
@@ -23,7 +23,7 @@
 
       <mat-form-field>
         <mat-label>Projecte Reempresa</mat-label>
-        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+        <input matInput formControlName="id" aria-label="id" readonly>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Projecte Cedent</mat-label>
@@ -32,7 +32,7 @@
 
       <mat-form-field>
         <mat-label>Sector principal</mat-label>
-        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+        <input matInput formControlName="id" aria-label="id" readonly>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Activitat</mat-label>
@@ -41,7 +41,9 @@
 
       <mat-form-field>
         <mat-label>Código Postal</mat-label>
-        <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto">
+        <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto"/>
+        <small *ngIf="formSuccessStories.get('zipCode').errors">min length: 5 digits</small>
+
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
           @for (option of filteredOptions | async; track option) {
             <mat-option [value]="option">{{option.zipCode}} {{option.town}}</mat-option>
@@ -60,14 +62,22 @@
         <mat-label>Illa</mat-label>
         <input matInput formControlName="localizationCCAA" readonly="readonly">
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>Consultor</mat-label>
+        <input matInput formControlName="consultor" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Delegación</mat-label>
+        <input matInput formControlName="delegacion" type="text">
+      </mat-form-field>
     </section>
   </mat-tab>
-
+  
   <mat-tab label="Acord">
      <section>
       <mat-form-field>
         <mat-label>Data de la cessió</mat-label>
-        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+        <input matInput formControlName="transferDate" type="date" aria-label="transferDate">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Tipologia de contracte</mat-label>
@@ -93,6 +103,15 @@
   </mat-tab>
 </mat-tab-group>
 <section ngClass="info-account">
-  <button mat-raised-button color="primary" type="submit" ngClass="info-account">Guardar {{formSuccessStories.status}}</button>
+  <button mat-raised-button color="primary" type="submit" ngClass="info-account" [disabled]="!formSuccessStories.valid">Guardar</button>
+</section>
+<section>
+  <small>
+  Status: {{formSuccessStories.status}}<br>
+  Valid: {{formSuccessStories.valid}}<br>
+  Pristine: {{formSuccessStories.pristine}}<br> 
+  Touched: {{formSuccessStories.touched}}<br> 
+  Dirty: {{formSuccessStories.dirty}}<br> 
+</small>
 </section>
 </form>
