@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from '../../Services/auth.service';
 import { SharedService } from '../../Services/shared.service';
@@ -33,7 +33,6 @@ export class BodyComponent implements OnInit {
 
   logOutUSER() {
     this.authService.logout()
-    this.router.navigateByUrl('home')
   }
 
 }

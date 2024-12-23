@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, Input } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @Component({
   selector: 'adr-header',
@@ -7,10 +9,16 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  theToken: string = sessionStorage.getItem('access_token')
+  actualUser: string
+  actualRole: string
+
+  constructor(private breakpointObserver: BreakpointObserver, private jwtHelper: JwtHelperService) {}
 
   ngOnInit() {
-    
+    console.log (this.jwtHelper.decodeToken(this.theToken))
+    this.actualUser = this.jwtHelper.decodeToken(this.theToken).name
+    this.actualRole = this.jwtHelper.decodeToken(this.theToken). role
   }
 
   sidenav() {

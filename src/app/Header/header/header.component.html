@@ -25,7 +25,7 @@
       <button mat-menu-item routerLink="#">castellano</button>
       <mat-divider></mat-divider>
       <button mat-menu-item routerLink="#">català</button>
-  </mat-menu>
+  </mat-menu> {{actualUser}} - {{actualRole}}
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">
@@ -45,10 +45,8 @@
       </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-      
           <section class="app-sidenav-content">
             <router-outlet></router-outlet>
           </section>
-      
   </mat-sidenav-content>
 </mat-sidenav-container> 

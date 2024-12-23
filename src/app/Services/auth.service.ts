@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthDTO } from '../Models/auth.dto';
 import { SharedService } from './shared.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 export interface AuthToken {
   user_id: string;
@@ -26,21 +27,20 @@ export class AuthService {
  
   constructor(
     private http: HttpClient, 
-    private sharedService: SharedService,
+     private router: Router,
     private jwtHelper: JwtHelperService ) { }
 
 
 
   public login(loginForm: AuthDTO): Observable<AuthToken> {
-    console.log ("login form data: ", loginForm, URL_API_SRV)
     return this.http
         .post<AuthToken>( `${URL_API_SRV}/api/login-users/`, loginForm, httpOptions )
   }
 
-  public logout(): Observable<any> {
+  public logout(): void {
     sessionStorage.removeItem('access_token');
     sessionStorage.removeItem('ibrelleu_id');
-    return this.http.post( URL_API + 'signout', { } );
+    window.location.reload()
   }
 
   public isAuthenticated(): boolean {
