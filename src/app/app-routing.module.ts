@@ -22,8 +22,8 @@ const routes: Routes = [
   { path: 'settings', component: BodyComponent, canActivate:[AuthGuard] },
 
   { path: 'body', component: BodyComponent },
-  { path: 'accounts', component: AccountComponent },
-  { path: 'contacts', component: ContactsComponent },
+  { path: 'accounts', component: AccountComponent, canActivate:[AuthGuard] },
+  { path: 'contacts', component: ContactsComponent, canActivate:[AuthGuard] },
   { path: 'contact-detail/:id', component: ContactDetailComponent, canDeactivate: [CanDeactivateGuard], canActivate: [AuthGuard] },
   { path: 'account-detail/:id', component: AccountDetailComponent, canDeactivate: [CanDeactivateGuard] },
   { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },

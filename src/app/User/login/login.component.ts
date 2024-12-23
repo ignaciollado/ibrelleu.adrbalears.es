@@ -31,7 +31,8 @@ export class LoginComponent {
 
     let responseOK: boolean = false
     let errorResponse: any
-   
+    sessionStorage.removeItem('access_token');
+    sessionStorage.removeItem('ibrelleu_id');
 
     if ( this.loginForm ) {
         this.authService.login( this.loginForm.value )
@@ -51,10 +52,10 @@ export class LoginComponent {
             console.log ("Welcome to IBRelleu Market Place created by ADR Balears ...")
             responseOK = true;
             errorResponse = "login correct"
-            sessionStorage.setItem('user_id', item.user_id)
+            sessionStorage.setItem('ibrelleu_id', item.user_id)
             sessionStorage.setItem('access_token', item.access_token)
             this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
-
+            console.log ("el rol:" , this.jwtHelper.decodeToken().role)
             if (this.jwtHelper.decodeToken().role === 'admin') {
               this.isAODL = false
             }

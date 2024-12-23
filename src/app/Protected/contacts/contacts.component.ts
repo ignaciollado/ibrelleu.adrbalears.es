@@ -48,10 +48,7 @@ export class ContactsComponent {
       this.dataService.getAllContacts()
         .subscribe((contacts: ContactDTO[])=> {
           this.dataSource = contacts
-          this.dataSource.map((item:ContactDTO)=> {
-           console.log( item.state,  this.filterContactStates(item.state) )
-           /* item.state = this.contactStates[item.state]['label'] */
-          })
+          this.dataSource.map((item:ContactDTO)=> {})
       })
   }
   loadContactStates() {
@@ -65,7 +62,6 @@ export class ContactsComponent {
     this.dataService.getAllLegalForms()
       .subscribe((contactStateItems: any[])=> {
         return contactStateItems.filter((stateItem:any) => {
-          console.log (stateItem.value, valueToFilter)
           stateItem.value === valueToFilter})
     })
   }
@@ -79,17 +75,14 @@ export class ContactsComponent {
   }
 
   applyFilter(event: Event) {
-    console.log (event)
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   selectedValue(contactState: any) {
-    console.log ("valor seleccionado: ", contactState.value.value)
     this.dataService.getAllContacts()
     .subscribe((contacts: ContactDTO[])=> {
       const matchedContacts:ContactDTO[] = contacts.filter((item:ContactDTO) => {return item.state === contactState.value.value})
-      console.log (matchedContacts)
       this.dataSource = matchedContacts
     })
   } 

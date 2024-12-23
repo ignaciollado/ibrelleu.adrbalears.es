@@ -38,14 +38,17 @@ export class AuthService {
   }
 
   public logout(): Observable<any> {
+    sessionStorage.removeItem('access_token');
+    sessionStorage.removeItem('ibrelleu_id');
     return this.http.post( URL_API + 'signout', { } );
   }
 
   public isAuthenticated(): boolean {
-    if (localStorage.getItem('userLogged')) {
-      return true
-    } else {
+    console.log ( "el token: ", this.jwtHelper.decodeToken(sessionStorage.getItem("access_token")) )
+    if (this.jwtHelper.isTokenExpired(sessionStorage.getItem("access_token"))) {
       return false
+    } else {
+      return true
     }
   }
 }
