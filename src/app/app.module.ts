@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { JwtModule } from "@auth0/angular-jwt";
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'; 
@@ -43,7 +44,11 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SuccessStoriesComponent } from './success-stories/success-stories/success-stories.component';
 import { SuccessStoriesDetailComponent } from './success-stories/success-stories-detail/success-stories-detail.component';
 import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-external-user.component';
+
+export function tokenGetter() { return sessionStorage.getItem("access_token"); }
+
 export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLoader(http);}
+
 
 @NgModule({
   declarations: [
@@ -89,6 +94,13 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     MatListModule,
     MatTableModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["datalogger.industrialocalsostenible.com", "jwt.idi.es"],
+        disallowedRoutes: ["http://example.com/examplebadroute/"],
+      },
+    }),
     RouterModule.forRoot([]),
     HttpClientModule, 
     TranslateModule.forRoot({ loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] }})

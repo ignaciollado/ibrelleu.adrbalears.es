@@ -17,15 +17,18 @@ import { CanDeactivateGuard } from './can-deactivate.guard';
 const routes: Routes = [
   { path: 'home', component: BodyComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: BodyComponent, canActivate:[AuthGuard] },
+  { path: 'profile', component: BodyComponent, canActivate:[AuthGuard] },
+  { path: 'settings', component: BodyComponent, canActivate:[AuthGuard] },
+
   { path: 'body', component: BodyComponent },
   { path: 'accounts', component: AccountComponent },
   { path: 'contacts', component: ContactsComponent },
-  { path: 'contact-detail/:id', component: ContactDetailComponent, canDeactivate: [CanDeactivateGuard]},
-  { path: 'account-detail/:id', component: AccountDetailComponent, canDeactivate: [CanDeactivateGuard]},
+  { path: 'contact-detail/:id', component: ContactDetailComponent, canDeactivate: [CanDeactivateGuard], canActivate: [AuthGuard] },
+  { path: 'account-detail/:id', component: AccountDetailComponent, canDeactivate: [CanDeactivateGuard] },
   { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
-  { path: 'success-stories', component: SuccessStoriesComponent},
-  { path: 'success-stories-detail/:id', component: SuccessStoriesDetailComponent, canDeactivate: [CanDeactivateGuard]},
+  { path: 'success-stories', component: SuccessStoriesComponent, canActivate: [AuthGuard]},
+  { path: 'success-stories-detail/:id', component: SuccessStoriesDetailComponent, canDeactivate: [CanDeactivateGuard] },
   { path: 'sign-up-external-user', component: SignUpExternalUserComponent},
   { path: '', redirectTo: '/body', pathMatch: 'full' }
 ];

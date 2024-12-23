@@ -1,25 +1,51 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { authConfig } from './auth-config';
+import { Observable } from 'rxjs';
+import { AuthDTO } from '../Models/auth.dto';
+import { SharedService } from './shared.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+export interface AuthToken {
+  user_id: string;
+  access_token: string;
+}
+
+const URL_API = '../../assets/phpAPI/'
+const URL_API_SRV = "https://jwt.idi.es/public/index.php"
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'text/plain', /* la única forma de evitar errores de CORS ha sido añadiendo esta cabecera */
+  })
+};
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  constructor(private oauthService: OAuthService) {
-    this.oauthService.configure(authConfig);
-    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+ 
+  constructor(
+    private http: HttpClient, 
+    private sharedService: SharedService,
+    private jwtHelper: JwtHelperService ) { }
+
+
+
+  public login(loginForm: AuthDTO): Observable<AuthToken> {
+    console.log ("login form data: ", loginForm, URL_API_SRV)
+    return this.http
+        .post<AuthToken>( `${URL_API_SRV}/api/login-users/`, loginForm, httpOptions )
   }
 
-  login() {
-    this.oauthService.initImplicitFlow();
+  public logout(): Observable<any> {
+    return this.http.post( URL_API + 'signout', { } );
   }
 
-  logout() {
-    this.oauthService.logOut();
-  }
-
-  get isLoggedIn(): boolean {
-    return this.oauthService.hasValidAccessToken();
+  public isAuthenticated(): boolean {
+    if (localStorage.getItem('userLogged')) {
+      return true
+    } else {
+      return false
+    }
   }
 }

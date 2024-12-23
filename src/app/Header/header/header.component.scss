@@ -3,7 +3,6 @@
 mat-sidenav, mat-expansion-panel {
   background-color: adr-colors.$secondary-adr;
 }
-
 .mat-toolbar {
   position: sticky;
   background-color: adr-colors.$primary-adr;
@@ -12,7 +11,6 @@ mat-sidenav, mat-expansion-panel {
   z-index: 1;
   max-height: 10vh;
 }
-
 .content {
   padding: 16px;
 }
