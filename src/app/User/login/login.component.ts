@@ -36,38 +36,28 @@ export class LoginComponent {
 
     if ( this.loginForm ) {
         this.authService.login( this.loginForm.value )
-         .pipe( 
-          catchError(this.sharedService.handleError), 
-           finalize(async () => {
-            responseOK = false
-            errorResponse = "login fail"
-            this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
-            if (responseOK) {
-              this.router.navigateByUrl('posts');
-            }
-          })
-            ) 
-        .subscribe(
+        .subscribe (
           (item:AuthToken ) => {
-            console.log ("Welcome to IBRelleu Market Place created by ADR Balears ...")
-            responseOK = true;
+            console.log ("Welcome to IBRelleu Market Place created by the ADR Balears ...")
+            responseOK = true
             errorResponse = "login correct"
             sessionStorage.setItem('ibrelleu_id', item.user_id)
             sessionStorage.setItem('access_token', item.access_token)
             this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
-            console.log ("el rol:" , this.jwtHelper.decodeToken().role)
+            localStorage.setItem("preferredLang", "cat")
             if (this.jwtHelper.decodeToken().role === 'admin') {
               this.isAODL = false
             }
             },
             (error: any) => {
-                  responseOK = false;
-                  errorResponse = error.status;
-                  this.sharedService.errorLog(error.error);
+                  responseOK = false
+                  this.sharedService.errorLog(error)
+                  this.sharedService.managementToast( 'loginFeedback', responseOK, error )
+                  this.loginForm.reset()
                 },
                   () => {
                     console.log("Login complete, redirecting ...")
-                    this.router.navigateByUrl('profile')
+                    this.router.navigateByUrl('home')
                   }
         )
     }

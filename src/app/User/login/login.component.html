@@ -1,21 +1,21 @@
 <section ngClass="center">
-  <h1>User login</h1>
+  <h1>{{'userLogin' | translate}}</h1>
   <mat-card>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <section>
         <mat-form-field>
-          <mat-label>Email</mat-label>
+          <mat-label>{{'email' | translate}}</mat-label>
           <input matInput type="email" formControlName="email" name="email" required>
         </mat-form-field>
       </section>
       <section>
         <mat-form-field>
-          <mat-label>Password</mat-label>
+          <mat-label>{{'password' | translate}}</mat-label>
           <input matInput type="password" formControlName="password" name="password" required>
         </mat-form-field>
       </section>
       <section>
-        <button mat-raised-button color="primary" type="submit">Login</button>
+        <button mat-raised-button color="primary" type="submit">{{'login' | translate}}</button>
       </section>
 
     <section ngClass="info-msg" *ngIf="loginForm.get('email')!.invalid && loginForm.get('email')!.touched">
@@ -26,4 +26,5 @@
     </section>
   </form>
   </mat-card>
+  <span id="loginFeedback"></span>
 </section>

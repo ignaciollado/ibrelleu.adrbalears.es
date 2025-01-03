@@ -17,8 +17,13 @@ export class HeaderComponent {
 
   ngOnInit() {
     console.log (this.jwtHelper.decodeToken(this.theToken))
-    this.actualUser = this.jwtHelper.decodeToken(this.theToken).name
-    this.actualRole = this.jwtHelper.decodeToken(this.theToken). role
+    if (this.theToken) {
+      this.actualUser = this.jwtHelper.decodeToken(this.theToken).name
+      this.actualRole = this.jwtHelper.decodeToken(this.theToken).role
+    } else {
+      this.actualUser = " no user logged "
+      this.actualRole = " no roler set "
+    }
   }
 
   sidenav() {

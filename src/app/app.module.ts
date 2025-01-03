@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,8 +29,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule} from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { MatCheckboxModule } from '@angular/material/checkbox'; 
-import { MatRadioModule } from '@angular/material/radio'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+
+import { SelectLanguageComponent } from './select-language/select-language.component';
 import { ProtectedComponent } from './Protected/protected/protected.component';
 import { HeaderComponent } from './Header/header/header.component';
 import { FooterComponent } from './Footer/footer/footer.component';
@@ -53,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
 @NgModule({
   declarations: [
     AppComponent,
+    SelectLanguageComponent,
     RegisterComponent,
     LoginComponent,
     ProtectedComponent,
@@ -74,6 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     AppRoutingModule,
     MatInputModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatMenuModule,
     RouterModule,
     MatExpansionModule,

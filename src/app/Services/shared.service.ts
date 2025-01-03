@@ -23,7 +23,7 @@ export class SharedService {
     this.urlAPiMock = '../Models/mocks/'
   }
 
-  async managementToast( element: string, validRequest: boolean, error?: any ): Promise<void> {
+  async managementToast( element: string, validRequest: boolean, error?: HttpErrorResponse ): Promise<void> {
     const toastMsg = document.getElementById(element);
     if (toastMsg) {
       if (validRequest) {
@@ -33,22 +33,20 @@ export class SharedService {
         toastMsg.className = toastMsg.className.replace('show', '');
       } else {
         toastMsg.className = 'show requestKo';
-        if (error?.messageDetail) {
+        if (error?.status) {
           toastMsg.textContent =
-            'Error on data submitted. Explanation: ' +
-            error?.message +
-            '. Message detail: ' + error + ' ' +
-            error?.messageDetail +
+            'Error on data submitted. ' +
+            error?.error.messages.error +
             '. Status code: ' +
-            error?.statusCode;
+            error?.status;
         } else {
           toastMsg.textContent =
-            error?.messages.error +'. Error on data submitted. ' +
+            error?.error.messages.error +'. Error on data submitted. ' +
             'Status code: ' +
             error?.status;
         }
 
-        await this.wait(4500);
+        await this.wait(9000);
         toastMsg.className = toastMsg.className.replace('show', '');
       }
     }
@@ -59,12 +57,13 @@ export class SharedService {
       .get<ZipCodesIBDTO[]>(`${this.urlAPiMock}cp-ib.json`)
   }
 
-  errorLog(error: ResponseError): void {
-    console.error('path:', error.path);
-    console.error('timestamp:', error.timestamp);
-    console.error('message:', error.message);
-    console.error('messageDetail:', error.messageDetail);
-    console.error('statusCode:', error.statusCode);
+  errorLog(error: HttpErrorResponse): void {
+    console.log ("el error: ", error)
+    console.error('status:', error.status)
+    console.error('messages:', error.error.messages.error)
+    console.error('message:', error.message)
+    console.error('statusText:', error.statusText)
+    console.error('name:', error.name)
   }
 
   async wait(ms: number) {
