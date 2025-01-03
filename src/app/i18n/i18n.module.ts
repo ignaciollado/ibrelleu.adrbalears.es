@@ -20,14 +20,14 @@ export class I18nModule {
   constructor(translate: TranslateService) {
 
     translate.addLangs(['cat', 'cas']) /* Indica que lenguas hay disponibles para la traducción */
-    // translate.setDefaultLang('cat') /* Lengua por defecto cuando no se encuentre un JSON de traducción */
+    translate.setDefaultLang('cat') /* Lengua por defecto cuando no se encuentre un JSON de traducción */
     const browserLang = translate.getBrowserLang()
 
-    if (localStorage.getItem('preferredLang') === null) {
-      localStorage.setItem('preferredLang', translate.defaultLang)
+    if (sessionStorage.getItem('preferredLang') === null) {
+      sessionStorage.setItem('preferredLang', translate.defaultLang)
     }
     // translate.use(translate.getLangs().includes(browserLang) ? browserLang : 'ca')  /* Usar el idioma del navegador */
-    translate.use(localStorage.getItem('preferredLang')) /* Usar el idioma preferido del usuario */
+    translate.use(sessionStorage.getItem('preferredLang')) /* Usar el idioma preferido del usuario */
 
   }
 }

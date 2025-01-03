@@ -6,6 +6,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { I18nModule } from "./i18n/i18n.module";
+
 import { RegisterComponent } from './User/register/register.component';
 import { LoginComponent } from './User/login/login.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -99,6 +102,7 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     MatListModule,
     MatTableModule,
     ReactiveFormsModule,
+    I18nModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

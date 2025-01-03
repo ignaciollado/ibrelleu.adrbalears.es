@@ -32,7 +32,7 @@ export class LoginComponent {
     let responseOK: boolean = false
     let errorResponse: any
     sessionStorage.removeItem('access_token');
-    sessionStorage.removeItem('ibrelleu_id');
+    sessionStorage.removeItem('ibrelleu_user');
 
     if ( this.loginForm ) {
         this.authService.login( this.loginForm.value )
@@ -41,13 +41,14 @@ export class LoginComponent {
             console.log ("Welcome to IBRelleu Market Place created by the ADR Balears ...")
             responseOK = true
             errorResponse = "login correct"
-            sessionStorage.setItem('ibrelleu_id', item.user_id)
+            sessionStorage.setItem('ibrelleu_user', this.jwtHelper.decodeToken(item.access_token).name)
             sessionStorage.setItem('access_token', item.access_token)
+            sessionStorage.setItem("preferredLang", "cat")
             this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
-            localStorage.setItem("preferredLang", "cat")
             if (this.jwtHelper.decodeToken().role === 'admin') {
               this.isAODL = false
             }
+            this.router.navigate(['/body'])
             },
             (error: any) => {
                   responseOK = false

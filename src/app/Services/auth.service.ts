@@ -39,7 +39,7 @@ export class AuthService {
 
   public logout(): void {
     sessionStorage.removeItem('access_token');
-    sessionStorage.removeItem('ibrelleu_id');
+    sessionStorage.removeItem('ibrelleu_user');
     window.location.reload()
   }
 
