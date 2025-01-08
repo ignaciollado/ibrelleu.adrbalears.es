@@ -1,3 +1,4 @@
-button:hover{
-  font-weight: 800;
-}
+@include mat.button-overrides((
+  filled-container-color: orange,
+  filled-label-text-color: red,
+));

@@ -1,12 +1,10 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
-      <mat-icon>menu</mat-icon>
-  </button>
+  <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu"><mat-icon>menu</mat-icon></button>
+  
   <a routerLink="home">ibrelleu.adrbalears.es</a>
-  <span class="toolbar-item-spacer"></span>
-  <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
-      <mat-icon>account_circle</mat-icon>
-  </button>
+
+  <button mat-icon-button matTooltip="My profile" [matMenuTriggerFor]="userAccountMenu"><mat-icon>account_circle</mat-icon></button>
+
   <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
       <button mat-menu-item routerLink="profile">
           <mat-icon>person</mat-icon><span>My Account</span>
@@ -22,10 +20,9 @@
           <mat-icon>exit_to_app</mat-icon>Logout
       </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="#">castellano</button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="#">català</button>
-  </mat-menu> {{actualUser}} - {{actualRole}}
+  </mat-menu>
+  <app-select-language></app-select-language>
+  {{actualUser}} - {{actualRole}}
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">
@@ -45,8 +42,6 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <section class="app-sidenav-content">
       <router-outlet></router-outlet>
-    </section>
   </mat-sidenav-content>
 </mat-sidenav-container> 

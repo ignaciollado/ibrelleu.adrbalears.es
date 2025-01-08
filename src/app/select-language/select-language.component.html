@@ -1,1 +1,4 @@
-<p>select-language works!</p>
+<mat-button-toggle-group name="selectLanguage" aria-label="Please, select your preferred language">
+<button mat-button #langSelect (click)="switchLanguage('cas')">cas</button> | 
+<button mat-button #langSelect (click)="switchLanguage('cat')">cat</button>
+</mat-button-toggle-group>
