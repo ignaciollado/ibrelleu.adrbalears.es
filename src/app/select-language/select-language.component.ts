@@ -17,6 +17,7 @@ import {Router, ActivatedRoute} from '@angular/router';
     }
     ` 
   ]*/
+   styleUrl: './select-language.component.scss'
 })
 export class SelectLanguageComponent implements OnInit {
 

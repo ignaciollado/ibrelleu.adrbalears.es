@@ -37,11 +37,6 @@ a:hover {
   grid-area: logoBottom;
 }
 
-/* .localizacion-adr-balears {
-  grid-area: localizacionBottom;
-  padding-left: 0;
-} */
-
 .bi{
   font-size: 2rem;
   height: auto;
@@ -63,7 +58,7 @@ a:hover {
 .textos-legales {
   grid-area: textosLegales;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   text-align: center;
   margin-left: 0;
   padding-right: 0;

@@ -21,8 +21,11 @@
       </button>
       <mat-divider></mat-divider>
   </mat-menu>
+
   <app-select-language></app-select-language>
-  {{actualUser}} - {{actualRole}}
+
+  <span *ngIf="siMostrar">{{actualUser}} - {{actualRole}}</span>
+
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">

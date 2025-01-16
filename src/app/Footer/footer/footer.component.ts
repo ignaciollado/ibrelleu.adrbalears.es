@@ -7,21 +7,9 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   currentLang: string | undefined
+  id: number[] = [300, 200, 100, 50]
+
   constructor() {}
  
-  ngOnInit(): void {
-    switch (localStorage.getItem('preferredLang')) {
-      case 'cat':
-        this.currentLang = 'ca-ES'
-        break
-      case 'cas':
-        this.currentLang = 'es-ES'      
-        break
-      case 'en':
-        this.currentLang = 'en-EN'
-        break
-      default:
-        this.currentLang = 'ca-ES'
-      }
-  }
+  ngOnInit(): void { }
 }

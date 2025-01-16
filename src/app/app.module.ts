@@ -50,6 +50,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SuccessStoriesComponent } from './success-stories/success-stories/success-stories.component';
 import { SuccessStoriesDetailComponent } from './success-stories/success-stories-detail/success-stories-detail.component';
 import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-external-user.component';
+import { ShowGenericDataComponent } from './generic/show-generic-data/show-generic-data.component';
 
 export function tokenGetter() { return sessionStorage.getItem("access_token"); }
 
@@ -73,7 +74,8 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     FileUploadComponent,
     SuccessStoriesComponent,
     SuccessStoriesDetailComponent,
-    SignUpExternalUserComponent
+    SignUpExternalUserComponent,
+    ShowGenericDataComponent
   ],
   imports: [
     BrowserAnimationsModule,

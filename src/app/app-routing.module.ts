@@ -13,6 +13,7 @@ import { SuccessStoriesComponent } from './success-stories/success-stories/succe
 import { SuccessStoriesDetailComponent } from './success-stories/success-stories-detail/success-stories-detail.component';
 import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-external-user.component';
 import { CanDeactivateGuard } from './can-deactivate.guard';
+import { ShowGenericDataComponent } from './generic/show-generic-data/show-generic-data.component';
 
 const routes: Routes = [
   { path: 'home', component: BodyComponent},
@@ -30,6 +31,10 @@ const routes: Routes = [
   { path: 'success-stories', component: SuccessStoriesComponent, canActivate: [AuthGuard]},
   { path: 'success-stories-detail/:id', component: SuccessStoriesDetailComponent, canDeactivate: [CanDeactivateGuard] },
   { path: 'sign-up-external-user', component: SignUpExternalUserComponent},
+
+  { path: 'accesibilidad/:id', component: ShowGenericDataComponent},
+
+
   { path: '', redirectTo: '/body', pathMatch: 'full' }
 ];
 

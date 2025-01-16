@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   theToken: string = sessionStorage.getItem('access_token')
   actualUser: string
   actualRole: string
+  siMostrar: boolean = true
 
   constructor(private breakpointObserver: BreakpointObserver, private jwtHelper: JwtHelperService) { }
 
