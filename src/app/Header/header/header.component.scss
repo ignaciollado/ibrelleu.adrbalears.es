@@ -1,9 +1,33 @@
-@use '../../../_adr-colors';
+@use "../../../_adr-colors";
 
-mat-sidenav, mat-expansion-panel {
+mat-sidenav,
+mat-expansion-panel {
   background-color: adr-colors.$secondary-adr;
 }
 mat-toolbar {
   background-color: adr-colors.$primary-adr;
-}
+  display: grid;
+  grid-template-columns: 0.25fr 0.75fr 5fr 0.75fr 0.25fr;
+  justify-items: center;
 
+  .sideMenu {
+    grid-column: 1 / 2;
+  }
+  .domain {
+    grid-column: 2 / 3;
+  }
+
+  .loginInfo {
+    grid-column: 3 / 4;
+    grid-row: 1 / 1;
+  }
+
+  .languageSelector {
+    grid-column: 4 / 5;
+    grid-row: 1 / 1;
+  }
+
+  .userProfile {
+    grid-column: 5 / 6;
+  }
+}
