@@ -1,16 +1,16 @@
-@use '../../../adr-colors';
-@use '../../../utilities.scss';
+@use "../../../adr-colors";
+@use "../../../utilities.scss";
 
 footer {
   z-index: -1;
-  opacity: .9;
+  opacity: 0.9;
   display: grid;
   grid-template-areas: "logoBottom localizacionBottom" "logoBottom textosLegales";
   text-align: left;
   margin-bottom: 0;
   margin-top: 0;
-  padding: .5rem;
-  font-size: .75rem;
+  padding: 0.5rem;
+  font-size: 0.75rem;
   line-height: 1rem;
   background-color: adr-colors.$primary-adr;
   color: #fff;
@@ -22,7 +22,7 @@ footer {
 }
 
 a {
-  color: #fff!important;
+  color: #fff !important;
 }
 
 a:visited {
@@ -37,22 +37,14 @@ a:hover {
   grid-area: logoBottom;
 }
 
-.bi{
+.bi {
   font-size: 2rem;
   height: auto;
   width: 2rem;
 }
 
-.bi::before{
-  prefix: '\F8DB';
-}
-
-.social-media {
-  grid-area: socialMedia;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  padding-left: 0;
-  text-align: left;
+.bi::before {
+  prefix: "\F8DB";
 }
 
 .textos-legales {
@@ -65,20 +57,16 @@ a:hover {
 }
 
 @media screen and (max-width: 992px) {
-  footer{
+  footer {
     grid-template-columns: 100%;
-    grid-template-areas: "logoBottom" "localizacionBottom" "socialMedia" "textosLegales";
+    grid-template-areas: "logoBottom" "localizacionBottom" "textosLegales";
     text-align: center;
   }
   .localizacion-adr-balears {
     margin-top: 1rem;
     padding-left: 0;
   }
-  .social-media {
-    margin-top: 1rem;
-    padding-left: 0;
-    text-align: center;
-  }
+
   .textos-legales {
     margin-top: 1rem;
     margin-bottom: 1rem;
