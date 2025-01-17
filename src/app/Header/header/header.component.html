@@ -1,35 +1,35 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu" class="sideMenu">
-    <mat-icon>menu</mat-icon>
-  </button>
-
-  <a routerLink="home" class="domain">ibrelleu.adrbalears.es</a>
-
-  <span *ngIf="siMostrar" class="loginInfo">{{ actualUser }} - {{ actualRole }}</span>
-
-  <app-select-language class="languageSelector"></app-select-language>
-
-
-  <button mat-icon-button matTooltip="My profile" [matMenuTriggerFor]="userAccountMenu" class="userProfile">
-    <mat-icon>account_circle</mat-icon>
-  </button>
-
-  <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
-    <button mat-menu-item routerLink="profile">
-      <mat-icon>person</mat-icon><span>My Account</span>
+  <section class="top-left">
+    <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu" class="sideNav">
+      <mat-icon>menu</mat-icon>
     </button>
-    <button mat-menu-item routerLink="settings">
-      <mat-icon>settings</mat-icon><span>Settings</span>
+
+    <a routerLink="home" class="domain">ibrelleu.adrbalears.es</a>
+  </section>
+
+  <span *ngIf="siMostrar" class="top-middle">{{ actualUser }} - {{ actualRole }}</span>
+  <section class="top-right">
+    <app-select-language></app-select-language>
+    <button mat-icon-button matTooltip="My profile" [matMenuTriggerFor]="userAccountMenu" class="userProfile">
+      <mat-icon>account_circle</mat-icon>
     </button>
-    <button mat-menu-item routerLink="#">
-      <mat-icon>help</mat-icon><span>Help</span>
-    </button>
-    <mat-divider></mat-divider>
-    <button mat-menu-item routerLink="login">
-      <mat-icon>exit_to_app</mat-icon>Logout
-    </button>
-    <mat-divider></mat-divider>
-  </mat-menu>
+    <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+      <button mat-menu-item routerLink="profile">
+        <mat-icon>person</mat-icon><span>My Account</span>
+      </button>
+      <button mat-menu-item routerLink="settings">
+        <mat-icon>settings</mat-icon><span>Settings</span>
+      </button>
+      <button mat-menu-item routerLink="#">
+        <mat-icon>help</mat-icon><span>Help</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="login">
+        <mat-icon>exit_to_app</mat-icon>Logout
+      </button>
+      <mat-divider></mat-divider>
+    </mat-menu>
+  </section>
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">

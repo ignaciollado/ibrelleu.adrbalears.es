@@ -7,27 +7,43 @@ mat-expansion-panel {
 mat-toolbar {
   background-color: adr-colors.$primary-adr;
   display: grid;
-  grid-template-columns: 0.25fr 0.75fr 5fr 0.75fr 0.25fr;
-  justify-items: center;
+  grid-template-areas: "topLeft topMiddle topMiddle topMiddle topRight";
+  text-align: center;
 
-  .sideMenu {
-    grid-column: 1 / 2;
-  }
-  .domain {
-    grid-column: 2 / 3;
-  }
-
-  .loginInfo {
-    grid-column: 3 / 4;
-    grid-row: 1 / 1;
+  .top-left {
+    grid-area: topLeft;
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr;
+    align-items: center;
+    justify-items: center;
   }
 
-  .languageSelector {
-    grid-column: 4 / 5;
-    grid-row: 1 / 1;
+  .top-middle {
+    grid-area: topMiddle;
+    display: grid;
+    text-align: center;
   }
 
-  .userProfile {
-    grid-column: 5 / 6;
+  .top-right {
+    grid-area: topRight;
+    display: grid;
+    grid-template-columns: 0.8fr 0.2fr;
+    align-items: center;
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 795px) {
+  mat-toolbar {
+    grid-template-columns: 100%;
+    grid-template-areas: "topLeft";
+    .top-left {
+      grid-area: topLeft;
+      grid-template-columns: 0.1fr 0.9fr;
+    }
+    .top-middle,
+    .top-right {
+      display: none;
+    }
   }
 }
