@@ -63,6 +63,15 @@
       <a mat-list-item routerLink="#" (click)="sidenav.toggle()">HelpDesk</a>
       <a mat-list-item routerLink="sign-up-external-user" (click)="sidenav.toggle()">{{ "requestForRegistration" |
         translate }}</a>
+      <section class="mobileGrid">
+        <section class="userInfoMobile">
+          <button mat-icon-button matTooltip="My profile" [matMenuTriggerFor]="userAccountMenu">
+            <mat-icon>account_circle</mat-icon>
+          </button>
+          <span *ngIf="siMostrar">{{ actualUser }} - {{ actualRole }}</span>
+        </section>
+        <app-select-language class="languageMobile"></app-select-language>
+      </section>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
