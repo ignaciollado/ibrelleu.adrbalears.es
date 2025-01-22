@@ -3,31 +3,69 @@
 mat-sidenav,
 mat-expansion-panel {
   background-color: adr-colors.$secondary-adr;
+
+  .mobileGrid {
+    display: none;
+  }
 }
 mat-toolbar {
   background-color: adr-colors.$primary-adr;
   display: grid;
-  grid-template-columns: 0.25fr 0.75fr 5fr 0.75fr 0.25fr;
-  justify-items: center;
+  grid-template-areas: "topLeft topMiddle topMiddle topMiddle topRight";
+  text-align: center;
 
-  .sideMenu {
-    grid-column: 1 / 2;
-  }
-  .domain {
-    grid-column: 2 / 3;
-  }
-
-  .loginInfo {
-    grid-column: 3 / 4;
-    grid-row: 1 / 1;
+  .top-left {
+    grid-area: topLeft;
+    display: grid;
+    grid-template-columns: 0.2fr 0.8fr;
+    align-items: center;
+    justify-items: center;
   }
 
-  .languageSelector {
-    grid-column: 4 / 5;
-    grid-row: 1 / 1;
+  .top-middle {
+    grid-area: topMiddle;
+    display: grid;
+    text-align: center;
   }
 
-  .userProfile {
-    grid-column: 5 / 6;
+  .top-right {
+    grid-area: topRight;
+    display: grid;
+    grid-template-columns: 0.8fr 0.2fr;
+    align-items: center;
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  mat-sidenav .mobileGrid {
+    display: grid;
+    grid-template-areas:
+      "userInfo"
+      "selectorLanguage";
+    .userInfoMobile {
+      grid-area: userInfo;
+      display: grid;
+      grid-template-columns: 0.05fr 0.95fr;
+      text-align: center;
+      align-items: center;
+    }
+    .languageMobile {
+      grid-area: selectorLanguage;
+      display: grid;
+      justify-items: center;
+    }
+  }
+  mat-toolbar {
+    grid-template-columns: 100%;
+    grid-template-areas: "topLeft";
+    .top-left {
+      grid-area: topLeft;
+      grid-template-columns: 0.05fr 0.95fr;
+    }
+    .top-middle,
+    .top-right {
+      display: none;
+    }
   }
 }
