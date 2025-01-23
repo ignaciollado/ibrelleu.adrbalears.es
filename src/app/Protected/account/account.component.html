@@ -2,11 +2,11 @@
 <section ngClass="filter-area">
   <mat-form-field>
     <mat-label>Forma jurídica</mat-label>
-      <mat-select multiple (selectionChange)="selectedValue($event)" #formaJuridica>
-        @for (legalFormItem of legalFormList; track legalFormItem['value']) {
-          <mat-option [value]="legalFormItem">{{legalFormItem['label']}}</mat-option>
-        }
-      </mat-select>
+    <mat-select multiple (selectionChange)="selectedValue($event)" #formaJuridica>
+      @for (legalFormItem of legalFormList; track legalFormItem['value']) {
+      <mat-option [value]="legalFormItem">{{legalFormItem['label']}}</mat-option>
+      }
+    </mat-select>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Filter accounts</mat-label>
@@ -21,18 +21,19 @@
         <span *ngSwitchDefault>{{ col.label }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-      <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
-        <!-- <div class="btn-edit" *ngSwitchCase="'isEdit'">
+        <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
+          <!-- <div class="btn-edit" *ngSwitchCase="'isEdit'">
           <button mat-icon-button (click)="element.isEdit = !element.isEdit" class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="accent"><i class="fa-solid fa-pencil fa-xs"></i></button>
           <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.id)" matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i></button>
         </div> -->
-        <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
-        <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key]}}</span>
-        <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/account-detail/', element[col.key]]" title="Click to view & edit account detail">{{element[col.key]}}</a>
-        <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
-      </section>
+          <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
+          <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key]}}</span>
+          <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/account-detail/', element.id]"
+            title="Click to view & edit account detail">{{element[col.key]}}</a>
+          <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
+        </section>
 
-      <!-- <section [ngSwitch]="col.type" *ngIf="element.isEdit">
+        <!-- <section [ngSwitch]="col.type" *ngIf="element.isEdit">
         <div class="btn-edit" *ngSwitchCase="'isEdit'">
           <button mat-button (click)="editRow(element)" [disabled]="valid[element.id] === false">Done</button>
         </div>
@@ -56,4 +57,3 @@
     <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
   </mat-table>
 </section>
-
