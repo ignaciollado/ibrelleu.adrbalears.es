@@ -10,7 +10,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Filter accounts</mat-label>
-    <input matInput (keypress)="applyFilter($event)" placeholder="Ex. my free text" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. my free text" #input>
   </mat-form-field>
 </section>
 <section>

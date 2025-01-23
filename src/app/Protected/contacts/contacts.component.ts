@@ -74,9 +74,10 @@ export class ContactsComponent {
     console.log (id)
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(event: any) {
+    const filterValue = (event.target as HTMLInputElement).value
+    console.log (filterValue)
+    this.dataSource.filter = filterValue.trim().toLowerCase()
   }
 
   selectedValue(contactState: any) {

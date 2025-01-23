@@ -32,7 +32,6 @@ export class AccountComponent {
     this.loadLegalFormList()
   }
 
-
   loadAllAccounts() {
     this.dataService.getAllAccounts()
       .subscribe((accounts: AccountDTO[])=> {
@@ -55,9 +54,9 @@ export class AccountComponent {
     console.log (id)
   }
 
-  applyFilter(item: any) {
-    console.log (item.value)
-    const filterValue = item.value
+  applyFilter(event: any) {
+    const filterValue = (event.target as HTMLInputElement).value
+    console.log (filterValue)
     this.dataSource.filter = filterValue.trim().toLowerCase()
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
