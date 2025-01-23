@@ -6,10 +6,19 @@ section {
   padding-bottom: 5vh;
 }
 
+.btn-edit {
+  background-color: aqua;
+}
+
 .filter-area {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: .5rem;
+}
+
+.small-data {
+  font-size: .75rem;
+  color: orange;
 }
 
 mat-table {

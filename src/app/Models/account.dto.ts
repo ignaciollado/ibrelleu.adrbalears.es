@@ -44,7 +44,7 @@ export class AccountDTO {
 export const accountColumns = [
   {
     key: "mainContact",
-    type: "url",
+    type: "readOnly",
     label: "Contacte principal"
   },
   {
@@ -54,7 +54,7 @@ export const accountColumns = [
   },
   {
     key: "companyName",
-    type: "readOnly",
+    type: "url",
     label: "Raó Social"
   },
   {
@@ -95,11 +95,12 @@ export const accountColumns = [
   {
     key: "registrationDate",
     type: "date",
-    label: "Data d'entrada"
-  },  
+    label: "Data d'entrada",
+    labeles: "Fecha de entrada"
+  }/* ,  
   {
     key: "isEdit",
     type: "isEdit",
-    label: ""
-  },
+    label: "Edit row"
+  }, */
 ]
