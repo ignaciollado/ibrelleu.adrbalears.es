@@ -2,21 +2,22 @@
 @use "../../../utilities.scss";
 
 footer {
-  z-index: -1;
-  opacity: 0.9;
   display: grid;
+  z-index: 1;
   grid-template-areas: "logoBottom localizacionBottom textosLegales";
   grid-template-columns: 0.75fr 1.5fr 0.75fr;
   margin-bottom: 0;
   margin-top: 0;
   padding: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   line-height: 1rem;
   background-color: adr-colors.$primary-adr;
   color: #fff;
   width: 100%;
   align-items: center;
   justify-items: center;
+  // position: sticky;
+  // bottom: 0;
 }
 
 .logo-adr-balears {
@@ -53,7 +54,6 @@ a:hover {
     grid-template-areas: "logoBottom" "localizacionBottom" "textosLegales";
     text-align: center;
     max-height: unset;
-    position: unset;
     line-height: 1.5rem;
   }
 
@@ -67,7 +67,7 @@ a:hover {
     grid-area: localizacionBottom;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .textos-legales {
@@ -76,6 +76,6 @@ a:hover {
     margin-top: 1rem;
     margin-bottom: 1rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }
