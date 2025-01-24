@@ -23,7 +23,7 @@ export class AccountComponent {
   columnsDisplayed: string[] = accountColumns.map((col) => col.key)
   legalFormList: any[] = []
   columnsSchema: any = accountColumns
-  dataSource: any
+  dataSource = new MatTableDataSource()
   valid: any = {}
 
 
@@ -35,7 +35,7 @@ export class AccountComponent {
   loadAllAccounts() {
     this.dataService.getAllAccounts()
       .subscribe((accounts: AccountDTO[])=> {
-        this.dataSource = accounts
+        this.dataSource.data = accounts
       })
   }
 
