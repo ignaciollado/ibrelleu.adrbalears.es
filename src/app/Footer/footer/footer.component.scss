@@ -2,31 +2,29 @@
 @use "../../../utilities.scss";
 
 footer {
+  z-index: -1;
+  opacity: 0.9;
   display: grid;
-  z-index: 1;
   grid-template-areas: "logoBottom localizacionBottom textosLegales";
   grid-template-columns: 0.75fr 1.5fr 0.75fr;
   margin-bottom: 0;
   margin-top: 0;
   padding: 0.5rem;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   line-height: 1rem;
   background-color: adr-colors.$primary-adr;
   color: #fff;
+  position: fixed;
+  left: 0;
   width: 100%;
   align-items: center;
   justify-items: center;
-  // position: sticky;
-  // bottom: 0;
 }
-
 .logo-adr-balears {
   grid-area: logoBottom;
 }
-
 .localizacion-adr-balears {
   grid-area: localizacionBottom;
-  text-align: center;
 }
 .textos-legales {
   grid-area: textosLegales;
@@ -36,7 +34,6 @@ footer {
 
 a {
   color: #fff !important;
-  text-decoration: none;
 }
 
 a:visited {
@@ -45,7 +42,6 @@ a:visited {
 
 a:hover {
   color: adr-colors.$secondary-adr;
-  font-weight: bold; // Temporal
 }
 
 @media screen and (max-width: 992px) {
@@ -54,9 +50,8 @@ a:hover {
     grid-template-areas: "logoBottom" "localizacionBottom" "textosLegales";
     text-align: center;
     max-height: unset;
-    line-height: 1.5rem;
+    position: unset;
   }
-
   .logo-adr-balears {
     grid-area: logoBottom;
     a > img {
@@ -66,16 +61,16 @@ a:hover {
   .localizacion-adr-balears {
     grid-area: localizacionBottom;
     margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 0.8rem;
+    padding-left: 0;
   }
 
   .textos-legales {
     grid-area: textosLegales;
-    display: grid;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    padding-left: 0;
+    margin-left: 0;
     text-align: center;
-    font-size: 0.8rem;
+    grid-template-columns: 1fr;
   }
 }
