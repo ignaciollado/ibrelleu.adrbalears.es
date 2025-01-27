@@ -7,6 +7,7 @@ import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 import { LegalFormDTO } from '../../Models/legal-form.dto';
 import { map, Observable, startWith } from 'rxjs';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
+import { AccountDTO } from '../../Models/account.dto';
 
 @Component({
   selector: 'adr-account-detail',
@@ -21,6 +22,9 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   legalFormList: any[] = [];
   filteredOptions: Observable<ZipCodesIBDTO[]>;
   options: ZipCodesIBDTO[] = [];
+
+  consultantList: string[] = [];
+  delegationList: string[] = [];
 
   constructor(
     private dataService: DataService,
@@ -42,6 +46,8 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         Validators.minLength(4),
         Validators.maxLength(4),
       ]),
+      consultor: new FormControl('', [Validators.required]),
+      delegacion: new FormControl(''),
       companyFundationMode: new FormControl(''),
       zipCode: new FormControl('', [
         Validators.minLength(5),
@@ -51,14 +57,13 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       councilCity: new FormControl({ value: '', disabled: true }),
       localizationCCAA: new FormControl({ value: '', disabled: true }),
       localizationCountry: new FormControl({ value: 'España', disabled: true }),
-      consultor: new FormControl('', [Validators.required]),
-      delegacion: new FormControl(''),
       direccion: new FormControl('', [Validators.required]),
     });
 
     this.getCountries();
     this.getAllZipCodes();
     this.loadLegalFormList();
+    this.loadConsultantAndDelegationInfo();
   }
 
   ngOnInit() {
@@ -83,6 +88,23 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       .getAllLegalForms()
       .subscribe((legalItems: LegalFormDTO[]) => {
         this.legalFormList = legalItems;
+      });
+  }
+
+  loadConsultantAndDelegationInfo() {
+    this.dataService
+      .getAllAccounts()
+      .subscribe((accountsList: AccountDTO[]) => {
+        accountsList.forEach((account) => {
+          let consultant: string = account.consultant;
+          let delegation: string = account.delegation;
+          if (!this.consultantList.includes(consultant)) {
+            this.consultantList.push(consultant);
+          }
+          if (!this.delegationList.includes(delegation)) {
+            this.delegationList.push(delegation);
+          }
+        });
       });
   }
 

@@ -71,15 +71,21 @@
           <mat-label>Any de constitució de l'empresa</mat-label>
           <input matInput formControlName="creationYear" type="text">
         </mat-form-field>
-
-        <!-- Pendiente -->
         <mat-form-field>
           <mat-label>Consultor</mat-label>
-          <input matInput formControlName="consultor" type="text">
+          <mat-select formControlName="consultor">
+            @for (consultantItem of consultantList; track consultantItem) {
+            <mat-option [value]="consultantItem">{{consultantItem}}</mat-option>
+            }
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Delegació</mat-label>
-          <input matInput formControlName="delegacion" type="text">
+          <mat-select formControlName="delegacion">
+            @for (delegationItem of delegationList; track delegationItem) {
+            <mat-option [value]="delegationItem">{{delegationItem}}</mat-option>
+            }
+          </mat-select>
         </mat-form-field>
       </section>
     </mat-tab>
@@ -87,7 +93,7 @@
       <section>
         <mat-form-field>
           <mat-label>Adreça</mat-label>
-          <input matInput formControlName="mainContact" aria-label="Contacte principal és un camp obligatori.">
+          <input matInput formControlName="contact" aria-label="Contacte principal és un camp obligatori.">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Código Postal</mat-label>
