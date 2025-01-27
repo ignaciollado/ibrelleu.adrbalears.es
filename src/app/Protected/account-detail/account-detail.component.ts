@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
@@ -70,6 +70,12 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       companyActivity: new FormControl('', Validators.required),
       description: new FormControl('', Validators.maxLength(1024)),
       typologyClients: new FormControl(''),
+      check: new FormControl(''),
+      importCheck: new FormControl(''),
+      importDescription: new FormControl(
+        { value: '', disabled: true },
+        Validators.maxLength(1024)
+      ),
     });
 
     this.getCountries();
@@ -186,5 +192,24 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     return this.options.filter((option) =>
       option.zipCode.includes(filterValue)
     );
+  }
+
+  // He implementado esta lógica de forma base para los activados y desactivados de campos tras un checkbox
+  afterCheckEnable(event: any, checkName: string, afterCheckFormName: string) {
+    let checked = this.theForm.get(checkName).value;
+    let afterCheckForms = this.theForm.get(afterCheckFormName);
+
+    console.log(checked);
+
+    switch (checked) {
+      case true: {
+        afterCheckForms.enable();
+        break;
+      }
+      case false: {
+        afterCheckForms.disable();
+        break;
+      }
+    }
   }
 }

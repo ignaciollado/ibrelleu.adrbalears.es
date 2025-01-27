@@ -206,7 +206,6 @@
         </mat-form-field>
         <mat-checkbox formControlName="check">Disposa d'autoria feta?</mat-checkbox>
         <mat-checkbox formControlName="check">Disposa de llcència d'activitat?</mat-checkbox>
-
         <mat-form-field>
           <mat-label>Descripció del mercat</mat-label>
           <textarea formControlName="description" matInput
@@ -226,7 +225,6 @@
             }
           </mat-select>
         </mat-form-field>
-
         <mat-form-field>
           <mat-label>Descripció dels proveïdors</mat-label>
           <textarea formControlName="description" matInput
@@ -237,19 +235,35 @@
           <textarea formControlName="description" matInput
             placeholder="Write a description about the company's competition"></textarea>
         </mat-form-field>
-
       </section>
     </mat-tab>
     <mat-tab label="Detall exportació/importació">
       <section>
+        <mat-checkbox formControlName="check">Exporta?</mat-checkbox>
         <mat-form-field>
-          <mat-label>Sector principal</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+          <mat-label>Âmbit geogràfic?</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about the company product"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Activitat principal</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+          <mat-label>Comentari sobre l'exportació i països</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about the export information"></textarea>
         </mat-form-field>
+
+        <mat-checkbox formControlName="importCheck"
+          (click)="afterCheckEnable($event, 'importCheck', 'importDescription')">Importa?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Àmbit geogràfic?</mat-label>
+          <textarea formControlName="importDescription" matInput
+            placeholder="Write a description about the --- information"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre l'importació i països</mat-label>
+          <textarea formControlName="importDescription" matInput
+            placeholder="Write a description about the import information"></textarea>
+        </mat-form-field>
+
       </section>
     </mat-tab>
     <mat-tab label="Estructura i organització">
