@@ -239,15 +239,19 @@
     </mat-tab>
     <mat-tab label="Detall exportació/importació">
       <section>
-        <mat-checkbox formControlName="check">Exporta?</mat-checkbox>
+        <mat-checkbox formControlName="check"
+          (click)="afterCheckEnable($event, 'check', 'exportDescription')">Exporta?</mat-checkbox>
         <mat-form-field>
-          <mat-label>Âmbit geogràfic?</mat-label>
-          <textarea formControlName="description" matInput
-            placeholder="Write a description about the company product"></textarea>
+          <mat-label>Àmbit geogràfic?</mat-label>
+          <mat-select formControlName="exportDescription" placeholder="Choose one option">
+            @for (continentItem of continentList; track continentItem) {
+            <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+            }
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Comentari sobre l'exportació i països</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="exportDescription" matInput
             placeholder="Write a description about the export information"></textarea>
         </mat-form-field>
 
@@ -255,8 +259,11 @@
           (click)="afterCheckEnable($event, 'importCheck', 'importDescription')">Importa?</mat-checkbox>
         <mat-form-field>
           <mat-label>Àmbit geogràfic?</mat-label>
-          <textarea formControlName="importDescription" matInput
-            placeholder="Write a description about the --- information"></textarea>
+          <mat-select formControlName="importDescription" placeholder="Choose one option">
+            @for (continentItem of continentList; track continentItem) {
+            <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+            }
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Comentari sobre l'importació i països</mat-label>

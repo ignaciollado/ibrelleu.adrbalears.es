@@ -29,6 +29,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   activityList: any[] = [];
 
   clientTypologyList: any[] = [];
+  continentList: any[] = [];
 
   constructor(
     private dataService: DataService,
@@ -76,6 +77,10 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         { value: '', disabled: true },
         Validators.maxLength(1024)
       ),
+      exportDescription: new FormControl(
+        { value: '', disabled: true },
+        Validators.maxLength(1024)
+      ),
     });
 
     this.getCountries();
@@ -85,6 +90,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     this.loadSectorInfo();
     this.loadActivityInfo();
     this.loadClientInfo();
+    this.loadContinentInfo();
   }
 
   ngOnInit() {
@@ -156,18 +162,23 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       this.countries = countries;
     });
   }
-
-  onSubmit() {
-    console.log(this.theForm.value);
-    // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
-  }
-
   getAllZipCodes() {
     this.dataService.getAllZipCodes().subscribe((zpCodes: ZipCodesIBDTO[]) => {
       this.zipCodeList = zpCodes;
       this.options = zpCodes;
       console.log(this.options);
     });
+  }
+
+  loadContinentInfo() {
+    this.dataService.getAllContinents().subscribe((continentItems: any[]) => {
+      this.continentList = continentItems;
+    });
+  }
+
+  onSubmit() {
+    console.log(this.theForm.value);
+    // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
   selectedValue(event: any) {
@@ -198,8 +209,6 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   afterCheckEnable(event: any, checkName: string, afterCheckFormName: string) {
     let checked = this.theForm.get(checkName).value;
     let afterCheckForms = this.theForm.get(afterCheckFormName);
-
-    console.log(checked);
 
     switch (checked) {
       case true: {
