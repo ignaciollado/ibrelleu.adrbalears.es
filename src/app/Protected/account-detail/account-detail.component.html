@@ -106,7 +106,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Població</mat-label>
-          <input matInput formControlName="localizationCity" aria-label="Contacte principal és un camp obligatori.">
+          <input matInput formControlName="localizationCity">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Municipio</mat-label>
@@ -124,51 +124,22 @@
     </mat-tab>
     <mat-tab label="Dades de contacte">
       <section>
-
         <mat-form-field>
           <mat-label>Correu electrònic</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+          <input matInput formControlName="companyEmail" aria-label="Email és un camp obligatori.">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Telèfon principal</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+          <input matInput formControlName="companyPhone" aria-label="Telèfon principal és un camp obligatori."
+            type="tel" maxlength="9">
         </mat-form-field>
-
         <mat-form-field>
           <mat-label>Web</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+          <input matInput formControlName="companyWeb">
         </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Instagram</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>LinkedIn</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Twitter</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Youtube</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Altres Xarxes</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Facebook</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
-        </mat-form-field>
-
       </section>
     </mat-tab>
-    <mat-tab label="Contactes">
+    <!-- <mat-tab label="Contactes">
       <section>
         <section>
           <mat-form-field>
@@ -181,17 +152,92 @@
           </mat-form-field>
         </section>
       </section>
-    </mat-tab>
+    </mat-tab> -->
     <mat-tab label="Detall de l'activitat">
       <section>
         <mat-form-field>
-          <mat-label>Sector principal</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+          <mat-label>Sector</mat-label>
+          <mat-select formControlName="companySector" multiple placeholder="Choose multiple options">
+            @for (sectorItem of sectorList; track sectorItem) {
+            <mat-option [value]="sectorItem.value">{{sectorItem.label}}</mat-option>
+            }
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Activitat principal</mat-label>
-          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+          <mat-label>Activity</mat-label>
+          <mat-select formControlName="companyActivity" multiple placeholder="Choose multiple options">
+            @for (activityItem of activityList; track activityItem) {
+            <mat-option [value]="activityItem.value">{{activityItem.label}}</mat-option>
+            }
+          </mat-select>
         </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripció de l'activitat</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about the company activity"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Breu descripció de la trajectòria económica</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder=" Write a description about the company carrer"></textarea>
+        </mat-form-field>
+
+        <mat-checkbox formControlName="check">Disposa de producte propi?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Descripció producte o servei</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about the company product"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripció del procés productiu / circuit del servei</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about the company product"></textarea>
+        </mat-form-field>
+        <mat-checkbox formControlName="check">Disposa de marques pròpies/registrades?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Nom de les marques</mat-label>
+          <textarea formControlName="description" matInput placeholder="Write the brands names"></textarea>
+        </mat-form-field>
+        <mat-checkbox formControlName="check">Disposa d'inventari?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Descripció de l'estat de l'estoc</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about company's stock"></textarea>
+        </mat-form-field>
+        <mat-checkbox formControlName="check">Disposa d'autoria feta?</mat-checkbox>
+        <mat-checkbox formControlName="check">Disposa de llcència d'activitat?</mat-checkbox>
+
+        <mat-form-field>
+          <mat-label>Descripció del mercat</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about the market"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripció de la clientela</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about the target audience"></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Tipologia de la clientela</mat-label>
+          <mat-select formControlName="typologyClients" placeholder="Choose an option">
+            @for (typologyItem of clientTypologyList; track typologyItem) {
+            <mat-option [value]="typologyItem.value">{{typologyItem.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Descripció dels proveïdors</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about the suppliers"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripció de la competència</mat-label>
+          <textarea formControlName="description" matInput
+            placeholder="Write a description about the company's competition"></textarea>
+        </mat-form-field>
+
       </section>
     </mat-tab>
     <mat-tab label="Detall exportació/importació">
