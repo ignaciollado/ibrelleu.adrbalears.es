@@ -25,6 +25,10 @@ export class AccountDetailComponent implements CanComponentDeactivate {
 
   consultantList: string[] = [];
   delegationList: string[] = [];
+  sectorList: any[] = [];
+  activityList: any[] = [];
+
+  clientTypologyList: any[] = [];
 
   constructor(
     private dataService: DataService,
@@ -42,13 +46,9 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         Validators.maxLength(4),
         Validators.pattern('[0-9]{4}'),
       ]),
-      incomingYear: new FormControl('', [
-        Validators.minLength(4),
-        Validators.maxLength(4),
-      ]),
       consultor: new FormControl('', [Validators.required]),
       delegacion: new FormControl(''),
-      companyFundationMode: new FormControl(''),
+      direccion: new FormControl('', [Validators.required]),
       zipCode: new FormControl('', [
         Validators.minLength(5),
         Validators.maxLength(5),
@@ -57,13 +57,28 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       councilCity: new FormControl({ value: '', disabled: true }),
       localizationCCAA: new FormControl({ value: '', disabled: true }),
       localizationCountry: new FormControl({ value: 'España', disabled: true }),
-      direccion: new FormControl('', [Validators.required]),
+      companyEmail: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      companyPhone: new FormControl('', [
+        Validators.pattern('[0-9]{9}'),
+        Validators.required,
+      ]),
+      companyWeb: new FormControl(''),
+      companySector: new FormControl('', Validators.required),
+      companyActivity: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.maxLength(1024)),
+      typologyClients: new FormControl(''),
     });
 
     this.getCountries();
     this.getAllZipCodes();
     this.loadLegalFormList();
     this.loadConsultantAndDelegationInfo();
+    this.loadSectorInfo();
+    this.loadActivityInfo();
+    this.loadClientInfo();
   }
 
   ngOnInit() {
@@ -101,16 +116,33 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         });
       });
   }
-
   insertConsultantData(consultant: string) {
     if (!this.consultantList.includes(consultant)) {
       this.consultantList.push(consultant);
     }
   }
+
   insertDelegationData(delegation: string) {
     if (!this.delegationList.includes(delegation)) {
       this.delegationList.push(delegation);
     }
+  }
+
+  loadSectorInfo() {
+    this.dataService.getAllSectors().subscribe((sectorItems: any[]) => {
+      this.sectorList = sectorItems;
+    });
+  }
+  loadActivityInfo() {
+    this.dataService.getAllActivities().subscribe((activityItems: any[]) => {
+      this.activityList = activityItems;
+    });
+  }
+
+  loadClientInfo() {
+    this.dataService.getAllTypologies().subscribe((typologyItems: any[]) => {
+      this.clientTypologyList = typologyItems;
+    });
   }
 
   getCountries() {
