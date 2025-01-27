@@ -84,4 +84,10 @@ export class DataService {
       .get<any[]>(`${this.urlAPIMock}clientTypology.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
+
+  getAllContinents(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}continents.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
 }
