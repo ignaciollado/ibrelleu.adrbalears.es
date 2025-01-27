@@ -22,8 +22,8 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>NIF</mat-label>
-          <input matInput formControlName="nif" aria-label="El nif és un camp obligatori.">
-          <!-- Autocompletado + cálculo de letra de nif -->
+          <input matInput formControlName="nif" aria-label="El nif és un camp obligatori." maxlength="9"
+            (keyup)="calculateDNI($event)">
         </mat-form-field>
 
         <mat-form-field>
