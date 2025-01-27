@@ -11,71 +11,85 @@ import { CanComponentDeactivate } from '../../can-deactivate.guard';
 @Component({
   selector: 'adr-account-detail',
   templateUrl: './account-detail.component.html',
-  styleUrl: './account-detail.component.scss'
+  styleUrl: './account-detail.component.scss',
 })
-export class AccountDetailComponent  implements CanComponentDeactivate {
-  isElevated: boolean = true
-  theForm: FormGroup
-  countries: CountriesDTO[] = []
-  zipCodeList: ZipCodesIBDTO[] = []
-  legalFormList: any[] = []
-  filteredOptions: Observable<ZipCodesIBDTO[]>
-  options: ZipCodesIBDTO[] = []
-  
-  constructor( private dataService: DataService, private countriesService: CountriesService ) {
+export class AccountDetailComponent implements CanComponentDeactivate {
+  isElevated: boolean = true;
+  theForm: FormGroup;
+  countries: CountriesDTO[] = [];
+  zipCodeList: ZipCodesIBDTO[] = [];
+  legalFormList: any[] = [];
+  filteredOptions: Observable<ZipCodesIBDTO[]>;
+  options: ZipCodesIBDTO[] = [];
+
+  constructor(
+    private dataService: DataService,
+    private countriesService: CountriesService
+  ) {
     this.theForm = new FormGroup({
       legalFormat: new FormControl('', [Validators.required]),
-      mainContact: new FormControl('', [Validators.required]),
+      contact: new FormControl('', [Validators.required]),
       companyName: new FormControl('', [Validators.required]),
       nif: new FormControl('', [Validators.required]),
-      tradeName: new FormControl(''),
+      tradeName: new FormControl('', Validators.required),
       paradesMercat: new FormControl(''),
-      creationYear: new FormControl('', [Validators.minLength(4), Validators.maxLength(4)]),
-      incomingYear: new FormControl('', [Validators.minLength(4), Validators.maxLength(4)]),
-      companyFundationMode:  new FormControl(''),
-      zipCode: new FormControl('', [Validators.minLength(5), Validators.maxLength(5)]),
-      localizationCity: new FormControl({value:'', disabled: true }),
-      councilCity: new FormControl({value:'', disabled: true }),
-      localizationCCAA: new FormControl({value:'', disabled: true }),
-      localizationCountry: new FormControl ({value:'España', disabled: true }),
+      creationYear: new FormControl('', [
+        Validators.minLength(4),
+        Validators.maxLength(4),
+        Validators.pattern('[0-9]{4}'),
+      ]),
+      incomingYear: new FormControl('', [
+        Validators.minLength(4),
+        Validators.maxLength(4),
+      ]),
+      companyFundationMode: new FormControl(''),
+      zipCode: new FormControl('', [
+        Validators.minLength(5),
+        Validators.maxLength(5),
+      ]),
+      localizationCity: new FormControl({ value: '', disabled: true }),
+      councilCity: new FormControl({ value: '', disabled: true }),
+      localizationCCAA: new FormControl({ value: '', disabled: true }),
+      localizationCountry: new FormControl({ value: 'España', disabled: true }),
       consultor: new FormControl('', [Validators.required]),
       delegacion: new FormControl(''),
-      direccion: new FormControl('', [Validators.required])
-    })
-    
-    this.getCountries()
-    this.getAllZipCodes()
-    this.loadLegalFormList()
+      direccion: new FormControl('', [Validators.required]),
+    });
+
+    this.getCountries();
+    this.getAllZipCodes();
+    this.loadLegalFormList();
   }
 
   ngOnInit() {
     this.filteredOptions = this.theForm.get('zipCode').valueChanges.pipe(
       startWith(''),
-      map(value => {
+      map((value) => {
         const name = typeof value === 'string' ? value : value;
         return name ? this._filter(name as string) : this.options.slice();
-      }),
+      })
     );
   }
 
-  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean { 
-    if (this.theForm.dirty) 
-      { return confirm('You have unsaved changes. Do you really want to leave?'); } 
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.theForm.dirty) {
+      return confirm('You have unsaved changes. Do you really want to leave?');
+    }
     return true;
   }
 
   loadLegalFormList() {
-      this.dataService.getAllLegalForms()
-        .subscribe((legalItems: LegalFormDTO[])=> {
-          this.legalFormList = legalItems
-        })
-    }
+    this.dataService
+      .getAllLegalForms()
+      .subscribe((legalItems: LegalFormDTO[]) => {
+        this.legalFormList = legalItems;
+      });
+  }
 
   getCountries() {
-    this.countriesService.getAll()
-      .subscribe((countries:CountriesDTO[])=> {
-        this.countries = countries
-    })
+    this.countriesService.getAll().subscribe((countries: CountriesDTO[]) => {
+      this.countries = countries;
+    });
   }
 
   onSubmit() {
@@ -84,26 +98,31 @@ export class AccountDetailComponent  implements CanComponentDeactivate {
   }
 
   getAllZipCodes() {
-      this.dataService.getAllZipCodes()
-        .subscribe((zpCodes:ZipCodesIBDTO[])=> {
-          this.zipCodeList = zpCodes
-          this.options = zpCodes
-          console.log (this.options)
-        })
-    }
-  
-    selectedValue(event: any) {
-      console.log ("zp seleccionado: ", this.theForm.get('zipCode').value)
-      this.theForm.get('localizationCity').setValue(this.theForm.get('zipCode').value['town'])
-      this.theForm.get('localizationCCAA').setValue(this.theForm.get('zipCode').value['island'])
-    }
-  
-    displayFn(zpCode: ZipCodesIBDTO): string {
-      return zpCode && zpCode.zipCode ? zpCode.zipCode : '';
-    }
-  
-    private _filter(name: string): ZipCodesIBDTO[] {
-      const filterValue = name;
-      return this.options.filter(option => option.zipCode.includes(filterValue));
-    }
+    this.dataService.getAllZipCodes().subscribe((zpCodes: ZipCodesIBDTO[]) => {
+      this.zipCodeList = zpCodes;
+      this.options = zpCodes;
+      console.log(this.options);
+    });
+  }
+
+  selectedValue(event: any) {
+    console.log('zp seleccionado: ', this.theForm.get('zipCode').value);
+    this.theForm
+      .get('localizationCity')
+      .setValue(this.theForm.get('zipCode').value['town']);
+    this.theForm
+      .get('localizationCCAA')
+      .setValue(this.theForm.get('zipCode').value['island']);
+  }
+
+  displayFn(zpCode: ZipCodesIBDTO): string {
+    return zpCode && zpCode.zipCode ? zpCode.zipCode : '';
+  }
+
+  private _filter(name: string): ZipCodesIBDTO[] {
+    const filterValue = name;
+    return this.options.filter((option) =>
+      option.zipCode.includes(filterValue)
+    );
+  }
 }
