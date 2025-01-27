@@ -96,16 +96,21 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       .getAllAccounts()
       .subscribe((accountsList: AccountDTO[]) => {
         accountsList.forEach((account) => {
-          let consultant: string = account.consultant;
-          let delegation: string = account.delegation;
-          if (!this.consultantList.includes(consultant)) {
-            this.consultantList.push(consultant);
-          }
-          if (!this.delegationList.includes(delegation)) {
-            this.delegationList.push(delegation);
-          }
+          this.insertConsultantData(account.consultant);
+          this.insertDelegationData(account.delegation);
         });
       });
+  }
+
+  insertConsultantData(consultant: string) {
+    if (!this.consultantList.includes(consultant)) {
+      this.consultantList.push(consultant);
+    }
+  }
+  insertDelegationData(delegation: string) {
+    if (!this.delegationList.includes(delegation)) {
+      this.delegationList.push(delegation);
+    }
   }
 
   getCountries() {
@@ -135,6 +140,9 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     this.theForm
       .get('localizationCCAA')
       .setValue(this.theForm.get('zipCode').value['island']);
+    this.theForm
+      .get('councilCity')
+      .setValue(this.theForm.get('zipCode').value['council']);
   }
 
   displayFn(zpCode: ZipCodesIBDTO): string {
