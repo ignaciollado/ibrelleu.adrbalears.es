@@ -90,4 +90,10 @@ export class DataService {
       .get<any[]>(`${this.urlAPIMock}continents.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
+
+  getAllDebtsSites(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}debtsSites.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
 }
