@@ -31,6 +31,13 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   clientTypologyList: any[] = [];
   continentList: any[] = [];
 
+  propertyStatus: any[] = [
+    { value: 'Lloguer', view: 'Lloguer' },
+    { value: 'Propietat', view: 'Propietat' },
+  ];
+
+  debtsSitesList: any[] = [];
+
   dniLetter = {
     0: 'T',
     1: 'R',
@@ -107,6 +114,15 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         { value: '', disabled: true },
         Validators.maxLength(1024)
       ),
+      partnerNumber: new FormControl('', Validators.required),
+      fullTimeWorkers: new FormControl(''),
+      partialTimeWorkers: new FormControl(''),
+      totalWorkers: new FormControl({ value: '0', disabled: true }),
+      property: new FormControl(''),
+      rentValue: new FormControl({ value: '', disabled: true }),
+      localSize: new FormControl(''),
+      afterCheckDebtsForms: new FormControl(''),
+      companyMoneyFlow: new FormControl(''),
     });
 
     this.getCountries();
@@ -117,6 +133,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     this.loadActivityInfo();
     this.loadClientInfo();
     this.loadContinentInfo();
+    this.loadDebtsSitesInfo();
   }
 
   ngOnInit() {
@@ -183,6 +200,12 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     });
   }
 
+  loadDebtsSitesInfo() {
+    this.dataService.getAllDebtsSites().subscribe((debtsSitesItems: any[]) => {
+      this.debtsSitesList = debtsSitesItems;
+    });
+  }
+
   getCountries() {
     this.countriesService.getAll().subscribe((countries: CountriesDTO[]) => {
       this.countries = countries;
@@ -231,30 +254,75 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     );
   }
 
-  // He implementado esta lógica de forma base para los activados y desactivados de campos tras un checkbox
-  afterCheckEnable(event: any, checkName: string, afterCheckFormName: string) {
-    let checked = this.theForm.get(checkName).value;
-    let afterCheckForms = this.theForm.get(afterCheckFormName);
+  // He implementado esta lógica como nexo a las llamadas de los cambios
+  afterCheckChanges(
+    event: any,
+    checkName: string,
+    checkFormName?: string,
+    className?: string
+  ) {
+    let checkValue = this.theForm.get(checkName).value;
+    let afterCheckForms: any;
 
-    switch (checked) {
+    if (checkFormName != undefined) {
+      afterCheckForms = this.theForm.get(checkFormName);
+      this.changeEnable(afterCheckForms, checkValue);
+    } else if (className != undefined) {
+      let elements = document.querySelectorAll('.' + className);
+      this.changeDisplay(elements, checkValue);
+    }
+  }
+
+  changeEnable(afterCheckForms: any, check: boolean) {
+    if (check) {
+      afterCheckForms.enable();
+    } else {
+      afterCheckForms.disable();
+    }
+  }
+
+  changeDisplay(elements: any, check: boolean) {
+    elements.forEach((element: any) => {
+      if (check) {
+        element.setAttribute('style', 'display: grid');
+      } else {
+        element.setAttribute('style', 'display: none');
+      }
+    });
+  }
+
+  calculateTotalWorkers(event: any) {
+    let fullTimeWorkersNumber = this.theForm.get('fullTimeWorkers').value;
+    let partialTimeWorkersNumber = this.theForm.get('partialTimeWorkers').value;
+
+    this.theForm
+      .get('totalWorkers')
+      .setValue(fullTimeWorkersNumber + partialTimeWorkersNumber);
+  }
+
+  checkPropertyStatus(event: any) {
+    let propertyValue = this.theForm.get('property').value;
+    let rentValue = this.theForm.get('rentValue');
+
+    switch (propertyValue == 'Lloguer') {
       case true: {
-        afterCheckForms.enable();
+        rentValue.enable();
         break;
       }
-      case false: {
-        afterCheckForms.disable();
+      default: {
+        rentValue.disable();
         break;
       }
     }
   }
 
-  calculateDNI(event: any) {
-    if (event.key != 'Backspace') {
-      let dni = this.theForm.get('nif').value;
-      if (typeof parseInt(dni) === 'number' && dni.length == 8) {
-        let dniLetterResult = this.dniLetter[parseInt(dni) % 23];
-        this.theForm.get('nif').setValue(dni + dniLetterResult);
-      }
-    }
-  }
+  // calculateDNI(event: any) {
+  //   if (event.key != 'Backspace') {
+  //     let dni = this.theForm.get('nif').value;
+  //     if (typeof parseInt(dni) === 'number' && dni.length == 8) {
+  //       let dniLetterResult = this.dniLetter[parseInt(dni) % 23];
+  //       this.theForm.get('nif').setValue(dni + dniLetterResult);
+  //     }
+  //   }
+  // }
 }
