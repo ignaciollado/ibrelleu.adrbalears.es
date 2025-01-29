@@ -8,6 +8,7 @@ import { LegalFormDTO } from '../../Models/legal-form.dto';
 import { map, Observable, startWith } from 'rxjs';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { AccountDTO } from '../../Models/account.dto';
+import { CustomValidatorsService } from '../../Services/custom-validators.service';
 
 @Component({
   selector: 'adr-account-detail',
@@ -38,42 +39,21 @@ export class AccountDetailComponent implements CanComponentDeactivate {
 
   debtsSitesList: any[] = [];
 
-  dniLetter = {
-    0: 'T',
-    1: 'R',
-    2: 'W',
-    3: 'A',
-    4: 'G',
-    5: 'M',
-    6: 'Y',
-    7: 'F',
-    8: 'P',
-    9: 'D',
-    10: 'X',
-    11: 'B',
-    12: 'N',
-    13: 'J',
-    14: 'Z',
-    15: 'S',
-    16: 'Q',
-    17: 'V',
-    18: 'H',
-    19: 'L',
-    20: 'C',
-    21: 'K',
-    22: 'E',
-  };
-
   constructor(
     private dataService: DataService,
-    private countriesService: CountriesService
+    private countriesService: CountriesService,
+    private customValidatorsService: CustomValidatorsService
   ) {
     this.theForm = new FormGroup({
       // Identificació
       legalFormat: new FormControl('', [Validators.required]),
       contact: new FormControl('', [Validators.required]),
       companyName: new FormControl('', [Validators.required]),
-      nif: new FormControl('', [Validators.required]),
+      nif: new FormControl('', [
+        Validators.required,
+        Validators.minLength(9),
+        this.customValidatorsService.dniNieCifValidator(),
+      ]),
       tradeName: new FormControl('', Validators.required),
       paradesMercat: new FormControl(''),
       collaborationCompanys: new FormControl(''),
@@ -396,15 +376,4 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       }
     }
   }
-
-  // Pendiente de revisar
-  // calculateDNI(event: any) {
-  //   if (event.key != 'Backspace') {
-  //     let dni = this.theForm.get('nif').value;
-  //     if (typeof parseInt(dni) === 'number' && dni.length == 8) {
-  //       let dniLetterResult = this.dniLetter[parseInt(dni) % 23];
-  //       this.theForm.get('nif').setValue(dni + dniLetterResult);
-  //     }
-  //   }
-  // }
 }
