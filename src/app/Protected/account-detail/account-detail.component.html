@@ -1,270 +1,488 @@
 <!-- <h1>Edita compte</h1> -->
-<forgit git m [formGroup]="theForm" (ngSubmit)="onSubmit()">
-  <mat-tab-group animationDuration = "500ms" mat-stretch-tabs="false" mat-align-tabs="center">
-        <mat-tab label="Identificació">
-          <section>
-              <mat-form-field>
-                <mat-label>Forma jurídica</mat-label>
-                <mat-select formControlName="legalFormat">
-                  @for (legalFormItem of  legalFormList; track legalFormItem) {
-                    <mat-option [value]="legalFormItem.value">{{legalFormItem.label}}</mat-option>
-                  }
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Contacte principal</mat-label>
-                <input matInput formControlName="mainContact" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
+<form [formGroup]="theForm" (ngSubmit)="onSubmit()">
+  <mat-tab-group animationDuration="500ms" mat-stretch-tabs="false" mat-align-tabs="center">
+    <mat-tab label="Identificació">
+      <section>
+        <mat-form-field>
+          <mat-label>Forma jurídica</mat-label>
+          <mat-select formControlName="legalFormat">
+            @for (legalFormItem of legalFormList; track legalFormItem) {
+            <mat-option [value]="legalFormItem.value">{{legalFormItem.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Contacte</mat-label>
+          <input matInput formControlName="contact" aria-label="contacte principal és un camp obligatori.">
+        </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>Raó Social</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>NIF</mat-label>
-                <input matInput formControlName="nif" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
+        <mat-form-field>
+          <mat-label>Raó Social</mat-label>
+          <input matInput formControlName="companyName" aria-label="La raó social és un camp obligatori.">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>NIF</mat-label>
+          <input matInput formControlName="nif" aria-label="El nif és un camp obligatori." maxlength="9">
+        </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>Nom Comercial</mat-label>
-                <input matInput formControlName="tradeName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
-              <article>
-                <mat-label>Gestiona parades de mercat disponibles?</mat-label>
-                <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
-                  <mat-radio-button value="SI">SI</mat-radio-button>
-                  <mat-radio-button value="NO">NO</mat-radio-button>
-                </mat-radio-group>
-              </article>
-              <article>
-                <mat-label>Empresa o entitat col·laboradora?</mat-label>
-                <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
-                  <mat-radio-button value="SI">SI</mat-radio-button>
-                  <mat-radio-button value="NO">NO</mat-radio-button>
-                </mat-radio-group>
-              </article>
-              <article>
-                <mat-label>Gestiona establiments comercials de titularitat municipal disponible?</mat-label>
-                <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
-                  <mat-radio-button value="SI">SI</mat-radio-button>
-                  <mat-radio-button value="NO">NO</mat-radio-button>
-                </mat-radio-group>
-              </article>
-              <article>
-                <mat-label>Gestiona les concessions administratives de les instal·lacions esportives municipals?</mat-label>
-                <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
-                  <mat-radio-button value="SI">SI</mat-radio-button>
-                  <mat-radio-button value="NO">NO</mat-radio-button>
-                </mat-radio-group>
-              </article>
-              <article>
-                <mat-label>Empresa en funcionament?</mat-label>
-                <mat-radio-group aria-label="Select an option" formControlName="paradesMercat">
-                  <mat-radio-button value="SI">SI</mat-radio-button>
-                  <mat-radio-button value="NO">NO</mat-radio-button>
-                </mat-radio-group>
-              </article>
-              <mat-form-field>
-                <mat-label>Any de constitució de l'empresa</mat-label>
-                <input matInput formControlName="consultor" type="text">
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Any D'entrada a l'empresa</mat-label>
-                <input matInput formControlName="incomingYear" type="text">
-              </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nom Comercial</mat-label>
+          <input matInput formControlName="tradeName" aria-label="El nom comercial és un camp obligatori.">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Gestiona parades de mercat disponibles?</mat-label>
+          <mat-select formControlName="paradesMercat" placeholder="Tria una opció">
+            <mat-option value="SI">SI</mat-option>
+            <mat-option value="NO">NO</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Empresa o entitat col·laboradora?</mat-label>
+          <mat-select formControlName="collaborationCompanys" placeholder="Tria una opció">
+            <mat-option value="SI">SI</mat-option>
+            <mat-option value="NO">NO</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>Fundació de l'empresa</mat-label>
-                <mat-select formControlName="companyFundationMode">
-
-                </mat-select>
-              </mat-form-field>
-
-              <mat-form-field>
-                <mat-label>Consultor</mat-label>
-                <input matInput formControlName="consultor" type="text">
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Delegació</mat-label>
-                <input matInput formControlName="delegacion" type="text">
-              </mat-form-field>
-          </section>
-        </mat-tab>
-        <mat-tab label="Localització (Raó social)">
-          <section>
-            <mat-form-field>
-              <mat-label>Adreça</mat-label>
-              <input matInput formControlName="mainContact" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Código Postal</mat-label>
-              <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto">
-              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                @for (option of filteredOptions | async; track option) {
-                  <mat-option [value]="option">{{option.zipCode}} {{option.town}}</mat-option>
-                }
-              </mat-autocomplete>
+        <mat-form-field>
+          <mat-label>Gestiona establiments comercials de titularitat municipal disponible?</mat-label>
+          <mat-select formControlName="councilTitularity" placeholder="Tria una opció">
+            <mat-option value="SI">SI</mat-option>
+            <mat-option value="NO">NO</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Gestiona les concessions administratives de les instal·lacions esportives
+            municipals?</mat-label>
+          <mat-select formControlName="sportConcessions" placeholder="Tria una opció">
+            <mat-option value="SI">SI</mat-option>
+            <mat-option value="NO">NO</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Empresa en funcionament?</mat-label>
+          <mat-select formControlName="activeBusiness" placeholder="Tria una opció">
+            <mat-option value="SI">SI</mat-option>
+            <mat-option value="NO">NO</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Any de constitució de l'empresa</mat-label>
+          <input matInput formControlName="creationYear" type="text" maxlength="4" minlength="4">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Consultor</mat-label>
+          <mat-select formControlName="consultor">
+            @for (consultantItem of consultantList; track consultantItem) {
+            <mat-option [value]="consultantItem">{{consultantItem}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Delegació</mat-label>
+          <mat-select formControlName="delegacion">
+            @for (delegationItem of delegationList; track delegationItem) {
+            <mat-option [value]="delegationItem">{{delegationItem}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </section>
+    </mat-tab>
+    <mat-tab label="Localització (Raó social)">
+      <section>
+        <mat-form-field>
+          <mat-label>Adreça</mat-label>
+          <input matInput formControlName="direccion" aria-label="Adreça es un camp obligatori">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Código Postal</mat-label>
+          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            @for (option of filteredOptions | async; track option) {
+            <mat-option [value]="option" (click)="selectedValue($event)">{{option.zipCode}} {{option.town}}</mat-option>
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Població</mat-label>
+          <input matInput formControlName="localizationCity">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Municipio</mat-label>
+          <input matInput formControlName="councilCity" readonly="readonly">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Illa</mat-label>
+          <input matInput formControlName="localizationCCAA">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>País</mat-label>
+          <input matInput formControlName="localizationCountry">
+        </mat-form-field>
+      </section>
+    </mat-tab>
+    <mat-tab label="Dades de contacte">
+      <section>
+        <mat-form-field>
+          <mat-label>Correu electrònic</mat-label>
+          <input matInput formControlName="companyEmail" aria-label="Email és un camp obligatori.">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Telèfon principal</mat-label>
+          <input matInput formControlName="companyPhone" aria-label="Telèfon principal és un camp obligatori."
+            type="tel" maxlength="9">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Web</mat-label>
+          <input matInput formControlName="companyWeb">
+        </mat-form-field>
+      </section>
+    </mat-tab>
+    <!-- <mat-tab label="Contactes">
+      <section>
+        <section>
+          <mat-form-field>
+            <mat-label>Nom complet</mat-label>
+            <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
           </mat-form-field>
-            <mat-form-field>
-              <mat-label>Població</mat-label>
-              <input matInput formControlName="localizationCity" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Municipio</mat-label>
-              <input matInput formControlName="councilCity" readonly="readonly">
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Illa</mat-label>
-              <input matInput formControlName="localizationCCAA">
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>País</mat-label>
-              <input matInput formControlName="localizationCountry">
-            </mat-form-field>
-          </section>
-        </mat-tab>
-        <mat-tab label="Dades de contacte">
-          <section>
-            
-              <mat-form-field>
-                <mat-label>Correu electrònic</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Telèfon principal</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>    
+          <mat-form-field>
+            <mat-label>DNI/NIE</mat-label>
+            <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+          </mat-form-field>
+        </section>
+      </section>
+    </mat-tab> -->
+    <mat-tab label="Detall de l'activitat">
+      <section>
+        <mat-form-field>
+          <mat-label>Sector</mat-label>
+          <mat-select formControlName="companySector" multiple placeholder="Choose multiple options">
+            @for (sectorItem of sectorList; track sectorItem) {
+            <mat-option [value]="sectorItem.value">{{sectorItem.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Activitat</mat-label>
+          <mat-select formControlName="companyActivity" multiple placeholder="Choose multiple options">
+            @for (activityItem of activityList; track activityItem) {
+            <mat-option [value]="activityItem.value">{{activityItem.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripció de l'activitat</mat-label>
+          <textarea formControlName="activityDescription" matInput
+            placeholder="Write a description about the company activity"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Breu descripció de la trajectòria económica</mat-label>
+          <textarea formControlName="carrerDescription" matInput
+            placeholder=" Write a description about the company carrer"></textarea>
+        </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>Web</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
+        <mat-checkbox formControlName="checkProduct"
+          (click)="afterCheckChanges($event, 'checkProduct', ['descriptionProduct', 'descriptionProductProcess'], undefined)">Disposa
+          de producte propi?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Descripció producte o servei</mat-label>
+          <textarea formControlName="descriptionProduct" matInput
+            placeholder="Write a description about the company product"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripció del procés productiu / circuit del servei</mat-label>
+          <textarea formControlName="descriptionProductProcess" matInput
+            placeholder="Write a description about the company product process"></textarea>
+        </mat-form-field>
+        <mat-checkbox formControlName="brandCheck"
+          (click)="afterCheckChanges($event, 'brandCheck', ['brandDescription'], undefined)">Disposa de marques
+          pròpies/registrades?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Nom de les marques</mat-label>
+          <textarea formControlName="brandDescription" matInput placeholder="Write about the brands names"></textarea>
+        </mat-form-field>
+        <mat-checkbox formControlName="stockCheck"
+          (click)="afterCheckChanges($event, 'stockCheck', ['stockDescription'], undefined)">Disposa
+          d'inventari?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Descripció de l'estat de l'estoc</mat-label>
+          <textarea formControlName="stockDescription" matInput
+            placeholder="Write a description about company's stock"></textarea>
+        </mat-form-field>
+        <mat-checkbox formControlName="auditoryCheck">Disposa d'autoria feta?</mat-checkbox>
+        <mat-checkbox formControlName="licenseCheck">Disposa de llicència d'activitat?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Descripció del mercat</mat-label>
+          <textarea formControlName="marketDescription" matInput
+            placeholder="Write a description about the market"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripció de la clientela</mat-label>
+          <textarea formControlName="targetDescription" matInput
+            placeholder="Write a description about the target audience"></textarea>
+        </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>Instagram</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>LinkedIn</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>    
+        <mat-form-field>
+          <mat-label>Tipologia de la clientela</mat-label>
+          <mat-select formControlName="typologyClients" placeholder="Choose an option">
+            @for (typologyItem of clientTypologyList; track typologyItem) {
+            <mat-option [value]="typologyItem.value">{{typologyItem.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripció dels proveïdors</mat-label>
+          <textarea formControlName="suppliersDescription" matInput
+            placeholder="Write a description about the suppliers"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Descripció de la competència</mat-label>
+          <textarea formControlName="competitionDescription" matInput
+            placeholder="Write a description about the company's competition"></textarea>
+        </mat-form-field>
+      </section>
+      <section> <!-- Detall exportació/importació-->
+        <mat-checkbox formControlName="exportCheck"
+          (click)="afterCheckChanges($event, 'exportCheck', ['exportAmbit', 'exportDescription'], undefined)">Exporta?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Àmbit geogràfic?</mat-label>
+          <mat-select formControlName="exportAmbit" placeholder="Choose one option">
+            @for (continentItem of continentList; track continentItem) {
+            <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre l'exportació i països</mat-label>
+          <textarea formControlName="exportDescription" matInput
+            placeholder="Write a description about the export information"></textarea>
+        </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>Twitter</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Youtube</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>    
+        <mat-checkbox formControlName="importCheck"
+          (click)="afterCheckChanges($event, 'importCheck', ['importAmbit','importDescription'], undefined)">Importa?</mat-checkbox>
+        <mat-form-field>
+          <mat-label>Àmbit geogràfic?</mat-label>
+          <mat-select formControlName="importAmbit" placeholder="Choose one option">
+            @for (continentItem of continentList; track continentItem) {
+            <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre l'importació i països</mat-label>
+          <textarea formControlName="importDescription" matInput
+            placeholder="Write a description about the import information"></textarea>
+        </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>Altres Xarxes</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Facebook</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>    
+      </section>
+    </mat-tab>
+    <mat-tab label="Estructura i organització">
+      <section>
+        <mat-form-field>
+          <mat-label>Número de socis</mat-label>
+          <input matInput type="number" formControlName="partnerNumber">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Estructura de l'empresa (departaments, àrees de responsabilitat, etc.)</mat-label>
+          <textarea formControlName="organizationDescription" matInput
+            placeholder="Write a description about the company's organization."></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre el socis(%...)</mat-label>
+          <textarea formControlName="distributionDescription" matInput
+            placeholder="Write a description about the company's distribution"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre la gestió i dia a dia de l'empresa</mat-label>
+          <textarea formControlName="workingDayDescription" matInput
+            placeholder="Write a description about the company's working day"></textarea>
+        </mat-form-field>
+      </section>
+      <section> <!-- Detall de les persones treballadores-->
+        <mat-form-field>
+          <mat-label>Persones amb jornada complerta</mat-label>
+          <input matInput type="number" formControlName="fullTimeWorkers" (keyup)="calculateTotalWorkers($event)"
+            min="0">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Persones amb jornada parcial</mat-label>
+          <input matInput type="number" formControlName="partialTimeWorkers" (keyup)="calculateTotalWorkers($event)"
+            min="0">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Número de treballadors totals</mat-label>
+          <input matInput type="number" formControlName="totalWorkers">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre l'antiguitat</mat-label>
+          <textarea matInput formControlName="workersCarrerDescription"
+            placeholder="Write a description about the workers carrer in the company"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre els salaris</mat-label>
+          <textarea matInput formControlName="workersSalaryDescription"
+            placeholder="Write a description about the workers salary"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre autònoms i col·laboradors directe</mat-label>
+          <textarea matInput formControlName="colaborationDescription"
+            placeholder="Write a description about the company's colaboration"></textarea>
+        </mat-form-field>
+      </section>
+      <section> <!-- Detall de les instal·lacions-->
+        <mat-form-field>
+          <mat-label>Local en propietat o lloguer</mat-label>
+          <mat-select formControlName="property">
+            @for (status of propertyStatus; track status) {
+            <mat-option (click)="checkPropertyStatus($event)" [value]="status.value">{{status.view}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Preu de lloguer</mat-label>
+          <input formControlName="rentValue" matInput type="number" placeholder="Dos decimals: xxxx.xx" min="0.00">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Superfície del local (metros quadrats)</mat-label>
+          <input formControlName="localSize" matInput type="number"
+            placeholder="Metros quadrats del local llogat o en propietat">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Condicions contractuals del local</mat-label>
+          <textarea matInput formControlName="localRentingDescription"
+            placeholder="Write more information about the property or renting contracts"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Altres especificacions del local</mat-label>
+          <textarea matInput formControlName="anotherSpecificationsDescription"
+            placeholder="Write more information about the property or renting"></textarea>
+        </mat-form-field>
+      </section>
+    </mat-tab>
+    <mat-tab label="Estructura econòmica">
+      <section>
+        <mat-form-field>
+          <mat-label>Comentari sobre el finançament de l'empresa</mat-label>
+          <textarea matInput formControlName="financingDescription"
+            placeholder="Write more information about company financing"></textarea>
+        </mat-form-field>
 
-          </section>
-        </mat-tab>
-        <mat-tab label="Contactes">
-          <section>
-            <section>
-              <mat-form-field>
-                <mat-label>Nom complet</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>DNI/NIE</mat-label>
-                <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-              </mat-form-field>
-            </section>
-          </section>
-        </mat-tab>
-        <mat-tab label="Detall de l'activitat">
-          <section>
-            <mat-form-field>
-              <mat-label>Sector principal</mat-label>
-              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Activitat principal</mat-label>
-              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field> 
-          </section>
-        </mat-tab>
-        <mat-tab label="Detall exportació/importació">
-          <section>
-            <mat-form-field>
-              <mat-label>Sector principal</mat-label>
-              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Activitat principal</mat-label>
-              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>    
-          </section>
-        </mat-tab>
-        <mat-tab label="Estructura i organització">
+        <mat-checkbox formControlName="debtsCheck"
+          (click)="afterCheckChanges($event, 'debtsCheck', undefined, 'afterCheckDebts')">L'empresa té
+          deutes?</mat-checkbox>
+        <mat-form-field class="afterCheckDebts" style="display: none;">
+          <mat-label>Amb qui té deutes actualment?</mat-label>
+          <mat-select formControlName="debtsList" multiple>
+            @for (debtsSitesItem of debtsSitesList; track debtsSitesItem) {
+            <mat-option [value]="debtsSitesItem.value">{{debtsSitesItem.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="afterCheckDebts" style="display: none;">
+          <mat-label>Comentari sobre l'endeutament</mat-label>
+          <textarea matInput formControlName="debtsDescription"
+            placeholder="Write more information about the debts"></textarea>
+        </mat-form-field>
+      </section>
+      <section> <!-- Resultats -->
+        <mat-form-field>
+          <mat-label>Facturació últim any fiscal</mat-label>
+          <input matInput type="number" formControlName="lastYearFacturation" placeholder="2 Decimal: xxxx.xx">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Resultat últim any fiscal</mat-label>
+          <input matInput type="number" formControlName="lastYearResult" placeholder="2 Decimal: xxxx.xx">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre els resultats últim any fiscal</mat-label>
+          <textarea matInput formControlName="lastYearResultDescription"
+            placeholder="Write more information about comany's last results"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>EBITDA últim any fiscal</mat-label>
+          <input matInput type="number" formControlName="lastYearBeforeTaxes" placeholder="2 Decimal: xxxx.xx">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Facturació any n-1</mat-label>
+          <input matInput type="number" formControlName="oneYearAgoFacturation" placeholder="2 Decimal: xxxx.xx">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Resultat any n-1</mat-label>
+          <input matInput type="number" formControlName="oneYearAgoResult" placeholder="2 Decimal: xxxx.xx">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre els resultats any n-1</mat-label>
+          <textarea matInput formControlName="oneYearAgoResultDescription"
+            placeholder="Write more information about comany's results"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>EBITDA any n-1</mat-label>
+          <input matInput type="number" formControlName="oneYearAgoBeforeTaxes" placeholder="2 Decimal: xxxx.xx">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Facturació any n-2</mat-label>
+          <input matInput type="number" formControlName="twoYearAgoFacturation" placeholder="2 Decimal: xxxx.xx">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Resultat any n-2</mat-label>
+          <input matInput type="number" formControlName="twoYearAgoResult" placeholder="2 Decimal: xxxx.xx">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Comentari sobre els resultats any n-2</mat-label>
+          <textarea matInput formControlName="twoYearAgoResultDescription"
+            placeholder="Write more information about comany's results"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>EBITDA any n-2</mat-label>
+          <input matInput type="number" formControlName="twoYearAgoBeforeTaxes" placeholder="2 Decimal: xxxx.xx">
+        </mat-form-field>
+      </section>
+    </mat-tab>
+    <mat-tab label="Documentació (NACHO)">
+      <section>
+        <mat-checkbox class="example-margin">Liquidació anual de l'IVA (model 390) dels 3 últims anys</mat-checkbox>
+        <mat-checkbox class="example-margin">Liquidació IRPF (model 190) dels 3 últims anys</mat-checkbox>
 
-        </mat-tab>
-        <mat-tab label="Estructura econòmica">
-          <section>
-            <mat-form-field>
-              <mat-label>Comentari sobre el finançament de l'empresa</mat-label>
-              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>L'empresa té deutes?</mat-label>
-              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>
-          </section>
-        </mat-tab>
-        <mat-tab label="Documentació (NACHO)">
-          <section>
-              <mat-checkbox class="example-margin">Liquidació anual de l'IVA (model 390) dels 3 últims anys</mat-checkbox>
-              <mat-checkbox class="example-margin">Liquidació IRPF (model 190) dels 3 últims anys</mat-checkbox>
+        <mat-checkbox class="example-margin">Declaració IRPF (model 100) dels 3 últims anys</mat-checkbox>
+        <mat-checkbox class="example-margin">Pagaments a compte IRPF (model 130 o 131) del 4rt Trimestre últim
+          any</mat-checkbox>
 
-              <mat-checkbox class="example-margin">Declaració IRPF (model 100) dels 3 últims anys</mat-checkbox>
-              <mat-checkbox class="example-margin">Pagaments a compte IRPF (model 130 o 131) del 4rt Trimestre últim any</mat-checkbox>
+        <mat-checkbox class="example-margin">Fotocòpia CIF empresa</mat-checkbox>
+        <mat-checkbox class="example-margin">Escriptures de constitució i modificació</mat-checkbox>
 
-              <mat-checkbox class="example-margin">Fotocòpia CIF empresa</mat-checkbox>
-              <mat-checkbox class="example-margin">Escriptures de constitució i modificació</mat-checkbox>
+        <mat-checkbox class="example-margin">Escriptures poders de la societat (si escau)</mat-checkbox>
+        <mat-checkbox class="example-margin">Pèrdues i guanys dels 3 últims anys</mat-checkbox>
 
-              <mat-checkbox class="example-margin">Escriptures poders de la societat (si escau)</mat-checkbox>
-              <mat-checkbox class="example-margin">Pèrdues i guanys dels 3 últims anys</mat-checkbox>
-
-              <mat-checkbox class="example-margin">Balanç de situació dels 3 últims anys</mat-checkbox>
-              <mat-checkbox class="example-margin">Impost de societats (model 200) dels 3 últims anys</mat-checkbox>
-          </section>
-        </mat-tab>
-        <mat-tab label="Usuari de (pendiente decidir)">
-          <section>
-            <mat-checkbox class="example-margin">Projectes Cedents</mat-checkbox>
-            <mat-checkbox class="example-margin">Projectes Reempresa</mat-checkbox>
-          </section>    
-        </mat-tab>
-        <mat-tab label="Reunions (pendiente decidir)">
-          <section>
-            <mat-form-field>
-              <mat-label>Tema </mat-label>
-              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>
-            <mat-form-field>
-              <mat-label>Referent a</mat-label>
-              <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori." >
-            </mat-form-field>
-          </section>    
-        </mat-tab>   
+        <mat-checkbox class="example-margin">Balanç de situació dels 3 últims anys</mat-checkbox>
+        <mat-checkbox class="example-margin">Impost de societats (model 200) dels 3 últims anys</mat-checkbox>
+      </section>
+    </mat-tab>
+    <mat-tab label="Usuari de (pendiente decidir)">
+      <section>
+        <mat-checkbox class="example-margin">Projectes Cedents</mat-checkbox>
+        <mat-checkbox class="example-margin">Projectes Reempresa</mat-checkbox>
+      </section>
+    </mat-tab>
+    <mat-tab label="Reunions (pendiente decidir)">
+      <section>
+        <mat-form-field>
+          <mat-label>Tema </mat-label>
+          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Referent a</mat-label>
+          <input matInput formControlName="companyName" aria-label="Contacte principal és un camp obligatori.">
+        </mat-form-field>
+      </section>
+    </mat-tab>
   </mat-tab-group>
   <div ngClass="centered-item">
     <button mat-raised-button color="primary" type="submit">Guardar</button>
   </div>
   <div ngClass="centered-item">
     <small ngClass="centered-item">
-      Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched: {{theForm.touched}} | Dirty: {{theForm.dirty}} 
+      Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched:
+      {{theForm.touched}} | Dirty: {{theForm.dirty}}
     </small>
   </div>
-</forgit>
+</form>
