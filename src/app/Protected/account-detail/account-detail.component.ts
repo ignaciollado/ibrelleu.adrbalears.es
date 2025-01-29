@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
@@ -69,12 +69,17 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     private countriesService: CountriesService
   ) {
     this.theForm = new FormGroup({
+      // Identificació
       legalFormat: new FormControl('', [Validators.required]),
       contact: new FormControl('', [Validators.required]),
       companyName: new FormControl('', [Validators.required]),
       nif: new FormControl('', [Validators.required]),
       tradeName: new FormControl('', Validators.required),
       paradesMercat: new FormControl(''),
+      collaborationCompanys: new FormControl(''),
+      councilTitularity: new FormControl(''),
+      sportConcessions: new FormControl(''),
+      activeBusiness: new FormControl(''),
       creationYear: new FormControl('', [
         Validators.minLength(4),
         Validators.maxLength(4),
@@ -82,6 +87,8 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       ]),
       consultor: new FormControl('', [Validators.required]),
       delegacion: new FormControl(''),
+
+      // Localització
       direccion: new FormControl('', [Validators.required]),
       zipCode: new FormControl('', [
         Validators.minLength(5),
@@ -91,6 +98,8 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       councilCity: new FormControl({ value: '', disabled: true }),
       localizationCCAA: new FormControl({ value: '', disabled: true }),
       localizationCountry: new FormControl({ value: 'España', disabled: true }),
+
+      // Dades de contacte
       companyEmail: new FormControl('', [
         Validators.required,
         Validators.email,
@@ -100,29 +109,97 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         Validators.required,
       ]),
       companyWeb: new FormControl(''),
+
+      // Detall de l'activitat
       companySector: new FormControl('', Validators.required),
       companyActivity: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.maxLength(1024)),
-      typologyClients: new FormControl(''),
-      check: new FormControl(''),
-      importCheck: new FormControl(''),
-      importDescription: new FormControl(
+      activityDescription: new FormControl('', Validators.maxLength(1024)),
+      carrerDescription: new FormControl('', Validators.maxLength(1024)),
+      checkProduct: new FormControl(''),
+      descriptionProduct: new FormControl(
         { value: '', disabled: true },
         Validators.maxLength(1024)
       ),
+      descriptionProductProcess: new FormControl(
+        { value: '', disabled: true },
+        Validators.maxLength(1024)
+      ),
+      brandCheck: new FormControl(''),
+      brandDescription: new FormControl(
+        { value: '', disabled: true },
+        Validators.maxLength(1024)
+      ),
+      stockCheck: new FormControl(''),
+      stockDescription: new FormControl(
+        { value: '', disabled: true },
+        Validators.maxLength(1024)
+      ),
+      auditoryCheck: new FormControl(''),
+      licenseCheck: new FormControl(''),
+      marketDescription: new FormControl('', Validators.maxLength(1024)),
+      targetDescription: new FormControl('', Validators.maxLength(1024)),
+      typologyClients: new FormControl(''),
+      suppliersDescription: new FormControl('', Validators.maxLength(1024)),
+      competitionDescription: new FormControl('', Validators.maxLength(1024)),
+      exportCheck: new FormControl(''),
+      exportAmbit: new FormControl({ value: '', disabled: true }),
       exportDescription: new FormControl(
         { value: '', disabled: true },
         Validators.maxLength(1024)
       ),
+      importCheck: new FormControl(''),
+      importAmbit: new FormControl({ value: '', disabled: true }),
+      importDescription: new FormControl(
+        { value: '', disabled: true },
+        Validators.maxLength(1024)
+      ),
+
+      // Estructura i organiztació
       partnerNumber: new FormControl('', Validators.required),
+      organizationDescription: new FormControl('', Validators.maxLength(1024)),
+      distributionDescription: new FormControl('', Validators.maxLength(1024)),
+      workingDayDescription: new FormControl('', Validators.maxLength(1024)),
       fullTimeWorkers: new FormControl(''),
       partialTimeWorkers: new FormControl(''),
       totalWorkers: new FormControl({ value: '0', disabled: true }),
+      workersCarrerDescription: new FormControl('', Validators.maxLength(1024)),
+      workersSalaryDescription: new FormControl('', Validators.maxLength(1024)),
+      colaborationDescription: new FormControl('', Validators.maxLength(1024)),
       property: new FormControl(''),
       rentValue: new FormControl({ value: '', disabled: true }),
       localSize: new FormControl(''),
-      afterCheckDebtsForms: new FormControl(''),
-      companyMoneyFlow: new FormControl(''),
+      localRentingDescription: new FormControl('', Validators.maxLength(1024)),
+      anotherSpecificationsDescription: new FormControl(
+        '',
+        Validators.maxLength(1024)
+      ),
+
+      // Estructura económica
+      financingDescription: new FormControl('', Validators.maxLength(1024)),
+      debtsCheck: new FormControl(''),
+      debtsList: new FormControl(''),
+      debtsDescription: new FormControl('', Validators.maxLength(1024)),
+      lastYearFacturation: new FormControl(''),
+      lastYearResult: new FormControl(''),
+      lastYearResultDescription: new FormControl(
+        '',
+        Validators.maxLength(1024)
+      ),
+      lastYearBeforeTaxes: new FormControl(''),
+      oneYearAgoFacturation: new FormControl(''),
+      oneYearAgoResult: new FormControl(''),
+      oneYearAgoResultDescription: new FormControl(
+        '',
+        Validators.maxLength(1024)
+      ),
+      oneYearAgoBeforeTaxes: new FormControl(''),
+      twoYearAgoFacturation: new FormControl(''),
+      twoYearAgoResult: new FormControl(''),
+      twoYearAgoResultDescription: new FormControl(
+        '',
+        Validators.maxLength(1024)
+      ),
+      twoYearAgoBeforeTaxes: new FormControl(''),
     });
 
     this.getCountries();
@@ -254,18 +331,20 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     );
   }
 
-  // He implementado esta lógica como nexo a las llamadas de los cambios
+  // He implementado esta lógica como nexo a las llamadas de los métodos que realizan los cambios
   afterCheckChanges(
     event: any,
     checkName: string,
-    checkFormName?: string,
+    checkFormName?: string[],
     className?: string
   ) {
     let checkValue = this.theForm.get(checkName).value;
-    let afterCheckForms: any;
+    let afterCheckForms: any[] = [];
 
     if (checkFormName != undefined) {
-      afterCheckForms = this.theForm.get(checkFormName);
+      checkFormName.forEach((form) => {
+        afterCheckForms.push(this.theForm.get(form));
+      });
       this.changeEnable(afterCheckForms, checkValue);
     } else if (className != undefined) {
       let elements = document.querySelectorAll('.' + className);
@@ -273,12 +352,14 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     }
   }
 
-  changeEnable(afterCheckForms: any, check: boolean) {
-    if (check) {
-      afterCheckForms.enable();
-    } else {
-      afterCheckForms.disable();
-    }
+  changeEnable(afterCheckForms: any[], check: boolean) {
+    afterCheckForms.forEach((form) => {
+      if (check) {
+        form.enable();
+      } else {
+        form.disable();
+      }
+    });
   }
 
   changeDisplay(elements: any, check: boolean) {
@@ -316,6 +397,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     }
   }
 
+  // Pendiente de revisar
   // calculateDNI(event: any) {
   //   if (event.key != 'Backspace') {
   //     let dni = this.theForm.get('nif').value;

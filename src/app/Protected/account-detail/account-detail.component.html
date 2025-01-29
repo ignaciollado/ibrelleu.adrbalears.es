@@ -38,7 +38,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Empresa o entitat col·laboradora?</mat-label>
-          <mat-select formControlName="paradesMercat" placeholder="Tria una opció">
+          <mat-select formControlName="collaborationCompanys" placeholder="Tria una opció">
             <mat-option value="SI">SI</mat-option>
             <mat-option value="NO">NO</mat-option>
           </mat-select>
@@ -46,7 +46,7 @@
 
         <mat-form-field>
           <mat-label>Gestiona establiments comercials de titularitat municipal disponible?</mat-label>
-          <mat-select formControlName="paradesMercat" placeholder="Tria una opció">
+          <mat-select formControlName="councilTitularity" placeholder="Tria una opció">
             <mat-option value="SI">SI</mat-option>
             <mat-option value="NO">NO</mat-option>
           </mat-select>
@@ -54,14 +54,14 @@
         <mat-form-field>
           <mat-label>Gestiona les concessions administratives de les instal·lacions esportives
             municipals?</mat-label>
-          <mat-select formControlName="paradesMercat" placeholder="Tria una opció">
+          <mat-select formControlName="sportConcessions" placeholder="Tria una opció">
             <mat-option value="SI">SI</mat-option>
             <mat-option value="NO">NO</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Empresa en funcionament?</mat-label>
-          <mat-select formControlName="paradesMercat" placeholder="Tria una opció">
+          <mat-select formControlName="activeBusiness" placeholder="Tria una opció">
             <mat-option value="SI">SI</mat-option>
             <mat-option value="NO">NO</mat-option>
           </mat-select>
@@ -163,7 +163,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Activity</mat-label>
+          <mat-label>Activitat</mat-label>
           <mat-select formControlName="companyActivity" multiple placeholder="Choose multiple options">
             @for (activityItem of activityList; track activityItem) {
             <mat-option [value]="activityItem.value">{{activityItem.label}}</mat-option>
@@ -172,47 +172,53 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Descripció de l'activitat</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="activityDescription" matInput
             placeholder="Write a description about the company activity"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Breu descripció de la trajectòria económica</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="carrerDescription" matInput
             placeholder=" Write a description about the company carrer"></textarea>
         </mat-form-field>
 
-        <mat-checkbox formControlName="check">Disposa de producte propi?</mat-checkbox>
+        <mat-checkbox formControlName="checkProduct"
+          (click)="afterCheckChanges($event, 'checkProduct', ['descriptionProduct', 'descriptionProductProcess'], undefined)">Disposa
+          de producte propi?</mat-checkbox>
         <mat-form-field>
           <mat-label>Descripció producte o servei</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="descriptionProduct" matInput
             placeholder="Write a description about the company product"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Descripció del procés productiu / circuit del servei</mat-label>
-          <textarea formControlName="description" matInput
-            placeholder="Write a description about the company product"></textarea>
+          <textarea formControlName="descriptionProductProcess" matInput
+            placeholder="Write a description about the company product process"></textarea>
         </mat-form-field>
-        <mat-checkbox formControlName="check">Disposa de marques pròpies/registrades?</mat-checkbox>
+        <mat-checkbox formControlName="brandCheck"
+          (click)="afterCheckChanges($event, 'brandCheck', ['brandDescription'], undefined)">Disposa de marques
+          pròpies/registrades?</mat-checkbox>
         <mat-form-field>
           <mat-label>Nom de les marques</mat-label>
-          <textarea formControlName="description" matInput placeholder="Write the brands names"></textarea>
+          <textarea formControlName="brandDescription" matInput placeholder="Write about the brands names"></textarea>
         </mat-form-field>
-        <mat-checkbox formControlName="check">Disposa d'inventari?</mat-checkbox>
+        <mat-checkbox formControlName="stockCheck"
+          (click)="afterCheckChanges($event, 'stockCheck', ['stockDescription'], undefined)">Disposa
+          d'inventari?</mat-checkbox>
         <mat-form-field>
           <mat-label>Descripció de l'estat de l'estoc</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="stockDescription" matInput
             placeholder="Write a description about company's stock"></textarea>
         </mat-form-field>
-        <mat-checkbox formControlName="check">Disposa d'autoria feta?</mat-checkbox>
-        <mat-checkbox formControlName="check">Disposa de llcència d'activitat?</mat-checkbox>
+        <mat-checkbox formControlName="auditoryCheck">Disposa d'autoria feta?</mat-checkbox>
+        <mat-checkbox formControlName="licenseCheck">Disposa de llicència d'activitat?</mat-checkbox>
         <mat-form-field>
           <mat-label>Descripció del mercat</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="marketDescription" matInput
             placeholder="Write a description about the market"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Descripció de la clientela</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="targetDescription" matInput
             placeholder="Write a description about the target audience"></textarea>
         </mat-form-field>
 
@@ -226,21 +232,21 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Descripció dels proveïdors</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="suppliersDescription" matInput
             placeholder="Write a description about the suppliers"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Descripció de la competència</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="competitionDescription" matInput
             placeholder="Write a description about the company's competition"></textarea>
         </mat-form-field>
       </section>
       <section> <!-- Detall exportació/importació-->
-        <mat-checkbox formControlName="check"
-          (click)="afterCheckChanges($event, 'check', 'exportDescription', undefined)">Exporta?</mat-checkbox>
+        <mat-checkbox formControlName="exportCheck"
+          (click)="afterCheckChanges($event, 'exportCheck', ['exportAmbit', 'exportDescription'], undefined)">Exporta?</mat-checkbox>
         <mat-form-field>
           <mat-label>Àmbit geogràfic?</mat-label>
-          <mat-select formControlName="exportDescription" placeholder="Choose one option">
+          <mat-select formControlName="exportAmbit" placeholder="Choose one option">
             @for (continentItem of continentList; track continentItem) {
             <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
             }
@@ -252,11 +258,11 @@
             placeholder="Write a description about the export information"></textarea>
         </mat-form-field>
 
-        <mat-checkbox formControlName="check"
-          (click)="afterCheckChanges($event, 'check', 'importDescription', undefined)">Importa?</mat-checkbox>
+        <mat-checkbox formControlName="importCheck"
+          (click)="afterCheckChanges($event, 'importCheck', ['importAmbit','importDescription'], undefined)">Importa?</mat-checkbox>
         <mat-form-field>
           <mat-label>Àmbit geogràfic?</mat-label>
-          <mat-select formControlName="importDescription" placeholder="Choose one option">
+          <mat-select formControlName="importAmbit" placeholder="Choose one option">
             @for (continentItem of continentList; track continentItem) {
             <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
             }
@@ -278,17 +284,17 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Estructura de l'empresa (departaments, àrees de responsabilitat, etc.)</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="organizationDescription" matInput
             placeholder="Write a description about the company's organization."></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Comentari sobre el socis(%...)</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="distributionDescription" matInput
             placeholder="Write a description about the company's distribution"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Comentari sobre la gestió i dia a dia de l'empresa</mat-label>
-          <textarea formControlName="description" matInput
+          <textarea formControlName="workingDayDescription" matInput
             placeholder="Write a description about the company's working day"></textarea>
         </mat-form-field>
       </section>
@@ -309,17 +315,18 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Comentari sobre l'antiguitat</mat-label>
-          <textarea matInput formControlName="description"
+          <textarea matInput formControlName="workersCarrerDescription"
             placeholder="Write a description about the workers carrer in the company"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Comentari sobre els salaris</mat-label>
-          <textarea matInput formControlName="description"
+          <textarea matInput formControlName="workersSalaryDescription"
             placeholder="Write a description about the workers salary"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Comentari sobre autònoms i col·laboradors directe</mat-label>
-          <textarea matInput formControlName="description" placeholder="Write a description about the ..."></textarea>
+          <textarea matInput formControlName="colaborationDescription"
+            placeholder="Write a description about the company's colaboration"></textarea>
         </mat-form-field>
       </section>
       <section> <!-- Detall de les instal·lacions-->
@@ -336,18 +343,18 @@
           <input formControlName="rentValue" matInput type="number" placeholder="Dos decimals: xxxx.xx" min="0.00">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Superfície del Local (metros quadrats)</mat-label>
+          <mat-label>Superfície del local (metros quadrats)</mat-label>
           <input formControlName="localSize" matInput type="number"
             placeholder="Metros quadrats del local llogat o en propietat">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Condicions contractuals del local</mat-label>
-          <textarea matInput formControlName="description"
+          <textarea matInput formControlName="localRentingDescription"
             placeholder="Write more information about the property or renting contracts"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Altres especificacions del local</mat-label>
-          <textarea matInput formControlName="description"
+          <textarea matInput formControlName="anotherSpecificationsDescription"
             placeholder="Write more information about the property or renting"></textarea>
         </mat-form-field>
       </section>
@@ -356,16 +363,16 @@
       <section>
         <mat-form-field>
           <mat-label>Comentari sobre el finançament de l'empresa</mat-label>
-          <textarea matInput formControlName="description"
-            placeholder="Write more information about company working"></textarea>
+          <textarea matInput formControlName="financingDescription"
+            placeholder="Write more information about company financing"></textarea>
         </mat-form-field>
 
-        <mat-checkbox formControlName="check"
-          (click)="afterCheckChanges($event, 'check', undefined, 'afterCheckDebts')">L'empresa té
+        <mat-checkbox formControlName="debtsCheck"
+          (click)="afterCheckChanges($event, 'debtsCheck', undefined, 'afterCheckDebts')">L'empresa té
           deutes?</mat-checkbox>
         <mat-form-field class="afterCheckDebts" style="display: none;">
           <mat-label>Amb qui té deutes actualment?</mat-label>
-          <mat-select formControlName="afterCheckDebtsForms" multiple>
+          <mat-select formControlName="debtsList" multiple>
             @for (debtsSitesItem of debtsSitesList; track debtsSitesItem) {
             <mat-option [value]="debtsSitesItem.value">{{debtsSitesItem.label}}</mat-option>
             }
@@ -373,61 +380,61 @@
         </mat-form-field>
         <mat-form-field class="afterCheckDebts" style="display: none;">
           <mat-label>Comentari sobre l'endeutament</mat-label>
-          <textarea matInput formControlName="description"
+          <textarea matInput formControlName="debtsDescription"
             placeholder="Write more information about the debts"></textarea>
         </mat-form-field>
       </section>
       <section> <!-- Resultats -->
         <mat-form-field>
           <mat-label>Facturació últim any fiscal</mat-label>
-          <input matInput type="number" formControlName="companyMoneyFlow" placeholder="2 Decimal: xxxx.xx">
+          <input matInput type="number" formControlName="lastYearFacturation" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Resultat últim any fiscal</mat-label>
-          <input matInput type="number" formControlName="companyMoneyFlow" placeholder="2 Decimal: xxxx.xx">
+          <input matInput type="number" formControlName="lastYearResult" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
           <mat-label>Comentari sobre els resultats últim any fiscal</mat-label>
-          <textarea matInput formControlName="description"
+          <textarea matInput formControlName="lastYearResultDescription"
             placeholder="Write more information about comany's last results"></textarea>
         </mat-form-field>
         <mat-form-field>
           <mat-label>EBITDA últim any fiscal</mat-label>
-          <input matInput type="number" formControlName="companyMoneyFlow" placeholder="2 Decimal: xxxx.xx">
+          <input matInput type="number" formControlName="lastYearBeforeTaxes" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Facturació any-1</mat-label>
-          <input matInput type="number" formControlName="companyMoneyFlow" placeholder="2 Decimal: xxxx.xx">
+          <mat-label>Facturació any n-1</mat-label>
+          <input matInput type="number" formControlName="oneYearAgoFacturation" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Resultat any-1</mat-label>
-          <input matInput type="number" formControlName="companyMoneyFlow" placeholder="2 Decimal: xxxx.xx">
+          <mat-label>Resultat any n-1</mat-label>
+          <input matInput type="number" formControlName="oneYearAgoResult" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre els resultats any-1</mat-label>
-          <textarea matInput formControlName="description"
+          <mat-label>Comentari sobre els resultats any n-1</mat-label>
+          <textarea matInput formControlName="oneYearAgoResultDescription"
             placeholder="Write more information about comany's results"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>EBITDA any-1</mat-label>
-          <input matInput type="number" formControlName="companyMoneyFlow" placeholder="2 Decimal: xxxx.xx">
+          <mat-label>EBITDA any n-1</mat-label>
+          <input matInput type="number" formControlName="oneYearAgoBeforeTaxes" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Facturació any-2</mat-label>
-          <input matInput type="number" formControlName="companyMoneyFlow" placeholder="2 Decimal: xxxx.xx">
+          <mat-label>Facturació any n-2</mat-label>
+          <input matInput type="number" formControlName="twoYearAgoFacturation" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Resultat any-2</mat-label>
-          <input matInput type="number" formControlName="companyMoneyFlow" placeholder="2 Decimal: xxxx.xx">
+          <mat-label>Resultat any n-2</mat-label>
+          <input matInput type="number" formControlName="twoYearAgoResult" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre els resultats any-2</mat-label>
-          <textarea matInput formControlName="description"
+          <mat-label>Comentari sobre els resultats any n-2</mat-label>
+          <textarea matInput formControlName="twoYearAgoResultDescription"
             placeholder="Write more information about comany's results"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>EBITDA any-2</mat-label>
-          <input matInput type="number" formControlName="companyMoneyFlow" placeholder="2 Decimal: xxxx.xx">
+          <mat-label>EBITDA any n-2</mat-label>
+          <input matInput type="number" formControlName="twoYearAgoBeforeTaxes" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
       </section>
     </mat-tab>
