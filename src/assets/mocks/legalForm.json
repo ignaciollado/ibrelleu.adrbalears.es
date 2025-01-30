@@ -17,5 +17,8 @@
   { "value": "15", "label": "Societat Limitada Municipal (SLM)" },
   { "value": "16", "label": "Societat Limitada Nova Empresa (SLNE)" },
   { "value": "17", "label": "Societat Limitada Professional (SLP)" },
-  { "value": "8", "label": "Societat Limitada Professional Unipersonal (SLPU)" }
+  {
+    "value": "18",
+    "label": "Societat Limitada Professional Unipersonal (SLPU)"
+  }
 ]
