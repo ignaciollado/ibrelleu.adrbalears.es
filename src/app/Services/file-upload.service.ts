@@ -1,39 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { Observable, Subject, throwError } from 'rxjs';
+import { catchError, map, takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileUploadService {
-  //private baseUrl = 'https://docs.ibrelleu.es/upload';
-  private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
-
+//private baseUrl = 'https://docs.ibrelleu.es/upload';
+private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
+private urlAPIMock = '../../assets/apiPHP';
   private cancelUpload$ = new Subject<void>();
 
   constructor(private http: HttpClient) {}
 
   upload(files: File[]): Observable<any> {
-    const formData: FormData = new FormData();
-    files.forEach(file => formData.append('files[]', file, file.name));
+    const formData = new FormData();
+    for (const file of files) {
+      formData.append('files', file, file.name);
+    }
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
-    });
-
-    const req = new HttpRequest('POST', this.baseUrl, formData, {
-      headers: headers,
-      reportProgress: true
-    });
-
-    return this.http.request(req).pipe(
-      takeUntil(this.cancelUpload$),
-      map(event => this.getEventMessage(event, files))
+    return this.http.post(`${this.urlAPIMock}/FileUploadController.php`, formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(
+      catchError(this.handleError)
     );
   }
 
@@ -50,5 +41,17 @@ export class FileUploadService {
       default:
         return { progress: 0, files: files.map(file => ({ name: file.name, status: 'Pending' })) };
     }
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side or network error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
   }
 }
