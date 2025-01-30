@@ -1,46 +1,43 @@
-import { Component } from '@angular/core'
-import { FileUploadService } from '../../Services/file-upload.service'
-import { MatTableDataSource } from '@angular/material/table'
-
-interface FileUploadStatus {
-  fileName: string;
-  status: string;
-}
+import { Component } from '@angular/core';
+import { FileUploadService } from '../../Services/file-upload.service';
 
 @Component({
-  selector: 'adr-file-upload',
+  selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
-  styleUrl: './file-upload.component.scss'
+  styleUrls: ['./file-upload.component.scss']
 })
-
 export class FileUploadComponent {
-    selectedFiles: File[] = []
-    uploadProgress: number = 0
-    uploadError: string = ''
-    displayedColumns: string[] = ['fileName', 'status']
-    dataSource = new MatTableDataSource<FileUploadStatus>()
+  files: File[] = [];
+  progress: number[] = [];
+  statuses: { name: string, status: string }[] = [];
+  errorMessage: string = '';
 
-  constructor(private fileUploadService: FileUploadService) {}
+  constructor(private uploadService: FileUploadService) {}
 
-  onFileSelected(event: any) {
-      this.selectedFiles = Array.from(event.target.files);
-      this.dataSource.data = this.selectedFiles.map(file => ({ fileName: file.name, status: 'Pending' }))
+  onFilesSelected(event: any): void {
+    this.files = Array.from(event.target.files);
+    this.progress = new Array(this.files.length).fill(0);
+    this.statuses = this.files.map(file => ({ name: file.name, status: 'Pending' }));
   }
 
-  onUpload() {
-    this.uploadProgress = 0;
-    this.uploadError = '';
+  uploadFiles(): void {
+    if (this.files.length > 0) {
+      this.uploadService.upload(this.files).subscribe(
+        event => {
+          if (event.progress !== undefined) {
+            this.progress = this.progress.map((p, index) => event.progress);
+            this.statuses = event.files;
+          }
+        },
+        error => this.errorMessage = 'Error al cargar los archivos: ' + error.message
+      );
+    }
+  }
 
-    this.fileUploadService.upload(this.selectedFiles).subscribe(
-      progress => {this.uploadProgress = progress
-                    console.log ("progress: ", this.uploadProgress)
-      },
-      error => {this.uploadError = error
-                console.log ("error: ", this.uploadError)
-                },
-      () => {
-        this.dataSource.data = this.dataSource.data.map(file => ({ ...file, status: 'Uploaded' }));
-      }
-    );
+  cancelUpload(): void {
+    this.uploadService.cancelUpload();
+    this.progress = new Array(this.files.length).fill(0);
+    this.statuses = this.files.map(file => ({ name: file.name, status: 'Cancelled' }));
+    this.errorMessage = 'Carga cancelada';
   }
 }

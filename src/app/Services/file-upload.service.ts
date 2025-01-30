@@ -1,41 +1,48 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEventType, HttpErrorResponse } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
-import { throwError, Observable } from 'rxjs'
+import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileUploadService {
-  private uploadUrl = 'https://docs.ibrelleu.es/public/index.php';
+  private baseUrl = 'https://docs.ibrelleu.es/public/index.html/upload';
+  private cancelUpload$ = new Subject<void>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  upload(files: File[]): Observable<number> {
-    const formData = new FormData()
-    files.forEach(file => formData.append('files', file, file.name));
-    return this.http.post(this.uploadUrl+'/upload', formData, {
-      reportProgress: true,
-      observe: 'events'
-    }).pipe(
-      map(event => this.getEventMessage(event)),
-      catchError(this.handleError)
+  upload(files: File[]): Observable<any> {
+    const formData: FormData = new FormData();
+    files.forEach(file => formData.append('files[]', file, file.name));
+
+    const headers = new HttpHeaders({
+      'Accept': 'application/json'
+    });
+
+    const req = new HttpRequest('POST', this.baseUrl, formData, {
+      headers: headers,
+      reportProgress: true
+    });
+
+    return this.http.request(req).pipe(
+      takeUntil(this.cancelUpload$),
+      map(event => this.getEventMessage(event, files))
     );
   }
 
-  private getEventMessage(event: any): number {
-    switch (event.type) {
-      case HttpEventType.UploadProgress:
-        return Math.round(100 * event.loaded / event.total);
-      case HttpEventType.Response:
-        return 100;
-      default:
-        return 0;
-    }
+  cancelUpload(): void {
+    this.cancelUpload$.next();
   }
 
-  private handleError(error: HttpErrorResponse) {
-    console.error('Upload failed', error);
-    return throwError('Upload failed. Please try again later.');
+  private getEventMessage(event: HttpEvent<any>, files: File[]): any {
+    switch (event.type) {
+      case HttpEventType.UploadProgress:
+        return { progress: Math.round(100 * event.loaded / event.total!), files: files.map(file => ({ name: file.name, status: 'Uploading' })) };
+      case HttpEventType.Response:
+        return { progress: 100, files: files.map(file => ({ name: file.name, status: 'Uploaded' })) };
+      default:
+        return { progress: 0, files: files.map(file => ({ name: file.name, status: 'Pending' })) };
+    }
   }
 }
