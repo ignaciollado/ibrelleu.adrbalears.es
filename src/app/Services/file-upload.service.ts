@@ -7,7 +7,9 @@ import { map, takeUntil } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FileUploadService {
-  private baseUrl = 'https://docs.ibrelleu.es/public/index.html/upload';
+  //private baseUrl = 'https://docs.ibrelleu.es/upload';
+  private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
+
   private cancelUpload$ = new Subject<void>();
 
   constructor(private http: HttpClient) {}
@@ -17,7 +19,10 @@ export class FileUploadService {
     files.forEach(file => formData.append('files[]', file, file.name));
 
     const headers = new HttpHeaders({
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
     });
 
     const req = new HttpRequest('POST', this.baseUrl, formData, {
