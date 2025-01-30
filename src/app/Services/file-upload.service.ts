@@ -19,6 +19,7 @@ export class FileUploadService {
     files.forEach(file => formData.append('files[]', file, file.name));
 
     const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
       'Accept': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE',
