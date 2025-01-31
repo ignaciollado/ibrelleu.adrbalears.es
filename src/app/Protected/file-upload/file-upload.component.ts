@@ -7,37 +7,63 @@ import { FileUploadService } from '../../Services/file-upload.service';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent {
-  files: File[] = [];
-  progress: number[] = [];
-  statuses: { name: string, status: string }[] = [];
-  errorMessage: string = '';
+  displayedColumns: string[] = ['fileName', 'progress', 'status'];
+  selectedFiles: File[] = [];
+  existingFiles: string[] = [];
+  uploadProgress: { [key: string]: number } = {};
+  uploadError: { [key: string]: string } = {};
+  uploadSuccess: { [key: string]: string } = {};
 
-  constructor(private uploadService: FileUploadService) {}
+  constructor(private fileUploadService: FileUploadService) {}
 
-  onFilesSelected(event: any): void {
-    this.files = Array.from(event.target.files);
-    this.progress = new Array(this.files.length).fill(0);
-    this.statuses = this.files.map(file => ({ name: file.name, status: 'Pending' }));
+  ngOnInit(): void {
+    this.loadExistingFiles();
   }
 
-  uploadFiles(): void {
-    if (this.files.length > 0) {
-      this.uploadService.upload(this.files).subscribe(
-        event => {
-          if (event.progress !== undefined) {
-            this.progress = this.progress.map((p, index) => event.progress);
-            this.statuses = event.files;
-          }
-        },
-        error => this.errorMessage = 'Error al cargar los archivos: ' + error.message
-      );
-    }
+  onFileSelected(event: any): void {
+    this.selectedFiles = Array.from(event.target.files);
+    this.uploadProgress = {};
+    this.uploadError = {};
+    this.uploadSuccess = {};
   }
 
-  cancelUpload(): void {
-    this.uploadService.cancelUpload();
-    this.progress = new Array(this.files.length).fill(0);
-    this.statuses = this.files.map(file => ({ name: file.name, status: 'Cancelled' }));
-    this.errorMessage = 'Carga cancelada';
+  onUpload(): void {
+    this.fileUploadService.upload(this.selectedFiles).subscribe(
+      event => {
+        if (event.status === 'progress') {
+          this.uploadProgress[event.fileName] = event.percentDone;
+        } else if (event.status === 'success') {
+          this.uploadSuccess[event.fileName] = 'Upload successful';
+        } else if (event.status === 'error') {
+          this.uploadError[event.fileName] = event.message || 'Upload failed. Please try again.';
+        }
+      },
+      error => {
+        this.uploadError['general'] = 'Upload failed. Please try again.';
+        console.error('Upload failed', error);
+      }
+    );
+  }
+
+  onCancelUpload(): void {
+    this.fileUploadService.cancelUpload();
+    this.selectedFiles.forEach(file => {
+      this.uploadProgress[file.name] = 0;
+    });
+  }
+  
+  loadExistingFiles(): void {
+    this.fileUploadService.listFiles().subscribe(
+      response => {
+        if (response.status === 'success') {
+          this.existingFiles = response.files;
+        } else {
+          console.error('Failed to load existing files', response.message);
+        }
+      },
+      error => {
+        console.error('Failed to load existing files', error);
+      }
+    );
   }
 }

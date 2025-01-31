@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpEventType, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpRequest } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class FileUploadService {
   //private baseUrl = 'https://docs.ibrelleu.es/upload';
-  private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
+  //private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
+  private apiUrl = '../../assets/phpAPI/FileUploadController.php';
+  private listFilesUrl = '../../assets/phpAPI/Listfiles.php';
 
   private cancelUpload$ = new Subject<void>();
 
@@ -16,24 +19,17 @@ export class FileUploadService {
 
   upload(files: File[]): Observable<any> {
     const formData: FormData = new FormData();
-    files.forEach(file => formData.append('files[]', file, file.name));
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, DELETE',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With'
+    files.forEach(file => {
+      formData.append('files[]', file, file.name);
     });
 
-    const req = new HttpRequest('POST', this.baseUrl, formData, {
-      headers: headers,
+    const req = new HttpRequest('POST', this.apiUrl, formData, {
       reportProgress: true
     });
 
     return this.http.request(req).pipe(
-      takeUntil(this.cancelUpload$),
-      map(event => this.getEventMessage(event, files))
+      map(event => this.getEventMessage(event, files)),
+      takeUntil(this.cancelUpload$)
     );
   }
 
@@ -41,14 +37,24 @@ export class FileUploadService {
     this.cancelUpload$.next();
   }
 
+  listFiles(): Observable<any> {
+    return this.http.get(this.listFilesUrl).pipe(
+      map(response => response)
+    );
+  }
+
   private getEventMessage(event: HttpEvent<any>, files: File[]): any {
     switch (event.type) {
       case HttpEventType.UploadProgress:
-        return { progress: Math.round(100 * event.loaded / event.total!), files: files.map(file => ({ name: file.name, status: 'Uploading' })) };
+        const percentDone = Math.round(100 * event.loaded / (event.total ?? 1));
+        const fileName = files.find(file => file.size === event.total)?.name || 'unknown';
+        return { status: 'progress', fileName, percentDone };
+
       case HttpEventType.Response:
-        return { progress: 100, files: files.map(file => ({ name: file.name, status: 'Uploaded' })) };
+        return event.body;
+
       default:
-        return { progress: 0, files: files.map(file => ({ name: file.name, status: 'Pending' })) };
+        return `Unhandled event: ${event.type}`;
     }
   }
 }
