@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpEventType, HttpRequest } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpRequest } from '@angular/common/http';
+import { Observable, Subject, throwError } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
 @Injectable({
