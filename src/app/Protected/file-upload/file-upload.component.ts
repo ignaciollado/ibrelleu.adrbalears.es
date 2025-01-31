@@ -1,45 +1,81 @@
-import { Component } from '@angular/core'
-import { FileUploadService } from '../../Services/file-upload.service'
-import { MatTableDataSource } from '@angular/material/table'
+import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { FileUploadService } from '../../Services/file-upload.service';
 
-interface FileUploadStatus {
-  fileName: string;
-  status: string;
+export interface Documentos {
+  [key: string]: string
 }
 
 @Component({
-  selector: 'adr-file-upload',
-  templateUrl: './file-upload.component.html',
-  styleUrl: './file-upload.component.scss'
+  selector: 'app-file-upload',
+  templateUrl: './file-upload.component.html'
 })
 
 export class FileUploadComponent {
-    selectedFiles: File[] = []
-    uploadProgress: number = 0
-    uploadError: string = ''
-    displayedColumns: string[] = ['fileName', 'status']
-    dataSource = new MatTableDataSource<FileUploadStatus>()
+  displayedColumns: string[] = ['fileName', 'progress', 'status'];
+  selectedFiles: File[] = [];
+  existingFiles: { [key: string]: string } = {};
+  uploadProgress: { [key: string]: number } = {};
+  uploadError: { [key: string]: string } = {};
+  uploadSuccess: { [key: string]: string } = {};
 
   constructor(private fileUploadService: FileUploadService) {}
 
-  onFileSelected(event: any) {
-      this.selectedFiles = Array.from(event.target.files);
-      this.dataSource.data = this.selectedFiles.map(file => ({ fileName: file.name, status: 'Pending' }))
+  ngOnInit(): void {
+    this.loadExistingFiles();
   }
 
-  onUpload() {
-    this.uploadProgress = 0;
-    this.uploadError = '';
+  onFileSelected(event: any): void {
+    this.selectedFiles = Array.from(event.target.files);
+    this.uploadProgress = {};
+    this.uploadError = {};
+    this.uploadSuccess = {};
+  }
 
-    this.fileUploadService.upload(this.selectedFiles).subscribe(
-      progress => {this.uploadProgress = progress
-                    console.log ("progress: ", this.uploadProgress)
+  onUpload(): void {
+    this.fileUploadService.upload(this.selectedFiles, 0, 'accounts').subscribe(
+      event => {
+        if (event.status === 'progress') {
+          this.uploadProgress[event.fileName] = event.percentDone;
+        } else if (event.status === 'success') {
+          this.uploadSuccess[event.fileName] = 'Upload successful';
+        } else if (event.status === 'error') {
+          this.uploadError[event.fileName] = event.message || 'Upload failed. Please try again.';
+        }
       },
-      error => {this.uploadError = error
-                console.log ("error: ", this.uploadError)
-                },
-      () => {
-        this.dataSource.data = this.dataSource.data.map(file => ({ ...file, status: 'Uploaded' }));
+      error => {
+        this.uploadError['general'] = 'Upload failed. Please try again.';
+        console.error('Upload failed', error);
+      }
+    );
+  }
+
+  onCancelUpload(): void {
+    this.fileUploadService.cancelUpload();
+    this.selectedFiles.forEach(file => {
+      this.uploadProgress[file.name] = 0;
+    });
+  }
+  
+  loadExistingFiles(): void {
+    this.fileUploadService.listFiles(0,'accounts').subscribe(
+      (response: any) => {
+        if (response.status === 'success') {
+          /* this.existingFiles = Object.values(response.files).reduce((acc, file, index) => {
+            acc[index] = file;
+            return acc;
+          }, {} as { [key: string]: string }); */
+          console.log (Object.values(response.files).reduce((acc, file, index) => {
+            acc[index] = file;
+            return acc;
+          }, {} as { [key: string]: string }))
+          
+        } else {
+          console.error('Failed to load existing files', response.message);
+        }
+      },
+      error => {
+        console.error('Failed to load existing files', error);
       }
     );
   }

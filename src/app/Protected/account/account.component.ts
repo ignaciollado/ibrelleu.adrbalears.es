@@ -56,12 +56,12 @@ export class AccountComponent {
 
   applyFilter(event: any) {
     const filterValue = (event.target as HTMLInputElement).value
-    console.log (filterValue)
+    /* console.log (filterValue) */
     this.dataSource.filter = filterValue.trim().toLowerCase()
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-    console.log (this.dataSource)
+/*     console.log (this.dataSource) */
   }
 
   selectedValue(item: any) {

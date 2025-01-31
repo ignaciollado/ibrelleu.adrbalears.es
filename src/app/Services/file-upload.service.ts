@@ -1,41 +1,72 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEventType, HttpErrorResponse } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
-import { throwError, Observable } from 'rxjs'
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpParams, HttpRequest } from '@angular/common/http';
+import { Observable, Subject, throwError } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class FileUploadService {
-  private uploadUrl = 'https://docs.ibrelleu.es/public/index.php';
+  //private baseUrl = 'https://docs.ibrelleu.es/upload';
+  //private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
+  private apiUrl = '../../assets/phpAPI/FileUploadController.php';
+  private listFilesUrl = '../../assets/phpAPI/Listfiles.php';
 
-  constructor(private http: HttpClient) { }
+  private cancelUpload$ = new Subject<void>();
 
-  upload(files: File[]): Observable<number> {
-    const formData = new FormData()
-    files.forEach(file => formData.append('files', file, file.name));
-    return this.http.post(this.uploadUrl+'/upload', formData, {
-      reportProgress: true,
-      observe: 'events'
-    }).pipe(
-      map(event => this.getEventMessage(event)),
-      catchError(this.handleError)
+  constructor(private http: HttpClient) {}
+
+  upload(files: File[], id: number, tipocarpeta: string): Observable<any> {
+    const formData: FormData = new FormData();
+    files.forEach(file => {
+      formData.append('files[]', file, file.name);
+    });
+
+    const req = new HttpRequest('POST', this.apiUrl, formData, {
+      reportProgress: true
+    });
+
+    return this.http.request(req).pipe(
+      map(event => this.getEventMessage(event, files)),
+      takeUntil(this.cancelUpload$)
     );
   }
 
-  private getEventMessage(event: any): number {
+  cancelUpload(): void {
+    this.cancelUpload$.next();
+  }
+
+  listFiles(id: number, tipocarpeta: string): Observable<any[]> {
+    let params = new HttpParams().set('id', id).set('tipocarpeta', tipocarpeta);
+    return this.http.get<any[]>(this.listFilesUrl, { params })
+  }
+
+  private getEventMessage(event: HttpEvent<any>, files: File[]): any {
     switch (event.type) {
       case HttpEventType.UploadProgress:
-        return Math.round(100 * event.loaded / event.total);
+        const percentDone = Math.round(100 * event.loaded / (event.total ?? 1));
+        const fileName = files.find(file => file.size === event.total)?.name || 'unknown';
+        return { status: 'progress', fileName, percentDone };
+
       case HttpEventType.Response:
-        return 100;
+        return event.body;
+
       default:
-        return 0;
+        return `Unhandled event: ${event.type}`;
     }
   }
 
   private handleError(error: HttpErrorResponse) {
-    console.error('Upload failed', error);
-    return throwError('Upload failed. Please try again later.');
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side or network error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
   }
 }
