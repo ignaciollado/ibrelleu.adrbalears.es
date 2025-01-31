@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpParams, HttpRequest } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 
@@ -18,7 +18,7 @@ export class FileUploadService {
 
   constructor(private http: HttpClient) {}
 
-  upload(files: File[]): Observable<any> {
+  upload(files: File[], id: number, tipocarpeta: string): Observable<any> {
     const formData: FormData = new FormData();
     files.forEach(file => {
       formData.append('files[]', file, file.name);
@@ -38,8 +38,9 @@ export class FileUploadService {
     this.cancelUpload$.next();
   }
 
-  listFiles(): Observable<any[]> {
-    return this.http.get<any[]>(this.listFilesUrl)
+  listFiles(id: number, tipocarpeta: string): Observable<any[]> {
+    let params = new HttpParams().set('id', id).set('tipocarpeta', tipocarpeta);
+    return this.http.get<any[]>(this.listFilesUrl, { params })
   }
 
   private getEventMessage(event: HttpEvent<any>, files: File[]): any {

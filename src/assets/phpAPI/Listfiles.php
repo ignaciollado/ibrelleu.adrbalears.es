@@ -1,5 +1,15 @@
 <?php
-$uploadDirectory = '../docs/uploads/';
+$uploadDirectory = '../docs/uploads/accounts'; /* dinámico por accounts, cuentas... y, además, por id */
+
+if (isset($_GET['tipocarpeta'])) {
+    $tipoCarpeta=  htmlspecialchars($_GET['tipocarpeta']);
+    $uploadDirectory += $tipoCarpeta+"/";
+}
+if (isset($_GET['id'])) {
+    $id = htmlspecialchars($_GET['id']);
+    $uploadDirectory += $id+"/";
+}
+echo $uploadDirectory;
 
 if (is_dir($uploadDirectory)) {
     $files = array_diff(scandir($uploadDirectory), array('.', '..'));

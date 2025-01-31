@@ -33,7 +33,7 @@ export class FileUploadComponent {
   }
 
   onUpload(): void {
-    this.fileUploadService.upload(this.selectedFiles).subscribe(
+    this.fileUploadService.upload(this.selectedFiles, 0, 'accounts').subscribe(
       event => {
         if (event.status === 'progress') {
           this.uploadProgress[event.fileName] = event.percentDone;
@@ -58,10 +58,18 @@ export class FileUploadComponent {
   }
   
   loadExistingFiles(): void {
-    this.fileUploadService.listFiles().subscribe(
+    this.fileUploadService.listFiles(0,'accounts').subscribe(
       (response: any) => {
         if (response.status === 'success') {
-          //this.existingFiles = Object.values(response.files);  /* AQUÍ */
+          /* this.existingFiles = Object.values(response.files).reduce((acc, file, index) => {
+            acc[index] = file;
+            return acc;
+          }, {} as { [key: string]: string }); */
+          console.log (Object.values(response.files).reduce((acc, file, index) => {
+            acc[index] = file;
+            return acc;
+          }, {} as { [key: string]: string }))
+          
         } else {
           console.error('Failed to load existing files', response.message);
         }

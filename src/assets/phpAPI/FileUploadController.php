@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['files'])) {
         //$uploadDirectory = '../assets/phpAPI/uploads/';
-        $uploadDirectory = '../docs/uploads/';
+        $uploadDirectory = '../docs/uploads/accounts/'; /* tendrá que ser dinámico para accounts, contacts, cedentes, emprendedores ... y además por id */
         $errors = [];
         $uploadedFiles = [];
 
