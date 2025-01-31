@@ -8,6 +8,7 @@ import { LegalFormDTO } from '../../Models/legal-form.dto';
 import { map, Observable, startWith } from 'rxjs';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { AccountDTO } from '../../Models/account.dto';
+import { CustomValidatorsService } from '../../Services/custom-validators.service';
 
 @Component({
   selector: 'adr-account-detail',
@@ -38,42 +39,21 @@ export class AccountDetailComponent implements CanComponentDeactivate {
 
   debtsSitesList: any[] = [];
 
-  dniLetter = {
-    0: 'T',
-    1: 'R',
-    2: 'W',
-    3: 'A',
-    4: 'G',
-    5: 'M',
-    6: 'Y',
-    7: 'F',
-    8: 'P',
-    9: 'D',
-    10: 'X',
-    11: 'B',
-    12: 'N',
-    13: 'J',
-    14: 'Z',
-    15: 'S',
-    16: 'Q',
-    17: 'V',
-    18: 'H',
-    19: 'L',
-    20: 'C',
-    21: 'K',
-    22: 'E',
-  };
-
   constructor(
     private dataService: DataService,
-    private countriesService: CountriesService
+    private countriesService: CountriesService,
+    private customValidatorsService: CustomValidatorsService
   ) {
     this.theForm = new FormGroup({
       // Identificació
       legalFormat: new FormControl('', [Validators.required]),
       contact: new FormControl('', [Validators.required]),
       companyName: new FormControl('', [Validators.required]),
-      nif: new FormControl('', [Validators.required]),
+      nif: new FormControl('', [
+        Validators.required,
+        Validators.minLength(9),
+        this.customValidatorsService.dniNieCifValidator(),
+      ]),
       tradeName: new FormControl('', Validators.required),
       paradesMercat: new FormControl(''),
       collaborationCompanys: new FormControl(''),
@@ -177,8 +157,11 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       // Estructura económica
       financingDescription: new FormControl('', Validators.maxLength(1024)),
       debtsCheck: new FormControl(''),
-      debtsList: new FormControl(''),
-      debtsDescription: new FormControl('', Validators.maxLength(1024)),
+      debtsList: new FormControl({ value: '', disabled: true }),
+      debtsDescription: new FormControl(
+        { value: '', disabled: true },
+        Validators.maxLength(1024)
+      ),
       lastYearFacturation: new FormControl(''),
       lastYearResult: new FormControl(''),
       lastYearResultDescription: new FormControl(
@@ -292,7 +275,9 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     this.dataService.getAllZipCodes().subscribe((zpCodes: ZipCodesIBDTO[]) => {
       this.zipCodeList = zpCodes;
       this.options = zpCodes;
+
      /*  console.log(this.options); */
+
     });
   }
 
@@ -332,44 +317,27 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   }
 
   // He implementado esta lógica como nexo a las llamadas de los métodos que realizan los cambios
-  afterCheckChanges(
-    event: any,
-    checkName: string,
-    checkFormName?: string[],
-    className?: string
-  ) {
+  afterCheckChanges(event: any, checkName: string, checkFormName: string[]) {
     let checkValue = this.theForm.get(checkName).value;
-    let afterCheckForms: any[] = [];
-
-    if (checkFormName != undefined) {
-      checkFormName.forEach((form) => {
-        afterCheckForms.push(this.theForm.get(form));
-      });
-      this.changeEnable(afterCheckForms, checkValue);
-    } else if (className != undefined) {
-      let elements = document.querySelectorAll('.' + className);
-      this.changeDisplay(elements, checkValue);
-    }
+    this.changeEnable(checkFormName, checkValue);
   }
 
   changeEnable(afterCheckForms: any[], check: boolean) {
     afterCheckForms.forEach((form) => {
       if (check) {
-        form.enable();
+        this.theForm.get(form).enable();
       } else {
-        form.disable();
+        this.theForm.get(form).disable();
       }
     });
   }
 
-  changeDisplay(elements: any, check: boolean) {
-    elements.forEach((element: any) => {
-      if (check) {
-        element.setAttribute('style', 'display: grid');
-      } else {
-        element.setAttribute('style', 'display: none');
-      }
-    });
+  deleteNif(event: any) {
+    let nifValue = this.theForm.get('nif').value;
+
+    if (nifValue != '' && nifValue.length != 9 && nifValue.length != 0) {
+      this.theForm.get('nif').setValue('');
+    }
   }
 
   calculateTotalWorkers(event: any) {
@@ -396,15 +364,4 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       }
     }
   }
-
-  // Pendiente de revisar
-  // calculateDNI(event: any) {
-  //   if (event.key != 'Backspace') {
-  //     let dni = this.theForm.get('nif').value;
-  //     if (typeof parseInt(dni) === 'number' && dni.length == 8) {
-  //       let dniLetterResult = this.dniLetter[parseInt(dni) % 23];
-  //       this.theForm.get('nif').setValue(dni + dniLetterResult);
-  //     }
-  //   }
-  // }
 }

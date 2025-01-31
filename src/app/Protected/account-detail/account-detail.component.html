@@ -12,7 +12,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Contacte</mat-label>
+          <mat-label>Contacte Principal</mat-label>
           <input matInput formControlName="contact" aria-label="contacte principal és un camp obligatori.">
         </mat-form-field>
 
@@ -22,7 +22,8 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>NIF</mat-label>
-          <input matInput formControlName="nif" aria-label="El nif és un camp obligatori." maxlength="9">
+          <input matInput formControlName="nif" aria-label="El nif és un camp obligatori." minlength="9"
+            (blur)="deleteNif($event)">
         </mat-form-field>
 
         <mat-form-field>
@@ -168,7 +169,7 @@
         </mat-form-field>
 
         <mat-checkbox formControlName="checkProduct"
-          (click)="afterCheckChanges($event, 'checkProduct', ['descriptionProduct', 'descriptionProductProcess'], undefined)">Disposa
+          (click)="afterCheckChanges($event, 'checkProduct', ['descriptionProduct', 'descriptionProductProcess'])">Disposa
           de producte propi?</mat-checkbox>
         <mat-form-field>
           <mat-label>Descripció producte o servei</mat-label>
@@ -181,14 +182,14 @@
             placeholder="Write a description about the company product process"></textarea>
         </mat-form-field>
         <mat-checkbox formControlName="brandCheck"
-          (click)="afterCheckChanges($event, 'brandCheck', ['brandDescription'], undefined)">Disposa de marques
+          (click)="afterCheckChanges($event, 'brandCheck', ['brandDescription'])">Disposa de marques
           pròpies/registrades?</mat-checkbox>
         <mat-form-field>
           <mat-label>Nom de les marques</mat-label>
           <textarea formControlName="brandDescription" matInput placeholder="Write about the brands names"></textarea>
         </mat-form-field>
         <mat-checkbox formControlName="stockCheck"
-          (click)="afterCheckChanges($event, 'stockCheck', ['stockDescription'], undefined)">Disposa
+          (click)="afterCheckChanges($event, 'stockCheck', ['stockDescription'])">Disposa
           d'inventari?</mat-checkbox>
         <mat-form-field>
           <mat-label>Descripció de l'estat de l'estoc</mat-label>
@@ -229,7 +230,7 @@
       </section>
       <section> <!-- Detall exportació/importació-->
         <mat-checkbox formControlName="exportCheck"
-          (click)="afterCheckChanges($event, 'exportCheck', ['exportAmbit', 'exportDescription'], undefined)">Exporta?</mat-checkbox>
+          (click)="afterCheckChanges($event, 'exportCheck', ['exportAmbit', 'exportDescription'])">Exporta?</mat-checkbox>
         <mat-form-field>
           <mat-label>Àmbit geogràfic?</mat-label>
           <mat-select formControlName="exportAmbit" placeholder="Choose one option">
@@ -245,7 +246,7 @@
         </mat-form-field>
 
         <mat-checkbox formControlName="importCheck"
-          (click)="afterCheckChanges($event, 'importCheck', ['importAmbit','importDescription'], undefined)">Importa?</mat-checkbox>
+          (click)="afterCheckChanges($event, 'importCheck', ['importAmbit','importDescription'])">Importa?</mat-checkbox>
         <mat-form-field>
           <mat-label>Àmbit geogràfic?</mat-label>
           <mat-select formControlName="importAmbit" placeholder="Choose one option">
@@ -354,9 +355,9 @@
         </mat-form-field>
 
         <mat-checkbox formControlName="debtsCheck"
-          (click)="afterCheckChanges($event, 'debtsCheck', undefined, 'afterCheckDebts')">L'empresa té
+          (click)="afterCheckChanges($event, 'debtsCheck', ['debtsList', 'debtsDescription'])">L'empresa té
           deutes?</mat-checkbox>
-        <mat-form-field class="afterCheckDebts" style="display: none;">
+        <mat-form-field>
           <mat-label>Amb qui té deutes actualment?</mat-label>
           <mat-select formControlName="debtsList" multiple>
             @for (debtsSitesItem of debtsSitesList; track debtsSitesItem) {
@@ -364,7 +365,7 @@
             }
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="afterCheckDebts" style="display: none;">
+        <mat-form-field>
           <mat-label>Comentari sobre l'endeutament</mat-label>
           <textarea matInput formControlName="debtsDescription"
             placeholder="Write more information about the debts"></textarea>
@@ -425,18 +426,20 @@
       </section>
     </mat-tab>
     <mat-tab label="Documentació (NACHO)">
-        <section>
-            <mat-radio-button class="example-margin">Liquidació anual de l'IVA (model 390) dels 3 últims anys</mat-radio-button>
-            <mat-radio-button class="example-margin">Liquidació IRPF (model 190) dels 3 últims anys</mat-radio-button>
+      <section>
+        <mat-radio-button class="example-margin">Liquidació anual de l'IVA (model 390) dels 3 últims
+          anys</mat-radio-button>
+        <mat-radio-button class="example-margin">Liquidació IRPF (model 190) dels 3 últims anys</mat-radio-button>
 
-            <mat-radio-button class="example-margin">Declaració IRPF (model 100) dels 3 últims anys</mat-radio-button>
-            <mat-radio-button class="example-margin">Pagaments a compte IRPF (model 130 o 131) del 4rt Trimestre últim any</mat-radio-button>
+        <mat-radio-button class="example-margin">Declaració IRPF (model 100) dels 3 últims anys</mat-radio-button>
+        <mat-radio-button class="example-margin">Pagaments a compte IRPF (model 130 o 131) del 4rt Trimestre últim
+          any</mat-radio-button>
 
-            <mat-radio-button class="example-margin">Fotocòpia CIF empresa</mat-radio-button>
-            <mat-radio-button class="example-margin">Escriptures de constitució i modificació</mat-radio-button>
+        <mat-radio-button class="example-margin">Fotocòpia CIF empresa</mat-radio-button>
+        <mat-radio-button class="example-margin">Escriptures de constitució i modificació</mat-radio-button>
 
-            <mat-radio-button class="example-margin">Escriptures poders de la societat (si escau)</mat-radio-button>
-            <mat-radio-button class="example-margin">Pèrdues i guanys dels 3 últims anys</mat-radio-button>
+        <mat-radio-button class="example-margin">Escriptures poders de la societat (si escau)</mat-radio-button>
+        <mat-radio-button class="example-margin">Pèrdues i guanys dels 3 últims anys</mat-radio-button>
 
             <mat-radio-button class="example-margin">Balanç de situació dels 3 últims anys</mat-radio-button>
             <mat-radio-button class="example-margin">Impost de societats (model 200) dels 3 últims anys</mat-radio-button>
