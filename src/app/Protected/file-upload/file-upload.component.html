@@ -5,10 +5,10 @@
     <button mat-raised-button color="warn" (click)="onCancelUpload()">Cancel Upload</button>
   </div>
   <h3>Existing Files</h3>
-  <table mat-table [dataSource]="existingFiles" class="mat-elevation-z8">
+  <table mat-table [dataSource]="existingFiles | keyvalue" class="mat-elevation-z8">
     <ng-container matColumnDef="fileName">
       <th mat-header-cell *matHeaderCellDef> File Name </th>
-      <td mat-cell *matCellDef="let file"> {{file}} </td>
+      <td mat-cell *matCellDef="let file"> {{file.value}} </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="['fileName']"></tr>

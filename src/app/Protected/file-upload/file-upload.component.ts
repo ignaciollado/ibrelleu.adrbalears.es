@@ -2,14 +2,19 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { FileUploadService } from '../../Services/file-upload.service';
 
+export interface Documentos {
+  [key: string]: string
+}
+
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html'
 })
+
 export class FileUploadComponent {
   displayedColumns: string[] = ['fileName', 'progress', 'status'];
   selectedFiles: File[] = [];
-  existingFiles: string[] = [];
+  existingFiles: { [key: string]: string } = {};
   uploadProgress: { [key: string]: number } = {};
   uploadError: { [key: string]: string } = {};
   uploadSuccess: { [key: string]: string } = {};
@@ -54,9 +59,9 @@ export class FileUploadComponent {
   
   loadExistingFiles(): void {
     this.fileUploadService.listFiles().subscribe(
-      response => {
+      (response: any) => {
         if (response.status === 'success') {
-          this.existingFiles = response.files;
+          this.existingFiles = Object.values(response.files);
         } else {
           console.error('Failed to load existing files', response.message);
         }

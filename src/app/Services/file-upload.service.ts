@@ -7,6 +7,7 @@ import { map, takeUntil } from 'rxjs/operators';
   providedIn: 'root'
 })
 
+
 export class FileUploadService {
   //private baseUrl = 'https://docs.ibrelleu.es/upload';
   //private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
@@ -37,10 +38,8 @@ export class FileUploadService {
     this.cancelUpload$.next();
   }
 
-  listFiles(): Observable<any> {
-    return this.http.get(this.listFilesUrl).pipe(
-      map(response => response)
-    );
+  listFiles(): Observable<any[]> {
+    return this.http.get<any[]>(this.listFilesUrl)
   }
 
   private getEventMessage(event: HttpEvent<any>, files: File[]): any {
