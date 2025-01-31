@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://docs.ibrelleu.es",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

@@ -1,21 +1,46 @@
-
-  <mat-label>Documento:</mat-label>
-  <input type="file" class="file-input"
-    [accept]="requiredFileType"
-    (change)="onFileSelected($event)" #fileUpload>
-
-    <section class="file-upload">
-      {{fileName || "No file uploaded yet."}}
-      <button mat-mini-fab color="primary" class="upload-btn"
-        (click)="fileUpload.click()">
-        <mat-icon>attach_file</mat-icon>
-      </button>
-    </section>
-
-    <section class="progress">
-      <mat-progress-bar class="progress-bar" mode="determinate"
-        [value]="uploadProgress" *ngIf="uploadProgress">
-      </mat-progress-bar>
-      <mat-icon class="cancel-upload" (click)="cancelUpload()" 
-        *ngIf="uploadProgress">delete_forever</mat-icon>
-    </section>
+<section>
+  <div>
+    <input type="file" (change)="onFileSelected($event)" multiple>
+    <button mat-raised-button color="primary" (click)="onUpload()">Upload</button>
+    <button mat-raised-button color="warn" (click)="onCancelUpload()">Cancel Upload</button>
+  </div>
+  <h3>Existing Files</h3>
+  <table mat-table [dataSource]="existingFiles | keyvalue" class="mat-elevation-z8">
+    <ng-container matColumnDef="fileName">
+      <th mat-header-cell *matHeaderCellDef> File Name </th>
+      <td mat-cell *matCellDef="let file"> {{file.value}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="['fileName']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['fileName'];"></tr>
+  </table>
+  
+  <h3>Files to Upload</h3>
+  <table mat-table [dataSource]="selectedFiles" class="mat-elevation-z8">
+    <ng-container matColumnDef="fileName">
+      <th mat-header-cell *matHeaderCellDef> File Name </th>
+      <td mat-cell *matCellDef="let file"> {{file.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="progress">
+      <th mat-header-cell *matHeaderCellDef> Progress </th>
+      <td mat-cell *matCellDef="let file">
+        <mat-progress-bar *ngIf="uploadProgress[file.name] !== undefined"
+                          [value]="uploadProgress[file.name]"></mat-progress-bar>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let file">
+        <span *ngIf="uploadError[file.name]" class="error">{{ uploadError[file.name] }}</span>
+        <span *ngIf="uploadSuccess[file.name]" class="success">{{ uploadSuccess[file.name] }}</span>
+        <span *ngIf="!uploadError[file.name] && !uploadSuccess[file.name] && uploadProgress[file.name] === 100">Uploaded</span>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div *ngIf="uploadError['general']" class="error">{{ uploadError['general'] }}</div>
+</section>

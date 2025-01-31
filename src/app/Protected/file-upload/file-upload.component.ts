@@ -1,56 +1,82 @@
-import { HttpClient, HttpEventType } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
-import { finalize, Subscription } from 'rxjs';
+import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { FileUploadService } from '../../Services/file-upload.service';
+
+export interface Documentos {
+  [key: string]: string
+}
 
 @Component({
-  selector: 'adr-file-upload',
-  templateUrl: './file-upload.component.html',
-  styleUrl: './file-upload.component.scss'
+  selector: 'app-file-upload',
+  templateUrl: './file-upload.component.html'
 })
 
 export class FileUploadComponent {
-  @Input() requiredFileType: string | undefined
-  fileName = ''
-  uploadProgress: number | undefined 
-  uploadSub: Subscription | undefined
+  displayedColumns: string[] = ['fileName', 'progress', 'status'];
+  selectedFiles: File[] = [];
+  existingFiles: { [key: string]: string } = {};
+  uploadProgress: { [key: string]: number } = {};
+  uploadError: { [key: string]: string } = {};
+  uploadSuccess: { [key: string]: string } = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private fileUploadService: FileUploadService) {}
 
-  onFileSelected(event: any) {
+  ngOnInit(): void {
+    this.loadExistingFiles();
+  }
 
-    const file:File = event.target.files[0];
+  onFileSelected(event: any): void {
+    this.selectedFiles = Array.from(event.target.files);
+    this.uploadProgress = {};
+    this.uploadError = {};
+    this.uploadSuccess = {};
+  }
 
-    if (file) {
-
-        this.fileName = file.name;
-
-        const formData = new FormData();
-
-        formData.append("thumbnail", file);
-
-        const upload$ = this.http.post("/docs/thumbnail-upload", formData, {
-          reportProgress: true,
-          responseType: 'json',
-          observe: 'events'
-      }) .pipe(
-        finalize(() => this.reset())
-    );
-
-    this.uploadSub = upload$.subscribe(event => {
-      if (event.type == HttpEventType.UploadProgress) {
-        this.uploadProgress = Math.round(100 * (event.loaded / event.total));
+  onUpload(): void {
+    this.fileUploadService.upload(this.selectedFiles, 0, 'accounts').subscribe(
+      event => {
+        if (event.status === 'progress') {
+          this.uploadProgress[event.fileName] = event.percentDone;
+        } else if (event.status === 'success') {
+          this.uploadSuccess[event.fileName] = 'Upload successful';
+        } else if (event.status === 'error') {
+          this.uploadError[event.fileName] = event.message || 'Upload failed. Please try again.';
+        }
+      },
+      error => {
+        this.uploadError['general'] = 'Upload failed. Please try again.';
+        console.error('Upload failed', error);
       }
-    })
-    }
-}
+    );
+  }
 
-cancelUpload() {
-  this.uploadSub.unsubscribe();
-  this.reset();
-}
-
-reset() {
-  this.uploadProgress = null;
-  this.uploadSub = null;
-}
+  onCancelUpload(): void {
+    this.fileUploadService.cancelUpload();
+    this.selectedFiles.forEach(file => {
+      this.uploadProgress[file.name] = 0;
+    });
+  }
+  
+  loadExistingFiles(): void {
+    this.fileUploadService.listFiles(0,'accounts').subscribe(
+      (response: any) => {
+        if (response.status === 'success') {
+          /* this.existingFiles = Object.values(response.files).reduce((acc, file, index) => {
+            acc[index] = file;
+            return acc;
+          }, {} as { [key: string]: string }); */
+          console.log (Object.values(response.files).reduce((acc, file, index) => {
+            acc[index] = file;
+            return acc;
+          }, {} as { [key: string]: string }))
+          
+        } else {
+          console.error('Failed to load existing files', response.message);
+        }
+      },
+      error => {
+        console.error('Failed to load existing files', error);
+      }
+    );
+  }
 }

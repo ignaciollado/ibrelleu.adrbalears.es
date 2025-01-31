@@ -292,7 +292,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     this.dataService.getAllZipCodes().subscribe((zpCodes: ZipCodesIBDTO[]) => {
       this.zipCodeList = zpCodes;
       this.options = zpCodes;
-      console.log(this.options);
+     /*  console.log(this.options); */
     });
   }
 
@@ -303,7 +303,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   }
 
   onSubmit() {
-    console.log(this.theForm.value);
+    /* console.log(this.theForm.value); */
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 

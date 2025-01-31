@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver, private jwtHelper: JwtHelperService) { }
 
   ngOnInit() {
-    console.log (this.jwtHelper.decodeToken(this.theToken))
+    /* console.log (this.jwtHelper.decodeToken(this.theToken)) */
     
     if (this.theToken) {
       this.actualUser = this.jwtHelper.decodeToken(this.theToken).name
