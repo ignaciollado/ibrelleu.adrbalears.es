@@ -61,7 +61,7 @@ export class FileUploadComponent {
     this.fileUploadService.listFiles().subscribe(
       (response: any) => {
         if (response.status === 'success') {
-          this.existingFiles = Object.values(response.files);
+          //this.existingFiles = Object.values(response.files);  /* AQUÍ */
         } else {
           console.error('Failed to load existing files', response.message);
         }
