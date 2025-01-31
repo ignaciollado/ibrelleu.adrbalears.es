@@ -272,7 +272,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     this.dataService.getAllZipCodes().subscribe((zpCodes: ZipCodesIBDTO[]) => {
       this.zipCodeList = zpCodes;
       this.options = zpCodes;
-      console.log(this.options);
+     /*  console.log(this.options); */
     });
   }
 
