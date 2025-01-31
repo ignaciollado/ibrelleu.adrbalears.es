@@ -156,8 +156,11 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       // Estructura económica
       financingDescription: new FormControl('', Validators.maxLength(1024)),
       debtsCheck: new FormControl(''),
-      debtsList: new FormControl(''),
-      debtsDescription: new FormControl('', Validators.maxLength(1024)),
+      debtsList: new FormControl({ value: '', disabled: true }),
+      debtsDescription: new FormControl(
+        { value: '', disabled: true },
+        Validators.maxLength(1024)
+      ),
       lastYearFacturation: new FormControl(''),
       lastYearResult: new FormControl(''),
       lastYearResultDescription: new FormControl(
@@ -311,42 +314,17 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   }
 
   // He implementado esta lógica como nexo a las llamadas de los métodos que realizan los cambios
-  afterCheckChanges(
-    event: any,
-    checkName: string,
-    checkFormName?: string[],
-    className?: string
-  ) {
+  afterCheckChanges(event: any, checkName: string, checkFormName: string[]) {
     let checkValue = this.theForm.get(checkName).value;
-    let afterCheckForms: any[] = [];
-
-    if (checkFormName != undefined) {
-      checkFormName.forEach((form) => {
-        afterCheckForms.push(this.theForm.get(form));
-      });
-      this.changeEnable(afterCheckForms, checkValue);
-    } else if (className != undefined) {
-      let elements = document.querySelectorAll('.' + className);
-      this.changeDisplay(elements, checkValue);
-    }
+    this.changeEnable(checkFormName, checkValue);
   }
 
   changeEnable(afterCheckForms: any[], check: boolean) {
     afterCheckForms.forEach((form) => {
       if (check) {
-        form.enable();
+        this.theForm.get(form).enable();
       } else {
-        form.disable();
-      }
-    });
-  }
-
-  changeDisplay(elements: any, check: boolean) {
-    elements.forEach((element: any) => {
-      if (check) {
-        element.setAttribute('style', 'display: grid');
-      } else {
-        element.setAttribute('style', 'display: none');
+        this.theForm.get(form).disable();
       }
     });
   }
