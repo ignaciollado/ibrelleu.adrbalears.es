@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { FileUploadService } from '../../Services/file-upload.service';
 
 @Component({
   selector: 'app-file-upload',
-  templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.scss']
+  templateUrl: './file-upload.component.html'
 })
 export class FileUploadComponent {
   displayedColumns: string[] = ['fileName', 'progress', 'status'];
