@@ -8,7 +8,7 @@ import { LegalFormDTO } from '../../Models/legal-form.dto';
 import { map, Observable, startWith } from 'rxjs';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { AccountDTO } from '../../Models/account.dto';
-// import { CustomValidatorsService } from '../../Services/custom-validators.service';
+import { CustomValidatorsService } from '../../Services/custom-validators.service';
 
 @Component({
   selector: 'adr-account-detail',
@@ -41,7 +41,8 @@ export class AccountDetailComponent implements CanComponentDeactivate {
 
   constructor(
     private dataService: DataService,
-    private countriesService: CountriesService // private customValidatorsService: CustomValidatorsService
+    private countriesService: CountriesService,
+    private customValidatorsService: CustomValidatorsService
   ) {
     this.theForm = new FormGroup({
       // Identificació
@@ -51,7 +52,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       nif: new FormControl('', [
         Validators.required,
         Validators.minLength(9),
-        // this.customValidatorsService.dniNieCifValidator(),
+        this.customValidatorsService.dniNieCifValidator(),
       ]),
       tradeName: new FormControl('', Validators.required),
       paradesMercat: new FormControl(''),
@@ -332,7 +333,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   deleteNif(event: any) {
     let nifValue = this.theForm.get('nif').value;
 
-    if (nifValue.length != 9) {
+    if (nifValue != '' && nifValue.length != 9 && nifValue.length != 0) {
       this.theForm.get('nif').setValue('');
     }
   }
