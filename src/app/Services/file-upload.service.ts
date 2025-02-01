@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpParams, HttpRequest } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 export interface uploadedFiles {
   status: string;
@@ -17,6 +18,7 @@ export class FileUploadService {
   //private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
   private apiUrl = '../../assets/phpAPI/FileUploadController.php';
   private listFilesUrl = '../../assets/phpAPI/Listfiles.php';
+  private deleteUrl = '../../assets/phpAPI/delete.php'; 
 
   private cancelUpload$ = new Subject<void>();
 
@@ -31,13 +33,14 @@ export class FileUploadService {
     formData.append('id', id);
     formData.append('foldername', foldername);
 
-    const req = new HttpRequest('POST', this.apiUrl, formData, {
-      reportProgress: true
-    });
+    formData.append('id', id);
+    formData.append('foldername', foldername);
 
-    return this.http.request(req).pipe(
-      map(event => this.getEventMessage(event, files)),
-      takeUntil(this.cancelUpload$)
+    return this.http.post(this.apiUrl, formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(
+      catchError(this.handleError)
     );
   }
 
@@ -48,6 +51,13 @@ export class FileUploadService {
   listFiles(id: string, foldername: string): Observable<uploadedFiles[]> {
     let params = new HttpParams().set('id', id).set('foldername', foldername);
     return this.http.get<uploadedFiles[]>(this.listFilesUrl, { params })
+  }
+
+  deleteFile(filename: string, id: string, foldername: string) {
+    const params = { filename, id, foldername };
+    return this.http.delete(this.deleteUrl, { params }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private getEventMessage(event: HttpEvent<any>, files: File[]): any {

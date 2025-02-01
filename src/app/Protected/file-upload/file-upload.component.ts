@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FileUploadService } from '../../Services/file-upload.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpEventType } from '@angular/common/http';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-file-upload',
@@ -7,18 +10,25 @@ import { FileUploadService } from '../../Services/file-upload.service';
 })
 
 export class FileUploadComponent {
+  progress = 0;
+  isLoading = false;
+  showConfirmation = false;
   displayedColumns: string[] = ['fileName', 'progress', 'status'];
+  displayedColumnsList: string[] = ['fileName', 'action'];
+
+  uploadedFiles: any[] = [];
   selectedFiles: File[] = [];
   existingFiles: string[] = [];
   uploadProgress: { [key: string]: number } = {};
   uploadError: { [key: string]: string } = {};
   uploadSuccess: { [key: string]: string } = {};
+  dataSource = new MatTableDataSource<any>();
 
   @Input() id: string;
   @Input() origin: string;
 
 
-  constructor(private fileUploadService: FileUploadService) {}
+  constructor(private fileUploadService: FileUploadService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.loadExistingFiles(this.id);
@@ -26,29 +36,61 @@ export class FileUploadComponent {
 
   onFileSelected(event: any): void {
     this.selectedFiles = Array.from(event.target.files);
+    this.showConfirmation = true;
     this.uploadProgress = {};
     this.uploadError = {};
     this.uploadSuccess = {};
   }
 
-  onUpload(): void {
-    this.fileUploadService.upload(this.selectedFiles, this.id, this.origin).subscribe(
-      event => {
-        if (event.status === 'progress') {
-          this.uploadProgress[event.fileName] = event.percentDone;
-        } else if (event.status === 'success') {
-          this.uploadSuccess[event.fileName] = 'Upload successful';
-        } else if (event.status === 'error') {
-          this.uploadError[event.fileName] = event.message || 'Upload failed. Please try again.';
-        }
-      },
-      error => {
-        this.uploadError['general'] = 'Upload failed. Please try again.';
-        console.error('Upload failed', error);
-      }
-    );
+  confirmUpload() {
+    const id = this.id; // Reemplaza con el ID real
+    const foldername =  this.origin; // Reemplaza con el nombre de la carpeta real
+    this.uploadFiles(this.selectedFiles, id, foldername);
+    this.showConfirmation = false;
   }
 
+  onUpload(): void {
+    this.isLoading = true;
+    this.fileUploadService.upload(this.selectedFiles, this.id, this.origin).subscribe (  event => {
+          if (event.type === HttpEventType.UploadProgress) {
+            this.progress = Math.round(100 * event.loaded / event.total);
+          } else if (event.type === HttpEventType.Response) {
+            this.uploadedFiles.push(...this.selectedFiles);
+            this.progress = 0; // Reset progress after successful upload
+            this.isLoading = false;
+            this.snackBar.open('Files uploaded successfully!', 'Close', { duration: 3000 });
+          }
+      },
+      error => {
+        this.isLoading = false;
+        this.snackBar.open(error, 'Close', {
+          duration: 3000
+        });
+      });
+    }
+
+  uploadFiles(files: File[], id: string, foldername: string) {
+      this.isLoading = true;
+      this.fileUploadService.upload(files, id, foldername).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total);
+        } else if (event.type === HttpEventType.Response) {
+          this.uploadedFiles.push(...files);
+          this.dataSource.data = this.uploadedFiles;
+          this.progress = 0; // Reset progress after successful upload
+          this.isLoading = false;
+          this.snackBar.open('Files uploaded successfully!', 'Close', { duration: 3000 });
+          this.selectedFiles = []
+          this.loadExistingFiles(this.id)
+        }
+      }, error => {
+        this.isLoading = false;
+        this.snackBar.open(error, 'Close', {
+          duration: 3000
+        });
+      });
+  } 
+    
   onCancelUpload(): void {
     this.fileUploadService.cancelUpload();
     this.selectedFiles.forEach(file => {
@@ -70,5 +112,21 @@ export class FileUploadComponent {
         console.error('Failed to load existing files', error);
       }
     );
+  }
+
+  deleteFile(file: any) {
+    const id = this.id; // Reemplaza con el ID real
+    const foldername = this.origin; // Reemplaza con el nombre de la carpeta real
+    this.fileUploadService.deleteFile(file.name, id, foldername).subscribe(response => {
+      this.uploadedFiles = this.uploadedFiles.filter(f => f.name !== file.name);
+      this.dataSource.data = this.uploadedFiles; // Actualizar la tabla
+      this.snackBar.open('File deleted successfully!', 'Close', {
+        duration: 3000
+      });
+    }, error => {
+      this.snackBar.open(error, 'Close', {
+        duration: 3000
+      });
+    });
   }
 }
