@@ -1,10 +1,5 @@
-import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, Input } from '@angular/core';
 import { FileUploadService } from '../../Services/file-upload.service';
-
-export interface Documentos {
-  [key: string]: string
-}
 
 @Component({
   selector: 'app-file-upload',
@@ -14,15 +9,19 @@ export interface Documentos {
 export class FileUploadComponent {
   displayedColumns: string[] = ['fileName', 'progress', 'status'];
   selectedFiles: File[] = [];
-  existingFiles: { [key: string]: string } = {};
+  existingFiles: string[] = [];
   uploadProgress: { [key: string]: number } = {};
   uploadError: { [key: string]: string } = {};
   uploadSuccess: { [key: string]: string } = {};
 
+  @Input() id: string;
+  @Input() origin: string;
+
+
   constructor(private fileUploadService: FileUploadService) {}
 
   ngOnInit(): void {
-    this.loadExistingFiles();
+    this.loadExistingFiles(this.id);
   }
 
   onFileSelected(event: any): void {
@@ -33,7 +32,7 @@ export class FileUploadComponent {
   }
 
   onUpload(): void {
-    this.fileUploadService.upload(this.selectedFiles, 0, 'accounts').subscribe(
+    this.fileUploadService.upload(this.selectedFiles, this.id, this.origin).subscribe(
       event => {
         if (event.status === 'progress') {
           this.uploadProgress[event.fileName] = event.percentDone;
@@ -57,19 +56,12 @@ export class FileUploadComponent {
     });
   }
   
-  loadExistingFiles(): void {
-    this.fileUploadService.listFiles(0,'accounts').subscribe(
+  loadExistingFiles(id:string): void {
+    console.log ("load account files id: ", id, this.origin)
+    this.fileUploadService.listFiles(id, this.origin).subscribe(
       (response: any) => {
         if (response.status === 'success') {
-          /* this.existingFiles = Object.values(response.files).reduce((acc, file, index) => {
-            acc[index] = file;
-            return acc;
-          }, {} as { [key: string]: string }); */
-          console.log (Object.values(response.files).reduce((acc, file, index) => {
-            acc[index] = file;
-            return acc;
-          }, {} as { [key: string]: string }))
-          
+          this.existingFiles = response.files
         } else {
           console.error('Failed to load existing files', response.message);
         }

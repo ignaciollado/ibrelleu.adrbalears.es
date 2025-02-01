@@ -6,6 +6,7 @@ import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 import { DataService } from '../../Services/data.service';
 import { map, Observable, startWith } from 'rxjs';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'adr-contact-detail',
@@ -14,6 +15,7 @@ import { CanComponentDeactivate } from '../../can-deactivate.guard';
 })
 
 export class ContactDetailComponent implements CanComponentDeactivate {
+  id:string = this.route.snapshot.paramMap.get('id');
   perfilTecnicoItems_es = ['Reemprendedor', 'Cedente', 'Externo', 'Usuario de servicio PH/REC']
   perfilTecnicoItems_ca = ['Reemprenedor', 'Cedent', 'Extern', 'Usuari de serveis PH/REC']
 
@@ -34,7 +36,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   filteredOptions: Observable<ZipCodesIBDTO[]>
   options: ZipCodesIBDTO[] = []
 
-  constructor( private dataService: DataService, private countriesService: CountriesService) {
+  constructor( private dataService: DataService, private countriesService: CountriesService,     private route: ActivatedRoute) {
     this.theForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),

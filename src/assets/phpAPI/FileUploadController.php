@@ -1,10 +1,18 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['files'])) {
-        //$uploadDirectory = '../assets/phpAPI/uploads/';
-        $uploadDirectory = '../docs/uploads/accounts/'; /* tendrá que ser dinámico para accounts, contacts, cedentes, emprendedores ... y además por id */
+        $uploadDirectory = '../docs/uploads/'; /* tendrá que ser dinámico para accounts, contacts, cedentes, emprendedores ... y además por id */
         $errors = [];
         $uploadedFiles = [];
+
+        if (isset($_POST['foldername'])) {
+            $foldername = htmlspecialchars($_POST['foldername']);
+            $uploadDirectory .= $foldername."/";
+        }
+        if (isset($_POST['id'])) {
+            $id = htmlspecialchars($_POST['id']);
+            $uploadDirectory .= $id."/";
+        }
 
         // Crear la carpeta si no existe
         if (!is_dir($uploadDirectory)) {

@@ -1,6 +1,13 @@
 /* .file-input {
   display: none;
 } */
+.viewfile {
+  color: #000!important;
+}
+.viewfile:hover {
+  text-decoration: underline!important;
+  font-weight: bold!important;
+}
 
 .error {
   color: red;

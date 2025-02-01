@@ -9,6 +9,7 @@ import { map, Observable, startWith } from 'rxjs';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { AccountDTO } from '../../Models/account.dto';
 import { CustomValidatorsService } from '../../Services/custom-validators.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'adr-account-detail',
@@ -23,6 +24,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   legalFormList: any[] = [];
   filteredOptions: Observable<ZipCodesIBDTO[]>;
   options: ZipCodesIBDTO[] = [];
+  id:string = this.route.snapshot.paramMap.get('id');
 
   consultantList: string[] = [];
   delegationList: string[] = [];
@@ -42,7 +44,8 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   constructor(
     private dataService: DataService,
     private countriesService: CountriesService,
-    private customValidatorsService: CustomValidatorsService
+    private customValidatorsService: CustomValidatorsService,
+    private route: ActivatedRoute
   ) {
     this.theForm = new FormGroup({
       // Identificació
