@@ -17,8 +17,8 @@ export class FileUploadService {
   //private baseUrl = 'https://docs.ibrelleu.es/upload';
   //private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
   private apiUrl = '../../assets/phpAPI/FileUploadController.php';
-  private listFilesUrl = '../../assets/phpAPI/Listfiles.php';
-  private deleteUrl = '../../assets/phpAPI/delete.php'; 
+  private listFilesUrl = '../../assets/phpAPI/listFiles.php';
+  private deleteUrl = '../../assets/phpAPI/deleteFile.php'; 
 
   private cancelUpload$ = new Subject<void>();
 

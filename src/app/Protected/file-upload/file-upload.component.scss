@@ -1,6 +1,17 @@
-/* .file-input {
-  display: none;
-} */
+.tablecontainer {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid #00405e;
+  border-radius: .5rem;
+}
+
+a {
+  color: #00405e;
+  text-decoration: underline;
+}
+a:hover {
+  font-weight: bold;
+}
 .mat-mdc-row .mat-mdc-cell {
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;

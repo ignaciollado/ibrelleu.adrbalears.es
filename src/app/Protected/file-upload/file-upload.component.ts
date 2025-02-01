@@ -6,7 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-file-upload',
-  templateUrl: './file-upload.component.html'
+  templateUrl: './file-upload.component.html',
+  styleUrl: './file-upload.component.scss'
 })
 
 export class FileUploadComponent {
@@ -14,7 +15,7 @@ export class FileUploadComponent {
   isLoading = false;
   showConfirmation = false;
   displayedColumns: string[] = ['fileName', 'progress', 'status'];
-  displayedColumnsList: string[] = ['fileName', 'action'];
+  displayedColumnsList: string[] = ['name', 'size', 'progress', 'actions'];
 
   uploadedFiles: any[] = [];
   selectedFiles: File[] = [];
@@ -23,7 +24,8 @@ export class FileUploadComponent {
   uploadError: { [key: string]: string } = {};
   uploadSuccess: { [key: string]: string } = {};
   dataSource = new MatTableDataSource<any>();
-
+  existingFilesDataSource = new MatTableDataSource<any>(); 
+  
   @Input() id: string;
   @Input() origin: string;
 
@@ -43,8 +45,8 @@ export class FileUploadComponent {
   }
 
   confirmUpload() {
-    const id = this.id; // Reemplaza con el ID real
-    const foldername =  this.origin; // Reemplaza con el nombre de la carpeta real
+    const id = this.id;
+    const foldername =  this.origin;
     this.uploadFiles(this.selectedFiles, id, foldername);
     this.showConfirmation = false;
   }
@@ -99,7 +101,6 @@ export class FileUploadComponent {
   }
   
   loadExistingFiles(id:string): void {
-    console.log ("load account files id: ", id, this.origin)
     this.fileUploadService.listFiles(id, this.origin).subscribe(
       (response: any) => {
         if (response.status === 'success') {
@@ -115,18 +116,15 @@ export class FileUploadComponent {
   }
 
   deleteFile(file: any) {
-    const id = this.id; // Reemplaza con el ID real
-    const foldername = this.origin; // Reemplaza con el nombre de la carpeta real
-    this.fileUploadService.deleteFile(file.name, id, foldername).subscribe(response => {
+    const id = this.id; 
+    const foldername = this.origin;
+    this.fileUploadService.deleteFile(file, id, foldername).subscribe(response => {
       this.uploadedFiles = this.uploadedFiles.filter(f => f.name !== file.name);
-      this.dataSource.data = this.uploadedFiles; // Actualizar la tabla
-      this.snackBar.open('File deleted successfully!', 'Close', {
-        duration: 3000
-      });
+      /* this.existingFilesDataSource.data = this.existingFiles */
+      this.loadExistingFiles(this.id)
+      this.snackBar.open('File deleted successfully!', 'Close', { duration: 30000 });
     }, error => {
-      this.snackBar.open(error, 'Close', {
-        duration: 3000
-      });
+      this.snackBar.open(error, 'Close', { duration: 30000 });
     });
   }
 }
