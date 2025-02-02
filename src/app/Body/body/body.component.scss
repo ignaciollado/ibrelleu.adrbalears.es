@@ -1,6 +1,11 @@
+@use "../../../adr-colors";
+@use "../../../utilities.scss";
+main {
+  padding: 1rem;
+}
+
 section {
-  display: block;
-  height: 85vh;
+  height: auto;
   width: 50vw;
   margin: auto;
   padding-top: 0;
@@ -12,7 +17,7 @@ p {
 }
 
 article {
-  margin-top: 4rem;
+  margin-top: 1rem;
 }
 
 @media screen and (max-width: 992px) {

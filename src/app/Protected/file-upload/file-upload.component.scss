@@ -1,12 +1,14 @@
+@use "../../../adr-colors";
+@use "../../../utilities.scss";
 .tablecontainer {
   margin: 1rem;
   padding: 1rem;
-  border: 1px solid #00405e;
+  border: 1px solid adr-colors.$primary-adr;
   border-radius: .5rem;
 }
 
 a {
-  color: #00405e;
+  color: adr-colors.$primary-adr;
   text-decoration: underline;
 }
 a:hover {

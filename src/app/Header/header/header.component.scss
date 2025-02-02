@@ -1,9 +1,19 @@
 @use "../../../_adr-colors";
-
+header {
+  .mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    .spacer {
+      flex: 1;
+    }
+    nav a {
+      margin-left: 10px;
+    }
+  }
+}
 mat-sidenav,
 mat-expansion-panel {
   background-color: adr-colors.$secondary-adr;
-
   .mobileGrid {
     display: none;
   }
@@ -35,6 +45,10 @@ mat-toolbar {
     align-items: center;
     justify-items: center;
   }
+}
+
+mat-sidenav-content{
+  border: 2px solid adr-colors.$primary-adr;
 }
 
 @media screen and (max-width: 992px) {

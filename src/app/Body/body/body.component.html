@@ -1,17 +1,16 @@
-
-<section>
-  <h1>{{'appName' | translate}}: {{'homeTextp1' | translate}}</h1>
-  <article>
-    <p>{{'homeTextp2' | translate}}</p>
-    <p>{{'homeTextp3' | translate}}</p>
-    <p>{{'homeTextp31' | translate}}</p>
-    <p>{{'homeTextp4' | translate}}</p>
-  </article>
-  <article>
-    <button mat-raised-button color="accent" *ngIf="!sessionValid" (click)="loginUSER()">Login</button>
-    <button mat-raised-button color="accent" *ngIf="sessionValid" (click)="logOutUSER()">Logout</button>
-  </article>
- <!--  <article>
-    <app-select-language></app-select-language>
-  </article> -->
-</section>
+<main>
+  <section>
+    <h1>{{'appName' | translate}}: {{'homeTextp1' | translate}}</h1>
+    <article>
+      <p>{{'homeTextp2' | translate}}</p>
+      <p>{{'homeTextp3' | translate}}</p>
+      <p>{{'homeTextp31' | translate}}</p>
+      <p>{{'homeTextp4' | translate}}</p>
+    </article>
+    <article>
+      <button mat-raised-button color="accent" *ngIf="!sessionValid" (click)="loginUSER()">Login</button>
+      <button mat-raised-button color="accent" *ngIf="sessionValid" (click)="logOutUSER()">Logout</button>
+    </article>
+  </section>
+</main>
+<adr-footer />

@@ -18,10 +18,10 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   submitted: boolean = true
   theForm: FormGroup
   countries: CountriesDTO[] = []
-  id: string
   public zipCodeList: ZipCodesIBDTO[] = []
   filteredOptions: Observable<ZipCodesIBDTO[]>
   options: ZipCodesIBDTO[] = []
+  id:string = this.route.snapshot.paramMap.get('id')
 
   constructor( private dataService: DataService, private countriesService: CountriesService, private route: ActivatedRoute ) {
     this.theForm = new FormGroup({
@@ -38,7 +38,6 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       delegacion: new FormControl(''),
 
     })
-    this.id = this.route.snapshot.paramMap.get('id')
     this.getAllZipCodes()
 
     this.theForm.statusChanges.subscribe(newStaus => {

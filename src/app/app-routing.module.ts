@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'accounts', component: AccountComponent, canActivate:[AuthGuard] },
   { path: 'contacts', component: ContactsComponent, canActivate:[AuthGuard] },
   { path: 'contact-detail/:id', component: ContactDetailComponent, canDeactivate: [CanDeactivateGuard], canActivate: [AuthGuard] },
-  { path: 'account-detail/:id', component: AccountDetailComponent, canDeactivate: [CanDeactivateGuard] },
+  { path: 'account-detail/:id', component: AccountDetailComponent, canDeactivate: [CanDeactivateGuard], canActivate: [AuthGuard] },
   { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
   { path: 'success-stories', component: SuccessStoriesComponent, canActivate: [AuthGuard]},
   { path: 'success-stories-detail/:id', component: SuccessStoriesDetailComponent, canDeactivate: [CanDeactivateGuard] },
