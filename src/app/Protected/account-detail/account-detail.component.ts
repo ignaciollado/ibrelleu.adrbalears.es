@@ -10,6 +10,7 @@ import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { AccountDTO } from '../../Models/account.dto';
 import { CustomValidatorsService } from '../../Services/custom-validators.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'adr-account-detail',
@@ -17,29 +18,30 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './account-detail.component.scss',
 })
 export class AccountDetailComponent implements CanComponentDeactivate {
-  isElevated: boolean = true;
-  theForm: FormGroup;
-  countries: CountriesDTO[] = [];
-  zipCodeList: ZipCodesIBDTO[] = [];
-  legalFormList: any[] = [];
-  filteredOptions: Observable<ZipCodesIBDTO[]>;
-  options: ZipCodesIBDTO[] = [];
-  id:string = this.route.snapshot.paramMap.get('id');
+  isElevated: boolean = true
+  selectedIndex: number
+  theForm: FormGroup
+  countries: CountriesDTO[] = []
+  zipCodeList: ZipCodesIBDTO[] = []
+  legalFormList: any[] = []
+  filteredOptions: Observable<ZipCodesIBDTO[]>
+  options: ZipCodesIBDTO[] = []
+  id:string = this.route.snapshot.paramMap.get('id')
 
-  consultantList: string[] = [];
-  delegationList: string[] = [];
-  sectorList: any[] = [];
-  activityList: any[] = [];
+  consultantList: string[] = []
+  delegationList: string[] = []
+  sectorList: any[] = []
+  activityList: any[] = []
 
-  clientTypologyList: any[] = [];
-  continentList: any[] = [];
+  clientTypologyList: any[] = []
+  continentList: any[] = []
 
   propertyStatus: any[] = [
     { value: 'Lloguer', view: 'Lloguer' },
     { value: 'Propietat', view: 'Propietat' },
   ];
 
-  debtsSitesList: any[] = [];
+  debtsSitesList: any[] = []
 
   constructor(
     private dataService: DataService,
@@ -200,6 +202,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   }
 
   ngOnInit() {
+    this.selectedIndex = +sessionStorage.getItem("currentAccountTab")
     this.filteredOptions = this.theForm.get('zipCode').valueChanges.pipe(
       startWith(''),
       map((value) => {
@@ -251,6 +254,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       this.sectorList = sectorItems;
     });
   }
+  
   loadActivityInfo() {
     this.dataService.getAllActivities().subscribe((activityItems: any[]) => {
       this.activityList = activityItems;
@@ -290,8 +294,12 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     });
   }
 
+  onTabChange(event: MatTabChangeEvent) {
+    sessionStorage.setItem("currentAccountTab",event.index.toString())
+  }
+
   onSubmit() {
-    /* console.log(this.theForm.value); */
+    console.log(this.theForm.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
