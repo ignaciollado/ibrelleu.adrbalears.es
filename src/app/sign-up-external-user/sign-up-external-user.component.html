@@ -72,7 +72,7 @@
       <mat-checkbox class="right-margin" (change) ="validateDNI($event)" formArrayName="acceptTerms">{{ "acceptTermsAndConditions" | translate }}</mat-checkbox>
     </section>
     <section *ngIf="mustShowField">
-      <button mat-raised-button color="primary" type="submit">{{ "send" | translate }}</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">{{ "send" | translate }}</button>
     </section>
     <section *ngIf="errorMessage" class="error">
       {{ errorMessage }}
