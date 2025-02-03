@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
 import { Observable } from 'rxjs';
 import { CustomValidatorsService } from '../Services/custom-validators.service';
+import { ContactService } from '../Services/contact.service';
 
 @Component({
   selector: 'adr-sign-up-external-user',
@@ -46,8 +47,8 @@ export class SignUpExternalUserComponent {
     acceptTerms: new FormControl(false, [Validators.requiredTrue]),
   });
 
-  constructor(
-    private dataService: DataService,
+  constructor (
+    private dataService: DataService, private contactService: ContactService,
     private router: Router,
     private customValidators: CustomValidatorsService
   ) {
@@ -102,30 +103,10 @@ export class SignUpExternalUserComponent {
     }
   }
 
-  validateForm() {
-    /* if (!this.mustShowField) {
-      this.dataService.getAllContacts()
-      .subscribe((contacts: ContactDTO[])=> {
-        const totalContacts:ContactDTO[] = contacts.filter((item:ContactDTO) => {return item.nif === this.profileForm.get('dni').value})
-        if (totalContacts.length > 0){
-         //navegar a contacto ???
-         this.router.navigate(['contacts'])
-        } else  {
-          this.dataService.getAllAccounts()
-          .subscribe((accounts:AccountDTO[])=> {
-            const totalAccounts:AccountDTO[] = accounts.filter((item:AccountDTO) => {return item.nif === this.profileForm.get('dni').value})
-            if (totalAccounts.length > 0) {
-              //navegar a cuenta ???
-              this.router.navigate(['accounts'])
-            } else {
-              this.mustShowField = true
-            }
-          })
-        }
-      })
-    } else { */
-    console.log(this.profileForm.value);
-    /* } */
+  validateForm():void {
+    this.contactService.createContact(this.profileForm.value).subscribe(data => {
+      console.log(data);
+    });
   }
 
   getAllZipCodes() {

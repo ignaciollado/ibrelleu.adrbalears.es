@@ -1,48 +1,48 @@
-<h1>Dona’t d’alta</h1>
+<h1>{{ "signUp" | translate }}</h1>
 
 <section ngClass="large-box">
-  <p>Dona't d'alta en el nostre servei de IBrelleu emplenant aquest formulari:</p>
+  <h2>{{ "subTitleSignUp" | translate }}</h2>
   <form [formGroup]="profileForm" (ngSubmit)="validateForm()" [ngClass]="{'full-form': mustShowField}">
     <mat-form-field>
       <mat-label>DNI/NIE</mat-label>
       <input matInput formControlName="dni" minlength="9" maxlength="9">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Nom</mat-label>
+      <mat-label>{{ "name" | translate }}</mat-label>
       <input matInput formControlName="firstName">
     </mat-form-field>
       <mat-form-field *ngIf="mustShowField">
-      <mat-label>Cognoms</mat-label>
+      <mat-label>{{ "surname" | translate }}</mat-label>
       <input matInput formControlName="lastName">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Género</mat-label>
+      <mat-label>{{ "Gender" | translate }}</mat-label>
       <mat-select formControlName="gender">
-        <mat-option value="Hombre">Home</mat-option>
-        <mat-option value="Mujer">Dona</mat-option>
-        <mat-option value="Otros">Altres</mat-option>
+        <mat-option value="Hombre">{{ "manGender" | translate }}</mat-option>
+        <mat-option value="Mujer">{{ "womanGender" | translate }}</mat-option>
+        <mat-option value="Otros">{{ "otherGender" | translate }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Fecha de Nacimiento</mat-label>
+      <mat-label>{{ "dob" | translate }}</mat-label>
       <input matInput formControlName="dob" type="date">
     </mat-form-field>
        <mat-form-field *ngIf="mustShowField">
-      <mat-label>Teléfono principal</mat-label>
+      <mat-label>{{ "mainPhone" | translate }}</mat-label>
       <input matInput formControlName="mainPhone" minlength="9" maxlength="9">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Correo electrónico principal</mat-label>
+      <mat-label>{{ "mainMail" | translate }}</mat-label>
       <input matInput formControlName="mainMail">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Dirección</mat-label>
+      <mat-label>{{ "address" | translate }}</mat-label>
       <input matInput formControlName="localizationAddress">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Código Postal</mat-label>
+      <mat-label>{{ "zipCode" | translate }}</mat-label>
       <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto" />
-      <small *ngIf="profileForm.get('zipCode').errors">min length: 5 digits</small>
+      <small *ngIf="profileForm.get('zipCode').errors">min length: 5 digits{{ "minlength" | translate }}</small>
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         @for (option of filteredOptions | async; track option) {
           <mat-option [value]="option">{{option.zipCode}} {{option.town}}</mat-option>
@@ -50,41 +50,41 @@
       </mat-autocomplete>
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Población</mat-label>
+      <mat-label>{{ "town" | translate }}</mat-label>
       <input matInput formControlName="localizationCity" readonly="readonly">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Municipio</mat-label>
+      <mat-label>{{ "municipality" | translate }}</mat-label>
       <input matInput formControlName="councilCity" readonly="readonly">
     </mat-form-field>    
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Illa</mat-label>
+      <mat-label>{{ "island" | translate }}</mat-label>
       <input matInput formControlName="localizationCCAA" readonly="readonly">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Qui és el teu perfil?</mat-label>
+      <mat-label>{{ "yourProfile" | translate }}</mat-label>
       <mat-select formControlName="userProfile">
-        <mat-option value="cedent">Cedent</mat-option>
-        <mat-option value="emprendedor">Emprenedor</mat-option>
+        <mat-option value="cedent">{{ "grantor" | translate }}</mat-option>
+        <mat-option value="emprendedor">{{ "entrepreneur" | translate }}</mat-option>
       </mat-select>
     </mat-form-field>    
     <section>
-      <mat-checkbox class="right-margin" (change) ="validateDNI($event)" formArrayName="acceptTerms">Accept the terms and the conditions</mat-checkbox>
+      <mat-checkbox class="right-margin" (change) ="validateDNI($event)" formArrayName="acceptTerms">{{ "acceptTermsAndConditions" | translate }}</mat-checkbox>
     </section>
     <section *ngIf="mustShowField">
-      <button mat-raised-button color="primary" type="submit">Validar</button>
+      <button mat-raised-button color="primary" type="submit">{{ "send" | translate }}</button>
     </section>
     <section>
-      <label for="lopd_pas0" class="control-label label-required">He llegit i accepto la <a href="https://www.reempresa.org/Politica-de-Privadesa" target="_blank">Política de Privadesa</a></label>
+      <label for="lopd_pas0" class="control-label label-required">{{ "ihaveread" | translate }}<a href="https://www.adrbalears.es/aviso-legal/377" target="_blank"> {{ "legalNoticeAndPrivacyPolicy" | translate }}</a></label>
       <br>
       <br>
-      <section id="lbl_lopd_pas0" style="font-size:85%"><i>*Amb l'enviament d'aquest formulari confirmeu que heu llegit la següent Informació bàsica sobre Protecció de Dades:</i><br>
+      <section id="lbl_lopd_pas0" style="font-size:85%"><i>* {{"sendingThisForm" | translate}}</i><br>
         <br><b>Responsable:</b> Agència de desenvolupament regional de les Illes Balears.
         <br><b>Finalitat:</b> L'atenció i gestió dels serveis que ofereix l'Agència de desenvolupament regional de les Illes Balears i el registre dels interessats per a la prestació de serveis d'Ibrelleu, i establir i mantenir relacions comercials.
         <br><b>Legitimació:</b> La legitimació es realitza a través del consentiment de l'interessat/da; la prestació del consentiment de l'interessat/da al servei d'Ibrelleu per a l'alta en serveis de promocionals, i l'interès legítim per al desenvolupament de relacions comercials.
         <br><b>Destinataris:</b> En qualitat de corresponsables del tractament, les institucions i entitats col·laboradores per tal que puguin treballar al seu favor així com les fundacions, gremis i associacions implicades per a l'establiment de relacions comercials.
         <br><b>Drets:</b> Podreu exercir el vostre dret d'accés, rectificació, oposició, limitació i supressió de totes les dades a <a href="mailto:dpd@adrbalears.es">'dpd&#64;adrbalars.es'</a>.
-        <br><b>Informació addicional:</b> Podeu consultar la informació detallada sobre la nostra <a href="https://www.adrbalears.es/Politica-de-Privadesa" target="_blank">Política de Privadesa a la nostra pàgina web</a>.<br>
+        <br><b>Informació addicional:</b> Podeu consultar la informació detallada sobre la nostra <a href="https://www.adrbalears.es/aviso-legal/377" target="_blank">Política de Privadesa a la nostra pàgina web</a>.<br>
       </section>
     </section>
   </form>
