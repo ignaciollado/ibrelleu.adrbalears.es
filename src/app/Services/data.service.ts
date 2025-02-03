@@ -96,4 +96,10 @@ export class DataService {
       .get<any[]>(`${this.urlAPIMock}debtsSites.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
+
+  getAllIbRelleuTypology(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}ibrelleuTypology.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
 }

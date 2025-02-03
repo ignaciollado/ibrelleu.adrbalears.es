@@ -1,0 +1,18 @@
+[
+  {
+    "value": "282310000",
+    "label": "Assessorament integral en tot el procés"
+  },
+  {
+    "value": "282310001",
+    "label": "Presentació de les parts i seguiment"
+  },
+  {
+    "value": "282310002",
+    "label": "Assessorament a la part cedent"
+  },
+  {
+    "value": "282310003",
+    "label": "Assessorament a la part emprendedora"
+  }
+]
