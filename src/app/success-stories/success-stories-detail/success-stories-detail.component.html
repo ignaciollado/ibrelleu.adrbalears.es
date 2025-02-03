@@ -1,6 +1,6 @@
-<h1>success-stories-detail works!</h1>
+<h1>Casos de éxito</h1>
 <form [formGroup]="theForm" (ngSubmit)="onSubmit()">
-<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center"  dynamicHeight [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
   <mat-tab label="Dades generals">
     <section>
       <mat-form-field>
@@ -99,7 +99,7 @@
   </mat-tab>
 
   <mat-tab label="Documentació">
-      Content 6
+     <app-file-upload id="{{id}}" origin="successstories"></app-file-upload>
   </mat-tab>
 </mat-tab-group>
 <div ngClass="centered-item">

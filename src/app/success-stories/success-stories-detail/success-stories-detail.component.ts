@@ -8,6 +8,7 @@ import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
 import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 import { Observable } from 'rxjs';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'adr-success-stories-detail',
@@ -18,10 +19,11 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   submitted: boolean = true
   theForm: FormGroup
   countries: CountriesDTO[] = []
-  id: string
   public zipCodeList: ZipCodesIBDTO[] = []
   filteredOptions: Observable<ZipCodesIBDTO[]>
   options: ZipCodesIBDTO[] = []
+  id:string = this.route.snapshot.paramMap.get('id')
+  selectedIndex: number
 
   constructor( private dataService: DataService, private countriesService: CountriesService, private route: ActivatedRoute ) {
     this.theForm = new FormGroup({
@@ -38,7 +40,6 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       delegacion: new FormControl(''),
 
     })
-    this.id = this.route.snapshot.paramMap.get('id')
     this.getAllZipCodes()
 
     this.theForm.statusChanges.subscribe(newStaus => {
@@ -48,6 +49,7 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   }
 
   ngOnInit() {
+    this.selectedIndex = +sessionStorage.getItem("currentSuccessStoryTab")
     this.filteredOptions = this.theForm.get('zipCode').valueChanges.pipe(
       startWith(''),
       map(value => {
@@ -102,4 +104,7 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
     return this.options.filter(option => option.zipCode.includes(filterValue));
   }
 
+  onTabChange(event: MatTabChangeEvent) {
+    sessionStorage.setItem("currentSuccessStoryTab",event.index.toString())
+  }
 }

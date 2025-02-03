@@ -34,6 +34,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { SelectLanguageComponent } from './select-language/select-language.component';
 import { ProtectedComponent } from './Protected/protected/protected.component';
@@ -97,6 +98,7 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     CdkAccordionModule,
     MatCheckboxModule,
     MatRadioModule,
+    MatProgressSpinnerModule,
     MatProgressBarModule,
     MatTabsModule,
     MatToolbarModule,

@@ -1,21 +1,18 @@
 <?php
-$uploadDirectory = '../docs/uploads/accounts'; /* dinámico por accounts, cuentas... y, además, por id */
-
-if (isset($_GET['tipocarpeta'])) {
-    $tipoCarpeta=  htmlspecialchars($_GET['tipocarpeta']);
-    $uploadDirectory += $tipoCarpeta+"/";
+$uploadDirectory = '../docs/uploads/'; // Tiene que ser dinámico: accounts, cuentas... y, además, por id
+if (isset($_GET['foldername'])) {
+    $foldername = htmlspecialchars($_GET['foldername']);
+    $uploadDirectory .= $foldername . "/";
 }
 if (isset($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);
-    $uploadDirectory += $id+"/";
+    $uploadDirectory .= $id . "/";
 }
-echo $uploadDirectory;
-
 if (is_dir($uploadDirectory)) {
     $files = array_diff(scandir($uploadDirectory), array('.', '..'));
     $fileList = [];
-    foreach ($files as $index => $file) {
-        $fileList[$index] = $file;
+    foreach ($files as $file) {
+        $fileList[] = $file;
     }
 
     echo json_encode(['status' => 'success', 'files' => $fileList]);

@@ -2,35 +2,45 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpParams, HttpRequest } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+
+export interface uploadedFiles {
+  status: string;
+  files: string[];
+}
 
 @Injectable({
   providedIn: 'root'
 })
 
-
 export class FileUploadService {
   //private baseUrl = 'https://docs.ibrelleu.es/upload';
   //private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
   private apiUrl = '../../assets/phpAPI/FileUploadController.php';
-  private listFilesUrl = '../../assets/phpAPI/Listfiles.php';
+  private listFilesUrl = '../../assets/phpAPI/listFiles.php';
+  private deleteUrl = '../../assets/phpAPI/deleteFile.php'; 
 
   private cancelUpload$ = new Subject<void>();
 
   constructor(private http: HttpClient) {}
 
-  upload(files: File[], id: number, tipocarpeta: string): Observable<any> {
+  upload(files: File[], id: string, foldername: string): Observable<any> {
     const formData: FormData = new FormData();
     files.forEach(file => {
       formData.append('files[]', file, file.name);
     });
 
-    const req = new HttpRequest('POST', this.apiUrl, formData, {
-      reportProgress: true
-    });
+    formData.append('id', id);
+    formData.append('foldername', foldername);
 
-    return this.http.request(req).pipe(
-      map(event => this.getEventMessage(event, files)),
-      takeUntil(this.cancelUpload$)
+    formData.append('id', id);
+    formData.append('foldername', foldername);
+
+    return this.http.post(this.apiUrl, formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(
+      catchError(this.handleError)
     );
   }
 
@@ -38,9 +48,16 @@ export class FileUploadService {
     this.cancelUpload$.next();
   }
 
-  listFiles(id: number, tipocarpeta: string): Observable<any[]> {
-    let params = new HttpParams().set('id', id).set('tipocarpeta', tipocarpeta);
-    return this.http.get<any[]>(this.listFilesUrl, { params })
+  listFiles(id: string, foldername: string): Observable<uploadedFiles[]> {
+    let params = new HttpParams().set('id', id).set('foldername', foldername);
+    return this.http.get<uploadedFiles[]>(this.listFilesUrl, { params })
+  }
+
+  deleteFile(filename: string, id: string, foldername: string) {
+    const params = { filename, id, foldername };
+    return this.http.delete(this.deleteUrl, { params }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private getEventMessage(event: HttpEvent<any>, files: File[]): any {
