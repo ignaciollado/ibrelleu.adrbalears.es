@@ -92,6 +92,7 @@ export class CustomValidatorsService {
         } else if (cif) {
         }
 
+        // He añadido este boolean como propiedad de la clase para evitar que, al setear el valor, se quede en un bucle infinito.
         this.isSettingValues.next(true);
         control.setValue(validData, { emitEvent: false });
         this.isSettingValues.next(false);
@@ -176,24 +177,23 @@ export class CustomValidatorsService {
   //   }
 
   dniNieValidator(dni: string, type: string) {
-    let dniNumbers = parseInt(dni.substring(0, 8));
-    let dniLetter = dni.substring(8, 9);
-
-    let dniLetterValue = this.dniLetters.indexOf(dniLetter);
-
-    let operationResult = dniNumbers % 23;
-
     switch (type) {
       case 'dni': {
-        if (dniLetterValue == operationResult) {
-          return dni;
-        } else {
-          return dniNumbers + this.dniLetters[operationResult];
-        }
+        let dniNumbers = parseInt(dni.substring(0, 8));
+        let operationResult = dniNumbers % 23;
+        return dniNumbers + this.dniLetters[operationResult];
       }
       case 'nie': {
         let nieInitialLetter = this.nieInitialLetters[dni.substring(0, 1)];
-        return nieInitialLetter + dniNumbers + this.dniLetters[operationResult];
+        let nieNumbers = parseInt(dni.substring(0, 8));
+        let nieNumbersNoLetter = dni.substring(1, 8);
+        let operationResult = nieNumbers % 23;
+
+        return (
+          nieInitialLetter +
+          nieNumbersNoLetter +
+          this.dniLetters[operationResult]
+        );
       }
     }
     return null;
