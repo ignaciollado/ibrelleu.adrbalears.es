@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
 import { Observable } from 'rxjs';
 import { CustomValidatorsService } from '../Services/custom-validators.service';
+import { ContactService } from '../Services/contact.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'adr-sign-up-external-user',
@@ -19,6 +21,7 @@ export class SignUpExternalUserComponent {
   public zipCodeList: ZipCodesIBDTO[] = [];
   filteredOptions: Observable<ZipCodesIBDTO[]>;
   options: ZipCodesIBDTO[] = [];
+  errorMessage: string = '';
 
   profileForm = new FormGroup({
     dni: new FormControl('', [
@@ -43,13 +46,14 @@ export class SignUpExternalUserComponent {
     councilCity: new FormControl({ value: '', disabled: true }),
     localizationCCAA: new FormControl({ value: '', disabled: true }),
     userProfile: new FormControl('', [Validators.required]),
-    acceptTerms: new FormControl(false, [Validators.requiredTrue]),
+    acceptTerms: new FormControl(true, [Validators.requiredTrue]),
   });
 
-  constructor(
-    private dataService: DataService,
+  constructor (
+    private dataService: DataService, private contactService: ContactService,
     private router: Router,
-    private customValidators: CustomValidatorsService
+    private customValidators: CustomValidatorsService,
+    private snackBar: MatSnackBar
   ) {
     this.getAllZipCodes();
   }
@@ -102,30 +106,15 @@ export class SignUpExternalUserComponent {
     }
   }
 
-  validateForm() {
-    /* if (!this.mustShowField) {
-      this.dataService.getAllContacts()
-      .subscribe((contacts: ContactDTO[])=> {
-        const totalContacts:ContactDTO[] = contacts.filter((item:ContactDTO) => {return item.nif === this.profileForm.get('dni').value})
-        if (totalContacts.length > 0){
-         //navegar a contacto ???
-         this.router.navigate(['contacts'])
-        } else  {
-          this.dataService.getAllAccounts()
-          .subscribe((accounts:AccountDTO[])=> {
-            const totalAccounts:AccountDTO[] = accounts.filter((item:AccountDTO) => {return item.nif === this.profileForm.get('dni').value})
-            if (totalAccounts.length > 0) {
-              //navegar a cuenta ???
-              this.router.navigate(['accounts'])
-            } else {
-              this.mustShowField = true
-            }
-          })
-        }
-      })
-    } else { */
-    console.log(this.profileForm.value);
-    /* } */
+  createContact(): void {
+    this.contactService.createContact(this.profileForm).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        this.showError(error);
+      }
+    );
   }
 
   getAllZipCodes() {
@@ -165,5 +154,11 @@ export class SignUpExternalUserComponent {
 
   updateField(): void {
     console.log('Field is updated!');
+  }
+
+  private showError(error: string): void {
+    this.snackBar.open(error, 'Close', {
+      duration: 3000,
+    });
   }
 }

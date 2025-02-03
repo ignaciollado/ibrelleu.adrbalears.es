@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
   { path: 'success-stories', component: SuccessStoriesComponent, canActivate: [AuthGuard]},
   { path: 'success-stories-detail/:id', component: SuccessStoriesDetailComponent, canDeactivate: [CanDeactivateGuard] },
-  { path: 'sign-up-external-user', component: SignUpExternalUserComponent},
+  { path: 'sign-up', component: SignUpExternalUserComponent},
 
   { path: 'accesibilidad/:id', component: ShowGenericDataComponent},
 
