@@ -2,7 +2,7 @@
 <section ngClass="filter-area">
   <mat-form-field>
     <mat-label>Estat contacte</mat-label>
-    <mat-select (selectionChange)="selectedValue($event)">
+    <mat-select multiple (selectionChange)="selectedValue($event)" #estatContacte>
       @for (contactStateItem of contactStates; track contactStateItem['value']) {
       <mat-option [value]="contactStateItem">{{contactStateItem['label']}}</mat-option>
       }
