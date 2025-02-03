@@ -9,6 +9,7 @@ import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
 import { Observable } from 'rxjs';
 import { CustomValidatorsService } from '../Services/custom-validators.service';
 import { ContactService } from '../Services/contact.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'adr-sign-up-external-user',
@@ -20,6 +21,7 @@ export class SignUpExternalUserComponent {
   public zipCodeList: ZipCodesIBDTO[] = [];
   filteredOptions: Observable<ZipCodesIBDTO[]>;
   options: ZipCodesIBDTO[] = [];
+  errorMessage: string = '';
 
   profileForm = new FormGroup({
     dni: new FormControl('', [
@@ -50,7 +52,8 @@ export class SignUpExternalUserComponent {
   constructor (
     private dataService: DataService, private contactService: ContactService,
     private router: Router,
-    private customValidators: CustomValidatorsService
+    private customValidators: CustomValidatorsService,
+    private snackBar: MatSnackBar
   ) {
     this.getAllZipCodes();
   }
@@ -103,10 +106,15 @@ export class SignUpExternalUserComponent {
     }
   }
 
-  validateForm():void {
-    this.contactService.createContact(this.profileForm.value).subscribe(data => {
-      console.log(data);
-    });
+  createContact(): void {
+    this.contactService.createContact(this.profileForm).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        this.showError(error);
+      }
+    );
   }
 
   getAllZipCodes() {
@@ -146,5 +154,11 @@ export class SignUpExternalUserComponent {
 
   updateField(): void {
     console.log('Field is updated!');
+  }
+
+  private showError(error: string): void {
+    this.snackBar.open(error, 'Close', {
+      duration: 3000,
+    });
   }
 }
