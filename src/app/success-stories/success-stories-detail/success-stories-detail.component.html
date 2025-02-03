@@ -1,113 +1,136 @@
 <h1>Casos de éxito</h1>
 <form [formGroup]="theForm" (ngSubmit)="onSubmit()">
-<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center"  dynamicHeight [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
-  <mat-tab label="Dades generals">
-    <section>
-      <mat-form-field>
-        <mat-label>Codi</mat-label>
-        <input matInput formControlName="id" aria-label="id" readonly>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Nom del cas</mat-label>
-        <input matInput formControlName="nombre" aria-label="Nombre" >
-      </mat-form-field>
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight [(selectedIndex)]="selectedIndex"
+    (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="Dades generals">
+      <section>
+        <mat-form-field>
+          <mat-label>Codi</mat-label>
+          <input matInput formControlName="id" aria-label="id" readonly>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Nom del cas</mat-label>
+          <input matInput formControlName="nombre" aria-label="Nombre">
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Tipologia de la Reempresa</mat-label>
-        <input matInput formControlName="id" aria-label="id" readonly>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Procés</mat-label>
-        <input matInput formControlName="nombre" aria-label="Nombre" >
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tipologia de IBRelleu</mat-label>
+          <mat-select formControlName="ibRelleuTypology">
+            @for (ibRelleuTypology of ibRelleuTypologyList; track ibRelleuTypology) {
+            <mat-option [value]="ibRelleuTypology.value">{{ibRelleuTypology.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Procés</mat-label>
+          <input matInput formControlName="process" aria-label="Nombre">
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Projecte Reempresa</mat-label>
-        <input matInput formControlName="id" aria-label="id" readonly>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Projecte Cedent</mat-label>
-        <input matInput formControlName="nombre" aria-label="Nombre" >
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Projecte IbRelleu</mat-label>
+          <input matInput formControlName="ibRelleuProject">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Projecte Cedent</mat-label>
+          <input matInput formControlName="cedentProject">
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Sector principal</mat-label>
-        <input matInput formControlName="id" aria-label="id" readonly>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Activitat</mat-label>
-        <input matInput formControlName="nombre" aria-label="Nombre" >
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Sector principal</mat-label>
+          <mat-select formControlName="mainSector">
+            @for (sector of sectorList; track sector) {
+            <mat-option [value]="sector.value">{{sector.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Activitat</mat-label>
+          <mat-select formControlName="mainActivity">
+            @for (activity of activityList; track activity) {
+            <mat-option [value]="activity.value">{{activity.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Código Postal</mat-label>
-        <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto"/>
-        <small *ngIf="theForm.get('zipCode').errors">min length: 5 digits</small>
+        <mat-form-field>
+          <mat-label>Código Postal</mat-label>
+          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto" />
+          <small *ngIf="theForm.get('zipCode').errors">min length: 5 digits</small>
 
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          @for (option of filteredOptions | async; track option) {
-            <mat-option [value]="option">{{option.zipCode}} {{option.town}}</mat-option>
-          }
-        </mat-autocomplete>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Población</mat-label>
-        <input matInput formControlName="localizationCity" readonly="readonly">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Municipio</mat-label>
-        <input matInput formControlName="councilCity" readonly="readonly">
-      </mat-form-field>    
-      <mat-form-field>
-        <mat-label>Illa</mat-label>
-        <input matInput formControlName="localizationCCAA" readonly="readonly">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Consultor</mat-label>
-        <input matInput formControlName="consultor" type="text">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Delegación</mat-label>
-        <input matInput formControlName="delegacion" type="text">
-      </mat-form-field>
-    </section>
-  </mat-tab>
-  
-  <mat-tab label="Acord">
-     <section>
-      <mat-form-field>
-        <mat-label>Data de la cessió</mat-label>
-        <input matInput formControlName="transferDate" type="date" aria-label="transferDate">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Tipologia de contracte</mat-label>
-        <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
-      </mat-form-field>
-     </section>
-  </mat-tab>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            @for (option of filteredOptions | async; track option) {
+            <mat-option (click)="selectedValue($event)" [value]="option">{{option.zipCode}} {{option.town}}</mat-option>
+            }
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Población</mat-label>
+          <input matInput formControlName="localizationCity" readonly="readonly">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Municipio</mat-label>
+          <input matInput formControlName="councilCity" readonly="readonly">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Illa</mat-label>
+          <input matInput formControlName="localizationCCAA" readonly="readonly">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Consultor</mat-label>
+          <mat-select formControlName="consultor">
+            @for(consultant of consultantList; track consultant) {
+            <mat-option [value]="consultant">{{consultant}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Delegación</mat-label>
+          <mat-select formControlName="delegation">
+            @for (delegation of delegationList; track delegation) {
+            <mat-option [value]="delegation">{{delegation}}</mat-option>
+            }
+          </mat-select>
 
-  <mat-tab label="Dades projecte Reemprenedor">
+        </mat-form-field>
+      </section>
+    </mat-tab>
+
+    <mat-tab label="Acord">
+      <section>
+        <mat-form-field>
+          <mat-label>Data de la cessió</mat-label>
+          <input matInput formControlName="transferDate" type="date" aria-label="transferDate">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tipologia de contracte</mat-label>
+          <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+        </mat-form-field>
+      </section>
+    </mat-tab>
+
+    <mat-tab label="Dades projecte Reemprenedor">
       Content 3
-  </mat-tab>
+    </mat-tab>
 
-  <mat-tab label="Testimonial">
+    <mat-tab label="Testimonial">
       Content 4
-  </mat-tab>
+    </mat-tab>
 
-  <mat-tab label="Seguiment">
+    <mat-tab label="Seguiment">
       Content 5
-  </mat-tab>
+    </mat-tab>
 
-  <mat-tab label="Documentació">
-     <app-file-upload id="{{id}}" origin="successstories"></app-file-upload>
-  </mat-tab>
-</mat-tab-group>
-<div ngClass="centered-item">
-  <button mat-raised-button color="primary" type="submit">Guardar</button>
-</div>
-<div ngClass="centered-item">
-  <small ngClass="centered-item">
-    Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched: {{theForm.touched}} | Dirty: {{theForm.dirty}} 
-  </small>
-</div>
+    <mat-tab label="Documentació">
+      <app-file-upload id="{{id}}" origin="successstories"></app-file-upload>
+    </mat-tab>
+  </mat-tab-group>
+  <div ngClass="centered-item">
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
+  </div>
+  <div ngClass="centered-item">
+    <small ngClass="centered-item">
+      Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched:
+      {{theForm.touched}} | Dirty: {{theForm.dirty}}
+    </small>
+  </div>
 </form>
