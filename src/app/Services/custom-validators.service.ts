@@ -8,29 +8,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CustomValidatorsService {
   // Pendiente de comentar
-  private organizationCode: string[] = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'K',
-    'L',
-    'M',
-    'N',
-    'P',
-    'Q',
-    'S',
-  ];
+  private organizationCode: string[] = ['A', 'B', 'E', 'H', 'K', 'P', 'Q', 'S'];
 
   // Solo Baleares
   private provinceCode: String[] = ['07', '57'];
 
-  private letterControlDigit: string[] = ['K', 'P', 'Q', 'S'];
   private numberControlDigit: string[] = ['A', 'B', 'E', 'H'];
+  private letterControlDigit: string[] = ['K', 'P', 'Q', 'S'];
 
   private dniLetters: string[] = [
     'T',
@@ -60,6 +44,19 @@ export class CustomValidatorsService {
 
   private nieInitialLetters: string[] = ['X', 'Y', 'Z'];
 
+  private controlDigitList: any[] = [
+    'J',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+  ];
+
   private isSettingValues = new BehaviorSubject<boolean>(false);
 
   dniNieCifValidator(): ValidatorFn {
@@ -73,7 +70,7 @@ export class CustomValidatorsService {
       let dni: boolean = false;
       let cif: boolean = false;
 
-      let validData: string = '';
+      let validData: any;
 
       if (data.length == 9) {
         if (this.nieInitialLetters.indexOf(typeDefiningCharacter) != -1) {
@@ -83,98 +80,129 @@ export class CustomValidatorsService {
             data.slice(1, 9);
         } else if (this.organizationCode.indexOf(typeDefiningCharacter) != -1) {
           cif = true;
-        } else {
+        } else if (!isNaN(typeDefiningCharacter)) {
           dni = true;
         }
 
         if (dni || nie) {
           validData = this.dniNieValidator(data, dni ? 'dni' : 'nie');
         } else if (cif) {
+          validData = this.cifValidator(data);
+        } else {
+          validData = null;
         }
 
         // He añadido este boolean como propiedad de la clase para evitar que, al setear el valor, se quede en un bucle infinito.
-        this.isSettingValues.next(true);
-        control.setValue(validData, { emitEvent: false });
-        this.isSettingValues.next(false);
+        if (validData != null) {
+          this.isSettingValues.next(true);
+          control.setValue(validData, { emitEvent: false });
+          this.isSettingValues.next(false);
+        } else {
+          return { dniNieCifValidator: false };
+        }
       }
       return null;
     };
   }
 
-  //   dniNieCifValidator(): ValidatorFn {
-  //     return (control: AbstractControl): ValidationErrors | null => {
-  //       if (control.value.length == 9) {
-  //         let data = control.value.toUpperCase();
-  //         let typeDefiningCharacter = data.substring(0, 1);
-  //         if (this.nieInitialLetters.indexOf(typeDefiningCharacter) != -1) {
-  //           typeDefiningCharacter = this.nieInitialLetters.indexOf(
-  //             typeDefiningCharacter
-  //           );
-  //           let nie = data.slice(1, 9);
-  //           data = typeDefiningCharacter + nie;
-  //         }
+  cifValidator(cif: any) {
+    let cifOrganizationCode = cif.substring(0, 1);
 
-  //         let valid: boolean = false;
+    let organizationType: string;
 
-  //         if (isNaN(typeDefiningCharacter)) {
-  //           if (this.cifValidator(data)) {
-  //             valid = true;
-  //           }
-  //         } else if (!isNaN(typeDefiningCharacter)) {
-  //           if (this.dniNieValidator(data)) {
-  //             valid = true;
-  //           }
-  //         }
+    if (this.numberControlDigit.indexOf(cifOrganizationCode) != -1) {
+      organizationType = 'number';
+    } else if (this.letterControlDigit.indexOf(cifOrganizationCode) != -1) {
+      organizationType = 'letter';
+    }
 
-  //         return !valid ? { validData: true } : null;
-  //       }
+    let cifProvinceCode = cif.substring(1, 3);
 
-  //       return null;
-  //     };
-  //   }
+    if (this.provinceCode.indexOf(cifProvinceCode) == -1) {
+      return null;
+    }
 
-  //   cifValidator(cif: any) {
-  //     let cifOrganizationCode = cif.substring(0, 1);
+    let cifNumeration = cif.substring(1, 8);
+    let odd = [];
+    let even = [];
 
-  //     let cifProvinceCode = cif.substring(1, 3);
+    for (let i = 0; i < cifNumeration.length; i++) {
+      if (i % 2 == 0) {
+        odd.push(cifNumeration[i]);
+      } else {
+        even.push(cifNumeration[i]);
+      }
+    }
 
-  //     let cifNumeration = cif.substring(3, 8);
+    let sumEven = even.reduce((a, b) => parseInt(a) + parseInt(b));
 
-  //     let cifControlDigit = cif.substring(8, 9);
+    let sumOdd = 0;
+    for (let i = 0; i < odd.length; i++) {
+      let oddNumber = parseInt(odd[i]) * 2;
+      if (oddNumber > 9) {
+        oddNumber = oddNumber - 9;
+      }
+      sumOdd += oddNumber;
+    }
 
-  //     let validOrganizationCode: boolean =
-  //       this.organizationCode.indexOf(cifOrganizationCode) != -1;
+    let totalSum = sumEven + sumOdd;
+    let controlDigit = 10 - (totalSum % 10);
 
-  //     let validProvinceCode: boolean =
-  //       this.provinceCode.indexOf(cifProvinceCode) != -1;
+    let validControlDigit: any;
 
-  //     let validNumeration: boolean = !isNaN(cifNumeration);
+    switch (organizationType) {
+      case 'letter': {
+        validControlDigit = this.controlDigitList[controlDigit];
+        console.log('letter', validControlDigit);
+        return cifOrganizationCode + cifNumeration + validControlDigit;
+      }
+      case 'number': {
+        validControlDigit = controlDigit;
+        return cifOrganizationCode + cifNumeration + validControlDigit;
+      }
+    }
 
-  //     let validControlDigit: boolean = false;
+    // let cifOrganizationCode = cif.substring(0, 1);
 
-  //     if (
-  //       isNaN(cifControlDigit) &&
-  //       this.letterControlDigit.indexOf(cifOrganizationCode) != -1
-  //     ) {
-  //       validControlDigit = true;
-  //     } else if (
-  //       !isNaN(cifControlDigit) &&
-  //       this.numberControlDigit.indexOf(cifOrganizationCode) != -1
-  //     ) {
-  //       validControlDigit = true;
-  //     }
+    // let cifProvinceCode = cif.substring(1, 3);
 
-  //     if (
-  //       !validOrganizationCode ||
-  //       !validProvinceCode ||
-  //       !validNumeration ||
-  //       !validControlDigit
-  //     ) {
-  //       return false;
-  //     } else {
-  //       return true;
-  //     }
-  //   }
+    // let cifNumeration = cif.substring(3, 8);
+
+    // let cifControlDigit = cif.substring(8, 9);
+
+    // let validOrganizationCode: boolean =
+    //   this.organizationCode.indexOf(cifOrganizationCode) != -1;
+
+    // let validProvinceCode: boolean =
+    //   this.provinceCode.indexOf(cifProvinceCode) != -1;
+
+    // let validNumeration: boolean = !isNaN(cifNumeration);
+
+    // let validControlDigit: boolean = false;
+
+    // if (
+    //   isNaN(cifControlDigit) &&
+    //   this.letterControlDigit.indexOf(cifOrganizationCode) != -1
+    // ) {
+    //   validControlDigit = true;
+    // } else if (
+    //   !isNaN(cifControlDigit) &&
+    //   this.numberControlDigit.indexOf(cifOrganizationCode) != -1
+    // ) {
+    //   validControlDigit = true;
+    // }
+
+    // if (
+    //   !validOrganizationCode ||
+    //   !validProvinceCode ||
+    //   !validNumeration ||
+    //   !validControlDigit
+    // ) {
+    //   return false;
+    // } else {
+    //   return true;
+    // }
+  }
 
   dniNieValidator(dni: string, type: string) {
     switch (type) {

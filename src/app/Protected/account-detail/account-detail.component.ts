@@ -18,30 +18,30 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
   styleUrl: './account-detail.component.scss',
 })
 export class AccountDetailComponent implements CanComponentDeactivate {
-  isElevated: boolean = true
-  selectedIndex: number
-  theForm: FormGroup
-  countries: CountriesDTO[] = []
-  zipCodeList: ZipCodesIBDTO[] = []
-  legalFormList: any[] = []
-  filteredOptions: Observable<ZipCodesIBDTO[]>
-  options: ZipCodesIBDTO[] = []
-  id:string = this.route.snapshot.paramMap.get('id')
+  isElevated: boolean = true;
+  selectedIndex: number;
+  theForm: FormGroup;
+  countries: CountriesDTO[] = [];
+  zipCodeList: ZipCodesIBDTO[] = [];
+  legalFormList: any[] = [];
+  filteredOptions: Observable<ZipCodesIBDTO[]>;
+  options: ZipCodesIBDTO[] = [];
+  id: string = this.route.snapshot.paramMap.get('id');
 
-  consultantList: string[] = []
-  delegationList: string[] = []
-  sectorList: any[] = []
-  activityList: any[] = []
+  consultantList: string[] = [];
+  delegationList: string[] = [];
+  sectorList: any[] = [];
+  activityList: any[] = [];
 
-  clientTypologyList: any[] = []
-  continentList: any[] = []
+  clientTypologyList: any[] = [];
+  continentList: any[] = [];
 
   propertyStatus: any[] = [
     { value: 'Lloguer', view: 'Lloguer' },
     { value: 'Propietat', view: 'Propietat' },
   ];
 
-  debtsSitesList: any[] = []
+  debtsSitesList: any[] = [];
 
   constructor(
     private dataService: DataService,
@@ -202,7 +202,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   }
 
   ngOnInit() {
-    this.selectedIndex = +sessionStorage.getItem("currentAccountTab")
+    this.selectedIndex = +sessionStorage.getItem('currentAccountTab');
     this.filteredOptions = this.theForm.get('zipCode').valueChanges.pipe(
       startWith(''),
       map((value) => {
@@ -254,7 +254,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       this.sectorList = sectorItems;
     });
   }
-  
+
   loadActivityInfo() {
     this.dataService.getAllActivities().subscribe((activityItems: any[]) => {
       this.activityList = activityItems;
@@ -283,8 +283,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       this.zipCodeList = zpCodes;
       this.options = zpCodes;
 
-     /*  console.log(this.options); */
-
+      /*  console.log(this.options); */
     });
   }
 
@@ -295,7 +294,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   }
 
   onTabChange(event: MatTabChangeEvent) {
-    sessionStorage.setItem("currentAccountTab",event.index.toString())
+    sessionStorage.setItem('currentAccountTab', event.index.toString());
   }
 
   onSubmit() {
