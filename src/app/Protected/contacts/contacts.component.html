@@ -1,14 +1,14 @@
 <h1>Contactos</h1>
 <section ngClass="filter-area">
-  <mat-form-field >
+  <mat-form-field>
     <mat-label>Estat contacte</mat-label>
     <mat-select (selectionChange)="selectedValue($event)">
-        @for (contactStateItem of contactStates; track contactStateItem['value']) {
-          <mat-option [value]="contactStateItem">{{contactStateItem['label']}}</mat-option>
-        }
+      @for (contactStateItem of contactStates; track contactStateItem['value']) {
+      <mat-option [value]="contactStateItem">{{contactStateItem['label']}}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
-  <mat-form-field >
+  <mat-form-field>
     <mat-label>Filter contacts</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
   </mat-form-field>
@@ -20,19 +20,20 @@
         <span *ngSwitchDefault>{{ col.label }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-      <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
-        <div class="btn-edit" *ngSwitchCase="'isEdit'">
+        <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
+          <!-- <div class="btn-edit" *ngSwitchCase="'isEdit'">
           <button mat-icon-button (click)="element.isEdit = !element.isEdit" class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="accent"><i class="fa-solid fa-pencil fa-xs"></i></button>
           <button mat-icon-button class="material-icons app-toolbar-menu delete-button" (click)="removeRow(element.id)" matTooltip="Delete" color="warn"><i class="fa-solid fa-trash fa-xs"></i></button>
-        </div>
-        <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
-        <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key]}}</span>
-        <span *ngSwitchCase="'email'" ngClass="full-view">{{element[col.key]}}</span>
-        <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/contact-detail/', element[col.key]]" title="Click to view & edit contact detail">{{ element[col.key] }}</a>
-        <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
-      </section>
+        </div> -->
+          <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
+          <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key]}}</span>
+          <span *ngSwitchCase="'email'" ngClass="full-view">{{element[col.key]}}</span>
+          <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/contact-detail/', element.id]"
+            title="Click to view & edit contact detail">{{ element[col.key] }}</a>
+          <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
+        </section>
 
-      <section [ngSwitch]="col.type" *ngIf="element.isEdit">
+        <!-- <section [ngSwitch]="col.type" *ngIf="element.isEdit">
         <div class="btn-edit" *ngSwitchCase="'isEdit'">
           <button mat-button (click)="editRow(element)" [disabled]="valid[element.id] === false">Done</button>
         </div>
@@ -48,7 +49,7 @@
         <textarea *ngSwitchCase="'textarea'" ngClass="textarea-edition-format small-data-input" [formControl]="element[col.key]"></textarea>
         <input *ngSwitchCase="'url'" [type]="col.type" [formControl]="element[col.key]" ngClass="url-edition-format small-data-input"/>
         <input *ngSwitchDefault [type]="col.type" [formControl]="element[col.key]" ngClass="text-edition-format small-data-input"/>
-      </section>
+      </section> -->
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
