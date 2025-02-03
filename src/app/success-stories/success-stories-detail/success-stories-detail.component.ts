@@ -44,6 +44,7 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
     private route: ActivatedRoute
   ) {
     this.theForm = new FormGroup({
+      // Datos generales
       id: new FormControl(''),
       nombre: new FormControl('', [Validators.required]),
       ibRelleuTypology: new FormControl('', [Validators.required]),
@@ -65,8 +66,6 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       delegation: new FormControl(''),
 
       transferDate: new FormControl('', [Validators.required]),
-
-      localizationAddress: new FormControl(''),
     });
     this.getAllZipCodes();
     this.loadIbRelleuTypology();
