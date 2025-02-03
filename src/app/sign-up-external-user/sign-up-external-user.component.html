@@ -74,9 +74,12 @@
     <section *ngIf="mustShowField">
       <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">{{ "send" | translate }}</button>
     </section>
-    <section *ngIf="errorMessage" class="error">
-      {{ errorMessage }}
-    </section>
+    <div ngClass="centered-item">
+      <small ngClass="centered-item">
+        Status: {{profileForm.status}} | Valid: {{profileForm.valid}} | Pristine: {{profileForm.pristine}} | Touched:
+        {{profileForm.touched}} | Dirty: {{profileForm.dirty}}
+      </small>
+    </div>
     <section>
       <label for="lopd_pas0" class="control-label label-required">{{ "ihaveread" | translate }}<a href="https://www.adrbalears.es/aviso-legal/377" target="_blank"> {{ "legalNoticeAndPrivacyPolicy" | translate }}</a></label>
       <br>

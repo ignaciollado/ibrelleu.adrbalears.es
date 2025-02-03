@@ -46,7 +46,7 @@ export class SignUpExternalUserComponent {
     councilCity: new FormControl({ value: '', disabled: true }),
     localizationCCAA: new FormControl({ value: '', disabled: true }),
     userProfile: new FormControl('', [Validators.required]),
-    acceptTerms: new FormControl(false, [Validators.requiredTrue]),
+    acceptTerms: new FormControl(true, [Validators.requiredTrue]),
   });
 
   constructor (
