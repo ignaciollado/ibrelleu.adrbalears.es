@@ -7,6 +7,7 @@ import { DataService } from '../../Services/data.service';
 import { map, Observable, startWith } from 'rxjs';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { ActivatedRoute } from '@angular/router';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'adr-contact-detail',
@@ -16,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class ContactDetailComponent implements CanComponentDeactivate {
   id:string = this.route.snapshot.paramMap.get('id');
+  selectedIndex: number
   perfilTecnicoItems_es = ['Reemprendedor', 'Cedente', 'Externo', 'Usuario de servicio PH/REC']
   perfilTecnicoItems_ca = ['Reemprenedor', 'Cedent', 'Extern', 'Usuari de serveis PH/REC']
 
@@ -80,6 +82,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   ngOnInit() {
+      this.selectedIndex = +sessionStorage.getItem("currentContactTab")
       this.filteredOptions = this.theForm.get('zipCode').valueChanges.pipe(
         startWith(''),
         map(value => {
@@ -126,6 +129,10 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   onSubmit() {
     console.log(this.theForm.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
+  }
+
+  onTabChange(event: MatTabChangeEvent) {
+    sessionStorage.setItem("currentContactTab",event.index.toString())
   }
 
   onFileSelected(e:Event) {
