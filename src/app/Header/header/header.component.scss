@@ -47,10 +47,6 @@ mat-toolbar {
   }
 }
 
-mat-sidenav-content{
-  border: 2px solid adr-colors.$primary-adr;
-}
-
 @media screen and (max-width: 992px) {
   mat-sidenav .mobileGrid {
     display: grid;
