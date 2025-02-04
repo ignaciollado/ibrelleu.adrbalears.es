@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     /* console.log (this.jwtHelper.decodeToken(this.theToken)) */
+    console.log ("Welcome to ibrelleu from ADR Balears!!!")
     
     if (this.theToken) {
       this.actualUser = this.jwtHelper.decodeToken(this.theToken).name

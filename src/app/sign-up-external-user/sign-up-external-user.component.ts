@@ -107,9 +107,10 @@ export class SignUpExternalUserComponent {
   }
 
   createContact(): void {
-    this.contactService.createContact(this.profileForm).subscribe(
+    this.contactService.createContact(this.profileForm.value).subscribe(
       data => {
         console.log(data);
+        this.showError(data.message);
       },
       error => {
         this.showError(error);
@@ -157,8 +158,6 @@ export class SignUpExternalUserComponent {
   }
 
   private showError(error: string): void {
-    this.snackBar.open(error, 'Close', {
-      duration: 3000,
-    });
+    this.snackBar.open(error, 'Close', { duration: 10000, });
   }
 }

@@ -63,14 +63,6 @@
   "noDelegation1": "Es necesario crear al menos una delegación para poder añadir los datos de su actividad.",
   "noDelegation2": "Disculpe las molestias.",
 
-  "aspect": "Aspecto",
-  "energy": "Energía",
-  "water": "Agua",
-  "waterConsumption": "Consumo de agua",
-
-  "energyType": "Consumo de",
-  "energyConsumption": "Consumo de energía",
-
   "residueType": "Residuo generado",
   "searchResidue": "Buscar residuo...",
   "residue": "Residuo",
@@ -83,12 +75,6 @@
   "compost": "Compostaje",
   "emissions": "Emisiones",
   "emissionConsumption": "Emisiones de ",
-
-  "scopeOne": "Alcance uno ",
-  "scopeTwo": "Alcance dos ",
-  "quantity": "Cantidad",
-  "quantityCO2e": "Cantidad ",
-  "objectiveCO2e": "Objetivo ",
 
   "selectRatioType": "Seleccione el tipo de 'ratio':",
   "activityIndicator": "Indicador de activitad",
@@ -147,6 +133,7 @@
   "Name": "Nombre",
   "email": "Dirección electrónica",
   "Mobile": "Mobil",
+  "mainPhone": "Teléfono",
   "Update": "Actualizar",
   "Error": "Por favor, indique los detalles requeridos.",
   "municipioDe": "Municipio",

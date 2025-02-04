@@ -62,12 +62,6 @@
   "personsList": "Llistat de personal",
   "monthlyObjective": "Objectiu",
 
-  "aspects": "Aspectes",
-  "energies": "Energies",
-  "residues": "Residus",
-
-  "companyActivityData": "Dades d'activitat de la meva empresa",
-  "consumptionList": "Llistat de consums:",
   "delegation": "Emplaçament",
   "selectDelegation": "Seleccioni un emplaçament",
   "delegationAdd": "Afegir emplaçament",
@@ -76,15 +70,6 @@
   "noDelegation1": "És necessari crear almenys una delegació per a poder afegir les dades de la seva activitat.",
   "noDelegation2": "Disculpi les molèsties.",
 
-  "aspect": "Aspecte",
-  "energy": "Energia",
-  "water": "Aigua",
-  "waterConsumption": "Consum d'aigua",
-
-  "energyType": "Consum de",
-  "energyConsumption": "Consum d'energia",
-
-  "residueType": "Residu generat",
   "searchResidue": "cerca residu...",
   "residue": "Residu",
   "residueConsumption": "Generació de residus (kg)",
@@ -118,11 +103,6 @@
   "toDate": "Fins a",
   "monthAndYear": "Mes i any",
   "actions": "ACCIONS ",
-
-  "billing": "Facturació (€)",
-  "monthlyBilling": "Facturació mes",
-  "persons": "Mitjana de personal",
-  "monthlyPersons": "Personal mes",
 
   "globalQuestionnaireNormativeTexts": "Normativa legal",
   "regulationID": "ID texte normatiu",
@@ -160,6 +140,7 @@
   "Name": "Nom",
   "email": "Adreça electrònica",
   "Mobile": "Mòbil",
+  "mainPhone": "Telèfon",
   "Update": "Actualitzar",
   "Error": "Per favor, indiqui els detalls requerits.",
   "municipioDe": "Municipi",

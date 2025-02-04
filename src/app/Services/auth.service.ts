@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    console.log ( "el token: ", this.jwtHelper.decodeToken(sessionStorage.getItem("access_token")) )
+   /*  console.log ( "el token: ", this.jwtHelper.decodeToken(sessionStorage.getItem("access_token")) ) */
     if (this.jwtHelper.isTokenExpired(sessionStorage.getItem("access_token"))) {
       return false
     } else {

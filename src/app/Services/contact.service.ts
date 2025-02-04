@@ -22,6 +22,7 @@ export class ContactService {
   }
 
   createContact(contact: any): Observable<any> {
+    console.log (contact)
     return this.http.post(`${this.apiUrl}/contactInsert.php`, contact).pipe(
       catchError(this.handleError));
   }
