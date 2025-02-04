@@ -17,7 +17,7 @@
           <mat-label>{{'ibRelleuTypology' | translate}}</mat-label>
           <mat-select formControlName="ibRelleuTypology">
             @for (ibRelleuTypology of ibRelleuTypologyList; track ibRelleuTypology) {
-            <mat-option [value]="ibRelleuTypology.value">{{ibRelleuTypology.label}}</mat-option>
+            <mat-option [value]="ibRelleuTypology.value">{{ibRelleuTypology.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -40,10 +40,8 @@
           <mat-select formControlName="mainSector">
             <mat-option [value]="" (click)="activateAndFilterActivities($event)">---</mat-option>
             @for (sector of sectorList; track sector) {
-            <mat-option *ngSwitchCase="'cas'" [value]="sector.value"
-              (click)="activateAndFilterActivities($event)">{{sector.label}}</mat-option>
-            <mat-option *ngSwitchCase="'cat'" [value]="sector.value"
-              (click)="activateAndFilterActivities($event)">{{sector.label_ca}}</mat-option>
+            <mat-option [value]="sector.value" (click)="activateAndFilterActivities($event)">{{sector.label |
+              translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -52,8 +50,7 @@
           <mat-select formControlName="mainActivity">
             <mat-option [value]="">---</mat-option>
             @for (activity of activityList; track activity) {
-            <mat-option *ngSwitchCase="'cas'" [value]="activity.value">{{activity.label}}</mat-option>
-            <mat-option *ngSwitchCase="'cat'" [value]="activity.value">{{activity.label_ca}}</mat-option>
+            <mat-option [value]="activity.value">{{activity.label}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -111,7 +108,7 @@
           <mat-label>{{'contractTypology' | translate}}</mat-label>
           <mat-select formControlName="contractTypology">
             @for(contractTypology of contractTypologyList; track contractTypology) {
-            <mat-option [value]="contractTypology.value">{{contractTypology.label}}</mat-option>
+            <mat-option [value]="contractTypology.value">{{contractTypology.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
