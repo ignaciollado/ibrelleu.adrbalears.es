@@ -15,6 +15,7 @@ import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 import { Observable } from 'rxjs';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { AccountDTO } from '../../Models/account.dto';
+import { CustomValidatorsService } from '../../Services/custom-validators.service';
 
 @Component({
   selector: 'adr-success-stories-detail',
@@ -43,10 +44,13 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   paymentTypeList: any[] = [];
   paymentTypologyList: any[] = [];
 
+  legalFormList: any[] = [];
+
   constructor(
     private dataService: DataService,
     private countriesService: CountriesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private customValidatorService: CustomValidatorsService
   ) {
     this.theForm = new FormGroup({
       // Datos generales
@@ -70,6 +74,7 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       consultor: new FormControl('', [Validators.required]),
       delegation: new FormControl(''),
 
+      // Acuerdo
       transferDate: new FormControl('', [Validators.required]),
       contractTypology: new FormControl(''),
       transferPrice: new FormControl(''),
@@ -82,6 +87,20 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       savedWorkersNumber: new FormControl(''),
       ibRelleuWorkersNumber: new FormControl(''),
       totalWorkers: new FormControl({ value: '-', disabled: true }),
+
+      // Datos Proyecto Reemprendedor
+      totalNameIbRelleu: new FormControl(''),
+      phoneIbRelleu: new FormControl('', Validators.pattern('[0-9]{9}')),
+      mailIbRelleu: new FormControl('', Validators.email),
+      nifIbRelleu: new FormControl('', [
+        Validators.minLength(9),
+        this.customValidatorService.dniNieCifValidator(),
+      ]),
+      legalFormIbRelleu: new FormControl(''),
+      nifCompanyIbRelleu: new FormControl('', [
+        Validators.minLength(9),
+        customValidatorService.dniNieCifValidator(),
+      ]),
     });
     this.getAllZipCodes();
     this.loadIbRelleuTypology();
@@ -92,6 +111,7 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
     this.loadTransmissionTypology();
     this.loadPaymentType();
     this.loadPaymentTypology();
+    this.loadLegalForm();
 
     // this.theForm.statusChanges.subscribe((newStaus) => {
     //   console.log('form Status changed event');
@@ -206,6 +226,12 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   loadPaymentTypology() {
     this.dataService.getAllPaymentTypology().subscribe((paymentTypology) => {
       this.paymentTypologyList = paymentTypology;
+    });
+  }
+
+  loadLegalForm() {
+    this.dataService.getAllLegalForms().subscribe((legalForm) => {
+      this.legalFormList = legalForm;
     });
   }
 
