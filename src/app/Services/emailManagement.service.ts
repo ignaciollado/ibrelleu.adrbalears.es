@@ -25,23 +25,23 @@ export class EmailManagementService {
       .get<any>(`${URL_API}&email=${emailAddress}` )
   }
 
-  sendCustomerEmail(registerForm: any, state: string): Observable<any> {
-    console.log (registerForm.value)
+  sendCustomerEmail(data: any): Observable<any> {
+
     let mailcontent: string = ""
-    const name: string = registerForm.value.firstName + " " + registerForm.value.lastName
-    const email: string = registerForm.value.mainMail
-    const phone: string = registerForm.value.mainPhone
-    const address: string = registerForm.value.localizationAddress
-    const zipCode: string = registerForm.value.zipCode
-    const localizationCity: string = registerForm.value.localizationCity
-    const councilCity: string = registerForm.value.councilCity
+    const name: string = data.value.firstName + " " + data.value.lastName
+    const email: string = data.value.mainMail
+    const phone: string = data.value.mainPhone
+    const address: string = data.value.localizationAddress
+    const zipCode: string = data.value.zipCode
+    const localizationCity: string = data.value.localizationCity
+    const councilCity: string = data.value.councilCity
     
     const subjectTxt: string = "Sol·licitud alta a IBrelleu"
     const projectName: string = "ibrelleu - Relleu de negocis"
-    const stateRecived: string = state
-    console.log ("titulo: ", address, registerForm.value.id, stateRecived)
 
-    mailcontent = subjectTxt +"_"+  projectName +"_"+ name + "_" + address + "_" + stateRecived
+    console.log ("titulo: ", address, data.value.id,)
+
+    mailcontent = subjectTxt +"_"+  projectName +"_"+ name + "_" + address + "_" 
 
     return this.http
       .get<any>(`${URL_API_SEND}?${email}/${name}/${phone}/${subjectTxt}/${mailcontent}/${projectName}`)
