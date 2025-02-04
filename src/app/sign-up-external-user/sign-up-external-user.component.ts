@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
 import { Observable } from 'rxjs';
 import { CustomValidatorsService } from '../Services/custom-validators.service';
+import { EmailManagementService } from '../Services/emailManagement.service';
 import { ContactService } from '../Services/contact.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -53,6 +54,7 @@ export class SignUpExternalUserComponent {
     private dataService: DataService, private contactService: ContactService,
     private router: Router,
     private customValidators: CustomValidatorsService,
+    private emailManagementService: EmailManagementService,
     private snackBar: MatSnackBar
   ) {
     this.getAllZipCodes();
@@ -75,23 +77,18 @@ export class SignUpExternalUserComponent {
     }
     if (!this.mustShowField) {
       this.dataService.getAllContacts().subscribe((contacts: ContactDTO[]) => {
-        const totalContacts: ContactDTO[] = contacts.filter(
-          (item: ContactDTO) => {
+        const totalContacts: ContactDTO[] = contacts.filter( (item: ContactDTO) => {
             return item.nif === this.profileForm.get('dni').value;
-          }
-        );
-        if (totalContacts.length > 0) {
+          });
+        if (totalContacts.length > 0) { /* ya está dado de alta como contacto */
           //navegar a contacto ???
+          this.emailManagementService.sendCustomerEmail(this.profileForm, "ya existe")
           this.router.navigate(['contacts']);
         } else {
           this.dataService
             .getAllAccounts()
             .subscribe((accounts: AccountDTO[]) => {
-              const totalAccounts: AccountDTO[] = accounts.filter(
-                (item: AccountDTO) => {
-                  return item.nif === this.profileForm.get('dni').value;
-                }
-              );
+              const totalAccounts: AccountDTO[] = accounts.filter( (item: AccountDTO) => { return item.nif === this.profileForm.get('dni').value; })
               if (totalAccounts.length > 0) {
                 //navegar a cuenta ???
                 this.router.navigate(['accounts']);
@@ -101,18 +98,21 @@ export class SignUpExternalUserComponent {
               }
             });
         }
+        this.showSnackBar("Usuari existent.")
+      },
+      error => {
+        this.showSnackBar(error)
       });
     }
   }
 
   createContact(): void {
-    this.contactService.createContact(this.profileForm.value).subscribe(
-      data => {
-        console.log(data);
-        this.showError(data.message);
+    this.contactService.createContact(this.profileForm.value).subscribe( (data:any) => {
+        this.emailManagementService.sendCustomerEmail(this.profileForm, "")
+        this.showSnackBar(data.message)
       },
       error => {
-        this.showError(error);
+        this.showSnackBar(error)
       }
     );
   }
@@ -156,7 +156,7 @@ export class SignUpExternalUserComponent {
     console.log('Field is updated!');
   }
 
-  private showError(error: string): void {
+  private showSnackBar(error: string): void {
     this.snackBar.open(error, 'Close', { duration: 10000, });
   }
 }
