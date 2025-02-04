@@ -2,19 +2,19 @@
 <form [formGroup]="theForm" (ngSubmit)="onSubmit()">
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight [(selectedIndex)]="selectedIndex"
     (selectedTabChange)="onTabChange($event)">
-    <mat-tab label="Dades generals">
+    <mat-tab label="{{'generalData' | translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Codi</mat-label>
+          <mat-label>{{'successStoriesCode' | translate}}</mat-label>
           <input matInput formControlName="id" aria-label="id" readonly>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Nom del cas</mat-label>
+          <mat-label>{{'caseName' | translate}}</mat-label>
           <input matInput formControlName="nombre" aria-label="Nombre">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Tipologia de IBRelleu</mat-label>
+          <mat-label>{{'ibRelleuTypology' | translate}}</mat-label>
           <mat-select formControlName="ibRelleuTypology">
             @for (ibRelleuTypology of ibRelleuTypologyList; track ibRelleuTypology) {
             <mat-option [value]="ibRelleuTypology.value">{{ibRelleuTypology.label}}</mat-option>
@@ -22,38 +22,44 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Procés</mat-label>
+          <mat-label>{{'successStoryProcess' | translate}}</mat-label>
           <input matInput formControlName="process" aria-label="Nombre">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Projecte IbRelleu</mat-label>
+          <mat-label>{{'ibRelleuProject' | translate}}</mat-label>
           <input matInput formControlName="ibRelleuProject">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Projecte Cedent</mat-label>
+          <mat-label>{{'grantorProject' | translate}}</mat-label>
           <input matInput formControlName="cedentProject">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Sector principal</mat-label>
+          <mat-label>{{'mainSector' | translate}}</mat-label>
           <mat-select formControlName="mainSector">
+            <mat-option [value]="" (click)="activateAndFilterActivities($event)">---</mat-option>
             @for (sector of sectorList; track sector) {
-            <mat-option [value]="sector.value">{{sector.label}}</mat-option>
+            <mat-option *ngSwitchCase="'cas'" [value]="sector.value"
+              (click)="activateAndFilterActivities($event)">{{sector.label}}</mat-option>
+            <mat-option *ngSwitchCase="'cat'" [value]="sector.value"
+              (click)="activateAndFilterActivities($event)">{{sector.label_ca}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Activitat</mat-label>
+          <mat-label>{{'mainActivity' | translate }}</mat-label>
           <mat-select formControlName="mainActivity">
+            <mat-option [value]="">---</mat-option>
             @for (activity of activityList; track activity) {
-            <mat-option [value]="activity.value">{{activity.label}}</mat-option>
+            <mat-option *ngSwitchCase="'cas'" [value]="activity.value">{{activity.label}}</mat-option>
+            <mat-option *ngSwitchCase="'cat'" [value]="activity.value">{{activity.label_ca}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Código Postal</mat-label>
+          <mat-label>{{'zipCode' | translate }}</mat-label>
           <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto" />
           <small *ngIf="theForm.get('zipCode').errors">min length: 5 digits</small>
 
@@ -64,19 +70,19 @@
           </mat-autocomplete>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Población</mat-label>
+          <mat-label>{{'localizationCity' | translate}}</mat-label>
           <input matInput formControlName="localizationCity" readonly="readonly">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Municipio</mat-label>
+          <mat-label>{{'councilCity' | translate}}</mat-label>
           <input matInput formControlName="councilCity" readonly="readonly">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Illa</mat-label>
+          <mat-label>{{'localizationCCAA' | translate}}</mat-label>
           <input matInput formControlName="localizationCCAA" readonly="readonly">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Consultor</mat-label>
+          <mat-label>{{'consultor' | translate}}</mat-label>
           <mat-select formControlName="consultor">
             @for(consultant of consultantList; track consultant) {
             <mat-option [value]="consultant">{{consultant}}</mat-option>
@@ -84,7 +90,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Delegación</mat-label>
+          <mat-label>{{'delegationOption' | translate }}</mat-label>
           <mat-select formControlName="delegation">
             @for (delegation of delegationList; track delegation) {
             <mat-option [value]="delegation">{{delegation}}</mat-option>
@@ -95,14 +101,14 @@
       </section>
     </mat-tab>
 
-    <mat-tab label="Acord">
+    <mat-tab label="{{'acord' | translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Data de la cessió</mat-label>
+          <mat-label>{{'transferDate' | translate}}</mat-label>
           <input matInput formControlName="transferDate" type="date" aria-label="transferDate">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Tipologia de contracte</mat-label>
+          <mat-label>{{'contractTypology' | translate}}</mat-label>
           <mat-select formControlName="contractTypology">
             @for(contractTypology of contractTypologyList; track contractTypology) {
             <mat-option [value]="contractTypology.value">{{contractTypology.label}}</mat-option>
@@ -111,22 +117,22 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Preu de cessió</mat-label>
+          <mat-label>{{'transferPrice' | translate}}</mat-label>
           <input matInput formControlName="transferPrice" type="number" aria-label="transferPrice">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Valor del inmoble</mat-label>
+          <mat-label>{{'propertyValue' | translate}}</mat-label>
           <input matInput formControlName="propertyValue" type="number">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>S'ha venut l'establiment comercial</mat-label>
+          <mat-label>{{'selledProperty' | translate}}</mat-label>
           <mat-select formControlName="propertySelled">
-            <mat-option value="SI">SI</mat-option>
-            <mat-option value="NO">NO</mat-option>
+            <mat-option value="1">SI</mat-option>
+            <mat-option value="0">NO</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Forma de pagament</mat-label>
+          <mat-label>{{'paymentForm' | translate}}</mat-label>
           <mat-select formControlName="paymentType">
             @for(paymentType of paymentTypeList; track paymentType) {
             <mat-option [value]="paymentType.value">{{paymentType.label}}</mat-option>
@@ -134,7 +140,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Tipologia de pagament</mat-label>
+          <mat-label>{{'paymentTypology' | translate}}</mat-label>
           <mat-select formControlName="paymentTypology">
             @for(paymentTypology of paymentTypologyList; track paymentTypology) {
             <mat-option [value]="paymentTypology.value">{{paymentTypology.label}}</mat-option>
@@ -142,26 +148,26 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Núm. de persones treballadores per contractar</mat-label>
+          <mat-label>{{'hiringWorkersNumber' | translate}}</mat-label>
           <input matInput type="number" formControlName="hiringWorkersNumber" min="0"
             (keyup)="calculateTotalWorkers($event)">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Núm. de persones treballadores salvades</mat-label>
+          <mat-label>{{'savedWorkersNumber' | translate}}</mat-label>
           <input matInput type="number" formControlName="savedWorkersNumber" min="0"
             (keyup)="calculateTotalWorkers($event)">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Núm. de persones emprenedores que treballaran a l'empresa </mat-label>
+          <mat-label>{{'entrepreneurWorkersNumber' | translate}}</mat-label>
           <input matInput type="number" formControlName="ibRelleuWorkersNumber" min="0"
             (keyup)="calculateTotalWorkers($event)">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Núm. de persones treballadores per contractar</mat-label>
+          <mat-label>{{'totalWorkersNumber' | translate}}</mat-label>
           <input matInput type="number" formControlName="totalWorkers">
         </mat-form-field>
         <mat-form-field class="textArea">
-          <mat-label>Marc de l'acord</mat-label>
+          <mat-label>{{'acordMark' | translate}}</mat-label>
           <textarea matInput formControlName="agreement" rows="10"></textarea>
         </mat-form-field>
       </section>
