@@ -2,34 +2,22 @@
 <section>
   <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-      <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+      <mat-header-cell *matHeaderCellDef [ngSwitch]="actualLanguage">
+        <span *ngSwitchCase="'cat'">{{ col.label_ca }}</span>
         <span *ngSwitchDefault>{{ col.label }}</span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
-      <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
-        <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
-        <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key] | date:'short'}}</span>
-        <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/success-stories-detail/', element[col.key]]" title="Click to view & edit details">{{ element[col.key] }}</a>
-        <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
-      </section>
-
-      <section [ngSwitch]="col.type" *ngIf="element.isEdit">
-        <span *ngSwitchCase="'isSelected'" ngClass="small-data">{{element[col.key]}}</span>
-        <span *ngSwitchCase="'readOnly'" [formControl]="element[col.key]" ngClass="small-data">{{element[col.key]}}</span>
-        <mat-select *ngSwitchCase="'scope'" [formControl]="element[col.key]" ngClass="select-scope">
-          <mat-option *ngFor="let successStory of successStories" [value]="successStory">
-            {{successStory}}
-          </mat-option>
-        </mat-select>
-        <textarea *ngSwitchCase="'textarea'" ngClass="textarea-edition-format small-data-input" [formControl]="element[col.key]"></textarea>
-        <input *ngSwitchCase="'url'" [type]="col.type" [formControl]="element[col.key]" ngClass="url-edition-format small-data-input"/>
-        <input *ngSwitchDefault [type]="col.type" [formControl]="element[col.key]" ngClass="text-edition-format small-data-input"/>
-      </section>
+        <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
+          <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
+          <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key] | date:'short'}}</span>
+          <a *ngSwitchCase="'url'" ngClass="small-data url-link"
+            [routerLink]="['/success-stories-detail/', element[col.key]]" title="{{'details' | translate}}">{{
+            element[col.key] }}</a>
+          <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
+        </section>
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
   </mat-table>
 </section>
-
-
