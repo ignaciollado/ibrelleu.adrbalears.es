@@ -1,0 +1,26 @@
+[
+  {
+    "value": "282310004",
+    "label": "Transferència"
+  },
+  {
+    "value": "282310003",
+    "label": "Xec"
+  },
+  {
+    "value": "282310002",
+    "label": "Xec conformat"
+  },
+  {
+    "value": "282310000",
+    "label": "Efectiu"
+  },
+  {
+    "value": "282310005",
+    "label": "Pagaré"
+  },
+  {
+    "value": "282310006",
+    "label": "Altres"
+  }
+]

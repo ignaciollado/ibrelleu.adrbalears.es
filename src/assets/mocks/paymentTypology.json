@@ -1,0 +1,20 @@
+[
+  {
+    "value": "282310000",
+    "label": "Al comptat"
+  },
+  {
+    "value": "282310001",
+    "label": "Una part al comptat i una part a terminis"
+  },
+  {
+    "value": "282310002",
+    "label": "A terminis"
+  },
+  {
+    "value": "282310003",
+    "label": "Una part al comptat i una part en variable"
+  },
+  { "value": "282310004", "label": "Pagaments variables" },
+  { "value": "282310006", "label": "Altres" }
+]
