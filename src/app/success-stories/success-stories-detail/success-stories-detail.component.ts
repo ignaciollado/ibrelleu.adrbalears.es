@@ -105,6 +105,9 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       // Testimonial
       testimonialWeb: new FormControl(''),
       testimonialObservations: new FormControl(''),
+
+      // Seguiment
+      offeredServiceSummary: new FormControl(''),
     });
     this.getAllZipCodes();
     this.loadIbRelleuTypology();
