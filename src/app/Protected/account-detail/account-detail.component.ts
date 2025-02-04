@@ -262,9 +262,11 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   }
 
   loadClientInfo() {
-    this.dataService.getAllTypologies().subscribe((typologyItems: any[]) => {
-      this.clientTypologyList = typologyItems;
-    });
+    this.dataService
+      .getAllClientTypologies()
+      .subscribe((typologyItems: any[]) => {
+        this.clientTypologyList = typologyItems;
+      });
   }
 
   loadDebtsSitesInfo() {
