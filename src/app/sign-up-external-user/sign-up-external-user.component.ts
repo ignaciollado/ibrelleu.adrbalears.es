@@ -81,8 +81,9 @@ export class SignUpExternalUserComponent {
             return item.nif === this.profileForm.get('dni').value;
           });
         if (totalContacts.length > 0) { /* ya está dado de alta como contacto */
-          //navegar a contacto ???
-          this.emailManagementService.sendCustomerEmail(this.profileForm, "ya existe")
+          //¿¿navegar a detalle contacto ???
+          this.showSnackBar("Contacte existent !!!")
+          this.emailManagementService.sendCustomerEmail(this.profileForm, "ya existe el contacto")
           this.router.navigate(['contacts']);
         } else {
           this.dataService
@@ -91,6 +92,8 @@ export class SignUpExternalUserComponent {
               const totalAccounts: AccountDTO[] = accounts.filter( (item: AccountDTO) => { return item.nif === this.profileForm.get('dni').value; })
               if (totalAccounts.length > 0) {
                 //navegar a cuenta ???
+                this.showSnackBar("Compte existent !!!")
+                this.emailManagementService.sendCustomerEmail(this.profileForm, "ya existe la cuenta")
                 this.router.navigate(['accounts']);
               } else {
                 this.mustShowField = true;
@@ -98,7 +101,6 @@ export class SignUpExternalUserComponent {
               }
             });
         }
-        this.showSnackBar("Usuari existent.")
       },
       error => {
         this.showSnackBar(error)
