@@ -69,7 +69,6 @@ export class SignUpExternalUserComponent {
   }
 
   validateDNI(event: any) {
-    console.log(this.profileForm.get('dni').value);
     if (this.profileForm.get('dni').value === '' || !event.checked) {
       console.log(event.checked);
       return;

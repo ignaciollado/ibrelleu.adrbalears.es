@@ -103,3 +103,66 @@ export const contactColumns = [
   //   label: ""
   // },
 ];
+
+export const contactColumnsBBDD = [
+  {
+    key: 'firstName',
+    type: 'url',
+    label: 'Nom complet',
+  },
+  {
+    key: 'lastName',
+    type: 'url',
+    label: 'Cognom',
+  },
+  {
+    key: 'dni',
+    type: 'readOnly',
+    label: 'DNI/NIE',
+  },
+  {
+    key: 'mainMail',
+    type: 'email',
+    label: 'Correu electrònic principal',
+  },
+  {
+    key: 'mainPhone',
+    type: 'text',
+    label: 'Telèfon principal',
+  },
+  {
+    key: 'userProfile',
+    type: 'text',
+    label: 'Perfil',
+  },
+  {
+    key: 'contact_status',
+    type: 'text',
+    label: 'Estat contacte',
+  },
+  {
+    key: 'created_at',
+    type: 'date',
+    label: "Data d'entrada",
+  },
+  {
+    key: 'consultant',
+    type: 'text',
+    label: 'Consultor',
+  },
+  {
+    key: 'delegation',
+    type: 'scope',
+    label: 'Delegació',
+  },
+  {
+    key: 'town',
+    type: 'text',
+    label: 'Població',
+  },
+  {
+    key: 'employementStatus',
+    type: 'text',
+    label: 'Situació laboral',
+  }
+];

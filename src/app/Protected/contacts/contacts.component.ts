@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
-import { contactColumns, ContactDTO } from '../../Models/contact.dto';
+import { contactColumns, contactColumnsBBDD, ContactDTO } from '../../Models/contact.dto';
 import { DataService } from '../../Services/data.service';
 import { ContactService } from '../../Services/contact.service';
 import { ContactStatesDTO } from '../../Models/contact-states.dto';
@@ -35,9 +35,13 @@ export interface PeriodicElement {
 })
 export class ContactsComponent {
   ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA'];
-  columnsDisplayed: string[] = contactColumns.map((col) => col.key);
+  //columnsDisplayed: string[] = contactColumns.map((col) => col.key);
+  columnsDisplayed: string[] = contactColumnsBBDD.map((col) => col.key);
+
   contactStates: any[] = [];
-  columnsSchema: any = contactColumns;
+  //columnsSchema: any = contactColumns;
+  columnsSchema: any = contactColumnsBBDD;
+
   dataSource = new MatTableDataSource();
   valid: any = {};
 

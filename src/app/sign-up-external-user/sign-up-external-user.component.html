@@ -18,9 +18,9 @@
     <mat-form-field *ngIf="mustShowField">
       <mat-label>{{ "Gender" | translate }}</mat-label>
       <mat-select formControlName="gender">
-        <mat-option value="Hombre">{{ "manGender" | translate }}</mat-option>
-        <mat-option value="Mujer">{{ "womanGender" | translate }}</mat-option>
-        <mat-option value="Otros">{{ "otherGender" | translate }}</mat-option>
+        <mat-option value="male">{{ "manGender" | translate }}</mat-option>
+        <mat-option value="femaile">{{ "womanGender" | translate }}</mat-option>
+        <mat-option value="Others">{{ "otherGender" | translate }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
@@ -64,8 +64,8 @@
     <mat-form-field *ngIf="mustShowField">
       <mat-label>{{ "yourProfile" | translate }}</mat-label>
       <mat-select formControlName="userProfile">
-        <mat-option value="cedent">{{ "grantor" | translate }}</mat-option>
-        <mat-option value="emprendedor">{{ "entrepreneur" | translate }}</mat-option>
+        <mat-option value="grantor">{{ "grantor" | translate }}</mat-option>
+        <mat-option value="entrepreneur">{{ "entrepreneur" | translate }}</mat-option>
       </mat-select>
     </mat-form-field>    
     <section>
