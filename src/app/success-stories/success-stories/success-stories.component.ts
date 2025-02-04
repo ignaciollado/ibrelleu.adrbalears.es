@@ -21,8 +21,6 @@ export class SuccessStoriesComponent {
   columnsSchema: any = successStoriesColumns;
   dataSource = new MatTableDataSource<SuccessStoriesDTO>();
 
-  actualLanguage: string;
-
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngAfterViewInit() {
@@ -36,7 +34,6 @@ export class SuccessStoriesComponent {
     private dataService: DataService
   ) {
     this.loadSuccessStories();
-    this.getActualLanguage();
   }
 
   private loadSuccessStories(): void {
@@ -55,9 +52,5 @@ export class SuccessStoriesComponent {
         this.sharedService.errorLog(errorResponse);
       }
     );
-  }
-
-  private getActualLanguage(): void {
-    this.actualLanguage = sessionStorage.getItem('preferredLang');
   }
 }
