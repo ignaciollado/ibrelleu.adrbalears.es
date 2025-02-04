@@ -201,7 +201,19 @@
     </mat-tab>
 
     <mat-tab label="Testimonial">
-      Content 4
+      <section>
+        <mat-form-field>
+          <mat-label>Testimonial web</mat-label>
+          <mat-select formControlName="testimonialWeb">
+            <mat-option [value]="121370000">Sol·licitud</mat-option>
+            <mat-option [value]="121370001">Publicat</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="textArea">
+          <mat-label>Observacions testimonial</mat-label>
+          <textarea matInput formControlName="testimonialObservations" rows="5"></textarea>
+        </mat-form-field>
+      </section>
     </mat-tab>
 
     <mat-tab label="Seguiment">

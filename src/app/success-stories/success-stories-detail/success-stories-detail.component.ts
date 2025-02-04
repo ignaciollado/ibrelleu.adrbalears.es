@@ -101,6 +101,10 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
         Validators.minLength(9),
         customValidatorService.dniNieCifValidator(),
       ]),
+
+      // Testimonial
+      testimonialWeb: new FormControl(''),
+      testimonialObservations: new FormControl(''),
     });
     this.getAllZipCodes();
     this.loadIbRelleuTypology();
