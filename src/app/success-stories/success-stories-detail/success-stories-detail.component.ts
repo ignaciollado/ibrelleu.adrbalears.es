@@ -80,7 +80,7 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       agreement: new FormControl(''),
       hiringWorkersNumber: new FormControl(''),
       savedWorkersNumber: new FormControl(''),
-      entrepreneurialWorkersNumber: new FormControl(''),
+      ibRelleuWorkersNumber: new FormControl(''),
       totalWorkers: new FormControl({ value: '-', disabled: true }),
     });
     this.getAllZipCodes();
@@ -240,12 +240,10 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   calculateTotalWorkers(event: any) {
     let hiringWorkersNumber = this.theForm.get('hiringWorkersNumber').value;
     let savedWorkersNumber = this.theForm.get('savedWorkersNumber').value;
-    let entrepreneurialWorkersNumber = this.theForm.get(
-      'entrepreneurialWorkersNumber'
-    ).value;
+    let ibRelleuWorkersNumber = this.theForm.get('ibRelleuWorkersNumber').value;
 
     let totalWorkers =
-      hiringWorkersNumber + savedWorkersNumber + entrepreneurialWorkersNumber;
+      hiringWorkersNumber + savedWorkersNumber + ibRelleuWorkersNumber;
 
     this.theForm.get('totalWorkers').setValue(totalWorkers);
   }
