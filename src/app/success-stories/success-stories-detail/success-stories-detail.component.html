@@ -103,7 +103,66 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>Tipologia de contracte</mat-label>
-          <input matInput formControlName="id" aria-label="id" value="{{id}}" readonly>
+          <mat-select formControlName="contractTypology">
+            @for(contractTypology of contractTypologyList; track contractTypology) {
+            <mat-option [value]="contractTypology.value">{{contractTypology.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Preu de cessió</mat-label>
+          <input matInput formControlName="transferPrice" type="number" aria-label="transferPrice">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Valor del inmoble</mat-label>
+          <input matInput formControlName="propertyValue" type="number">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>S'ha venut l'establiment comercial</mat-label>
+          <mat-select formControlName="propertySelled">
+            <mat-option value="SI">SI</mat-option>
+            <mat-option value="NO">NO</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Forma de pagament</mat-label>
+          <mat-select formControlName="paymentType">
+            @for(paymentType of paymentTypeList; track paymentType) {
+            <mat-option [value]="paymentType.value">{{paymentType.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Tipologia de pagament</mat-label>
+          <mat-select formControlName="paymentTypology">
+            @for(paymentTypology of paymentTypologyList; track paymentTypology) {
+            <mat-option [value]="paymentTypology.value">{{paymentTypology.label}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Núm. de persones treballadores per contractar</mat-label>
+          <input matInput type="number" formControlName="hiringWorkersNumber" min="0"
+            (keyup)="calculateTotalWorkers($event)">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Núm. de persones treballadores salvades</mat-label>
+          <input matInput type="number" formControlName="savedWorkersNumber" min="0"
+            (keyup)="calculateTotalWorkers($event)">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Núm. de persones emprenedores que treballaran a l'empresa </mat-label>
+          <input matInput type="number" formControlName="entrepreneurialWorkersNumber" min="0"
+            (keyup)="calculateTotalWorkers($event)">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Núm. de persones treballadores per contractar</mat-label>
+          <input matInput type="number" formControlName="totalWorkers">
+        </mat-form-field>
+        <mat-form-field class="textArea">
+          <mat-label>Marc de l'acord</mat-label>
+          <textarea matInput formControlName="agreement" rows="10"></textarea>
         </mat-form-field>
       </section>
     </mat-tab>

@@ -38,6 +38,11 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   sectorList: any[] = [];
   activityList: any[] = [];
 
+  contractTypologyList: any[] = [];
+  transmissionTypologyList: any[] = [];
+  paymentTypeList: any[] = [];
+  paymentTypologyList: any[] = [];
+
   constructor(
     private dataService: DataService,
     private countriesService: CountriesService,
@@ -66,12 +71,27 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       delegation: new FormControl(''),
 
       transferDate: new FormControl('', [Validators.required]),
+      contractTypology: new FormControl(''),
+      transferPrice: new FormControl(''),
+      propertyValue: new FormControl(''),
+      propertySelled: new FormControl(''),
+      paymentType: new FormControl(''),
+      paymentTypology: new FormControl(''),
+      agreement: new FormControl(''),
+      hiringWorkersNumber: new FormControl(''),
+      savedWorkersNumber: new FormControl(''),
+      entrepreneurialWorkersNumber: new FormControl(''),
+      totalWorkers: new FormControl({ value: '-', disabled: true }),
     });
     this.getAllZipCodes();
     this.loadIbRelleuTypology();
     this.loadSectorList();
     this.loadActivityList();
     this.loadConsultantAndDelegationInfo();
+    this.loadContractTypology();
+    this.loadTransmissionTypology();
+    this.loadPaymentType();
+    this.loadPaymentTypology();
 
     // this.theForm.statusChanges.subscribe((newStaus) => {
     //   console.log('form Status changed event');
@@ -153,6 +173,42 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
     });
   }
 
+  loadIbRelleuTypology() {
+    this.dataService
+      .getAllIbRelleuTypologies()
+      .subscribe((ibRelleuTypology) => {
+        this.ibRelleuTypologyList = ibRelleuTypology;
+      });
+  }
+
+  loadContractTypology() {
+    this.dataService
+      .getAllContractTypologies()
+      .subscribe((contractTypology) => {
+        this.contractTypologyList = contractTypology;
+      });
+  }
+
+  loadTransmissionTypology() {
+    this.dataService
+      .getAllTransmissionTypologies()
+      .subscribe((transmissionTypology) => {
+        this.transmissionTypologyList = transmissionTypology;
+      });
+  }
+
+  loadPaymentType() {
+    this.dataService.getAllPaymentType().subscribe((paymentType) => {
+      this.paymentTypeList = paymentType;
+    });
+  }
+
+  loadPaymentTypology() {
+    this.dataService.getAllPaymentTypology().subscribe((paymentTypology) => {
+      this.paymentTypologyList = paymentTypology;
+    });
+  }
+
   selectedValue(event: any) {
     // console.log ("zp seleccionado: ", this.theForm.get('zipCode').value, this.theForm.get('zipCode').value.length)
     this.theForm
@@ -181,9 +237,16 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
     sessionStorage.setItem('currentSuccessStoryTab', event.index.toString());
   }
 
-  loadIbRelleuTypology() {
-    this.dataService.getAllIbRelleuTypology().subscribe((ibRelleuTypology) => {
-      this.ibRelleuTypologyList = ibRelleuTypology;
-    });
+  calculateTotalWorkers(event: any) {
+    let hiringWorkersNumber = this.theForm.get('hiringWorkersNumber').value;
+    let savedWorkersNumber = this.theForm.get('savedWorkersNumber').value;
+    let entrepreneurialWorkersNumber = this.theForm.get(
+      'entrepreneurialWorkersNumber'
+    ).value;
+
+    let totalWorkers =
+      hiringWorkersNumber + savedWorkersNumber + entrepreneurialWorkersNumber;
+
+    this.theForm.get('totalWorkers').setValue(totalWorkers);
   }
 }
