@@ -50,7 +50,7 @@
           <mat-select formControlName="mainActivity">
             <mat-option [value]="">---</mat-option>
             @for (activity of activityList; track activity) {
-            <mat-option [value]="activity.value">{{activity.label}}</mat-option>
+            <mat-option [value]="activity.value">{{activity.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
