@@ -61,7 +61,7 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       ibRelleuProject: new FormControl(''),
       cedentProject: new FormControl(''),
       mainSector: new FormControl(''),
-      mainActivity: new FormControl(''),
+      mainActivity: new FormControl({ value: '', disabled: true }),
 
       zipCode: new FormControl('', [
         Validators.required,
@@ -279,5 +279,21 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       hiringWorkersNumber + savedWorkersNumber + ibRelleuWorkersNumber;
 
     this.theForm.get('totalWorkers').setValue(totalWorkers);
+  }
+
+  activateAndFilterActivities(event: any) {
+    let mainSectorValue = this.theForm.get('mainSector').value;
+    console.log(mainSectorValue);
+    if (mainSectorValue == undefined) {
+      this.theForm.get('mainActivity').disable();
+      this.theForm.get('mainActivity').setValue(undefined);
+    } else {
+      this.dataService.getAllActivities().subscribe((activities) => {
+        this.activityList = activities.filter((activity) => {
+          return activity.sector === mainSectorValue;
+        });
+      });
+      this.theForm.get('mainActivity').enable();
+    }
   }
 }

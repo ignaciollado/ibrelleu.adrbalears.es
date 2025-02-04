@@ -1,4 +1,488 @@
 [
-  {"value":"Pastisseria i fleca", "label":"Pastisseria i fleca"},
-	{"value":"Restaurant, Rostisseria", "label":"Restaurant, Rostisseria"}
+  {
+    "value": "Ramaderia",
+    "label": "Ganadería",
+    "sector": "Agropecuari",
+    "label_ca": "Ramaderia"
+  },
+  {
+    "value": "Terrenys",
+    "label": "Terrenos",
+    "sector": "Agropecuari",
+    "label_ca": "Terrenys"
+  },
+  {
+    "value": "Altres",
+    "label": "Otros",
+    "sector": "Agropecuari",
+    "label_ca": "Altres"
+  },
+  {
+    "value": "Caça i pesca",
+    "label": "Caza y pesca",
+    "sector": "Agropecuari",
+    "label_ca": "Caça i pesca"
+  },
+  {
+    "value": "Conreu",
+    "label": "Cultivo",
+    "sector": "Agropecuari",
+    "label_ca": "Conreu"
+  },
+  {
+    "value": "Granja",
+    "label": "Granja",
+    "sector": "Agropecuari",
+    "label_ca": "Granja"
+  },
+  {
+    "value": "Varis",
+    "label": "Varios",
+    "sector": "Altres sectors",
+    "label_ca": "Varis"
+  },
+  {
+    "value": "Merceria, betes i fils",
+    "label": "Mercería, betas e hilos",
+    "sector": "Comerç",
+    "label_ca": "Merceria, betes i fils"
+  },
+  {
+    "value": "Articles de 2a mà",
+    "label": "Artículos de 2a mano",
+    "sector": "Comerç",
+    "label_ca": "Articles de 2a mà"
+  },
+  {
+    "value": "Herboristeria i dietètica",
+    "label": "Herboristería y dietética",
+    "sector": "Comerç",
+    "label_ca": "Herboristeria i dietètica"
+  },
+  {
+    "value": "e-Commerce",
+    "label": "e-Commerce",
+    "sector": "Comerç",
+    "label_ca": "e-Commerce"
+  },
+  {
+    "value": "Òptica i Centre Auditiu",
+    "label": "Óptica y Centro Auditivo",
+    "sector": "Comerç",
+    "label_ca": "Òptica i Centre Auditiu"
+  },
+  {
+    "value": "Perfumeria i cosmètica",
+    "label": "Perfumería y cosmética",
+    "sector": "Comerç",
+    "label_ca": "Perfumeria i cosmètica"
+  },
+  {
+    "value": "Productes diversos",
+    "label": "Productos varios",
+    "sector": "Comerç",
+    "label_ca": "Productes diversos"
+  },
+  {
+    "value": "Automòbil i nàutica",
+    "label": "Automóvil y náutica",
+    "sector": "Comerç",
+    "label_ca": "Automòbil i nàutica"
+  },
+  {
+    "value": "Basar, Objectes de regal",
+    "label": "Bazar, Objetos de regalo",
+    "sector": "Comerç",
+    "label_ca": "Basar, Objectes de regal"
+  },
+  {
+    "value": "Electrònica, fotografia, informàtica",
+    "label": "Electrónica, fotografía, informática",
+    "sector": "Comerç",
+    "label_ca": "Electrònica, fotografia, informàtica"
+  },
+  {
+    "value": "Esports",
+    "label": "Deportes",
+    "sector": "Comerç",
+    "label_ca": "Esports"
+  },
+  {
+    "value": "Estanc, timbres, loteria i segells",
+    "label": "Estanco, timbre, lotería y sellos",
+    "sector": "Comerç",
+    "label_ca": "Estanc, timbres, loteria i segells"
+  },
+  {
+    "value": "Farmàcia i para-farmàcia",
+    "label": "Farmacia y para-farmacia",
+    "sector": "Comerç",
+    "label_ca": "Farmàcia i para-farmàcia"
+  },
+  {
+    "value": "Ferreteria, bricolatge i manualitats",
+    "label": "Ferretería, bricolaje y manualidades",
+    "sector": "Comerç",
+    "label_ca": "Ferreteria, bricolatge i manualitats"
+  },
+  {
+    "value": "Joieria, bijuteria i complements",
+    "label": "Joyería, bisutería y complementos",
+    "sector": "Comerç",
+    "label_ca": "Joieria, bijuteria i complements"
+  },
+  {
+    "value": "Llibreria, papereria, quiosc i material d'oficina",
+    "label": "Librería, papelería, quiosco y material de oficina",
+    "sector": "Comerç",
+    "label_ca": "Llibreria, papereria, quiosc i material d'oficina"
+  },
+  {
+    "value": "Mobles, decoració i articles de la llar",
+    "label": "Muebles, decoración y artículos del hogar",
+    "sector": "Comerç",
+    "label_ca": "Mobles, decoració i articles de la llar"
+  },
+  {
+    "value": "Reformes",
+    "label": "Reformas",
+    "sector": "Construcció, reformes i immobiliària",
+    "label_ca": "Reformes"
+  },
+  {
+    "value": "Taller i instal·lacions",
+    "label": "Taller e instalaciones",
+    "sector": "Construcció, reformes i immobiliària",
+    "label_ca": "Taller i instal·lacions"
+  },
+  {
+    "value": "Altres",
+    "label": "Otros",
+    "sector": "Construcció, reformes i immobiliària",
+    "label_ca": "Altres"
+  },
+  {
+    "value": "Constructora",
+    "label": "Constructora",
+    "sector": "Construcció, reformes i immobiliària",
+    "label_ca": "Constructora"
+  },
+  {
+    "value": "Contratas",
+    "label": "Contratas",
+    "sector": "Construcció, reformes i immobiliària",
+    "label_ca": "Contratas"
+  },
+  {
+    "value": "Inmobiliària",
+    "label": "Inmobiliaria",
+    "sector": "Construcció, reformes i immobiliària",
+    "label_ca": "Inmobiliària"
+  },
+  {
+    "value": "Materials de construcció",
+    "label": "Materiales de construcción",
+    "sector": "Construcció, reformes i immobiliària",
+    "label_ca": "Materials de construcció"
+  },
+  {
+    "value": "Pastisseria i fleca",
+    "label": "Pastelería y panadería",
+    "sector": "Hostaleria",
+    "label_ca": "Pastisseria i fleca"
+  },
+  {
+    "value": "Restaurant, Rostisseria",
+    "label": "Restaurante, Rosticería",
+    "sector": "Hostaleria",
+    "label_ca": "Restaurant, Rostisseria"
+  },
+  {
+    "value": "Turisme rural",
+    "label": "Turismo rural",
+    "sector": "Hostaleria",
+    "label_ca": "Turisme rural"
+  },
+  {
+    "value": "Altres",
+    "label": "Otros",
+    "sector": "Hostaleria",
+    "label_ca": "Altres"
+  },
+  {
+    "value": "Bar i cafeteria",
+    "label": "Bar y cafetería",
+    "sector": "Hostaleria",
+    "label_ca": "Bar i cafeteria"
+  },
+  {
+    "value": "Càtering",
+    "label": "Catering",
+    "sector": "Hostaleria",
+    "label_ca": "Càtering"
+  },
+  {
+    "value": "Cibercafè",
+    "label": "Cibercafé",
+    "sector": "Hostaleria",
+    "label_ca": "Cibercafè"
+  },
+  {
+    "value": "Paper",
+    "label": "Papel",
+    "sector": "Indústria",
+    "label_ca": "Paper"
+  },
+  {
+    "value": "Plàstic",
+    "label": "Plástico",
+    "sector": "Indústria",
+    "label_ca": "Plàstic"
+  },
+  {
+    "value": "Química",
+    "label": "Química",
+    "sector": "Indústria",
+    "label_ca": "Química"
+  },
+  {
+    "value": "Tèxtil",
+    "label": "Textil",
+    "sector": "Indústria",
+    "label_ca": "Tèxtil"
+  },
+  {
+    "value": "Alimentació",
+    "label": "Alimentación",
+    "sector": "Indústria",
+    "label_ca": "Alimentació"
+  },
+  {
+    "value": "Altres",
+    "label": "Otros",
+    "sector": "Indústria",
+    "label_ca": "Altres"
+  },
+  {
+    "value": "Automoció",
+    "label": "Automoción",
+    "sector": "Indústria",
+    "label_ca": "Automoció"
+  },
+  {
+    "value": "Fusta",
+    "label": "Madera",
+    "sector": "Indústria",
+    "label_ca": "Fusta"
+  },
+  {
+    "value": "Maquinària",
+    "label": "Maquinária",
+    "sector": "Indústria",
+    "label_ca": "Maquinària"
+  },
+  {
+    "value": "Metall",
+    "label": "Metal",
+    "sector": "Indústria",
+    "label_ca": "Metall"
+  },
+  {
+    "value": "Mineria",
+    "label": "Minería",
+    "sector": "Indústria",
+    "label_ca": "Mineria"
+  },
+  {
+    "value": "Mobles",
+    "label": "Muebles",
+    "sector": "Indústria",
+    "label_ca": "Mobles"
+  },
+  {
+    "value": "Manteniment i pintura",
+    "label": "Mantenimiento y pintura",
+    "sector": "Serveis",
+    "label_ca": "Manteniment i pintura"
+  },
+  {
+    "value": "Màrqueting digital",
+    "label": "Márketing digital",
+    "sector": "Serveis",
+    "label_ca": "Màrqueting digital"
+  },
+  {
+    "value": "Massatges i teràpies",
+    "label": "Masajes y terapias",
+    "sector": "Serveis",
+    "label_ca": "Massatges i teràpies"
+  },
+  {
+    "value": "Informàtica",
+    "label": "Informática",
+    "sector": "Serveis",
+    "label_ca": "Informàtica"
+  },
+  {
+    "value": "Parc d'Oci, Parc d'Atraccions",
+    "label": "Parque de Ocio, Parque de Atracciones",
+    "sector": "Serveis",
+    "label_ca": "Parc d'Oci, Parc d'Atraccions"
+  },
+  {
+    "value": "Parking",
+    "label": "Parking",
+    "sector": "Serveis",
+    "label_ca": "Parking"
+  },
+  {
+    "value": "Perruqueria Canina",
+    "label": "Peluquería Canina",
+    "sector": "Serveis",
+    "label_ca": "Perruqueria Canina"
+  },
+  {
+    "value": "Perruqueria i estètica",
+    "label": "Peluquería y estética",
+    "sector": "Serveis",
+    "label_ca": "Perruqueria i estètica"
+  },
+  {
+    "value": "Rentat de cotxes",
+    "label": "Alquiler de coches",
+    "sector": "Serveis",
+    "label_ca": "Rentat de cotxes"
+  },
+  {
+    "value": "Seguretat",
+    "label": "Seguridad",
+    "sector": "Serveis",
+    "label_ca": "Seguretat"
+  },
+  {
+    "value": "Serveis de neteja",
+    "label": "Servicios de limpieza",
+    "sector": "Serveis",
+    "label_ca": "Serveis de neteja"
+  },
+  {
+    "value": "Telecomunicacions i telefonia",
+    "label": "Telecomunicaciones y telefonía",
+    "sector": "Serveis",
+    "label_ca": "Telecomunicacions i telefonia"
+  },
+  {
+    "value": "Serveis diversos",
+    "label": "Servicios diversos",
+    "sector": "Serveis",
+    "label_ca": "Serveis diversos"
+  },
+  {
+    "value": "Taller mecànic",
+    "label": "Taller mecánico",
+    "sector": "Serveis",
+    "label_ca": "Taller mecànic"
+  },
+  {
+    "value": "Videoclub",
+    "label": "Videoclub",
+    "sector": "Serveis",
+    "label_ca": "Videoclub"
+  },
+  {
+    "value": "Acadèmia, escola, autoescola",
+    "label": "Academia, escuela, autoescuela",
+    "sector": "Serveis",
+    "label_ca": "Acadèmia, escola, autoescola"
+  },
+  {
+    "value": "Agència de Viatges",
+    "label": "Agencia de Viajes",
+    "sector": "Serveis",
+    "label_ca": "Agència de Viatges"
+  },
+  {
+    "value": "Altres",
+    "label": "Otros",
+    "sector": "Serveis",
+    "label_ca": "Altres"
+  },
+  {
+    "value": "Arts gràfiques, publicitat, marketing i comunicació",
+    "label": "Artes gráficas, publicidad, márketing y comunicación",
+    "sector": "Serveis",
+    "label_ca": "Arts gràfiques, publicitat, marketing i comunicació"
+  },
+  {
+    "value": "Assegurances",
+    "label": "Seguros",
+    "sector": "Serveis",
+    "label_ca": "Assegurances"
+  },
+  {
+    "value": "Assessoria, consultoria i gestories",
+    "label": "Asesoría, consultoría y gestorías",
+    "sector": "Serveis",
+    "label_ca": "Assessoria, consultoria i gestories"
+  },
+  {
+    "value": "Distribució",
+    "label": "Distribución",
+    "sector": "Serveis",
+    "label_ca": "Distribució"
+  },
+  {
+    "value": "Gimnàs i wellness",
+    "label": "Gimnasio y wellness",
+    "sector": "Serveis",
+    "label_ca": "Gimnàs i wellness"
+  },
+  {
+    "value": "Guarderia, ludoteca, parc infantil",
+    "label": "Guardería, ludoteca y parque infantil",
+    "sector": "Serveis",
+    "label_ca": "Guarderia, ludoteca, parc infantil"
+  },
+  {
+    "value": "Importació i exportació",
+    "label": "Importación y exportación",
+    "sector": "Serveis",
+    "label_ca": "Importació i exportació"
+  },
+  {
+    "value": "Intermediació financeera",
+    "label": "Intermediación financiera",
+    "sector": "Serveis",
+    "label_ca": "Intermediació financera"
+  },
+  {
+    "value": "Internet i portals web",
+    "label": "Internet y portales web",
+    "sector": "Serveis",
+    "label_ca": "Internet i portals web"
+  },
+  {
+    "value": "Llicència de taxi",
+    "label": "Licencia de taxi",
+    "sector": "Serveis",
+    "label_ca": "Llicència de taxi"
+  },
+  {
+    "value": "Neteja",
+    "label": "Limpieza",
+    "sector": "Serveis",
+    "label_ca": "Neteja"
+  },
+  {
+    "value": "Disseny",
+    "label": "Diseño",
+    "sector": "Serveis",
+    "label_ca": "Disseny"
+  },
+  {
+    "value": "Jardineria",
+    "label": "Jardinería",
+    "sector": "Serveis",
+    "label_ca": "Jardineria"
+  }
 ]
