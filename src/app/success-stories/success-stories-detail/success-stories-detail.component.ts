@@ -283,7 +283,6 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
 
   activateAndFilterActivities(event: any) {
     let mainSectorValue = this.theForm.get('mainSector').value;
-    console.log(mainSectorValue);
     if (mainSectorValue == undefined) {
       this.theForm.get('mainActivity').disable();
       this.theForm.get('mainActivity').setValue(undefined);
