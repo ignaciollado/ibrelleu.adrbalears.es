@@ -52,6 +52,7 @@ import { SuccessStoriesComponent } from './success-stories/success-stories/succe
 import { SuccessStoriesDetailComponent } from './success-stories/success-stories-detail/success-stories-detail.component';
 import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-external-user.component';
 import { ShowGenericDataComponent } from './generic/show-generic-data/show-generic-data.component';
+import { GrantorProjectsComponent } from './Protected/grantor-projects/grantor-projects.component';
 
 export function tokenGetter() { return sessionStorage.getItem("access_token"); }
 
@@ -76,7 +77,8 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     SuccessStoriesComponent,
     SuccessStoriesDetailComponent,
     SignUpExternalUserComponent,
-    ShowGenericDataComponent
+    ShowGenericDataComponent,
+    GrantorProjectsComponent
   ],
   imports: [
     BrowserAnimationsModule,
