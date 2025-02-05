@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 const URL_API = 'https://emailvalidation.abstractapi.com/v1/?api_key=0b27a379af684fa9bd8c0a672c535d3d'
 const URL_API_SEND = 'https://tramits.idi.es/public/assets/utils/enviaCorreoElectronicoIbrelleu.php'
+
 export interface updateResponse {
   affected: number;
 }
@@ -25,26 +26,37 @@ export class EmailManagementService {
       .get<any>(`${URL_API}&email=${emailAddress}` )
   }
 
-  sendCustomerEmail(data: any): Observable<any> {
+  sendCustomerEmail(mailContent: any): Observable<any> {
 
-    let mailcontent: string = ""
-    const name: string = data.value.firstName + " " + data.value.lastName
-    const email: string = data.value.mainMail
-    const phone: string = data.value.mainPhone
-    const address: string = data.value.localizationAddress
-    const zipCode: string = data.value.zipCode
-    const localizationCity: string = data.value.localizationCity
-    const councilCity: string = data.value.councilCity
-    
-    const subjectTxt: string = "Sol·licitud alta a IBrelleu"
+    const islandList: string[] = ["Mallorca", "Menorca", "Eivissa", "Formentera"]
+    const name: string = mailContent.firstName + " " + mailContent.lastName
+    const email: string = mailContent.mainMail
+    const phone: string = mailContent.mainPhone
+    const address: string = mailContent.localizationAddress
+    const zipCode: string = mailContent.zipCode
+    const town: string = mailContent.town
+    const municipality: string = mailContent.council
+    const island: string = islandList[mailContent.island]
+    const profile: string = mailContent.userProfile === 'grantor' ? 'CEDENT' : 'EMPRENEDOR';
+    const subjectTxt: string = "Alta a IBrelleu"
     const projectName: string = "ibrelleu - Relleu de negocis"
-
-    console.log ("titulo: ", address, data.value.id,)
-
-    mailcontent = subjectTxt +"_"+  projectName +"_"+ name + "_" + address + "_" 
+    const messageData: string = address+"_"+zipCode+"_"+town+"_"+municipality+"_"+island+"_"+profile
 
     return this.http
-      .get<any>(`${URL_API_SEND}?${email}/${name}/${phone}/${subjectTxt}/${mailcontent}/${projectName}`)
+      .get<any>(`${URL_API_SEND}?${email}/${name}/${phone}/${subjectTxt}/${projectName}/${messageData}`).pipe(
+        map(response => {
+          if (response.status === 'success') {
+            console.log('Email sent successfully:', response.message);
+          } else {
+            console.error('Error sending email:', response.message);
+          }
+          return response;
+        }),
+        catchError(error => {
+          console.error('HTTP error:', error);
+          return throwError(() => new Error('Error in HTTP request'));
+        })
+      );
   }
 
   errorLog(error: HttpErrorResponse): void {
@@ -57,6 +69,18 @@ export class EmailManagementService {
     return new Promise((resolve) => {
       setTimeout(resolve, ms);
     });
+  }
+
+ private handleError(error: HttpErrorResponse) {
+    let errorMessage = '##Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Error del lado del cliente
+      errorMessage = `##Error: ${error.error.message}`;
+    } else {
+      // Error del lado del servidor
+      errorMessage = `##Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(errorMessage);
   }
 
 }

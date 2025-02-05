@@ -19,12 +19,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './sign-up-external-user.component.scss',
 })
 export class SignUpExternalUserComponent {
-  public mustShowField: boolean = false;
-  public zipCodeList: ZipCodesIBDTO[] = [];
-  filteredOptions: Observable<ZipCodesIBDTO[]>;
-  options: ZipCodesIBDTO[] = [];
+  public mustShowField: boolean = false
+  public successSend: boolean = false
+  public zipCodeList: ZipCodesIBDTO[] = []
+  filteredOptions: Observable<ZipCodesIBDTO[]>
+  options: ZipCodesIBDTO[] = []
   destinationsMail: string[] = []
-  errorMessage: string = '';
+  errorMessage: string = ''
 
   profileForm = new FormGroup({
     dni: new FormControl('', [ Validators.required, this.customValidators.dniNieCifValidator(), ]),
@@ -85,9 +86,15 @@ export class SignUpExternalUserComponent {
               }
           });
           } else {
-            this.showSnackBar("existe el contacto y se le enviará un correo electrónico")
-           /*  this.emailManagementService.sendCustomerEmail(contact)
-            .subscribe(() => { this.showSnackBar(`Contacte existent, gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) })             */
+            /* this.showSnackBar("existe el contacto y se le enviará un correo electrónico") */
+            this.emailManagementService.sendCustomerEmail(contact)
+            .subscribe((result) => {
+              console.log ("the result: ", result)
+              this.successSend = true
+              this.showSnackBar(`Gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) 
+            },  error => {
+              this.showSnackBar(error)
+            })
           }
       },
       error => {
@@ -100,6 +107,8 @@ export class SignUpExternalUserComponent {
     this.contactService.createContact(this.profileForm.value).subscribe( (data:any) => {
       this.destinationsMail.push(this.profileForm.get('mainMail').toString())
         this.emailManagementService.sendCustomerEmail(this.profileForm)
+        this.successSend = true
+        this.profileForm.reset()
         this.showSnackBar(data.message)
       },
       error => {
@@ -116,11 +125,11 @@ export class SignUpExternalUserComponent {
   }
 
   selectedValue(event: any) {
-    console.log(
+/*     console.log(
       'zp seleccionado: ',
       this.profileForm.get('zipCode').value,
       this.profileForm.get('zipCode').value.length
-    );
+    ); */
     this.profileForm
       .get('localizationCity')
       .setValue(this.profileForm.get('zipCode').value['town']);
@@ -148,6 +157,6 @@ export class SignUpExternalUserComponent {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open(error, 'Close', { duration: 10000, });
+    this.snackBar.open(error, 'Close', { duration: 100000, });
   }
 }
