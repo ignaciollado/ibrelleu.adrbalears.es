@@ -4,24 +4,15 @@
       <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu" class="sideNav">
         <mat-icon>menu</mat-icon>
       </button>
-
       <a routerLink="home" class="domain">ibrelleu.adrbalears.es</a>
     </section>
-  <!-- <span *ngIf="siMostrar" class="top-middle">{{ actualUser }} - {{ actualRole }}</span> -->
-  <section class="top-right">
-    <app-select-language></app-select-language>
-    <button mat-icon-button matTooltip="My profile" [matMenuTriggerFor]="userAccountMenu" class="userProfile">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
-      <button mat-menu-item routerLink="profile">
-        <mat-icon>person</mat-icon><span>My Account</span>
-      </button>
-      <button mat-menu-item routerLink="settings">
-        <mat-icon>settings</mat-icon><span>Settings</span>
-      </button>
-      <button mat-menu-item routerLink="#">
-        <mat-icon>help</mat-icon><span>Help</span>
+
+    <!-- <span *ngIf="siMostrar" class="top-middle">{{ actualUser }} - {{ actualRole }}</span> -->
+
+    <section class="top-right">
+      <app-select-language></app-select-language>
+      <button mat-icon-button matTooltip="My profile" [matMenuTriggerFor]="userAccountMenu" class="userProfile">
+        <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
         <button mat-menu-item routerLink="profile">
