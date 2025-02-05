@@ -13,10 +13,10 @@ export class GrantorProjectsDTO {
   partnersNum: string;
   workersNum: string;
   propertyStatus: string;
-  transferPrice: string;
+  transferPrice: number;
   transferPriceInterval: string;
-  facturation: string;
-  earnings: string;
+  facturation: number;
+  earnings: number;
   consultant: string;
   delegation: string;
   creationDate: string;
@@ -33,10 +33,10 @@ export class GrantorProjectsDTO {
     partnersNum: string,
     workersNum: string,
     propertyStatus: string,
-    transferPrice: string,
+    transferPrice: number,
     transferPriceInterval: string,
-    facturation: string,
-    earnings: string,
+    facturation: number,
+    earnings: number,
     consultant: string,
     delegation: string,
     creationDate: string
