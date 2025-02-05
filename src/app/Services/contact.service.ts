@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ContactService {
-  private apiUrl = '../../assets/phpAPI/'; // Cambia esto a tu dominio
+  private apiUrl = '../../assets/phpAPI/';
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +20,12 @@ export class ContactService {
     return this.http.get(`${this.apiUrl}/contactGetOne.php?id=${id}`).pipe(
       catchError(this.handleError));
   }
+
+  getContactByDNI(dni: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/contactGetOneByDNI.php?dni=${dni}`).pipe(
+      catchError(this.handleError));
+  }
+
 
   createContact(contact: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/contactInsert.php`, contact).pipe(

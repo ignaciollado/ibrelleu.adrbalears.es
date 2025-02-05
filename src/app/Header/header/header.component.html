@@ -7,12 +7,21 @@
 
       <a routerLink="home" class="domain">ibrelleu.adrbalears.es</a>
     </section>
-
-    <span *ngIf="siMostrar" class="top-middle">{{ actualUser }} - {{ actualRole }}</span>
-    <section class="top-right">
-      <app-select-language></app-select-language>
-      <button mat-icon-button matTooltip="My profile" [matMenuTriggerFor]="userAccountMenu" class="userProfile">
-        <mat-icon>account_circle</mat-icon>
+  <!-- <span *ngIf="siMostrar" class="top-middle">{{ actualUser }} - {{ actualRole }}</span> -->
+  <section class="top-right">
+    <app-select-language></app-select-language>
+    <button mat-icon-button matTooltip="My profile" [matMenuTriggerFor]="userAccountMenu" class="userProfile">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+      <button mat-menu-item routerLink="profile">
+        <mat-icon>person</mat-icon><span>My Account</span>
+      </button>
+      <button mat-menu-item routerLink="settings">
+        <mat-icon>settings</mat-icon><span>Settings</span>
+      </button>
+      <button mat-menu-item routerLink="#">
+        <mat-icon>help</mat-icon><span>Help</span>
       </button>
       <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
         <button mat-menu-item routerLink="profile">
@@ -32,6 +41,7 @@
       </mat-menu>
     </section>
   </mat-toolbar>
+
 
   <mat-sidenav-container class="app-container">
     <mat-sidenav #sidenav mode="side" [class.mat-elevation-z4]="true" class="app-sidenav">
