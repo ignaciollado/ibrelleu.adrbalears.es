@@ -8,9 +8,11 @@ import {
 } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
-import { contactColumns, ContactDTO } from '../../Models/contact.dto';
+import { contactColumns, contactColumnsBBDD, ContactDTO } from '../../Models/contact.dto';
 import { DataService } from '../../Services/data.service';
+import { ContactService } from '../../Services/contact.service';
 import { ContactStatesDTO } from '../../Models/contact-states.dto';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface PeriodicElement {
   name: string;
@@ -33,24 +35,42 @@ export interface PeriodicElement {
 })
 export class ContactsComponent {
   ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA'];
-  columnsDisplayed: string[] = contactColumns.map((col) => col.key);
+  //columnsDisplayed: string[] = contactColumns.map((col) => col.key);
+  columnsDisplayed: string[] = contactColumnsBBDD.map((col) => col.key);
+
   contactStates: any[] = [];
-  columnsSchema: any = contactColumns;
+  //columnsSchema: any = contactColumns;
+  columnsSchema: any = contactColumnsBBDD;
+
   dataSource = new MatTableDataSource();
   valid: any = {};
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private contactService: ContactService, private snackBar: MatSnackBar) {
     this.loadContactStates();
     this.loadAllContacts();
   }
 
-  loadAllContacts() {
+/*   loadAllContacts() {
     this.dataService.getAllContacts().subscribe((contacts: ContactDTO[]) => {
       this.dataSource.data = contacts;
       contacts.forEach((contact: ContactDTO) => {
         contact.state = this.contactStates[contact.state].label; //En vez de números, muestra el estado en string
       });
     });
+  }
+ */
+  loadAllContacts() {
+    this.contactService.getContacts().subscribe((contacts: ContactDTO[]) => {
+      this.dataSource.data = contacts;
+      console.log (this.dataSource.data)
+      this.showError("Contacts retrieved successfully!!!");
+      contacts.forEach((contact: ContactDTO) => {
+        contact.state = this.contactStates[contact.state].label; //En vez de números, muestra el estado en string
+      })
+    },
+    error => {
+      this.showError(error)
+    })
   }
 
   loadContactStates() {
@@ -60,16 +80,6 @@ export class ContactsComponent {
         this.contactStates = contactStatesItems;
       });
   }
-
-  // filterContactStates(valueToFilter: any) {
-  //   this.dataService
-  //     .getAllLegalForms()
-  //     .subscribe((contactStateItems: any[]) => {
-  //       return contactStateItems.filter((stateItem: any) => {
-  //         stateItem.value === valueToFilter;
-  //       });
-  //     });
-  // }
 
   editRow(row: ContactDTO) {
     console.log(row);
@@ -97,5 +107,9 @@ export class ContactsComponent {
     //     );
     //     this.dataSource = matchedContacts;
     //   });
+  }
+
+  private showError(error: string): void {
+    this.snackBar.open(error, 'Close', { duration: 10000, });
   }
 }

@@ -10,7 +10,7 @@
   "signUp": "Date de alta en el servicio",
   "subTitleSignUp": "Date de alta en nuestro servicio de Ibrelleu rellenando este formulario:",
   "acceptTermsAndConditions": "Acepto los términos y las condiciones",
-  "ihaveread": "He leído y accepto ",
+  "ihaveread": "He leído y acepto: ",
   "legalNoticeAndPrivacyPolicy": " el aviso legal y la política de privacidad",
   "sendingThisForm": "Con el envío de este formulario confirmas que has leído la siguiente información básica sobre el Reglamento General de Protección de Datos:",
 
@@ -63,14 +63,6 @@
   "noDelegation1": "Es necesario crear al menos una delegación para poder añadir los datos de su actividad.",
   "noDelegation2": "Disculpe las molestias.",
 
-  "aspect": "Aspecto",
-  "energy": "Energía",
-  "water": "Agua",
-  "waterConsumption": "Consumo de agua",
-
-  "energyType": "Consumo de",
-  "energyConsumption": "Consumo de energía",
-
   "residueType": "Residuo generado",
   "searchResidue": "Buscar residuo...",
   "residue": "Residuo",
@@ -83,12 +75,6 @@
   "compost": "Compostaje",
   "emissions": "Emisiones",
   "emissionConsumption": "Emisiones de ",
-
-  "scopeOne": "Alcance uno ",
-  "scopeTwo": "Alcance dos ",
-  "quantity": "Cantidad",
-  "quantityCO2e": "Cantidad ",
-  "objectiveCO2e": "Objetivo ",
 
   "selectRatioType": "Seleccione el tipo de 'ratio':",
   "activityIndicator": "Indicador de activitad",
@@ -143,10 +129,29 @@
   "characters": "caracteres",
 
   "profile": "Mis datos",
+  "gender" :"Género",
+  "male" : "Hombre",
+  "female" : "Mujer",
+  "others" : "Otros",
+  "dob": "Fecha de nacimiento",
+  "zipCode": "Códgo postal",
+  "town": "Población",
+  "municipality": "Municipio",
+  "island": "Isla",
+  "yourProfile": "Perfíl",
+  "address": "Dirección",
+  "grantor": "CEDENTE",
+  "entrepreneur": "EMPRENDEDOR",
+
+
+  "successSendMessage" :"Solicitud de alta creada correctamente. Muchas gracias por contactarnos.",
+  "rgpdTxt": "<br><b>Responsable:</b> Agència de desenvolupament regional de les Illes Balears. <br><b>Finalidad:</b> La atención y gestión de los servicios que ofrece la Agència de desenvolupament regional de les Illes Balears y el registro de los interesados para la prestación del servicio de Ibrelleu, y establecer y mantener relaciones comerciales. <br><b>Legitimación:</b> La legitimación se realiza a través del consentimiento del interesado/da; la prestación del consentimiento del interesado/da al servicio de Ibrelleu para el alta en servicios promocionales, y de interés legítimo para el desarrollo de las relaciones comerciales. <br><b>Destinatarios:</b> En calidad de corresponsables del tratamiento, las instituciones y entitadades colaboradoras para que puedan trabajar a su favor así como las fundaciones, gremios y asociaciones implicadas para el establecimiento de relaciones comerciales. <br><b>Derechos:</b> Puedes ejercer tu derecho de acceso, rectificación, oposición, limitación y supresión de todos los datos en la dirección <a href='mailto:dpd@adrbalears.es'>dpdatadrbalars.es</a>.<br><b>Información adicional:</b> Puedes consultar la información detallada sobre nuestra <a href='https://www.adrbalears.es/aviso-legal/377' target='_blank'>Política de privacidad en nuestra web corporativa</a>.<br>",
+
 
   "Name": "Nombre",
   "email": "Dirección electrónica",
   "Mobile": "Mobil",
+  "mainPhone": "Teléfono",
   "Update": "Actualizar",
   "Error": "Por favor, indique los detalles requeridos.",
   "municipioDe": "Municipio",

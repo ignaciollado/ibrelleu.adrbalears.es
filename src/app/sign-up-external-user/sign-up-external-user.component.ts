@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
 import { Observable } from 'rxjs';
 import { CustomValidatorsService } from '../Services/custom-validators.service';
+import { EmailManagementService } from '../Services/emailManagement.service';
 import { ContactService } from '../Services/contact.service';
+import { AccountService } from '../Services/account.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -17,42 +19,36 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './sign-up-external-user.component.scss',
 })
 export class SignUpExternalUserComponent {
-  public mustShowField: boolean = false;
-  public zipCodeList: ZipCodesIBDTO[] = [];
-  filteredOptions: Observable<ZipCodesIBDTO[]>;
-  options: ZipCodesIBDTO[] = [];
-  errorMessage: string = '';
+  public mustShowField: boolean = false
+  public successSend: boolean = false
+  public zipCodeList: ZipCodesIBDTO[] = []
+  filteredOptions: Observable<ZipCodesIBDTO[]>
+  options: ZipCodesIBDTO[] = []
+  destinationsMail: string[] = []
+  errorMessage: string = ''
 
   profileForm = new FormGroup({
-    dni: new FormControl('', [
-      Validators.required,
-      this.customValidators.dniNieCifValidator(),
-    ]),
+    dni: new FormControl('', [ Validators.required, this.customValidators.dniNieCifValidator(), ]),
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl(''),
     gender: new FormControl(''),
     dob: new FormControl(''),
-    mainPhone: new FormControl('', [
-      Validators.maxLength(9),
-      Validators.minLength(9),
-    ]),
+    mainPhone: new FormControl('', [ Validators.maxLength(9), Validators.minLength(9), ]),
     mainMail: new FormControl('', [Validators.required, Validators.email]),
     localizationAddress: new FormControl(''),
-    zipCode: new FormControl('', [
-      Validators.minLength(5),
-      Validators.maxLength(5),
-    ]),
+    zipCode: new FormControl('', [ Validators.minLength(5), Validators.maxLength(5), ]),
     localizationCity: new FormControl({ value: '', disabled: true }),
     councilCity: new FormControl({ value: '', disabled: true }),
-    localizationCCAA: new FormControl({ value: '', disabled: true }),
+    island: new FormControl({ value: '', disabled: true }),
     userProfile: new FormControl('', [Validators.required]),
     acceptTerms: new FormControl(true, [Validators.requiredTrue]),
   });
 
   constructor (
-    private dataService: DataService, private contactService: ContactService,
+    private dataService: DataService, private contactService: ContactService, private accountService: AccountService,
     private router: Router,
     private customValidators: CustomValidatorsService,
+    private emailManagementService: EmailManagementService,
     private snackBar: MatSnackBar
   ) {
     this.getAllZipCodes();
@@ -69,50 +65,58 @@ export class SignUpExternalUserComponent {
   }
 
   validateDNI(event: any) {
-    console.log(this.profileForm.get('dni').value);
-    if (this.profileForm.get('dni').value === '' || !event.checked) {
-      console.log(event.checked);
-      return;
-    }
+    if (this.profileForm.get('dni').value === '' || !event.checked) { console.log(event.checked); return; }
     if (!this.mustShowField) {
-      this.dataService.getAllContacts().subscribe((contacts: ContactDTO[]) => {
-        const totalContacts: ContactDTO[] = contacts.filter(
-          (item: ContactDTO) => {
-            return item.nif === this.profileForm.get('dni').value;
-          }
-        );
-        if (totalContacts.length > 0) {
-          //navegar a contacto ???
-          this.router.navigate(['contacts']);
-        } else {
-          this.dataService
-            .getAllAccounts()
-            .subscribe((accounts: AccountDTO[]) => {
-              const totalAccounts: AccountDTO[] = accounts.filter(
-                (item: AccountDTO) => {
-                  return item.nif === this.profileForm.get('dni').value;
-                }
-              );
-              if (totalAccounts.length > 0) {
-                //navegar a cuenta ???
-                this.router.navigate(['accounts']);
-              } else {
-                this.mustShowField = true;
-                this.getAllZipCodes();
+      this.contactService.getContactByDNI(this.profileForm.get('dni').value)
+      .subscribe((contact: any) => {
+        if (contact.message === "Contact not found") 
+          {
+          this.accountService.getAccountByCIF(this.profileForm.get('dni').value) /* existe alguna cuenta para este dniniecif */
+          .subscribe((account: any) => {
+            if (account.message === "Account not found") 
+              {
+              this.mustShowField = true;
+              this.getAllZipCodes();
+              } 
+            else 
+              {
+                this.showSnackBar("existe la cuenta y se le enviará un correo electrónico")
+             /*  this.emailManagementService.sendCustomerEmail(account)
+                .subscribe(() => { this.showSnackBar(`Account existent, gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) }) */
               }
-            });
-        }
+          });
+          } else {
+            /* this.showSnackBar("existe el contacto y se le enviará un correo electrónico") */
+            this.emailManagementService.sendCustomerEmail(contact)
+            .subscribe((result) => {
+              console.log ("the result existing contact: ", result)
+              this.successSend = true
+              this.showSnackBar(`Gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) 
+            },  error => {
+              this.showSnackBar(error)
+            })
+          }
+      },
+      error => {
+        this.showSnackBar(error)
       });
     }
   }
 
   createContact(): void {
-    this.contactService.createContact(this.profileForm).subscribe(
-      data => {
-        console.log(data);
+    this.contactService.createContact(this.profileForm.value).subscribe( (data:any) => {
+        this.emailManagementService.sendEmailNewUSer(this.profileForm)
+          .subscribe((result) => {
+          console.log ("the result new contact: ", result)
+          this.successSend = true
+          this.showSnackBar(`Gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`)
+          this.profileForm.reset()
+        },  error => {
+          this.showSnackBar(error)
+        })
       },
       error => {
-        this.showError(error);
+        this.showSnackBar(error)
       }
     );
   }
@@ -125,11 +129,11 @@ export class SignUpExternalUserComponent {
   }
 
   selectedValue(event: any) {
-    console.log(
+/*     console.log(
       'zp seleccionado: ',
       this.profileForm.get('zipCode').value,
       this.profileForm.get('zipCode').value.length
-    );
+    ); */
     this.profileForm
       .get('localizationCity')
       .setValue(this.profileForm.get('zipCode').value['town']);
@@ -137,7 +141,7 @@ export class SignUpExternalUserComponent {
       .get('councilCity')
       .setValue(this.profileForm.get('zipCode').value['council']);
     this.profileForm
-      .get('localizationCCAA')
+      .get('island')
       .setValue(this.profileForm.get('zipCode').value['island']);
   }
 
@@ -156,9 +160,7 @@ export class SignUpExternalUserComponent {
     console.log('Field is updated!');
   }
 
-  private showError(error: string): void {
-    this.snackBar.open(error, 'Close', {
-      duration: 3000,
-    });
+  private showSnackBar(error: string): void {
+    this.snackBar.open(error, 'Close', { duration: 10000, });
   }
 }

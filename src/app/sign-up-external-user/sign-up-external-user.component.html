@@ -1,6 +1,8 @@
-<h1>{{ "signUp" | translate }}</h1>
 
 <section ngClass="large-box">
+  <img src='../../assets/images/logo gov+adr.svg' alt='Govern de les Illes Balears' width="400px" height="auto">
+  <img src='../../assets/images/logo-ibrelleu.png' title='el servei ibrelleu' alt='ibrelleu' width="400px" height="auto">
+<br><br>
   <h2>{{ "subTitleSignUp" | translate }}</h2>
   <form [formGroup]="profileForm" (ngSubmit)="createContact()" [ngClass]="{'full-form': mustShowField}">
     <mat-form-field>
@@ -16,11 +18,11 @@
       <input matInput formControlName="lastName">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>{{ "Gender" | translate }}</mat-label>
+      <mat-label>{{ "gender" | translate }}</mat-label>
       <mat-select formControlName="gender">
-        <mat-option value="Hombre">{{ "manGender" | translate }}</mat-option>
-        <mat-option value="Mujer">{{ "womanGender" | translate }}</mat-option>
-        <mat-option value="Otros">{{ "otherGender" | translate }}</mat-option>
+        <mat-option value="male">{{ "male" | translate }}</mat-option>
+        <mat-option value="female">{{ "female" | translate }}</mat-option>
+        <mat-option value="others">{{ "others" | translate }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
@@ -29,11 +31,11 @@
     </mat-form-field>
        <mat-form-field *ngIf="mustShowField">
       <mat-label>{{ "mainPhone" | translate }}</mat-label>
-      <input matInput formControlName="mainPhone" minlength="9" maxlength="9">
+      <input matInput formControlName="mainPhone" minlength="9" maxlength="9" type="tel">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>{{ "mainMail" | translate }}</mat-label>
-      <input matInput formControlName="mainMail">
+      <mat-label>{{ "email" | translate }}</mat-label>
+      <input matInput formControlName="mainMail" type="email">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
       <mat-label>{{ "address" | translate }}</mat-label>
@@ -59,13 +61,13 @@
     </mat-form-field>    
     <mat-form-field *ngIf="mustShowField">
       <mat-label>{{ "island" | translate }}</mat-label>
-      <input matInput formControlName="localizationCCAA" readonly="readonly">
+      <input matInput formControlName="island" readonly="readonly">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
       <mat-label>{{ "yourProfile" | translate }}</mat-label>
       <mat-select formControlName="userProfile">
-        <mat-option value="cedent">{{ "grantor" | translate }}</mat-option>
-        <mat-option value="emprendedor">{{ "entrepreneur" | translate }}</mat-option>
+        <mat-option value="grantor">{{ "grantor" | translate }}</mat-option>
+        <mat-option value="entrepreneur">{{ "entrepreneur" | translate }}</mat-option>
       </mat-select>
     </mat-form-field>    
     <section>
@@ -74,24 +76,13 @@
     <section *ngIf="mustShowField">
       <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">{{ "send" | translate }}</button>
     </section>
-    <div ngClass="centered-item">
-      <small ngClass="centered-item">
-        Status: {{profileForm.status}} | Valid: {{profileForm.valid}} | Pristine: {{profileForm.pristine}} | Touched:
-        {{profileForm.touched}} | Dirty: {{profileForm.dirty}}
-      </small>
-    </div>
-    <section>
-      <label for="lopd_pas0" class="control-label label-required">{{ "ihaveread" | translate }}<a href="https://www.adrbalears.es/aviso-legal/377" target="_blank"> {{ "legalNoticeAndPrivacyPolicy" | translate }}</a></label>
       <br>
-      <br>
-      <section id="lbl_lopd_pas0" style="font-size:85%"><i>* {{"sendingThisForm" | translate}}</i><br>
-        <br><b>Responsable:</b> Agència de desenvolupament regional de les Illes Balears.
-        <br><b>Finalitat:</b> L'atenció i gestió dels serveis que ofereix l'Agència de desenvolupament regional de les Illes Balears i el registre dels interessats per a la prestació de serveis d'Ibrelleu, i establir i mantenir relacions comercials.
-        <br><b>Legitimació:</b> La legitimació es realitza a través del consentiment de l'interessat/da; la prestació del consentiment de l'interessat/da al servei d'Ibrelleu per a l'alta en serveis de promocionals, i l'interès legítim per al desenvolupament de relacions comercials.
-        <br><b>Destinataris:</b> En qualitat de corresponsables del tractament, les institucions i entitats col·laboradores per tal que puguin treballar al seu favor així com les fundacions, gremis i associacions implicades per a l'establiment de relacions comercials.
-        <br><b>Drets:</b> Podreu exercir el vostre dret d'accés, rectificació, oposició, limitació i supressió de totes les dades a <a href="mailto:dpd@adrbalears.es">'dpd&#64;adrbalars.es'</a>.
-        <br><b>Informació addicional:</b> Podeu consultar la informació detallada sobre la nostra <a href="https://www.adrbalears.es/aviso-legal/377" target="_blank">Política de Privadesa a la nostra pàgina web</a>.<br>
+      <section *ngIf="!successSend" id="lbl_lopd_pas0" style="font-size:85%"><i>* {{"sendingThisForm" | translate}}</i><br>
+       {{ "rgpdTxt" | translate}}
       </section>
-    </section>
+
   </form>
+  <section *ngIf="successSend">
+    <h2>{{ "successSendMessage" | translate }}</h2>
+  </section>
 </section>
