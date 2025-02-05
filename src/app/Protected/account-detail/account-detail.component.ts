@@ -37,8 +37,8 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   continentList: any[] = [];
 
   propertyStatus: any[] = [
-    { value: 'Lloguer', view: 'Lloguer' },
-    { value: 'Propietat', view: 'Propietat' },
+    { value: '282310000', view: 'Propietat' },
+    { value: '282310001', view: 'Lloguer' },
   ];
 
   debtsSitesList: any[] = [];
@@ -365,7 +365,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     let propertyValue = this.theForm.get('property').value;
     let rentValue = this.theForm.get('rentValue');
 
-    switch (propertyValue == 'Lloguer') {
+    switch (propertyValue == '282310001') {
       case true: {
         rentValue.enable();
         break;
