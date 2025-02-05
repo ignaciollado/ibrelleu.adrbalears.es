@@ -15,6 +15,7 @@ export class GrantorProjectsComponent {
   ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA'];
   columnsDisplayed: string[] = grantorProjectColumns.map((col) => col.key);
   dataSource = new MatTableDataSource();
+  columnsSchema: any = grantorProjectColumns;
 
   constructor(private dataService: DataService) {
     this.loadAllGrantorsProjects();

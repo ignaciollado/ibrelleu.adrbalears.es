@@ -1,1 +1,24 @@
 <h1>Proyectos Cedentes</h1>
+<section>
+    <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+            <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+                <span>{{col.label}}</span>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <section [ngSwitch]="col.type">
+                    <a *ngSwitchCase="'url'" ngClass="small-data url-link"
+                        title="{{'details' | translate}}">{{element[col.key]}}</a>
+                    <span *ngSwitchCase="'money'" ngClass="small-data">{{element[col.key] | currency :
+                        "EUR" : "symbol"
+                        : "1.2-2" : "es-ES"}}</span>
+                    <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key] | date : 'short' :
+                        'es-ES'}}</span>
+                    <span *ngSwitchDefault ngClass="small-data">{{element[col.key]}}</span>
+                </section>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="columnsDisplayed"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnsDisplayed;"></mat-row>
+    </mat-table>
+</section>
