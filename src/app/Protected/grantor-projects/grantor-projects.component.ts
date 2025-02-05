@@ -1,10 +1,30 @@
 import { Component } from '@angular/core';
+import { DataService } from '../../Services/data.service';
+import { MatTableDataSource } from '@angular/material/table';
+import {
+  grantorProjectColumns,
+  GrantorProjectsDTO,
+} from '../../Models/grantor-project.dto';
 
 @Component({
   selector: 'adr-grantor-projects',
   templateUrl: './grantor-projects.component.html',
-  styleUrl: './grantor-projects.component.scss'
+  styleUrl: './grantor-projects.component.scss',
 })
 export class GrantorProjectsComponent {
+  ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA'];
+  columnsDisplayed: string[] = grantorProjectColumns.map((col) => col.key);
+  dataSource = new MatTableDataSource();
 
+  constructor(private dataService: DataService) {
+    this.loadAllGrantorsProjects();
+  }
+
+  loadAllGrantorsProjects() {
+    this.dataService
+      .getAllGrantorProjects()
+      .subscribe((grantorProjects: GrantorProjectsDTO[]) => {
+        this.dataSource.data = grantorProjects;
+      });
+  }
 }
