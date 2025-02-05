@@ -105,11 +105,15 @@ export class SignUpExternalUserComponent {
 
   createContact(): void {
     this.contactService.createContact(this.profileForm.value).subscribe( (data:any) => {
-      this.destinationsMail.push(this.profileForm.get('mainMail').toString())
-        this.emailManagementService.sendCustomerEmail(this.profileForm)
-        this.successSend = true
-        this.profileForm.reset()
-        this.showSnackBar(data.message)
+      /* this.destinationsMail.push(this.profileForm.get('mainMail').toString()) */
+        this.emailManagementService.sendCustomerEmail(this.profileForm)            .subscribe((result) => {
+          console.log ("the result: ", result)
+          this.successSend = true
+          this.profileForm.reset()
+          this.showSnackBar(`Gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) 
+        },  error => {
+          this.showSnackBar(error)
+        })
       },
       error => {
         this.showSnackBar(error)
