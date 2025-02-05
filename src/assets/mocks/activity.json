@@ -277,7 +277,7 @@
   },
   {
     "value": "Maquinària",
-    "label": "Maquinária",
+    "label": "Maquinaria",
     "sector": "Indústria",
     "label_ca": "Maquinària"
   },
@@ -450,7 +450,7 @@
     "label_ca": "Importació i exportació"
   },
   {
-    "value": "Intermediació financeera",
+    "value": "Intermediació financera",
     "label": "Intermediación financiera",
     "sector": "Serveis",
     "label_ca": "Intermediació financera"
