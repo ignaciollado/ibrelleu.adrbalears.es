@@ -64,7 +64,12 @@ export class CustomValidatorsService {
       if (this.isSettingValues.value) {
         return null;
       }
-      let data = control.value.toUpperCase();
+      let data = control.value;
+      if (!data) {
+        return null;
+      } else {
+        data = data.toUpperCase();
+      }
       let typeDefiningCharacter = data.substring(0, 1);
       let nie: boolean = false;
       let dni: boolean = false;
