@@ -89,7 +89,7 @@ export class SignUpExternalUserComponent {
             /* this.showSnackBar("existe el contacto y se le enviará un correo electrónico") */
             this.emailManagementService.sendCustomerEmail(contact)
             .subscribe((result) => {
-              console.log ("the result: ", result)
+              console.log ("the result existing contact: ", result)
               this.successSend = true
               this.showSnackBar(`Gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) 
             },  error => {
@@ -105,12 +105,12 @@ export class SignUpExternalUserComponent {
 
   createContact(): void {
     this.contactService.createContact(this.profileForm.value).subscribe( (data:any) => {
-      /* this.destinationsMail.push(this.profileForm.get('mainMail').toString()) */
-        this.emailManagementService.sendCustomerEmail(this.profileForm)            .subscribe((result) => {
-          console.log ("the result: ", result)
+        this.emailManagementService.sendEmailNewUSer(this.profileForm)
+          .subscribe((result) => {
+          console.log ("the result new contact: ", result)
           this.successSend = true
+          this.showSnackBar(`Gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`)
           this.profileForm.reset()
-          this.showSnackBar(`Gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) 
         },  error => {
           this.showSnackBar(error)
         })
@@ -161,6 +161,6 @@ export class SignUpExternalUserComponent {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open(error, 'Close', { duration: 100000, });
+    this.snackBar.open(error, 'Close', { duration: 10000, });
   }
 }

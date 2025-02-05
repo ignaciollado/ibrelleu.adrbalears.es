@@ -27,7 +27,6 @@ export class EmailManagementService {
   }
 
   sendCustomerEmail(mailContent: any): Observable<any> {
-
     const islandList: string[] = ["Mallorca", "Menorca", "Eivissa", "Formentera"]
     const name: string = mailContent.firstName + " " + mailContent.lastName
     const email: string = mailContent.mainMail
@@ -38,6 +37,39 @@ export class EmailManagementService {
     const municipality: string = mailContent.council
     const island: string = islandList[mailContent.island]
     const profile: string = mailContent.userProfile === 'grantor' ? 'CEDENT' : 'EMPRENEDOR';
+    const subjectTxt: string = "Alta a IBrelleu"
+    const projectName: string = "ibrelleu - Relleu de negocis"
+    const messageData: string = address+"_"+zipCode+"_"+town+"_"+municipality+"_"+island+"_"+profile
+
+    return this.http
+      .get<any>(`${URL_API_SEND}?${email}/${name}/${phone}/${subjectTxt}/${projectName}/${messageData}`).pipe(
+        map(response => {
+          if (response.status === 'success') {
+            console.log('Email sent successfully:', response.message);
+          } else {
+            console.error('Error sending email:', response.message);
+          }
+          return response;
+        }),
+        catchError(error => {
+          console.error('HTTP error:', error);
+          return throwError(() => new Error('Error in HTTP request'));
+        })
+      );
+  }
+
+  sendEmailNewUSer(mailContent: any): Observable<any> {
+    console.log ("enviado a mail new contact: ", mailContent.value)
+    const islandList: string[] = ["Mallorca", "Menorca", "Eivissa", "Formentera"]
+    const name: string = mailContent.value.firstName + " " + mailContent.value.lastName
+    const email: string = mailContent.value.mainMail
+    const phone: string = mailContent.value.mainPhone
+    const address: string = mailContent.value.localizationAddress
+    const zipCode: string = mailContent.value.zipCode.zipCode
+    const town: string = mailContent.value.zipCode.town
+    const municipality: string = mailContent.value.zipCode.council
+    const island: string = mailContent.value.zipCode.island
+    const profile: string = mailContent.value.userProfile === 'grantor' ? 'CEDENT' : 'EMPRENEDOR';
     const subjectTxt: string = "Alta a IBrelleu"
     const projectName: string = "ibrelleu - Relleu de negocis"
     const messageData: string = address+"_"+zipCode+"_"+town+"_"+municipality+"_"+island+"_"+profile
