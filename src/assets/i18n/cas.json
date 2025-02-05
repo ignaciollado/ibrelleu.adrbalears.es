@@ -139,6 +139,9 @@
   "municipality": "Municipio",
   "island": "Isla",
   "yourProfile": "Perfíl",
+  "address": "Dirección",
+  "grantor": "CEDENTE",
+  "entrepreneur": "EMPRENDEDOR",
 
 
   "successSendMessage" :"Solicitud de alta creada correctamente. Muchas gracias por contactarnos.",
