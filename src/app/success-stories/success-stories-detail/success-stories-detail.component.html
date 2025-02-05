@@ -132,7 +132,7 @@
           <mat-label>{{'paymentForm' | translate}}</mat-label>
           <mat-select formControlName="paymentType">
             @for(paymentType of paymentTypeList; track paymentType) {
-            <mat-option [value]="paymentType.value">{{paymentType.label}}</mat-option>
+            <mat-option [value]="paymentType.value">{{paymentType.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -140,7 +140,7 @@
           <mat-label>{{'paymentTypology' | translate}}</mat-label>
           <mat-select formControlName="paymentTypology">
             @for(paymentTypology of paymentTypologyList; track paymentTypology) {
-            <mat-option [value]="paymentTypology.value">{{paymentTypology.label}}</mat-option>
+            <mat-option [value]="paymentTypology.value">{{paymentTypology.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>

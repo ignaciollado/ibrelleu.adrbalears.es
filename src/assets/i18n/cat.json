@@ -335,5 +335,17 @@
   "Licencia de taxi": "Llicència de taxi",
   "Limpieza": "Neteja",
   "Diseño": "Disseny",
-  "Jardinería": "Jardineria"
+  "Jardinería": "Jardineria",
+
+  "Transferencia": "Transferència",
+  "Cheque": "Xec",
+  "Cheque conformado": "Xec conformat",
+  "Efectivo": "Efectiu",
+  "Pagaré": "Pagaré",
+
+  "Al contado": "Al comptat",
+  "Una parte al contado y una parte a plazos": "Una part al comptat i una part a terminis",
+  "A plazos": "A terminis",
+  "Una parte al contado y una parte en variable": "Una part al comptat i una part en variable",
+  "Pagos variables": "Pagaments variables"
 }

@@ -322,5 +322,17 @@
   "Licencia de taxi": "Licencia de taxi",
   "Limpieza": "Limpieza",
   "Diseño": "Diseño",
-  "Jardinería": "Jardinería"
+  "Jardinería": "Jardinería",
+
+  "Transferencia": "Transferencia",
+  "Cheque": "Cheque",
+  "Cheque conformado": "Cheque conformado",
+  "Efectivo": "Efectivo",
+  "Pagaré": "Pagaré",
+
+  "Al contado": "Al contado",
+  "Una parte al contado y una parte a plazos": "Una parte al contado y una parte a plazos",
+  "A plazos": "A plazos",
+  "Una parte al contado y una parte en variable": "Una parte al contado y una parte en variable",
+  "Pagos variables": "Pagos variables"
 }
