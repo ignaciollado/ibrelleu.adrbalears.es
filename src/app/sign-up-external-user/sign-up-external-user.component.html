@@ -1,6 +1,6 @@
 
 <section ngClass="large-box">
-  <img src='../../assets/images/logo gov+adr.svg' alt='Govern de les Illes Balears' width="400px" height="auto">
+ <!--  <img src='../../assets/images/logo gov+adr.svg' alt='Govern de les Illes Balears' width="400px" height="auto"> -->
   <img src='../../assets/images/logo-ibrelleu.png' title='el servei ibrelleu' alt='ibrelleu' width="400px" height="auto">
 <br><br>
   <h2>{{ "subTitleSignUp" | translate }}</h2>
@@ -47,7 +47,7 @@
       <small *ngIf="profileForm.get('zipCode').errors">min length: 5 digits{{ "minlength" | translate }}</small>
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         @for (option of filteredOptions | async; track option) {
-          <mat-option [value]="option" >{{option.zipCode}} {{option.town}}</mat-option>
+          <mat-option [value]="option" (click)="selectedValue($event)">{{option.zipCode}} {{option.town}}</mat-option>
         }
       </mat-autocomplete>
     </mat-form-field>
@@ -78,7 +78,7 @@
     </section>
       <br>
       <section *ngIf="!successSend" id="lbl_lopd_pas0" style="font-size:85%"><i>* {{"sendingThisForm" | translate}}</i><br>
-       {{ "rgpdTxt" | translate}}
+        <article [innerHTML]="'rgpdTxt' | translate"></article>
       </section>
 
   </form>

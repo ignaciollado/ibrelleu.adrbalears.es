@@ -92,6 +92,7 @@ export class SignUpExternalUserComponent {
               console.log ("the result existing contact: ", result)
               this.successSend = true
               this.showSnackBar(`Gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) 
+              this.profileForm.reset()
             },  error => {
               this.showSnackBar(error)
             })
