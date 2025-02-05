@@ -170,26 +170,26 @@
       </section>
     </mat-tab>
 
-    <mat-tab label="Dades projecte IbRelleu">
+    <mat-tab label="{{'datosIbRelleu' | translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Nom i cognoms de la persona IbRelleu</mat-label>
+          <mat-label>{{'totalNameIbRelleu' | translate}}</mat-label>
           <input matInput formControlName="totalNameIbRelleu">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Telèfon de la persona IbRelleu o establiment comercial</mat-label>
+          <mat-label>{{'phoneIbRelleu' | translate}}</mat-label>
           <input matInput formControlName="phoneIbRelleu" minlength="9" maxlength="9">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Correu electrònic de la persona IbRelleu</mat-label>
+          <mat-label>{{'mailIbRelleu' | translate}}</mat-label>
           <input matInput type="email" formControlName="mailIbRelleu">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>DNI/NIE persona IbRelleu</mat-label>
+          <mat-label>{{'dni/nieIbRelleu' | translate}}</mat-label>
           <input matInput formControlName="nifIbRelleu" maxlength="9">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Forma jurídica de la persona IbRelleu</mat-label>
+          <mat-label>{{'legalFormIbRelleu' | translate}}</mat-label>
           <mat-select formControlName="legalFormIbRelleu">
             @for(legalForm of legalFormList; track legalForm) {
             <mat-option [value]="legalForm.value">{{legalForm.label}}</mat-option>

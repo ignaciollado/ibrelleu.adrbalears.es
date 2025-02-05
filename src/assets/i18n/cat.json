@@ -347,5 +347,12 @@
   "Una parte al contado y una parte a plazos": "Una part al comptat i una part a terminis",
   "A plazos": "A terminis",
   "Una parte al contado y una parte en variable": "Una part al comptat i una part en variable",
-  "Pagos variables": "Pagaments variables"
+  "Pagos variables": "Pagaments variables",
+
+  "datosIbRelleu": "Dades projecte IBRelleu",
+  "totalNameIbRelleu": "Nom i cognoms de la persona IBRelleu",
+  "phoneIbRelleu": "Telèfon de la persona IBRelleu o establiment comercial",
+  "mailIbRelleu": "Correu electrònic de la persona IBRelleu",
+  "dni/nieIbRelleu": "DNI/NIE persona IBRelleu",
+  "legalFormIbRelleu": "Forma jurídica de la persona IBRelleu"
 }
