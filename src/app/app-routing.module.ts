@@ -15,6 +15,7 @@ import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-ext
 import { CanDeactivateGuard } from './can-deactivate.guard';
 import { ShowGenericDataComponent } from './generic/show-generic-data/show-generic-data.component';
 import { GrantorProjectsComponent } from './Protected/grantor-projects/grantor-projects.component';
+import { GrantorProjectDetailComponent } from './Protected/grantor-project-detail/grantor-project-detail.component';
 
 const routes: Routes = [
   { path: 'home', component: BodyComponent },
@@ -41,6 +42,12 @@ const routes: Routes = [
   {
     path: 'grantor-projects',
     component: GrantorProjectsComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'grantor-project-detail/:id',
+    component: GrantorProjectDetailComponent,
     canDeactivate: [CanDeactivateGuard],
     canActivate: [AuthGuard],
   },
