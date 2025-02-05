@@ -47,7 +47,7 @@
       <small *ngIf="profileForm.get('zipCode').errors">min length: 5 digits{{ "minlength" | translate }}</small>
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         @for (option of filteredOptions | async; track option) {
-          <mat-option [value]="option" >{{option.zipCode}} {{option.town}}</mat-option>
+          <mat-option [value]="option" (click)="selectedValue($event)">{{option.zipCode}} {{option.town}}</mat-option>
         }
       </mat-autocomplete>
     </mat-form-field>
