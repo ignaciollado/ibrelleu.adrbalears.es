@@ -8,6 +8,7 @@
             <mat-cell *matCellDef="let element">
                 <section [ngSwitch]="col.type">
                     <a *ngSwitchCase="'url'" ngClass="small-data url-link"
+                        [routerLink]="['/grantor-project-detail/', element.id]"
                         title="{{'details' | translate}}">{{element[col.key]}}</a>
                     <span *ngSwitchCase="'money'" ngClass="small-data">{{element[col.key] | currency :
                         "EUR" : "symbol"
