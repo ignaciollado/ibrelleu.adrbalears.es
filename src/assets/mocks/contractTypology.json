@@ -1,16 +1,31 @@
 [
   {
     "value": "282310001",
-    "label": "Compravenda d'activitat"
+    "label": "Compraventa de actividad"
   },
-  { "value": "282310003", "label": "Compravenda de participacions" },
-  { "value": "121370000", "label": "Compravenda d'accions" },
+  {
+    "value": "282310003",
+    "label": "Compraventa de participaciones"
+  },
+  {
+    "value": "121370000",
+    "label": "Compraventa de acciones"
+  },
 
-  { "value": "282310002", "label": "Contracte d'actius" },
-  { "value": "121370001", "label": "Lloguer de l'activitat" },
-  { "value": "121370002", "label": "Donació de l'empresa/activitat" },
+  {
+    "value": "282310002",
+    "label": "Contrato de activos"
+  },
+  {
+    "value": "121370001",
+    "label": "Alquiler de la actividad"
+  },
+  {
+    "value": "121370002",
+    "label": "Donación de la empresa/actividad"
+  },
   {
     "value": "282310000",
-    "label": "Desconeguda"
+    "label": "Desconocida"
   }
 ]

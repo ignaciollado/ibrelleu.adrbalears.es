@@ -19,15 +19,22 @@ export class DataService {
     this.urlAPIMock = '../../assets/mocks/';
   }
 
-  getSuccessStories(): Observable<SuccessStoriesDTO[]> {
-    return this.http
-      .get<SuccessStoriesDTO[]>(`${this.urlAPIMock}success-stories.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
+  // Ordeno en base a la ordenación alfabética de los mocks
   getAllAccounts(): Observable<AccountDTO[]> {
     return this.http
       .get<AccountDTO[]>(`${this.urlAPIMock}accounts.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllActivities(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}activity.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllClientTypologies(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}clientTypology.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -37,51 +44,9 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllLegalForms(): Observable<LegalFormDTO[]> {
-    return this.http
-      .get<LegalFormDTO[]>(`${this.urlAPIMock}legalForm.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
   getAllContactStates(): Observable<ContactStatesDTO[]> {
     return this.http
       .get<ContactStatesDTO[]>(`${this.urlAPIMock}contactStates.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-  getAllZipCodes(): Observable<ZipCodesIBDTO[]> {
-    return this.http
-      .get<ZipCodesIBDTO[]>(`${this.urlAPIMock}zipCodesIB.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-  getAllEmployementsStatus(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}employmentStatus.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-  getAllLevelsOfEducation(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}levelOfEducation.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-  getAllWorkingModes(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}workingMode.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllSectors(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}sectors.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-  getAllActivities(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}activity.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllTypologies(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}clientTypology.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -91,15 +56,81 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
+  getAllContractTypologies(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}contractTypology.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
   getAllDebtsSites(): Observable<any[]> {
     return this.http
       .get<any[]>(`${this.urlAPIMock}debtsSites.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllIbRelleuTypology(): Observable<any[]> {
+  getAllEmployementsStatus(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}employmentStatus.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllIbRelleuTypologies(): Observable<any[]> {
     return this.http
       .get<any[]>(`${this.urlAPIMock}ibrelleuTypology.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllLegalForms(): Observable<LegalFormDTO[]> {
+    return this.http
+      .get<LegalFormDTO[]>(`${this.urlAPIMock}legalForm.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllLevelsOfEducation(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}levelOfEducation.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllPaymentType(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}paymentType.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllPaymentTypology(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}paymentTypology.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllSectors(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}sectors.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getSuccessStories(): Observable<SuccessStoriesDTO[]> {
+    return this.http
+      .get<SuccessStoriesDTO[]>(`${this.urlAPIMock}success-stories.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllTransmissionTypologies(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}transmissionTypology.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllWorkingModes(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}workingMode.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllZipCodes(): Observable<ZipCodesIBDTO[]> {
+    return this.http
+      .get<ZipCodesIBDTO[]>(`${this.urlAPIMock}zipCodesIB.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 }

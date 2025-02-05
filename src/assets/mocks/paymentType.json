@@ -1,26 +1,32 @@
 [
   {
     "value": "282310004",
-    "label": "Transferència"
+    "label": "Transferencia",
+    "label_ca": "Transferència"
   },
   {
     "value": "282310003",
-    "label": "Xec"
+    "label": "Cheque",
+    "label_ca": "Xec"
   },
   {
     "value": "282310002",
-    "label": "Xec conformat"
+    "label": "Cheque conformado",
+    "label_ca": "Xec conformat"
   },
   {
     "value": "282310000",
-    "label": "Efectiu"
+    "label": "Efectivo",
+    "label_ca": "Efectiu"
   },
   {
     "value": "282310005",
-    "label": "Pagaré"
+    "label": "Pagaré",
+    "label_ca": "Pagaré"
   },
   {
     "value": "282310006",
-    "label": "Altres"
+    "label": "Otros",
+    "label_ca": "Altres"
   }
 ]

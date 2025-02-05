@@ -63,7 +63,7 @@ export const successStoriesColumns = [
   {
     key: 'companyName',
     type: 'readOnly',
-    label: 'Nom',
+    label: 'Nombre',
     label_ca: 'Nom',
   },
   {
@@ -81,8 +81,8 @@ export const successStoriesColumns = [
   {
     key: 'reInterpriseProject',
     type: 'readOnly',
-    label: 'Proyecto Reempresa',
-    label_ca: 'Projecte Reempresa',
+    label: 'Proyecto IbRelleu',
+    label_ca: 'Projecte IbRelleu',
   },
   {
     key: 'mainSector',
@@ -111,20 +111,20 @@ export const successStoriesColumns = [
   {
     key: 'numWorkersSaved',
     type: 'number',
-    label: 'Núm. de trebajadores salvados',
+    label: 'Núm. de trabajadores salvados',
     label_ca: 'Núm. de treballadores salvats',
   },
   {
     key: 'numEntrepreneursWhoWillWork',
     type: 'number',
-    label: 'Núm. de trebajadores salvados',
-    label_ca: 'Núm. de treballadores salvats',
+    label: 'Núm. de trabajadores emprendedores que trabajaran',
+    label_ca: 'Núm. de treballadors emprenedors que treballaran',
   },
   {
-    key: 'numPeopleWoringAtReempres',
+    key: 'numPeopleWorkingAtIbRelleu',
     type: 'number',
-    label: 'Núm. de emprenedores que trabajarán',
-    label_ca: 'Núm. de emprenedors que treballaran',
+    label: 'Núm. total de personas trabajadoras',
+    label_ca: 'Núm. total de persones treballadores',
   },
   {
     key: 'creationDate',

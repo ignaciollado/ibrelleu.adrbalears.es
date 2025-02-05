@@ -14,32 +14,60 @@ import { SuccessStoriesDetailComponent } from './success-stories/success-stories
 import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-external-user.component';
 import { CanDeactivateGuard } from './can-deactivate.guard';
 import { ShowGenericDataComponent } from './generic/show-generic-data/show-generic-data.component';
+import { GrantorProjectsComponent } from './Protected/grantor-projects/grantor-projects.component';
 
 const routes: Routes = [
-  { path: 'home', component: BodyComponent},
+  { path: 'home', component: BodyComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: BodyComponent, canActivate:[AuthGuard] },
-  { path: 'profile', component: BodyComponent, canActivate:[AuthGuard] },
-  { path: 'settings', component: BodyComponent, canActivate:[AuthGuard] },
+  { path: 'register', component: BodyComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: BodyComponent, canActivate: [AuthGuard] },
+  { path: 'settings', component: BodyComponent, canActivate: [AuthGuard] },
 
   { path: 'body', component: BodyComponent },
-  { path: 'accounts', component: AccountComponent, canActivate:[AuthGuard] },
-  { path: 'contacts', component: ContactsComponent, canActivate:[AuthGuard] },
-  { path: 'contact-detail/:id', component: ContactDetailComponent, canDeactivate: [CanDeactivateGuard], canActivate: [AuthGuard] },
-  { path: 'account-detail/:id', component: AccountDetailComponent, canDeactivate: [CanDeactivateGuard], canActivate: [AuthGuard] },
-  { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
-  { path: 'success-stories', component: SuccessStoriesComponent, canActivate: [AuthGuard]},
-  { path: 'success-stories-detail/:id', component: SuccessStoriesDetailComponent, canDeactivate: [CanDeactivateGuard] },
-  { path: 'sign-up', component: SignUpExternalUserComponent},
+  { path: 'accounts', component: AccountComponent, canActivate: [AuthGuard] },
+  { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'contact-detail/:id',
+    component: ContactDetailComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'account-detail/:id',
+    component: AccountDetailComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'grantor-projects',
+    component: GrantorProjectsComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'protected',
+    component: ProtectedComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'success-stories',
+    component: SuccessStoriesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'success-stories-detail/:id',
+    component: SuccessStoriesDetailComponent,
+    canDeactivate: [CanDeactivateGuard],
+  },
+  { path: 'sign-up', component: SignUpExternalUserComponent },
 
-  { path: 'accesibilidad/:id', component: ShowGenericDataComponent},
+  { path: 'accesibilidad/:id', component: ShowGenericDataComponent },
 
-
-  { path: '', redirectTo: '/body', pathMatch: 'full' }
+  { path: '', redirectTo: '/body', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
