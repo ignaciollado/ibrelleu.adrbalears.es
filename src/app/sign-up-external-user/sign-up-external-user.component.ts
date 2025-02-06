@@ -130,11 +130,6 @@ export class SignUpExternalUserComponent {
   }
 
   selectedValue(event: any) {
-/*     console.log(
-      'zp seleccionado: ',
-      this.profileForm.get('zipCode').value,
-      this.profileForm.get('zipCode').value.length
-    ); */
     this.profileForm
       .get('localizationCity')
       .setValue(this.profileForm.get('zipCode').value['town']);

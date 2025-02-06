@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthDTO } from '../Models/auth.dto';
-import { SharedService } from './shared.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 
@@ -27,14 +27,13 @@ export class AuthService {
  
   constructor(
     private http: HttpClient, 
-     private router: Router,
-    private jwtHelper: JwtHelperService ) { }
-
-
+    private router: Router,
+    private jwtHelper: JwtHelperService,
+    private snackBar: MatSnackBar) { }
 
   public login(loginForm: AuthDTO): Observable<AuthToken> {
     return this.http
-        .post<AuthToken>( `${URL_API_SRV}/api/login-users/`, loginForm, httpOptions )
+      .post<AuthToken>( `${URL_API_SRV}/api/login-users/`, loginForm, httpOptions )
   }
 
   public logout(): void {
@@ -44,11 +43,15 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-   /*  console.log ( "el token: ", this.jwtHelper.decodeToken(sessionStorage.getItem("access_token")) ) */
     if (this.jwtHelper.isTokenExpired(sessionStorage.getItem("access_token"))) {
       return false
     } else {
       return true
     }
+  }
+
+  private showSnackBar (error: string): void {
+    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }
