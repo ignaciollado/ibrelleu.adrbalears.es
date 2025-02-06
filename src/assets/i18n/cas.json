@@ -42,7 +42,7 @@
   "contactProfileTech": "¿Es perfil técnico que actua como cedente?",
   "formContactStatus": "Estado del contacto",
   "contactProfile": "Perfil del contacto",
-  "contactConsultant": "Consultor",
+  "consultant": "Consultor",
   "contactDelegation": "Delegación",
   "contactReasonStatus": "Motivo del estado",
 
@@ -81,7 +81,15 @@
   "homeTextp3": "La persona que emprende coge el testigo en la gestión de una empresa ya existente para continuar la actividad. Así, aporta a la empresa una renovada linea de actuación.",
   "homeTextp31": "El objetivo de Ibrelleu es evitar el cierre de negocios para mantenerlos en funcionamiento y para salvaguardar los puestos de trabajo. Ibrelleu ofrece asesoramiento personalizado, neutral y gratuíto a la parte cedente y emprendedora para la elaboración del plan de cesión y de empresa, así como asesoramiento durante todo el proceso de transmisión de la empresa.",
   "homeTextp4": "",
+
   "companyName": "Nombre de la empresa",
+  "legalForm": "Forma jurídica",
+  "nif": "NIF de la empresa",
+  "tradeMarkName": "Nombre comercial",
+  "sector": "Sector principal",
+  "activityType": "Actividad principal",
+  "registrationDate": "Fecha de entrada",
+
   "companyAddress": "Domicilio",
   "companyCNAE": "CNAE de la empresa",
   "selectObjectiveType": "Seleccione el RATIO para el objetivo",

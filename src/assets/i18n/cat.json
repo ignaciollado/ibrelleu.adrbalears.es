@@ -43,7 +43,7 @@
   "contactProfileTech": "És perfil tècnic que actúa com a cedent?",
   "formContactStatus": "Estat del contacte",
   "contactProfile": "Perfil del contacte",
-  "contactConsultant": "Consultor",
+  "consultant": "Consultor",
   "contactDelegation": "Delegació",
   "contactReasonStatus": "Motiu de l'estat",
 
@@ -84,6 +84,13 @@
   "homeTextp4": "",
 
   "companyName": "Nom de l'empresa",
+  "legalForm": "Forma jurídica",
+  "nif": "NIF de l'empresa",
+  "tradeMarkName": "Nom comercial",
+  "sector": "Sector principal",
+  "activityType": "Activitat principal",
+  "registrationDate": "Data d'entrada",
+
   "companyAddress": "Domicili",
   "companyCNAE": "CNAE de l'empresa",
   "selectObjectiveType": "Seleccioni el RATIO per l'objectiu ",
