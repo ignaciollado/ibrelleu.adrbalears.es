@@ -54,14 +54,12 @@ export class ContactsComponent {
   loadAllContacts() {
     this.contactService.getContacts().subscribe((contacts: ContactDTO[]) => {
       this.dataSource.data = contacts
+      console.log (contacts)
       this.dataSource.data.map( (contact: ContactDTO) => {
         contact.firstName += " "+contact.lastName
       })
       console.log (this.dataSource.data)
       this.showError("Contacts retrieved successfully!!!")
-/*       contacts.forEach((contact: ContactDTO) => {
-        contact.contact_status = this.contactStates[contact.state].label; //En vez de números, muestra el estado en string
-      }) */
     },
     error => {
       this.showError(error)
@@ -73,38 +71,30 @@ export class ContactsComponent {
       .getAllContactStates()
       .subscribe((contactStatesItems: ContactStatesDTO[]) => {
         this.contactStates = contactStatesItems;
-      });
+      })
   }
 
   editRow(row: ContactDTO) {
-    console.log(row);
+    console.log(row)
   }
 
   removeRow(id: number) {
-    console.log(id);
+    console.log(id)
   }
 
   applyFilter(event: any) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase()
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
   }
 
   selectedValue(contactStates: any) {
-    console.log('valor seleccionado: ', contactStates.value);
-    //   this.dataService.getAllContacts().subscribe((contacts: ContactDTO[]) => {
-    //     const matchedContacts: ContactDTO[] = contacts.filter(
-    //       (item: ContactDTO) => {
-    //         return item.state === contactState.value.value;
-    //       }
-    //     );
-    //     this.dataSource = matchedContacts;
-    //   });
+    console.log('valor seleccionado: ', contactStates.value)
   }
 
   private showError(error: string): void {
-    this.snackBar.open(error, 'Close', { duration: 10000, });
+    this.snackBar.open(error, 'Close', { duration: 10000, })
   }
 }
