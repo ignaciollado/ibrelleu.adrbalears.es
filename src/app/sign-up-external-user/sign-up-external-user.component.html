@@ -1,10 +1,8 @@
 
 <section ngClass="large-box">
- <!--  <img src='../../assets/images/logo gov+adr.svg' alt='Govern de les Illes Balears' width="400px" height="auto"> -->
-  <img src='../../assets/images/logo-ibrelleu.png' title='el servei ibrelleu' alt='ibrelleu' width="400px" height="auto">
-<br><br>
-  <h2>{{ "subTitleSignUp" | translate }}</h2>
-  <form [formGroup]="profileForm" (ngSubmit)="createContact()" [ngClass]="{'full-form': mustShowField}">
+  <img ngClass="logo-header" src='../../assets/images/ibrelleu-logos-formulari.png' title='el servei ibrelleu' alt='ibrelleu'>
+  <h2 ngClass="title-header">{{ "subTitleSignUp" | translate }}</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="createContact()" [ngClass]="{'sign-up-form': mustShowField}">
     <mat-form-field>
       <mat-label>DNI/NIE</mat-label>
       <input matInput formControlName="dni" minlength="9" maxlength="9">
