@@ -1,1 +1,163 @@
-<p>grantor-project-detail works!</p>
+<form [formGroup]="grantorProjectForm" (ngSubmit)="onSubmit()">
+    <mat-tab-group animationDuration="500ms" mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight
+        [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
+        <mat-tab label="Identificació i gestió">
+            <section>
+                <mat-form-field>
+                    <mat-label>Codi</mat-label>
+                    <input matInput formControlName="code" readonly>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Data d'entrada del projecte</mat-label>
+                    <input type="date" matInput formControlName="projectCreationDate">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Nom del projecte</mat-label>
+                    <input matInput formControlName="projectName">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>La persona propietària i de contacte és la mateixa?</mat-label>
+                    <mat-select formControlName="sameContactAndOwner">
+                        <!-- <mat-option (click)="validatorsChangeYesOrNo($event, 'sameContactAndOwner', 'contactName')"
+                            [value]="0">No</mat-option>
+                        <mat-option (click)="validatorsChangeYesOrNo($event, 'sameContactAndOwner', 'contactName')"
+                            [value]="1">Si</mat-option> -->
+                        <mat-option [value]="0">No</mat-option>
+                        <mat-option [value]="1">Si</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Persona propietària</mat-label>
+                    <input matInput formControlName="ownerName">
+                </mat-form-field>
+                <!-- Si sameContactAndOwner es no  (value = 0), debe activarse este campo. Si es SI, el valor es el mismo que ownerName-->
+                <mat-form-field>
+                    <mat-label>Persona de contacte del projecte</mat-label>
+                    <input matInput formControlName="contactName">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Compte</mat-label>
+                    <input matInput formControlName="accountName">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Com ens ha conegut?</mat-label>
+                    <mat-select formControlName="howKnowUs">
+                        <mat-option [value]="">---</mat-option>
+                        @for (knowWay of knowWaysList; track knowWay) {
+                        <mat-option [value]="knowWay.value">{{knowWay.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Estat del projecte</mat-label>
+                    <mat-select formControlName="projectStatus">
+                        <mat-option [value]="">---</mat-option>
+                        @for (projectStatus of projectStatusList; track projectStatus) {
+                        <mat-option [value]="projectStatus.value">{{projectStatus.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <!-- Si el valor es '292310001' -> Cancelado, aparecería este campo que por defecto no aparece-->
+                <mat-form-field>
+                    <mat-label>Motiu de l'estat cancel·lat</mat-label>
+                    <mat-select formControlName="cancelReason">
+                        <mat-option [value]="">---</mat-option>
+                        @for(reason of projectCancelReasons; track reason) {
+                        <mat-option [value]="reason.value">{{reason.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Delegació</mat-label>
+                    <mat-select formControlName="delegation">
+                        @for(delegation of delegationList; track delegation) {
+                        <mat-option [value]="delegation">{{delegation}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Consultor</mat-label>
+                    <mat-select formControlName="consultant">
+                        @for(consultant of consultantList; track consultant) {
+                        <mat-option [value]="consultant">{{consultant}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="textArea">
+                    <mat-label>Observacions de l'estat del projecte</mat-label>
+                    <textarea matInput formControlName="statusObservation"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Empresa en funcionament?</mat-label>
+                    <mat-select formControlName="activeBusiness">
+                        <mat-option [value]="0">No</mat-option>
+                        <mat-option [value]="1">Si</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <!-- Si activeBusiness = 0, debe aparecer este campo-->
+                <mat-form-field>
+                    <mat-label>Tipologia d'establiment</mat-label>
+                    <mat-select formControlName="localTypology">
+                        <mat-option [value]="">---</mat-option>
+                        @for(localTypology of localTypologyList; track localTypology) {
+                        <mat-option [value]="localTypology.value">{{localTypology.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Tipus de cessió</mat-label>
+                    <mat-select formControlName="cessionType">
+                        <mat-option [value]="">---</mat-option>
+                        @for(cessionType of cessionTypeList; track cessionType) {
+                        <mat-option [value]="cessionType.value">{{cessionType.label_ca}}</mat-option>
+
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Any d'inici de l'activitat</mat-label>
+                    <input matInput formControlName="startYear" maxlength="4">
+                </mat-form-field>
+            </section>
+        </mat-tab>
+        <mat-tab label=" Localització i instal·lacions">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Motiu i detall de la cessió">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Detall de l'activitat i resultats">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Resultats">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Anunci">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Reunions">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Balanços de situació">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Comptes de resultat">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Documentació">
+            <section></section>
+        </mat-tab>
+    </mat-tab-group>
+    <div ngClass="centered-item">
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+    <div ngClass="centered-item">
+        <small ngClass="centered-item">
+            Status: {{grantorProjectForm.status}} | Valid: {{grantorProjectForm.valid}} | Pristine:
+            {{grantorProjectForm.pristine}} | Touched: {{grantorProjectForm.touched}} | Dirty:
+            {{grantorProjectForm.dirty}}
+        </small>
+    </div>
+</form>
