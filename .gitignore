@@ -40,3 +40,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+documentacion/ToDo.odt
+documentacion/.~lock.ToDo.odt#
+documentacion/ToDo.odt
+documentacion/ToDo.pdf

@@ -162,6 +162,7 @@ export class SignUpExternalUserComponent {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open(error, 'Close', { duration: 10000, });
+    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }

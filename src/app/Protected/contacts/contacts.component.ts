@@ -34,7 +34,8 @@ export interface PeriodicElement {
   styleUrl: './contacts.component.scss',
 })
 export class ContactsComponent {
-  ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA'];
+  ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA']
+  
   //columnsDisplayed: string[] = contactColumns.map((col) => col.key);
   columnsDisplayed: string[] = contactColumnsBBDD.map((col) => col.key);
 
@@ -50,23 +51,17 @@ export class ContactsComponent {
     this.loadAllContacts();
   }
 
-/*   loadAllContacts() {
-    this.dataService.getAllContacts().subscribe((contacts: ContactDTO[]) => {
-      this.dataSource.data = contacts;
-      contacts.forEach((contact: ContactDTO) => {
-        contact.state = this.contactStates[contact.state].label; //En vez de números, muestra el estado en string
-      });
-    });
-  }
- */
   loadAllContacts() {
     this.contactService.getContacts().subscribe((contacts: ContactDTO[]) => {
-      this.dataSource.data = contacts;
-      console.log (this.dataSource.data)
-      this.showError("Contacts retrieved successfully!!!");
-      contacts.forEach((contact: ContactDTO) => {
-        contact.state = this.contactStates[contact.state].label; //En vez de números, muestra el estado en string
+      this.dataSource.data = contacts
+      this.dataSource.data.map( (contact: ContactDTO) => {
+        contact.firstName += " "+contact.lastName
       })
+      console.log (this.dataSource.data)
+      this.showError("Contacts retrieved successfully!!!")
+/*       contacts.forEach((contact: ContactDTO) => {
+        contact.contact_status = this.contactStates[contact.state].label; //En vez de números, muestra el estado en string
+      }) */
     },
     error => {
       this.showError(error)
