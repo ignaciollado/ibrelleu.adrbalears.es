@@ -17,7 +17,7 @@
     "earnings": 0,
     "consultant": "Marta Riutord",
     "delegation": "Mallorca - Central",
-    "creationDate": "05/02/2025 12:58"
+    "creationDate": "02/05/2025"
   },
   {
     "id": "PC00002",
@@ -37,7 +37,7 @@
     "earnings": 100,
     "consultant": "Marta Riutord",
     "delegation": "Eivissa",
-    "creationDate": "05/02/2025 13:14"
+    "creationDate": "05/02/2025"
   },
   {
     "id": "PC00003",
@@ -57,7 +57,7 @@
     "earnings": 1000000,
     "consultant": "Marta Riutord",
     "delegation": "Eivissa",
-    "creationDate": "05/02/2025 13:14"
+    "creationDate": "05/02/2025"
   },
   {
     "id": "PC00004",
@@ -77,7 +77,7 @@
     "earnings": 0,
     "consultant": "Marta Riutord",
     "delegation": "Eivissa",
-    "creationDate": "05/02/2025 13:14"
+    "creationDate": "05/02/2025"
   },
   {
     "id": "PC00005",
@@ -97,6 +97,6 @@
     "earnings": 1000.57,
     "consultant": "Marta Riutord",
     "delegation": "Eivissa",
-    "creationDate": "05/02/2025 13:14"
+    "creationDate": "05/02/2025"
   }
 ]
