@@ -11,7 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class HeaderComponent implements OnInit {
 
   theToken: string = sessionStorage.getItem('access_token')
-  siMostrar: boolean = true
+  showUserData: boolean = false
 
   @Input() actualUser: string = "not user"
   @Input() actualRole: string = "no role"
@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
     console.log ("Welcome to ibrelleu from ADR Balears!!!")
     
     if (this.theToken) {
+      this.showUserData = true
       this.actualUser = this.jwtHelper.decodeToken(this.theToken).name
       this.actualRole = this.jwtHelper.decodeToken(this.theToken).role
     } else {
