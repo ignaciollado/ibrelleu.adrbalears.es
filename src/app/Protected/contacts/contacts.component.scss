@@ -53,24 +53,30 @@ mat-table {
 }
 
 .Pending {
+  display: block;
   border-radius: .2rem;
   background-color: orangered;
   padding: .2rem;
   color: #fff;
+  min-width: 4rem;
 }
 
 .Active {
+  display: block;
   border-radius: .2rem;
   background-color: greenyellow;
   padding: .2rem;
   color: #000;
+  min-width: 4rem;
 }
 
 .ContactAgain {
+  display: block;
   border-radius: .2rem;
   background-color: darkmagenta;
   padding: .2rem;
   color: #fff;
+  min-width: 4rem;
 }
 
 @media only screen and (max-width: 760px) {
