@@ -13,9 +13,7 @@
                     <span *ngSwitchCase="'money'" ngClass="small-data">{{element[col.key] | currency :
                         "EUR" : "symbol"
                         : "1.2-2" : "es-ES"}}</span>
-                    <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key] | date : 'shortDate' :
-                        "dd/MM/yyyy" :
-                        'es-ES'}}</span>
+                    <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key]}}</span>
                     <span *ngSwitchDefault ngClass="small-data">{{element[col.key]}}</span>
                 </section>
             </mat-cell>
