@@ -19,20 +19,20 @@
           <input matInput formControlName="dni" (blur)="deleteDni($event)">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'contactDob' | translate}}</mat-label>
+          <mat-label>{{'dob' | translate}}</mat-label>
           <input matInput formControlName="dob" type="date">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>{{'contactGenre' | translate}}</mat-label>
+          <mat-label>{{'gender' | translate}}</mat-label>
           <mat-select formControlName="genero">
-            <mat-option value="Hombre">Home</mat-option>
-            <mat-option value="Mujer">Dona</mat-option>
-            <mat-option value="Otros">Altres</mat-option>
+            <mat-option value="Hombre">{{'male' | translate}}</mat-option>
+            <mat-option value="Mujer">{{'female' | translate}}</mat-option>
+            <mat-option value="Otros">{{'others' | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'contactNacionality' | translate}}</mat-label>
+          <mat-label>{{'nacionality' | translate}}</mat-label>
           <mat-select formControlName="nacionalidad" multiple>
             @for (country of countries; track country) {
             <mat-option [value]="country.name.common">{{country.name.common}}</mat-option>
@@ -72,7 +72,7 @@
           </mat-select>
         </mat-form-field>
         <section>
-          <mat-label>{{'contactDelegation' | translate}}</mat-label>
+          <mat-label>{{'delegation' | translate}}</mat-label>
           <mat-radio-group formControlName="delegacion">
             <mat-radio-button value="Mallorca">Mallorca</mat-radio-button>
             <mat-radio-button value="Menorca">Menorca</mat-radio-button>
@@ -125,14 +125,14 @@
         </mat-form-field>
       </section>
     </mat-tab>
-    <mat-tab label="{{'contactLocalization' | translate}}">
+    <mat-tab label="{{'localization' | translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Dirección</mat-label>
+          <mat-label>{{'address' | translate}}</mat-label>
           <input matInput formControlName="localizationAddress">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'contactZipCode' | translate}}</mat-label>
+          <mat-label>{{'zipCode' | translate}}</mat-label>
           <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             @for (option of filteredOptions | async; track option) {
@@ -141,19 +141,19 @@
           </mat-autocomplete>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'contactLocalizationCity' | translate}}</mat-label>
+          <mat-label>{{'town' | translate}}</mat-label>
           <input matInput formControlName="localizationCity">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'contactCouncilCity' | translate}}</mat-label>
+          <mat-label>{{'municipality' | translate}}</mat-label>
           <input matInput formControlName="councilCity" readonly="readonly">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'contactCCAA' | translate}}</mat-label>
+          <mat-label>{{'island' | translate}}</mat-label>
           <input matInput formControlName="localizationCCAA">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'contactCountry' | translate}}</mat-label>
+          <mat-label>{{'country' | translate}}</mat-label>
           <input matInput formControlName="localizationCountry">
         </mat-form-field>
       </section>
