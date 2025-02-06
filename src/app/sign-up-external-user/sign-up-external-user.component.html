@@ -1,10 +1,8 @@
 
-<section ngClass="large-box">
- <!--  <img src='../../assets/images/logo gov+adr.svg' alt='Govern de les Illes Balears' width="400px" height="auto"> -->
-  <img src='../../assets/images/logo-ibrelleu.png' title='el servei ibrelleu' alt='ibrelleu' width="400px" height="auto">
-<br><br>
-  <h2>{{ "subTitleSignUp" | translate }}</h2>
-  <form [formGroup]="profileForm" (ngSubmit)="createContact()" [ngClass]="{'full-form': mustShowField}">
+<section ngClass="sign-up-container">
+  <img ngClass="logo-header" src='../../assets/images/ibrelleu-logos-formulari.png' title='el servei ibrelleu' alt='ibrelleu'>
+  <h2 ngClass="title-header">{{ "subTitleSignUp" | translate }}</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="createContact()" ngClass="sign-up-form">
     <mat-form-field>
       <mat-label>DNI/NIE</mat-label>
       <input matInput formControlName="dni" minlength="9" maxlength="9">
@@ -77,12 +75,11 @@
       <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">{{ "send" | translate }}</button>
     </section>
       <br>
-      <section *ngIf="!successSend" id="lbl_lopd_pas0" style="font-size:85%"><i>* {{"sendingThisForm" | translate}}</i><br>
-        <article [innerHTML]="'rgpdTxt' | translate"></article>
-      </section>
-
   </form>
-  <section *ngIf="successSend">
+  <section *ngIf="!successSend"><i>* {{"sendingThisForm" | translate}}</i><br>
+    <article [innerHTML]="'rgpdTxt' | translate"></article>
+  </section>
+  <section *ngIf="successSend" ngClass="success-footer">
     <h2>{{ "successSendMessage" | translate }}</h2>
   </section>
 </section>

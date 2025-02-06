@@ -1,21 +1,57 @@
 @use '../../_adr-colors';
 
-.large-box {
+.sign-up-container {
+  display: grid;
+  grid-template-areas: "headerlogo" "headertitle" "signupform";
   border: 2px solid #71b796;
-  padding: 2rem;
   width: 70%;
   margin: 2rem auto;
+  gap: 2rem;
+  padding: 2rem;
+}
+.logo-header {
+  grid-area: headerlogo;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
 }
 
-.full-form {
+.title-header {
+  grid-area: headertitle;
+}
+
+.sign-up-form {
+  grid-area: signupform;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: start;
   gap: 1rem;
 }
 
+.success-footer {
+  grid-area: successfooter;
+  border-radius: .5rem;
+  background-color: #008000;
+  padding: 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+::ng-deep .custom-snackbar {
+  border: 2px solid #71b796;
+  padding: 1rem;
+  background-color: #71b796;
+  color: #ffffff;
+}
+
 @media only screen and (max-width: 992px) {
-  form {
-    grid-template-columns: 1fr;
+  .sign-up-container {
+    margin: auto;
+    width: 100%;
+    gap: .5rem;
+    padding: .5rem;
+  }
+  img {
+    max-width: 100%;
   }
 }

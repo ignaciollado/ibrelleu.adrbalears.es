@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService, AuthToken } from '../../Services/auth.service';
 import { catchError, finalize } from 'rxjs';
-import { SharedService } from '../../Services/shared.service';
+/* import { SharedService } from '../../Services/shared.service'; */
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'adr-login',
@@ -17,8 +18,9 @@ export class LoginComponent {
 
   constructor( private fb: FormBuilder, 
     private authService: AuthService, 
-    private sharedService: SharedService,
+    /* private sharedService: SharedService, */
     private router: Router,
+    private snackBar: MatSnackBar,
     private jwtHelper: JwtHelperService ) {
 
     this.loginForm = this.fb.group({
@@ -44,7 +46,8 @@ export class LoginComponent {
             sessionStorage.setItem('ibrelleu_user', this.jwtHelper.decodeToken(item.access_token).name)
             sessionStorage.setItem('access_token', item.access_token)
             sessionStorage.setItem("preferredLang", "cat")
-            this.sharedService.managementToast( 'loginFeedback', responseOK, errorResponse )
+
+            this.showSnackBar(errorResponse + " as " + this.jwtHelper.decodeToken(item.access_token).name)
             if (this.jwtHelper.decodeToken().role === 'admin') {
               this.isAODL = false
             }
@@ -52,8 +55,7 @@ export class LoginComponent {
             },
             (error: any) => {
                   responseOK = false
-                  this.sharedService.errorLog(error)
-                  this.sharedService.managementToast( 'loginFeedback', responseOK, error )
+                  this.showSnackBar(error)
                   this.loginForm.reset()
                 },
                   () => {
@@ -62,6 +64,11 @@ export class LoginComponent {
                   }
         )
     }
+  }
+
+  private showSnackBar(error: string): void {
+    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 
 }

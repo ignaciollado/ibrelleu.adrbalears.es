@@ -130,11 +130,6 @@ export class SignUpExternalUserComponent {
   }
 
   selectedValue(event: any) {
-/*     console.log(
-      'zp seleccionado: ',
-      this.profileForm.get('zipCode').value,
-      this.profileForm.get('zipCode').value.length
-    ); */
     this.profileForm
       .get('localizationCity')
       .setValue(this.profileForm.get('zipCode').value['town']);
@@ -162,6 +157,7 @@ export class SignUpExternalUserComponent {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open(error, 'Close', { duration: 10000, });
+    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }

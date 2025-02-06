@@ -2,9 +2,7 @@
 <section>
   <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-      <mat-header-cell *matHeaderCellDef>
-        <span>{{ col.label | translate}}</span>
-      </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef><span>{{ col.label | translate}}</span></mat-header-cell>
       <mat-cell *matCellDef="let element">
         <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
           <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>

@@ -1,9 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import {
-  successStoriesColumns,
-  SuccessStoriesDTO,
-} from '../../Models/success-stories.dto';
+import { successStoriesColumns, SuccessStoriesDTO } from '../../Models/success-stories.dto';
 import { DataService } from '../../Services/data.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { SharedService } from '../../Services/shared.service';
@@ -42,9 +39,7 @@ export class SuccessStoriesComponent {
       (successStories: SuccessStoriesDTO[]) => {
         this.successStories = successStories;
         console.log('casos de éxito ', this.successStories);
-        this.dataSource = new MatTableDataSource<SuccessStoriesDTO>(
-          this.successStories
-        );
+        this.dataSource = new MatTableDataSource<SuccessStoriesDTO>( this.successStories );
         this.dataSource.sort = this.sort;
       },
       (error: HttpErrorResponse) => {
