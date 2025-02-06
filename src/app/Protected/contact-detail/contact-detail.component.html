@@ -71,17 +71,15 @@
             }
           </mat-select>
         </mat-form-field>
-        <mat-form-field>
+        <section>
           <mat-label>{{'contactDelegation' | translate}}</mat-label>
-          <mat-select formControlName="delegacion">
-            <mat-option value="Mallorca">Mallorca</mat-option>
-            <mat-option value="Mallorca">Menorca</mat-option>
-            <mat-option value="Mallorca">{{'ibiza' | translate}}</mat-option>
-            <mat-option value="Mallorca">Formentera</mat-option>
-
-
-          </mat-select>
-        </mat-form-field>
+          <mat-radio-group formControlName="delegacion">
+            <mat-radio-button value="Mallorca">Mallorca</mat-radio-button>
+            <mat-radio-button value="Menorca">Menorca</mat-radio-button>
+            <mat-radio-button value="Eivissa">{{'ibiza' | translate}}</mat-radio-button>
+            <mat-radio-button value="Formentera">Formentera</mat-radio-button>
+          </mat-radio-group>
+        </section>
         <mat-form-field class="textArea">
           <mat-label>{{'contactReasonStatus' | translate}}</mat-label>
           <textarea matInput formControlName="motivoEstado"></textarea>
