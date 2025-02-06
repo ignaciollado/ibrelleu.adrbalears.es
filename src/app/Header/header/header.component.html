@@ -70,7 +70,7 @@
             <button mat-icon-button matTooltip="My profile" [matMenuTriggerFor]="userAccountMenu">
               <mat-icon>account_circle</mat-icon>
             </button>
-            <span *ngIf="siMostrar">{{ actualUser }} - {{ actualRole }}</span>
+            <span *ngIf="showUserData">{{ actualUser }} - {{ actualRole }}</span>
           </section>
           <app-select-language class="languageMobile"></app-select-language>
         </section>
