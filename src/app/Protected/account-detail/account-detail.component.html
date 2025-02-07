@@ -219,12 +219,12 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Descripció dels proveïdors</mat-label>
+          <mat-label>{{'suppliersDescription' | translate}}</mat-label>
           <textarea formControlName="suppliersDescription" matInput
             placeholder="Write a description about the suppliers"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Descripció de la competència</mat-label>
+          <mat-label>{{'competencyDescription' | translate}}</mat-label>
           <textarea formControlName="competitionDescription" matInput
             placeholder="Write a description about the company's competition"></textarea>
         </mat-form-field>
@@ -320,14 +320,16 @@
         </mat-form-field>
       </section>
       <section> <!-- Detall de les instal·lacions-->
-        <mat-form-field>
-          <mat-label>{{'localProperty' |translate}}</mat-label>
-          <mat-select formControlName="property">
-            @for (status of propertyStatus; track status) {
-            <mat-option (click)="checkPropertyStatus($event)" [value]="status.value">{{status.view}}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+        <section>
+          <mat-label>{{'localProperty' | translate}}</mat-label>
+          <mat-radio-group formControlName="property">
+            <mat-radio-button (click)="checkPropertyStatus($event, '282310000')" [value]="282310000">{{'property' |
+              translate}}</mat-radio-button>
+            <mat-radio-button (click)="checkPropertyStatus($event, '282310001')" [value]="282310001">{{'rent' |
+              translate}}</mat-radio-button>
+          </mat-radio-group>
+        </section>
+
         <mat-form-field>
           <mat-label>{{'rentCost' |translate}}</mat-label>
           <input formControlName="rentValue" matInput type="number" placeholder="Dos decimals: xxxx.xx" min="0.00">

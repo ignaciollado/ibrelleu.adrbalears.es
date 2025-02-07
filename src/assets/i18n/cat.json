@@ -129,6 +129,8 @@
   "salaryComments": "Comentari sobre els salaris",
   "collaborationComments": "Comentari sobre autònoms i col·laboradors directe",
   "localProperty": "Local en propietat o lloguer",
+  "property": "Propietat",
+  "rent": "Lloguer",
   "rentCost": "Preu de lloguer",
   "localSize": "Superfície del local (metros quadrats)",
   "localContractConditions": "Condicions contractuals del local",

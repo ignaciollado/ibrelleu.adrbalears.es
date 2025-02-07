@@ -361,8 +361,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       .setValue(fullTimeWorkersNumber + partialTimeWorkersNumber);
   }
 
-  checkPropertyStatus(event: any) {
-    let propertyValue = this.theForm.get('property').value;
+  checkPropertyStatus(event: any, propertyValue: any) {
     let rentValue = this.theForm.get('rentValue');
 
     switch (propertyValue == '282310001') {
