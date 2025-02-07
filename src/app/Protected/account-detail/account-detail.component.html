@@ -259,69 +259,69 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'' | translate}}</mat-label>
+          <mat-label>{{'importDescription' | translate}}</mat-label>
           <textarea formControlName="importDescription" matInput
             placeholder="Write a description about the import information"></textarea>
         </mat-form-field>
 
       </section>
     </mat-tab>
-    <mat-tab label="Estructura i organització">
+    <mat-tab label="{{'structureAndOrganization' |translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Número de socis</mat-label>
+          <mat-label>{{'partnersNumber' |translate}}</mat-label>
           <input matInput type="number" formControlName="partnerNumber">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Estructura de l'empresa (departaments, àrees de responsabilitat, etc.)</mat-label>
+          <mat-label>{{'companyStructure' |translate}}</mat-label>
           <textarea formControlName="organizationDescription" matInput
             placeholder="Write a description about the company's organization."></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre el socis(%...)</mat-label>
+          <mat-label>{{'partnersComments' |translate}}</mat-label>
           <textarea formControlName="distributionDescription" matInput
             placeholder="Write a description about the company's distribution"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre la gestió i dia a dia de l'empresa</mat-label>
+          <mat-label>{{'workingDayComments' |translate}}</mat-label>
           <textarea formControlName="workingDayDescription" matInput
             placeholder="Write a description about the company's working day"></textarea>
         </mat-form-field>
       </section>
       <section> <!-- Detall de les persones treballadores-->
         <mat-form-field>
-          <mat-label>Persones amb jornada complerta</mat-label>
+          <mat-label>{{'fullTimeWorkers' |translate}}</mat-label>
           <input matInput type="number" formControlName="fullTimeWorkers" (keyup)="calculateTotalWorkers($event)"
             min="0">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Persones amb jornada parcial</mat-label>
+          <mat-label>{{'partialTimeWorkers' |translate}}</mat-label>
           <input matInput type="number" formControlName="partialTimeWorkers" (keyup)="calculateTotalWorkers($event)"
             min="0">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Número de treballadors totals</mat-label>
+          <mat-label>{{'totalWorkers' |translate}}</mat-label>
           <input matInput type="number" formControlName="totalWorkers">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre l'antiguitat</mat-label>
+          <mat-label>{{'ancientComments' |translate}}</mat-label>
           <textarea matInput formControlName="workersCarrerDescription"
             placeholder="Write a description about the workers carrer in the company"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre els salaris</mat-label>
+          <mat-label>{{'salaryComments' |translate}}</mat-label>
           <textarea matInput formControlName="workersSalaryDescription"
             placeholder="Write a description about the workers salary"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre autònoms i col·laboradors directe</mat-label>
+          <mat-label>{{'collaborationComments' |translate}}</mat-label>
           <textarea matInput formControlName="colaborationDescription"
             placeholder="Write a description about the company's colaboration"></textarea>
         </mat-form-field>
       </section>
       <section> <!-- Detall de les instal·lacions-->
         <mat-form-field>
-          <mat-label>Local en propietat o lloguer</mat-label>
+          <mat-label>{{'localProperty' |translate}}</mat-label>
           <mat-select formControlName="property">
             @for (status of propertyStatus; track status) {
             <mat-option (click)="checkPropertyStatus($event)" [value]="status.value">{{status.view}}</mat-option>
@@ -329,21 +329,21 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Preu de lloguer</mat-label>
+          <mat-label>{{'rentCost' |translate}}</mat-label>
           <input formControlName="rentValue" matInput type="number" placeholder="Dos decimals: xxxx.xx" min="0.00">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Superfície del local (metros quadrats)</mat-label>
+          <mat-label>{{'localSize' |translate}}</mat-label>
           <input formControlName="localSize" matInput type="number"
             placeholder="Metros quadrats del local llogat o en propietat">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Condicions contractuals del local</mat-label>
+          <mat-label>{{'localContractConditions' |translate}}</mat-label>
           <textarea matInput formControlName="localRentingDescription"
             placeholder="Write more information about the property or renting contracts"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Altres especificacions del local</mat-label>
+          <mat-label>{{'moreLocalSpecifications' |translate}}</mat-label>
           <textarea matInput formControlName="anotherSpecificationsDescription"
             placeholder="Write more information about the property or renting"></textarea>
         </mat-form-field>
