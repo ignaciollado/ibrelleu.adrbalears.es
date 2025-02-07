@@ -476,5 +476,14 @@
   "phoneIbRelleu": "Telèfon de la persona IBRelleu o establiment comercial",
   "mailIbRelleu": "Correu electrònic de la persona IBRelleu",
   "dni/nieIbRelleu": "DNI/NIE persona IBRelleu",
-  "legalFormIbRelleu": "Forma jurídica de la persona IBRelleu"
+  "legalFormIbRelleu": "Forma jurídica de la persona IBRelleu",
+
+  "cifIbRelleu": "NIF empresa IBRelleu",
+
+  "webSolicitation": "Sol·licitud",
+  "webPublish": "Publicat",
+  "testimonialObservations": "Observacions testimonials",
+
+  "seguimiento": "Seguiment",
+  "serviceSummary": "Resum del servei ofert"
 }

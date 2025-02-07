@@ -194,7 +194,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>NIF empresa IbRelleu</mat-label>
+          <mat-label>{{'cifIbRelleu' | translate}}</mat-label>
           <input matInput formControlName="nifCompanyIbRelleu" maxlength="9">
         </mat-form-field>
       </section>
@@ -202,30 +202,30 @@
 
     <mat-tab label="Testimonial">
       <section>
-        <mat-form-field>
+        <section>
           <mat-label>Testimonial web</mat-label>
-          <mat-select formControlName="testimonialWeb">
-            <mat-option [value]="121370000">Sol·licitud</mat-option>
-            <mat-option [value]="121370001">Publicat</mat-option>
-          </mat-select>
-        </mat-form-field>
+          <mat-radio-group formControlName="testimonialWeb">
+            <mat-radio-button [value]="121370000">{{'webSolicitation' | translate}}</mat-radio-button>
+            <mat-radio-button [value]="121370001">{{'webPublish' | translate}}</mat-radio-button>
+          </mat-radio-group>
+        </section>
         <mat-form-field class="textArea">
-          <mat-label>Observacions testimonial</mat-label>
+          <mat-label>{{'testimonialObservations' | translate}}</mat-label>
           <textarea matInput formControlName="testimonialObservations" rows="5"></textarea>
         </mat-form-field>
       </section>
     </mat-tab>
 
-    <mat-tab label="Seguiment">
+    <mat-tab label="{{'seguimiento' |translate}}">
       <section>
         <mat-form-field class="textArea">
-          <mat-label>Resum del servei ofert</mat-label>
+          <mat-label>{{'serviceSummary' | translate}}</mat-label>
           <textarea matInput formControlName="offeredServiceSummary" rows="10"></textarea>
         </mat-form-field>
       </section>
     </mat-tab>
 
-    <mat-tab label="Documentació">
+    <mat-tab label="{{'documentation' | translate}}">
       <app-file-upload id="{{id}}" origin="successstories"></app-file-upload>
     </mat-tab>
   </mat-tab-group>
