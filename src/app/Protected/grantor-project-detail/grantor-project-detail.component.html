@@ -338,8 +338,179 @@
                 </mat-form-field>
             </section>
         </mat-tab>
-        <mat-tab label="Detall de l'activitat i resultats">
-            <section></section>
+        <mat-tab label="{{'activityAndResultsDetail' | translate}}">
+            <section>
+                <mat-checkbox>{{'activityCessionSameAccount' | translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'sector' | translate}}</mat-label>
+                    <mat-select multiple placeholder="Choose multiple options">
+                        @for (sectorItem of sectorList; track sectorItem) {
+                        <mat-option [value]="sectorItem.value">{{sectorItem.label | translate}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'activityType' | translate}}</mat-label>
+                    <mat-select multiple placeholder="Choose multiple options">
+                        @for (activityItem of activityList; track activityItem) {
+                        <mat-option [value]="activityItem.value">{{activityItem.label | translate}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'paradaMercatNoSedentaria' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'cessionActivityDescription' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'companyCarrerAndStrategy' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'marketDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the market"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'typologyClients' | translate}}</mat-label>
+                    <mat-select multiple placeholder="Choose an option">
+                        @for (typologyItem of clientTypologyList; track typologyItem) {
+                        <mat-option [value]="typologyItem.value">{{typologyItem.label}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'customersDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the target audience"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'suppliersDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the suppliers"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'competencyDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the company's competition"></textarea>
+                </mat-form-field>
+                <mat-checkbox>{{'productCheck'
+                    | translate}}</mat-checkbox>
+                <mat-checkbox>{{'brandCheck'
+                    | translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'ownProductDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the company product"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'brandNames' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write about the brands names"></textarea>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'renovationTrademarkName' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-checkbox>{{'stockCheck' |
+                    translate}}</mat-checkbox>
+                <mat-checkbox>{{'auditoryCheck' | translate}}</mat-checkbox>
+                <mat-checkbox>{{'licenseCheck' | translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'companyAdvantages' |translate}}</mat-label>
+                    <!-- Temporal-->
+                    <mat-select multiple>
+                        <mat-option value="">{{'advantage1' |translate}}</mat-option>
+                        <mat-option value="">{{'advantage2' |translate}}</mat-option>
+                        <mat-option value="">{{'advantage3' |translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'companyDisadvantages' |translate}}</mat-label>
+                    <!-- Temporal-->
+                    <mat-select multiple>
+                        <mat-option value="">{{'difficult1' |translate}}</mat-option>
+                        <mat-option value="">{{'difficult2' |translate}}</mat-option>
+                        <mat-option value="">{{'difficult3' |translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-checkbox>{{'exportCheck' |
+                    translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'export/importAmbit' | translate}}</mat-label>
+                    <mat-select placeholder="Choose one option">
+                        @for (continentItem of continentList; track continentItem) {
+                        <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'exportDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the export information"></textarea>
+                </mat-form-field>
+                <mat-checkbox>{{'importCheck' |
+                    translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'export/importAmbit' | translate}}</mat-label>
+                    <mat-select placeholder="Choose one option">
+                        @for (continentItem of continentList; track continentItem) {
+                        <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'importDescription' | translate}}</mat-label>
+                    <textarea formControlName="importDescription" matInput
+                        placeholder="Write a description about the import information"></textarea>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>{{'fullTimeWorkers' |translate}}</mat-label>
+                    <input matInput type="number" min="0">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'partialTimeWorkers' |translate}}</mat-label>
+                    <input matInput type="number" min="0">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'totalWorkers' |translate}}</mat-label>
+                    <input matInput type="number">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'ancientComments' |translate}}</mat-label>
+                    <textarea matInput
+                        placeholder="Write a description about the workers carrer in the company"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'salaryComments' |translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the workers salary"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'collaborationComments' |translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the company's colaboration"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'workersObservations' |translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'stayWorkersAfterCession' |translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <section>
+                    <mat-label>{{'workersKnowSituation' |translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+            </section>
         </mat-tab>
         <mat-tab label="Resultats">
             <section></section>

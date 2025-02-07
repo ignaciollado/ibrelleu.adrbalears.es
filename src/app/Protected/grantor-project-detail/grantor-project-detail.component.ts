@@ -75,6 +75,13 @@ export class GrantorProjectDetailComponent {
 
   cessionTypeList: any[] = [];
 
+  sectorList: any[] = [];
+  activityList: any[] = [];
+
+  clientTypologyList: any[] = [];
+
+  continentList: any[] = [];
+
   /* Permite validar que la fecha del inicio de la actividad no sea superior 
   al año actual. ¿Es posible que una empresa que cede haya empezado su actividad
   en años posteriores?*/
@@ -122,6 +129,10 @@ export class GrantorProjectDetailComponent {
     this.loadDelegationAndConsultant();
     this.loadCessionType();
     this.getAllZipCodes();
+    this.loadSectorInfo();
+    this.loadActivityInfo();
+    this.loadClientInfo();
+    this.loadContinentInfo();
   }
 
   ngOnInit() {
@@ -220,6 +231,32 @@ export class GrantorProjectDetailComponent {
     this.grantorProjectForm
       .get('councilCity')
       .setValue(this.grantorProjectForm.get('zipCode').value['council']);
+  }
+
+  loadSectorInfo() {
+    this.dataService.getAllSectors().subscribe((sectorItems: any[]) => {
+      this.sectorList = sectorItems;
+    });
+  }
+
+  loadActivityInfo() {
+    this.dataService.getAllActivities().subscribe((activityItems: any[]) => {
+      this.activityList = activityItems;
+    });
+  }
+
+  loadClientInfo() {
+    this.dataService
+      .getAllClientTypologies()
+      .subscribe((typologyItems: any[]) => {
+        this.clientTypologyList = typologyItems;
+      });
+  }
+
+  loadContinentInfo() {
+    this.dataService.getAllContinents().subscribe((continentItems: any[]) => {
+      this.continentList = continentItems;
+    });
   }
   // validatorsChangeYesOrNo(
   //   event: any,

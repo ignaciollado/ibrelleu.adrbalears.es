@@ -555,5 +555,23 @@
   "externalProfessionalMail": "Correo electrónico del profesional externo",
   "externalProfessionalPhone": "Teléfono del profesional externo",
   "contactOtherIBRelleu": "¿Ha contactado con una persona IBRelleu externa?",
-  "desiredIBRelleuProfile": "Perfil de la persona IBRelleu deseada"
+  "desiredIBRelleuProfile": "Perfil de la persona IBRelleu deseada",
+
+  "activityAndResultsDetail": "Detalle de la actividad y resultados",
+  "activityCessionSameAccount": "La actividad en cesión es la descrita en la cuenta",
+  "paradaMercatNoSedentaria": "¿Es una parada de mercado no sedentaria?",
+  "cessionActivityDescription": "Descripción de la actividad en cesión",
+  "companyCarrerAndStrategy": "Breve descripción de la trayectoria económica y estratégia de la empresa",
+  "renovationTrademarkName": "¿Tiene que renovar o cambiar el nombre comercial de la actividad?",
+  "companyAdvantages": "Ventajas de la empresa",
+  "advantage1": "Marca reconocida",
+  "advantage2": "Empresa consolidada",
+  "advantage3": "Inversión de bajo riesgo",
+  "companyDisadvantages": "Dificultades de la empresa",
+  "difficult1": "Pasivos laborales",
+  "difficult2": "Estado económico actual",
+  "difficult3": "Entorno y estructura del sector",
+  "workersObservations": "Observaciones sobre los trabajadores",
+  "stayWorkersAfterCession": "¿Pueden continuar las personas trabajadoras después del proceso de cesión?",
+  "workersKnowSituation": "¿Conocen las personas trabajadoras la situación?"
 }
