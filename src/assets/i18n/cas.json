@@ -160,6 +160,14 @@
   "situationBalanceDocs": "Balance de situación de los 3 últimos años",
   "societyTax200": "Impuesto de sociedades (modelo 200) de los 3 últimos años",
 
+  "process": "Proceso",
+  "reInterpriseProject": "Proyecto IBRelleu",
+  "numWorkersToBehired": "Núm. de trabajadores para contratar",
+  "numWorkersSaved": "Núm. de trabajadores salvados",
+  "numEntrepreneursWhoWillWork": "Núm. de trabajadores emprendedores que trabajarán",
+  "numPeopleWorkingAtIbRelleu": "Núm. total de personas trabajadoras",
+  "creationDate": "Fecha de creación",
+
   "companyAddress": "Domicilio",
   "companyCNAE": "CNAE de la empresa",
   "selectObjectiveType": "Seleccione el RATIO para el objetivo",
