@@ -134,7 +134,6 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
         return name ? this._filter(name as string) : this.options.slice();
       })
     );
-    this.theForm.get('id').setValue(this.id);
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
