@@ -34,17 +34,6 @@
   "created_at": "Alta el",
   "dni": "DNI/NIE",
   "employementStatus": "Situación laboral",
-  
-  "contactInfo": "Información del contacto",
-  "contactName": "Nombre del contacto",
-  "contactLastName": "Apellidos del contacto",
-  "dni/nie": "DNI/NIE del contacto",
-  "nacionality": "Nacionalidad",
-  "contactProfileTech": "¿Es perfil técnico que actua como cedente?",
-  "formContactStatus": "Estado del contacto",
-  "contactProfile": "Perfil del contacto",
-  "consultant": "Consultor",
-  "contactReasonStatus": "Motivo del estado",
 
   "contactInfo": "Información del contacto",
   "contactName": "Nombre del contacto",
