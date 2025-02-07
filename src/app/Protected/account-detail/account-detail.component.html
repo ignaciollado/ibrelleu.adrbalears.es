@@ -428,23 +428,22 @@
         </mat-form-field>
       </section>
     </mat-tab>
-    <mat-tab label="Documentació">
+    <mat-tab label="{{'documentation' | translate}}">
       <section>
-        <mat-checkbox class="example-margin">Liquidació anual de l'IVA (model 390) dels 3 últims anys</mat-checkbox>
-        <mat-checkbox class="example-margin">Liquidació IRPF (model 190) dels 3 últims anys</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'anualIVA' | translate}}</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'190IRPF' | translate}}</mat-checkbox>
 
-        <mat-checkbox class="example-margin">Declaració IRPF (model 100) dels 3 últims anys</mat-checkbox>
-        <mat-checkbox class="example-margin">Pagaments a compte IRPF (model 130 o 131) del 4rt Trimestre últim
-          any</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'100IRPF' | translate}}</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'130/131IRPF' | translate}}</mat-checkbox>
 
-        <mat-checkbox class="example-margin">Fotocòpia CIF empresa</mat-checkbox>
-        <mat-checkbox class="example-margin">Escriptures de constitució i modificació</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'copyCifCompany' | translate}}</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'constitutionScriptures' | translate}}</mat-checkbox>
 
-        <mat-checkbox class="example-margin">Escriptures poders de la societat (si escau)</mat-checkbox>
-        <mat-checkbox class="example-margin">Pèrdues i guanys dels 3 últims anys</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'societyScriptures' | translate}}</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'lostGainDocs' | translate}}</mat-checkbox>
 
-        <mat-checkbox class="example-margin">Balanç de situació dels 3 últims anys</mat-checkbox>
-        <mat-checkbox class="example-margin">Impost de societats (model 200) dels 3 últims anys</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'situationBalanceDocs' | translate}}</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'societyTax200' | translate}}</mat-checkbox>
       </section>
       <app-file-upload id="{{id}}" origin="accounts"></app-file-upload>
     </mat-tab>

@@ -146,6 +146,18 @@
   "fiscalYear-1": "any n-1",
   "fiscalYear-2": "any n-2",
 
+  "documentation": "Documentació",
+  "anualIVA": "Liquidació anual de l'IVA (model 390) dels 3 últims anys",
+  "190IRPF": "Liquidació IRPF (model 190) dels 3 últims anys",
+  "100IRPF": "Declaració IRPF (model 100) dels 3 últims anys",
+  "130/131IRPF": "Pagaments a compte IRPF (model 130 o 131) del 4rt Trimestre últim any",
+  "copyCifCompany": "Fotocòpia CIF empresa",
+  "constitutionScriptures": "Escriptures de constitució i modificació",
+  "societyScriptures": "Escriptures poders de la societat (si escau)",
+  "lostGainDocs": "Pèrdues i guanys dels 3 últims anys",
+  "situationBalanceDocs": "Balanç de situació dels 3 últims anys",
+  "societyTax200": "Impost de societats (model 200) dels 3 últims anys",
+
   "companyAddress": "Domicili",
   "companyCNAE": "CNAE de l'empresa",
   "selectObjectiveType": "Seleccioni el RATIO per l'objectiu ",
