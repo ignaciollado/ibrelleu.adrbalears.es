@@ -128,7 +128,7 @@
   "ancientComments": "Comentari sobre l'antiguitat",
   "salaryComments": "Comentari sobre els salaris",
   "collaborationComments": "Comentari sobre autònoms i col·laboradors directe",
-  "localProperty": "Local en propietat o lloguer",
+  "propertyStatus": "Local en propietat o lloguer",
   "property": "Propietat",
   "rent": "Lloguer",
   "rentCost": "Preu de lloguer",
@@ -485,5 +485,15 @@
   "testimonialObservations": "Observacions testimonials",
 
   "seguimiento": "Seguiment",
-  "serviceSummary": "Resum del servei ofert"
+  "serviceSummary": "Resum del servei ofert",
+
+  "grantorProjectName": "Nom del projecte",
+  "projectStatus": "Estat del projecte",
+  "account": "Compte",
+  "transferReason": "Motiu de cessió/venda",
+  "partnersNum": "Número de socis",
+  "workersNum": "Número de treballadors",
+  "transferPriceInterval": "Interval de preu de cessió",
+  "facturation": "Facturació",
+  "earnings": "Benefici"
 }

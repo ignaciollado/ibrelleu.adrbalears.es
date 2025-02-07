@@ -3,7 +3,7 @@
     <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
             <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
-                <span>{{col.label}}</span>
+                <span><strong>{{col.key | translate}}</strong></span>
             </mat-header-cell>
             <mat-cell *matCellDef="let element">
                 <section [ngSwitch]="col.type">

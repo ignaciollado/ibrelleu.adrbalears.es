@@ -64,14 +64,8 @@ export class GrantorProjectsDTO {
 
 export const grantorProjectColumns = [
   {
-    key: 'id',
-    type: 'url',
-    label: 'Código',
-    label_ca: 'Codi',
-  },
-  {
     key: 'grantorProjectName',
-    type: 'readOnly',
+    type: 'url',
     label: 'Nombre del proyecto',
     label_ca: 'Nom del projecte',
   },

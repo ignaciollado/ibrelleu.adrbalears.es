@@ -128,7 +128,7 @@
   "ancientComments": "Comentario sobre la antigüedad",
   "salaryComments": "Comentario sobre el salario",
   "collaborationComments": "Comentario sobre autónomos y colaboradores directos",
-  "localProperty": "Local en propiedad o alquiler",
+  "propertyStatus": "Local en propiedad o alquiler",
   "property": "Propiedad",
   "rent": "Alquiler",
   "rentCost": "Precio del alquiler",
@@ -477,5 +477,15 @@
   "testimonialObservations": "Observaciones testimoniales",
 
   "seguimiento": "Seguimiento",
-  "serviceSummary": "Resumen del servicio ofrecido"
+  "serviceSummary": "Resumen del servicio ofrecido",
+
+  "grantorProjectName": "Nombre del proyecto",
+  "projectStatus": "Estado del proyecto",
+  "account": "Cuenta",
+  "transferReason": "Motivación de cesión/venta",
+  "partnersNum": "Número de socios",
+  "workersNum": "Número de trabajadores",
+  "transferPriceInterval": "Intervalo del precio de cesión",
+  "facturation": "Facturación",
+  "earnings": "Beneficio"
 }
