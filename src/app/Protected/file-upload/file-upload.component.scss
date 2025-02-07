@@ -1,6 +1,7 @@
 @use "../../../adr-colors";
 @use "../../../utilities.scss";
 .tablecontainer {
+  width: 100%;
   margin: 0.1rem;
   padding: 1rem;
   border: 1px solid adr-colors.$primary-adr;
