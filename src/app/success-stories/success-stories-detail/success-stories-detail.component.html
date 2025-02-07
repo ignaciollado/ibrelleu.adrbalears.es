@@ -118,13 +118,13 @@
           <mat-label>{{'propertyValue' | translate}}</mat-label>
           <input matInput formControlName="propertyValue" type="number">
         </mat-form-field>
-        <mat-form-field>
+        <section>
           <mat-label>{{'selledProperty' | translate}}</mat-label>
-          <mat-select formControlName="propertySelled">
-            <mat-option value="1">SI</mat-option>
-            <mat-option value="0">NO</mat-option>
-          </mat-select>
-        </mat-form-field>
+          <mat-radio-group formControlName="propertySelled">
+            <mat-radio-button value="1">Si</mat-radio-button>
+            <mat-radio-button value="0">No</mat-radio-button>
+          </mat-radio-group>
+        </section>
         <mat-form-field>
           <mat-label>{{'paymentForm' | translate}}</mat-label>
           <mat-select formControlName="paymentType">
@@ -162,7 +162,7 @@
         </mat-form-field>
         <mat-form-field class="textArea">
           <mat-label>{{'acordMark' | translate}}</mat-label>
-          <textarea matInput formControlName="agreement" rows="10"></textarea>
+          <textarea matInput formControlName="agreement" rows="4"></textarea>
         </mat-form-field>
       </section>
     </mat-tab>
