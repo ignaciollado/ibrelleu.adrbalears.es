@@ -2,10 +2,10 @@
 <form [formGroup]="theForm" (ngSubmit)="onSubmit()">
   <mat-tab-group animationDuration="500ms" mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight
     [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
-    <mat-tab label="Identificació">
+    <mat-tab label="{{'identification' | translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Forma jurídica</mat-label>
+          <mat-label>{{'legalForm' | translate}}</mat-label>
           <mat-select formControlName="legalFormat">
             @for (legalFormItem of legalFormList; track legalFormItem) {
             <mat-option [value]="legalFormItem.value">{{legalFormItem.label}}</mat-option>
@@ -13,91 +13,91 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Contacte Principal</mat-label>
+          <mat-label>{{'mainContact' | translate}}</mat-label>
           <input matInput formControlName="contact" aria-label="contacte principal és un camp obligatori.">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Raó Social</mat-label>
+          <mat-label>{{'companyName' | translate}}</mat-label>
           <input matInput formControlName="companyName" aria-label="La raó social és un camp obligatori.">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>NIF</mat-label>
+          <mat-label>{{'nif' | translate}}</mat-label>
           <input matInput formControlName="nif" aria-label="El nif és un camp obligatori." maxlength="9"
             (blur)="deleteNif($event)">
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Nom Comercial</mat-label>
+          <mat-label>{{'tradeMarkName' | translate}}</mat-label>
           <input matInput formControlName="tradeName" aria-label="El nom comercial és un camp obligatori.">
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>Gestiona parades de mercat disponibles?</mat-label>
-          <mat-select formControlName="paradesMercat" placeholder="Tria una opció">
-            <mat-option value="1">SI</mat-option>
-            <mat-option value="0">NO</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Empresa o entitat col·laboradora?</mat-label>
-          <mat-select formControlName="collaborationCompanys" placeholder="Tria una opció">
-            <mat-option value="1">SI</mat-option>
-            <mat-option value="0">NO</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <section>
+          <mat-label>{{'paradesMercat' | translate}}</mat-label>
+          <mat-radio-group formControlName="paradesMercat">
+            <mat-radio-button value="1">Si</mat-radio-button>
+            <mat-radio-button value="0">No</mat-radio-button>
+          </mat-radio-group>
+        </section>
+        <section>
+          <mat-label>{{'collaborationCompany' | translate}}</mat-label>
+          <mat-radio-group formControlName="collaborationCompanys">
+            <mat-radio-button value="1">Si</mat-radio-button>
+            <mat-radio-button value="0">No</mat-radio-button>
+          </mat-radio-group>
+        </section>
 
+        <section>
+          <mat-label>{{'councilTitularity' | translate}}</mat-label>
+          <mat-radio-group formControlName="councilTitularity">
+            <mat-radio-button value="1">Si</mat-radio-button>
+            <mat-radio-button value="0">No</mat-radio-button>
+          </mat-radio-group>
+        </section>
+        <section>
+          <mat-label>{{'sportConcession' | translate}}</mat-label>
+          <mat-radio-group formControlName="sportConcessions">
+            <mat-radio-button value="1">Si</mat-radio-button>
+            <mat-radio-button value="0">No</mat-radio-button>
+          </mat-radio-group>
+        </section>
+        <section>
+          <mat-label>{{'workingCompany' | translate}}</mat-label>
+          <mat-radio-group formControlName="activeBusiness">
+            <mat-radio-button value="1">Si</mat-radio-button>
+            <mat-radio-button value="0">No</mat-radio-button>
+          </mat-radio-group>
+        </section>
         <mat-form-field>
-          <mat-label>Gestiona establiments comercials de titularitat municipal disponible?</mat-label>
-          <mat-select formControlName="councilTitularity" placeholder="Tria una opció">
-            <mat-option value="1">SI</mat-option>
-            <mat-option value="0">NO</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Gestiona les concessions administratives de les instal·lacions esportives
-            municipals?</mat-label>
-          <mat-select formControlName="sportConcessions" placeholder="Tria una opció">
-            <mat-option value="1">SI</mat-option>
-            <mat-option value="0">NO</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Empresa en funcionament?</mat-label>
-          <mat-select formControlName="activeBusiness" placeholder="Tria una opció">
-            <mat-option value="1">SI</mat-option>
-            <mat-option value="0">NO</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Any de constitució de l'empresa</mat-label>
+          <mat-label>{{'constitutionYear' | translate}}</mat-label>
           <input matInput formControlName="creationYear" type="text" maxlength="4" minlength="4">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Consultor</mat-label>
+          <mat-label>{{'consultant' | translate}}</mat-label>
           <mat-select formControlName="consultor">
             @for (consultantItem of consultantList; track consultantItem) {
             <mat-option [value]="consultantItem">{{consultantItem}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>Delegació</mat-label>
-          <mat-select formControlName="delegacion">
-            @for (delegationItem of delegationList; track delegationItem) {
-            <mat-option [value]="delegationItem">{{delegationItem}}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
+        <section>
+          <mat-label>{{'delegation' | translate}}</mat-label>
+          <mat-radio-group formControlName="delegacion">
+            <mat-radio-button value="Mallorca">Mallorca</mat-radio-button>
+            <mat-radio-button value="Menorca">Menorca</mat-radio-button>
+            <mat-radio-button value="Eivissa">{{'ibiza' | translate}}</mat-radio-button>
+            <mat-radio-button value="Formentera">Formentera</mat-radio-button>
+          </mat-radio-group>
+        </section>
       </section>
     </mat-tab>
-    <mat-tab label="Localització (Raó social)">
+    <mat-tab label="{{'localization' | translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Adreça</mat-label>
+          <mat-label>{{'address' | translate}}</mat-label>
           <input matInput formControlName="direccion" aria-label="Adreça es un camp obligatori">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Código Postal</mat-label>
+          <mat-label>{{'zipCode' | translate}}</mat-label>
           <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             @for (option of filteredOptions | async; track option) {
@@ -106,31 +106,31 @@
           </mat-autocomplete>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Població</mat-label>
+          <mat-label>{{'town' | translate}}</mat-label>
           <input matInput formControlName="localizationCity">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Municipio</mat-label>
+          <mat-label>{{'municipality' | translate}}</mat-label>
           <input matInput formControlName="councilCity" readonly="readonly">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Illa</mat-label>
+          <mat-label>{{'island' | translate}}</mat-label>
           <input matInput formControlName="localizationCCAA">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>País</mat-label>
+          <mat-label>{{'country' | translate}}</mat-label>
           <input matInput formControlName="localizationCountry">
         </mat-form-field>
       </section>
     </mat-tab>
-    <mat-tab label="Dades de contacte">
+    <mat-tab label="{{'companyContactInfo' | translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Correu electrònic</mat-label>
+          <mat-label>{{'email' | translate}}</mat-label>
           <input matInput formControlName="companyEmail" aria-label="Email és un camp obligatori.">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Telèfon principal</mat-label>
+          <mat-label>{{'companyMainPhone' | translate}}</mat-label>
           <input matInput formControlName="companyPhone" aria-label="Telèfon principal és un camp obligatori."
             type="tel" maxlength="9">
         </mat-form-field>
@@ -140,78 +140,78 @@
         </mat-form-field>
       </section>
     </mat-tab>
-    <mat-tab label="Detall de l'activitat">
+    <mat-tab label="{{'companyActivityDetails' | translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Sector</mat-label>
+          <mat-label>{{'sector' | translate}}</mat-label>
           <mat-select formControlName="companySector" multiple placeholder="Choose multiple options">
             @for (sectorItem of sectorList; track sectorItem) {
-            <mat-option [value]="sectorItem.value">{{sectorItem.label}}</mat-option>
+            <mat-option [value]="sectorItem.value">{{sectorItem.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Activitat</mat-label>
+          <mat-label>{{'activityType' | translate}}</mat-label>
           <mat-select formControlName="companyActivity" multiple placeholder="Choose multiple options">
             @for (activityItem of activityList; track activityItem) {
-            <mat-option [value]="activityItem.value">{{activityItem.label}}</mat-option>
+            <mat-option [value]="activityItem.value">{{activityItem.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Descripció de l'activitat</mat-label>
+          <mat-label>{{'activityDescription' | translate}}</mat-label>
           <textarea formControlName="activityDescription" matInput
             placeholder="Write a description about the company activity"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Breu descripció de la trajectòria económica</mat-label>
+          <mat-label>{{'companyCarrerDescription' | translate }}</mat-label>
           <textarea formControlName="carrerDescription" matInput
             placeholder=" Write a description about the company carrer"></textarea>
         </mat-form-field>
 
         <mat-checkbox formControlName="checkProduct"
-          (click)="afterCheckChanges($event, 'checkProduct', ['descriptionProduct', 'descriptionProductProcess'])">Disposa
-          de producte propi?</mat-checkbox>
+          (click)="afterCheckChanges($event, 'checkProduct', ['descriptionProduct', 'descriptionProductProcess'])">{{'productCheck'
+          | translate}}</mat-checkbox>
         <mat-form-field>
-          <mat-label>Descripció producte o servei</mat-label>
+          <mat-label>{{'ownProductDescription' | translate}}</mat-label>
           <textarea formControlName="descriptionProduct" matInput
             placeholder="Write a description about the company product"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Descripció del procés productiu / circuit del servei</mat-label>
+          <mat-label>{{'ownProductProcess' | translate}}</mat-label>
           <textarea formControlName="descriptionProductProcess" matInput
             placeholder="Write a description about the company product process"></textarea>
         </mat-form-field>
         <mat-checkbox formControlName="brandCheck"
-          (click)="afterCheckChanges($event, 'brandCheck', ['brandDescription'])">Disposa de marques
-          pròpies/registrades?</mat-checkbox>
+          (click)="afterCheckChanges($event, 'brandCheck', ['brandDescription'])">{{'brandCheck' |
+          translate}}</mat-checkbox>
         <mat-form-field>
-          <mat-label>Nom de les marques</mat-label>
+          <mat-label>{{'brandNames' | translate}}</mat-label>
           <textarea formControlName="brandDescription" matInput placeholder="Write about the brands names"></textarea>
         </mat-form-field>
         <mat-checkbox formControlName="stockCheck"
-          (click)="afterCheckChanges($event, 'stockCheck', ['stockDescription'])">Disposa
-          d'inventari?</mat-checkbox>
+          (click)="afterCheckChanges($event, 'stockCheck', ['stockDescription'])">{{'stockCheck' |
+          translate}}</mat-checkbox>
         <mat-form-field>
-          <mat-label>Descripció de l'estat de l'estoc</mat-label>
+          <mat-label>{{'stockDescription' | translate}}</mat-label>
           <textarea formControlName="stockDescription" matInput
             placeholder="Write a description about company's stock"></textarea>
         </mat-form-field>
-        <mat-checkbox formControlName="auditoryCheck">Disposa d'autoria feta?</mat-checkbox>
-        <mat-checkbox formControlName="licenseCheck">Disposa de llicència d'activitat?</mat-checkbox>
+        <mat-checkbox formControlName="auditoryCheck">{{'auditoryCheck' | translate}}</mat-checkbox>
+        <mat-checkbox formControlName="licenseCheck">{{'licenseCheck' | translate}}</mat-checkbox>
         <mat-form-field>
-          <mat-label>Descripció del mercat</mat-label>
+          <mat-label>{{'marketDescription' | translate}}</mat-label>
           <textarea formControlName="marketDescription" matInput
             placeholder="Write a description about the market"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Descripció de la clientela</mat-label>
+          <mat-label>{{'customersDescription' | translate}}</mat-label>
           <textarea formControlName="targetDescription" matInput
             placeholder="Write a description about the target audience"></textarea>
         </mat-form-field>
 
         <mat-form-field>
-          <mat-label>Tipologia de la clientela</mat-label>
+          <mat-label>{{'typologyClients' | translate}}</mat-label>
           <mat-select formControlName="typologyClients" placeholder="Choose an option">
             @for (typologyItem of clientTypologyList; track typologyItem) {
             <mat-option [value]="typologyItem.value">{{typologyItem.label}}</mat-option>
@@ -231,9 +231,10 @@
       </section>
       <section> <!-- Detall exportació/importació-->
         <mat-checkbox formControlName="exportCheck"
-          (click)="afterCheckChanges($event, 'exportCheck', ['exportAmbit', 'exportDescription'])">Exporta?</mat-checkbox>
+          (click)="afterCheckChanges($event, 'exportCheck', ['exportAmbit', 'exportDescription'])">{{'exportCheck' |
+          translate}}</mat-checkbox>
         <mat-form-field>
-          <mat-label>Àmbit geogràfic?</mat-label>
+          <mat-label>{{'export/importAmbit' | translate}}</mat-label>
           <mat-select formControlName="exportAmbit" placeholder="Choose one option">
             @for (continentItem of continentList; track continentItem) {
             <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
@@ -241,15 +242,16 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre l'exportació i països</mat-label>
+          <mat-label>{{'exportDescription' | translate}}</mat-label>
           <textarea formControlName="exportDescription" matInput
             placeholder="Write a description about the export information"></textarea>
         </mat-form-field>
 
         <mat-checkbox formControlName="importCheck"
-          (click)="afterCheckChanges($event, 'importCheck', ['importAmbit','importDescription'])">Importa?</mat-checkbox>
+          (click)="afterCheckChanges($event, 'importCheck', ['importAmbit','importDescription'])">{{'importCheck' |
+          translate}}</mat-checkbox>
         <mat-form-field>
-          <mat-label>Àmbit geogràfic?</mat-label>
+          <mat-label>{{'export/importAmbit' | translate}}</mat-label>
           <mat-select formControlName="importAmbit" placeholder="Choose one option">
             @for (continentItem of continentList; track continentItem) {
             <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
@@ -257,7 +259,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre l'importació i països</mat-label>
+          <mat-label>{{'' | translate}}</mat-label>
           <textarea formControlName="importDescription" matInput
             placeholder="Write a description about the import information"></textarea>
         </mat-form-field>
