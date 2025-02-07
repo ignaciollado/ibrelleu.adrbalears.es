@@ -87,6 +87,12 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
+  getAllKnowWays(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}knowWays.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
   getAllLegalForms(): Observable<LegalFormDTO[]> {
     return this.http
       .get<LegalFormDTO[]>(`${this.urlAPIMock}legalForm.json`)

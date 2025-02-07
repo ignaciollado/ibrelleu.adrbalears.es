@@ -1,0 +1,544 @@
+<h1>{{'grantorProject' | translate}}</h1>
+<form [formGroup]="grantorProjectForm" (ngSubmit)="onSubmit()">
+    <mat-tab-group animationDuration="500ms" mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight
+        [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
+        <mat-tab label="Identificació i gestió">
+            <section>
+                <mat-form-field>
+                    <mat-label>{{'grantorProjectName' | translate}}</mat-label>
+                    <input matInput formControlName="projectName">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'creationDateProject' | translate}}</mat-label>
+                    <input type="date" matInput formControlName="projectCreationDate">
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'sameContactAndOwner' | translate}}</mat-label>
+                    <mat-radio-group formControlName="sameContactAndOwner">
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'ownerName' | translate}}</mat-label>
+                    <input matInput formControlName="ownerName">
+                </mat-form-field>
+                <!-- Si sameContactAndOwner es no  (value = 0), debe activarse este campo. Si es SI, el valor es el mismo que ownerName-->
+                <mat-form-field>
+                    <mat-label>{{'projectContactName' | translate}}</mat-label>
+                    <input matInput formControlName="contactName">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'account' | translate}}</mat-label>
+                    <input matInput formControlName="accountName">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'howKnowUs' | translate}}</mat-label>
+                    <mat-select formControlName="howKnowUs">
+                        <mat-option [value]="">---</mat-option>
+                        @for (knowWay of knowWaysList; track knowWay) {
+                        <mat-option [value]="knowWay.value">{{knowWay.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'projectStatus' |translate}}</mat-label>
+                    <mat-select formControlName="projectStatus">
+                        <mat-option [value]="">---</mat-option>
+                        @for (projectStatus of projectStatusList; track projectStatus) {
+                        <mat-option [value]="projectStatus.value">{{projectStatus.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <!-- Si el valor es '292310001' -> Cancelado, aparecería este campo que por defecto no aparece-->
+                <mat-form-field>
+                    <mat-label>{{'cancelReason' | translate}}</mat-label>
+                    <mat-select formControlName="cancelReason">
+                        <mat-option [value]="">---</mat-option>
+                        @for(reason of projectCancelReasons; track reason) {
+                        <mat-option [value]="reason.value">{{reason.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <section>
+                    <mat-label>{{'delegation' | translate}}</mat-label>
+                    <mat-radio-group formControlName="delegation">
+                        <mat-radio-button value="Mallorca">Mallorca</mat-radio-button>
+                        <mat-radio-button value="Menorca">Menorca</mat-radio-button>
+                        <mat-radio-button value="Eivissa">{{'ibiza' | translate}}</mat-radio-button>
+                        <mat-radio-button value="Formentera">Formentera</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'consultant' | translate}}</mat-label>
+                    <mat-select formControlName="consultant">
+                        @for(consultant of consultantList; track consultant) {
+                        <mat-option [value]="consultant">{{consultant}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="textArea">
+                    <mat-label>{{'projectStatusObservations' | translate}}</mat-label>
+                    <textarea matInput formControlName="statusObservation"></textarea>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'activeBusiness' | translate}}</mat-label>
+                    <mat-radio-group formControlName="activeBusiness">
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+
+                <!-- Si activeBusiness = 0, debe aparecer este campo-->
+
+                <section>
+                    <mat-label>{{'localTypology' | translate}}</mat-label>
+                    <mat-radio-group formControlName="localTypology">
+                        <mat-radio-button value="121370000">{{'paradaMercat' | translate}}</mat-radio-button>
+                        <mat-radio-button value="121370001">{{'establecimentTitularitatMunicipal' |
+                            translate}}</mat-radio-button>
+                        <mat-radio-button value="121370002">{{'concessioBarEsportives' | translate}}</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <section>
+                    <mat-label>{{'cessionType' | translate }}</mat-label>
+                    <mat-radio-group formControlName="cessionType">
+                        <mat-radio-button value="282310000">{{'workerTransmission' | translate}}</mat-radio-button>
+                        <mat-radio-button value="282310001">{{'thirdTransmission' | translate}}</mat-radio-button>
+                        <mat-radio-button value="282310002">{{'familiarSuccession' | translate}}</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'activityStartYear' | translate}}</mat-label>
+                    <input matInput formControlName="startYear" maxlength="4">
+                </mat-form-field>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'localizationAndInstalations' | translate}}">
+            <section>
+                <mat-checkbox>{{'cessionActivitySameLoc' | translate}}</mat-checkbox>
+                <section>
+                    <mat-label>{{'municipalMarket' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="">Si</mat-radio-button>
+                        <mat-radio-button value="">No</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <section>
+                    <mat-label>{{'municipalInstalationType' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="">{{'pool' | translate}}</mat-radio-button>
+                        <mat-radio-button value="">{{'pavillion' | translate}}</mat-radio-button>
+                        <mat-radio-button value="">{{'others' | translate}}</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'instalationName' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'instalationTypeSpecific' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'address' | translate}}</mat-label>
+                    <input matInput formControlName="direccion" aria-label="Adreça es un camp obligatori">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'zipCode' | translate}}</mat-label>
+                    <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto">
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                        @for (option of filteredOptions | async; track option) {
+                        <mat-option [value]="option" (click)="selectedValue($event)">{{option.zipCode}}
+                            {{option.town}}</mat-option>
+                        }
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'town' | translate}}</mat-label>
+                    <input matInput formControlName="localizationCity">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'municipality' | translate}}</mat-label>
+                    <input matInput formControlName="councilCity" readonly="readonly">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'island' | translate}}</mat-label>
+                    <input matInput formControlName="localizationCCAA">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'country' | translate}}</mat-label>
+                    <input matInput formControlName="localizationCountry">
+                </mat-form-field>
+                <mat-checkbox>{{'noDifusion' | translate}}</mat-checkbox>
+                <section>
+                    <mat-label>{{'propertyStatus' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="282310000">{{'property' |
+                            translate}}</mat-radio-button>
+                        <mat-radio-button value="282310001">{{'rent' |
+                            translate}}</mat-radio-button>
+                        <mat-radio-button value="282310002">{{'noLocal' |
+                            translate}}</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'localSize' |translate}}</mat-label>
+                    <input matInput type="number" placeholder="Metros quadrats del local llogat o en propietat">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'localContractConditions' |translate}}</mat-label>
+                    <textarea matInput
+                        placeholder="Write more information about the property or renting contracts"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'moreLocalSpecifications' |translate}}</mat-label>
+                    <textarea matInput placeholder="Write more information about the property or renting"></textarea>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'localSubjectToSell' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'cessionDetailsAndReason' | translate}}">
+            <section>
+                <mat-form-field>
+                    <mat-label>{{'cessionReason' | translate}}</mat-label>
+                    <mat-select>
+                        <!-- Temporal -->
+                        <mat-option>{{'reason1' | translate}}</mat-option>
+                        <mat-option>{{'reason2' | translate}}</mat-option>
+                        <mat-option>{{'reason3' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'maxDateCession' | translate}}</mat-label>
+                    <input matInput type="date">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'cessionReasonDescription' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-checkbox>{{'cessionAutorization' | translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'transferPriceInterval' | translate}}</mat-label>
+                    <mat-select>
+                        <mat-option>0€ - 5.000€</mat-option>
+                        <mat-option>5.000€ - 10.000€</mat-option>
+                        <mat-option>10.000€ - 20.000€</mat-option>
+                        <mat-option>20.000€ - 30.000€</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'cessionPlan' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <section>
+                    <mat-label>{{'variationPrice' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="">{{'puja' | translate}}</mat-radio-button>
+                        <mat-radio-button value="">{{'baixa' | translate}}</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'variationDate' | translate}}</mat-label>
+                    <input matInput type="date">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'transferPrice' | translate}}</mat-label>
+                    <input matInput type="number">
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'ibRelleuValoration' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'valorationAspects' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'lastFiscalYearValoration' | translate}}</mat-label>
+                    <input matInput type="number">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'valorationStatus' | translate}}</mat-label>
+                    <!-- Temporal -->
+                    <mat-select>
+                        <mat-option value="">{{'pendent' | translate}}</mat-option>
+                        <mat-option value="">{{'programada' | translate}}</mat-option>
+                        <mat-option value="">{{'realitzada' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'otherValoration' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'valorationDescription' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'cessionOfertDetails' | translate}}</mat-label>
+                    <!-- Temporal -->
+                    <mat-select multiple>
+                        <mat-option value="">{{'offer1' | translate}}</mat-option>
+                        <mat-option value="">{{'offer2' | translate}}</mat-option>
+                        <mat-option value="">{{'offer3' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'cessionOfertDetailsDescription' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'externalProfessionalName' | translate}}</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'cessionSteps' | translate}}</mat-label>
+                    <!-- Temporal -->
+                    <mat-select multiple>
+                        <mat-option value="">{{'step1' | translate}}</mat-option>
+                        <mat-option value="">{{'step2' | translate}}</mat-option>
+                        <mat-option value="">{{'step3' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'externalProfessionalMail' | translate}}</mat-label>
+                    <input matInput type="email">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'externalProfessionalPhone' | translate}}</mat-label>
+                    <input matInput type="tel">
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'contactOtherIBRelleu' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'desiredIBRelleuProfile' | translate}}</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'activityAndResultsDetail' | translate}}">
+            <section>
+                <mat-checkbox>{{'activityCessionSameAccount' | translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'sector' | translate}}</mat-label>
+                    <mat-select multiple placeholder="Choose multiple options">
+                        @for (sectorItem of sectorList; track sectorItem) {
+                        <mat-option [value]="sectorItem.value">{{sectorItem.label | translate}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'activityType' | translate}}</mat-label>
+                    <mat-select multiple placeholder="Choose multiple options">
+                        @for (activityItem of activityList; track activityItem) {
+                        <mat-option [value]="activityItem.value">{{activityItem.label | translate}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'paradaMercatNoSedentaria' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'cessionActivityDescription' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'companyCarrerAndStrategy' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'marketDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the market"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'typologyClients' | translate}}</mat-label>
+                    <mat-select multiple placeholder="Choose an option">
+                        @for (typologyItem of clientTypologyList; track typologyItem) {
+                        <mat-option [value]="typologyItem.value">{{typologyItem.label}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'customersDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the target audience"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'suppliersDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the suppliers"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'competencyDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the company's competition"></textarea>
+                </mat-form-field>
+                <mat-checkbox>{{'productCheck'
+                    | translate}}</mat-checkbox>
+                <mat-checkbox>{{'brandCheck'
+                    | translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'ownProductDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the company product"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'brandNames' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write about the brands names"></textarea>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'renovationTrademarkName' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-checkbox>{{'stockCheck' |
+                    translate}}</mat-checkbox>
+                <mat-checkbox>{{'auditoryCheck' | translate}}</mat-checkbox>
+                <mat-checkbox>{{'licenseCheck' | translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'companyAdvantages' |translate}}</mat-label>
+                    <!-- Temporal-->
+                    <mat-select multiple>
+                        <mat-option value="">{{'advantage1' |translate}}</mat-option>
+                        <mat-option value="">{{'advantage2' |translate}}</mat-option>
+                        <mat-option value="">{{'advantage3' |translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'companyDisadvantages' |translate}}</mat-label>
+                    <!-- Temporal-->
+                    <mat-select multiple>
+                        <mat-option value="">{{'difficult1' |translate}}</mat-option>
+                        <mat-option value="">{{'difficult2' |translate}}</mat-option>
+                        <mat-option value="">{{'difficult3' |translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-checkbox>{{'exportCheck' |
+                    translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'export/importAmbit' | translate}}</mat-label>
+                    <mat-select placeholder="Choose one option">
+                        @for (continentItem of continentList; track continentItem) {
+                        <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'exportDescription' | translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the export information"></textarea>
+                </mat-form-field>
+                <mat-checkbox>{{'importCheck' |
+                    translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'export/importAmbit' | translate}}</mat-label>
+                    <mat-select placeholder="Choose one option">
+                        @for (continentItem of continentList; track continentItem) {
+                        <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'importDescription' | translate}}</mat-label>
+                    <textarea formControlName="importDescription" matInput
+                        placeholder="Write a description about the import information"></textarea>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>{{'fullTimeWorkers' |translate}}</mat-label>
+                    <input matInput type="number" min="0">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'partialTimeWorkers' |translate}}</mat-label>
+                    <input matInput type="number" min="0">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'totalWorkers' |translate}}</mat-label>
+                    <input matInput type="number">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'ancientComments' |translate}}</mat-label>
+                    <textarea matInput
+                        placeholder="Write a description about the workers carrer in the company"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'salaryComments' |translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the workers salary"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'collaborationComments' |translate}}</mat-label>
+                    <textarea matInput placeholder="Write a description about the company's colaboration"></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'workersObservations' |translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'stayWorkersAfterCession' |translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <section>
+                    <mat-label>{{'workersKnowSituation' |translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+            </section>
+        </mat-tab>
+        <mat-tab label="Resultats">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Anunci">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Reunions">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Balanços de situació">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Comptes de resultat">
+            <section></section>
+        </mat-tab>
+        <mat-tab label="Documentació">
+            <section></section>
+        </mat-tab>
+    </mat-tab-group>
+    <div ngClass="centered-item">
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+    <div ngClass="centered-item">
+        <small ngClass="centered-item">
+            Status: {{grantorProjectForm.status}} | Valid: {{grantorProjectForm.valid}} | Pristine:
+            {{grantorProjectForm.pristine}} | Touched: {{grantorProjectForm.touched}} | Dirty:
+            {{grantorProjectForm.dirty}}
+        </small>
+    </div>
+</form>

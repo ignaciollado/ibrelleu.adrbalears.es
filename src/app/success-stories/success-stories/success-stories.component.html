@@ -1,16 +1,16 @@
-<h1>Success Stories</h1>
+<h1>{{'successStories' | translate}}</h1>
 <section>
   <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
-      <mat-header-cell *matHeaderCellDef><span>{{ col.label | translate}}</span></mat-header-cell>
+      <mat-header-cell *matHeaderCellDef><span><strong>{{col.key | translate}}</strong></span></mat-header-cell>
       <mat-cell *matCellDef="let element">
         <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
           <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
           <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key] | date:'short'}}</span>
-          <a *ngSwitchCase="'url'" ngClass="small-data url-link"
-            [routerLink]="['/success-stories-detail/', element[col.key]]" title="{{'details' | translate}}">{{
+          <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/success-stories-detail/', element.id]"
+            title="{{'details' | translate}}">{{
             element[col.key] }}</a>
-          <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
+          <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] | translate}}</span>
         </section>
       </mat-cell>
     </ng-container>

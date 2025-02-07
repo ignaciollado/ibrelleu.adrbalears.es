@@ -54,7 +54,6 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   ) {
     this.theForm = new FormGroup({
       // Datos generales
-      id: new FormControl(''),
       nombre: new FormControl('', [Validators.required]),
       ibRelleuTypology: new FormControl('', [Validators.required]),
       process: new FormControl(''),
@@ -135,7 +134,6 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
         return name ? this._filter(name as string) : this.options.slice();
       })
     );
-    this.theForm.get('id').setValue(this.id);
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {

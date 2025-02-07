@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
-import { JwtModule } from "@auth0/angular-jwt";
+import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http'; 
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core'; 
-import { TranslateHttpLoader } from '@ngx-translate/http-loader'
+import {
+  HttpClientModule,
+  HttpClient,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { I18nModule } from "./i18n/i18n.module";
+import { I18nModule } from './i18n/i18n.module';
 
 import { RegisterComponent } from './User/register/register.component';
 import { LoginComponent } from './User/login/login.component';
@@ -17,24 +21,24 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
-import { RouterModule }   from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { SelectLanguageComponent } from './select-language/select-language.component';
 import { ProtectedComponent } from './Protected/protected/protected.component';
@@ -54,10 +58,21 @@ import { SignUpExternalUserComponent } from './sign-up-external-user/sign-up-ext
 import { ShowGenericDataComponent } from './generic/show-generic-data/show-generic-data.component';
 import { GrantorProjectsComponent } from './Protected/grantor-projects/grantor-projects.component';
 
-export function tokenGetter() { return sessionStorage.getItem("access_token"); }
+// Locale para el formateo de Date y de Currency
+import localeES from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+import { GrantorProjectDetailComponent } from './Protected/grantor-project-detail/grantor-project-detail.component';
 
-export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLoader(http);}
+export function tokenGetter() {
+  return sessionStorage.getItem('access_token');
+}
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+// Locale para el formateo de Date y de Currency
+registerLocaleData(localeES, 'es-ES');
 
 @NgModule({
   declarations: [
@@ -78,7 +93,8 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     SuccessStoriesDetailComponent,
     SignUpExternalUserComponent,
     ShowGenericDataComponent,
-    GrantorProjectsComponent
+    GrantorProjectsComponent,
+    GrantorProjectDetailComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -112,20 +128,26 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["datalogger.industrialocalsostenible.com", "jwt.idi.es"],
-        disallowedRoutes: ["http://example.com/examplebadroute/"],
+        allowedDomains: [
+          'datalogger.industrialocalsostenible.com',
+          'jwt.idi.es',
+        ],
+        disallowedRoutes: ['http://example.com/examplebadroute/'],
       },
     }),
     RouterModule.forRoot([]),
-    HttpClientModule, 
-    TranslateModule.forRoot({ loader: { provide: TranslateLoader, useFactory: HttpLoaderFactory, deps: [HttpClient] }})
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
 
-  providers: [
-    provideAnimationsAsync()
-  ],
+  providers: [provideAnimationsAsync()],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}

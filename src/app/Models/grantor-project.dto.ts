@@ -13,10 +13,10 @@ export class GrantorProjectsDTO {
   partnersNum: string;
   workersNum: string;
   propertyStatus: string;
-  transferPrice: string;
+  transferPrice: number;
   transferPriceInterval: string;
-  facturation: string;
-  earnings: string;
+  facturation: number;
+  earnings: number;
   consultant: string;
   delegation: string;
   creationDate: string;
@@ -33,10 +33,10 @@ export class GrantorProjectsDTO {
     partnersNum: string,
     workersNum: string,
     propertyStatus: string,
-    transferPrice: string,
+    transferPrice: number,
     transferPriceInterval: string,
-    facturation: string,
-    earnings: string,
+    facturation: number,
+    earnings: number,
     consultant: string,
     delegation: string,
     creationDate: string
@@ -64,14 +64,8 @@ export class GrantorProjectsDTO {
 
 export const grantorProjectColumns = [
   {
-    key: 'id',
-    type: 'url',
-    label: 'Código',
-    label_ca: 'Codi',
-  },
-  {
     key: 'grantorProjectName',
-    type: 'readOnly',
+    type: 'url',
     label: 'Nombre del proyecto',
     label_ca: 'Nom del projecte',
   },
