@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType, HttpParams, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpEventType, HttpParams, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
+
+
 
 export interface uploadedFiles {
   status: string;
@@ -14,11 +16,12 @@ export interface uploadedFiles {
 })
 
 export class FileUploadService {
-  //private baseUrl = 'https://docs.ibrelleu.es/upload';
-  //private baseUrl = 'https://docs.ibrelleu.es/public/index.php/upload';
+
   private apiUrl = '../../assets/phpAPI/FileUploadController.php';
   private listFilesUrl = '../../assets/phpAPI/listFiles.php';
   private deleteUrl = '../../assets/phpAPI/deleteFile.php'; 
+
+  private apiData = 'https://data.ibrelleu.es/public/index.php';
 
   private cancelUpload$ = new Subject<void>();
 
@@ -58,6 +61,36 @@ export class FileUploadService {
     return this.http.delete(this.deleteUrl, { params }).pipe(
       catchError(this.handleError)
     );
+  }
+
+  uploadDocument(file: File, foldername: string, id: number): Observable<any> {
+    const formData = new FormData();
+    formData.append('document', file, file.name);
+
+    return this.http.post<any>(`${this.apiUrl}/upload/${foldername}/${id}`, formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(
+      map(event => {
+        switch (event.type) {
+          case HttpEventType.UploadProgress:
+            const progress = Math.round((100 * event.loaded) / event.total);
+            return { status: 'progress', message: progress };
+
+          case HttpEventType.Response:
+            return event.body;
+
+          default:
+            return `Unhandled event: ${event.type}`;
+        }
+      })
+    );
+  }
+
+  downloadDocument(foldername: string, id: number, filename: string): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/download/${foldername}/${id}/${filename}`, {
+      responseType: 'blob'
+    });
   }
 
   private getEventMessage(event: HttpEvent<any>, files: File[]): any {
