@@ -30,7 +30,21 @@
   "waitingForData": "Esperando datos para mostrar...",
   "filterByColumn": "Filtrar por columnas",
 
-  "firstName": "<strong>Nombre completo</strong>",
+  "firstName": "Nombre completo",
+  "created_at": "Alta el",
+  "dni": "DNI/NIE",
+  "employementStatus": "Situación laboral",
+  
+  "contactInfo": "Información del contacto",
+  "contactName": "Nombre del contacto",
+  "contactLastName": "Apellidos del contacto",
+  "dni/nie": "DNI/NIE del contacto",
+  "nacionality": "Nacionalidad",
+  "contactProfileTech": "¿Es perfil técnico que actua como cedente?",
+  "formContactStatus": "Estado del contacto",
+  "contactProfile": "Perfil del contacto",
+  "consultant": "Consultor",
+  "contactReasonStatus": "Motivo del estado",
 
   "contactInfo": "Información del contacto",
   "contactName": "Nombre del contacto",
@@ -128,6 +142,7 @@
   "ancientComments": "Comentario sobre la antigüedad",
   "salaryComments": "Comentario sobre el salario",
   "collaborationComments": "Comentario sobre autónomos y colaboradores directos",
+
   "propertyStatus": "Local en propiedad o alquiler",
   "property": "Propiedad",
   "rent": "Alquiler",
@@ -188,7 +203,7 @@
 
   "companyActivityData": "Datos de actividad de mi empresa",
   "consumptionList": "Listado de consumos:",
-  "delegation": "Emplazamiento",
+  "delegation": "Oficina de",
   "selectDelegation": "Seleccione un emplazamiento",
   "delegationAdd": "Añadir emplazamiento",
   "delegationList": "Emplazamientos de esta empresa",
@@ -280,7 +295,10 @@
   "rgpdTxt": "<br><b>Responsable:</b> Agència de desenvolupament regional de les Illes Balears. <br><b>Finalidad:</b> La atención y gestión de los servicios que ofrece la Agència de desenvolupament regional de les Illes Balears y el registro de los interesados para la prestación del servicio de Ibrelleu, y establecer y mantener relaciones comerciales. <br><b>Legitimación:</b> La legitimación se realiza a través del consentimiento del interesado/da; la prestación del consentimiento del interesado/da al servicio de Ibrelleu para el alta en servicios promocionales, y de interés legítimo para el desarrollo de las relaciones comerciales. <br><b>Destinatarios:</b> En calidad de corresponsables del tratamiento, las instituciones y entitadades colaboradoras para que puedan trabajar a su favor así como las fundaciones, gremios y asociaciones implicadas para el establecimiento de relaciones comerciales. <br><b>Derechos:</b> Puedes ejercer tu derecho de acceso, rectificación, oposición, limitación y supresión de todos los datos en la dirección dpd@adrbalars.es.<br><b>Información adicional:</b> Puedes consultar la información detallada sobre nuestra Política de privacidad en nuestra web corporativa.<br>",
 
   "Name": "Nombre",
+  "mainMail": "Dirección electrónica",
   "email": "Dirección electrónica",
+  "userProfile": "Perfil",
+  "contact_status": "Estat contacte",
   "Mobile": "Mobil",
   "mainPhone": "Teléfono",
   "Update": "Actualizar",

@@ -17,14 +17,14 @@
   <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
       <mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
-        <span *ngSwitchDefault [innerHTML]="col.key | translate"></span>
+        <span *ngSwitchDefault [innerHTML]="col.key | translate" ngClass="bold-title"></span>
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
           <span *ngSwitchCase="'firsName'">{{element[col.firsName]}} {{element[col.lastName]}}</span>
           <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
-          <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key] | date : "dd-MM-YYYY"}}</span>
-          <span *ngSwitchCase="'email'" ngClass="full-view">{{element[col.key]}}</span>
+          <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key]  | date : "dd-MM-YYYY HH:mm:ss"}}</span>
+          <span *ngSwitchCase="'email'" ngClass="small-data full-view">{{element[col.key]}}</span>
           <span *ngSwitchCase="'userProfile'">{{element[col.key] | translate}}</span>
           <span *ngSwitchCase="'contactStatus'" ngClass="{{element[col.key]}}">{{element[col.key] | translate}}</span>
           <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/contact-detail/', element.id]"

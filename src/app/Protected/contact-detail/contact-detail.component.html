@@ -26,9 +26,9 @@
         <mat-form-field>
           <mat-label>{{'gender' | translate}}</mat-label>
           <mat-select formControlName="genero">
-            <mat-option value="Hombre">{{'male' | translate}}</mat-option>
-            <mat-option value="Mujer">{{'female' | translate}}</mat-option>
-            <mat-option value="Otros">{{'others' | translate}}</mat-option>
+            <mat-option value="male">{{'male' | translate}}</mat-option>
+            <mat-option value="female">{{'female' | translate}}</mat-option>
+            <mat-option value="others">{{'others' | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
@@ -49,9 +49,13 @@
         <mat-form-field>
           <mat-label>{{'formContactStatus' |translate}}</mat-label>
           <mat-select formControlName="estadoContacto">
-            @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
+            <mat-option value="Pending">{{'Pending' | translate}}</mat-option>
+            <mat-option value="Active">{{'Active' | translate}}</mat-option>
+            <mat-option value="ContactAgain">{{'ContactAgain' | translate}}</mat-option>
+
+          <!--   @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
             <mat-option [value]="estadoContactoItem">{{estadoContactoItem}}</mat-option>
-            }
+            } -->
           </mat-select>
         </mat-form-field>
         <mat-form-field>
@@ -209,6 +213,7 @@
           <mat-label>{{'contactDescriptionFormation' | translate}}</mat-label>
           <textarea matInput formControlName="experienceAndFormation"></textarea>
         </mat-form-field>
+
         <app-file-upload id="{{id}}" origin="contacts" class="textArea"></app-file-upload>
       </section>
     </mat-tab>

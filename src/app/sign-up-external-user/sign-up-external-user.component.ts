@@ -81,11 +81,12 @@ export class SignUpExternalUserComponent {
             else 
               {
                 this.showSnackBar("existe la cuenta y se le enviará un correo electrónico")
-             /*  this.emailManagementService.sendCustomerEmail(account)
-                .subscribe(() => { this.showSnackBar(`Account existent, gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) }) */
+                //this.emailManagementService.sendCustomerEmail(account)
+                //.subscribe(() => { this.showSnackBar(`Account existent, gràcies por contactar-nos, en breu rebrà un correu electrònic informatiu !!!`) })
               }
           });
-          } else {
+          } 
+          else {
             /* this.showSnackBar("existe el contacto y se le enviará un correo electrónico") */
             this.emailManagementService.sendCustomerEmail(contact)
             .subscribe((result) => {
@@ -99,13 +100,17 @@ export class SignUpExternalUserComponent {
           }
       },
       error => {
-        this.showSnackBar(error)
+        /* this.showSnackBar(error) */
+        if (error === 'Not found') {
+          this.mustShowField = true;
+          this.getAllZipCodes();
+        }
       });
     }
   }
 
   createContact(): void {
-    this.contactService.createContact(this.profileForm.value).subscribe( (data:any) => {
+    this.contactService.createContactSignUp(this.profileForm.value).subscribe( (data:any) => {
         this.emailManagementService.sendEmailNewUSer(this.profileForm)
           .subscribe((result) => {
           console.log ("the result new contact: ", result)
@@ -157,7 +162,7 @@ export class SignUpExternalUserComponent {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+    this.snackBar.open( error, 'X', { duration: 20000, verticalPosition: 'top', 
       horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }
