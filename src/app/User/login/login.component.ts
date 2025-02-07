@@ -42,7 +42,7 @@ export class LoginComponent {
           (item:AuthToken ) => {
             console.log ("Welcome to IBRelleu Market Place created by the ADR Balears ...")
             responseOK = true
-            errorResponse = "login correct"
+            errorResponse = "Logged in"
             sessionStorage.setItem('ibrelleu_user', this.jwtHelper.decodeToken(item.access_token).name)
             sessionStorage.setItem('access_token', item.access_token)
             sessionStorage.setItem("preferredLang", "cat")

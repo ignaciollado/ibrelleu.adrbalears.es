@@ -58,13 +58,13 @@ export class ContactsComponent {
         contact.firstName += " "+contact.lastName
       })
       console.log (this.dataSource.data)
-      this.showError("Contacts retrieved successfully!!!")
+      this.showSnackBar("Contacts retrieved successfully!!!")
 /*       contacts.forEach((contact: ContactDTO) => {
         contact.contact_status = this.contactStates[contact.state].label; //En vez de números, muestra el estado en string
       }) */
     },
     error => {
-      this.showError(error)
+      this.showSnackBar(error)
     })
   }
 
@@ -104,7 +104,8 @@ export class ContactsComponent {
     //   });
   }
 
-  private showError(error: string): void {
-    this.snackBar.open(error, 'Close', { duration: 10000, });
+  private showSnackBar(error: string): void {
+    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }
