@@ -10,14 +10,13 @@ import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'adr-success-stories',
   templateUrl: './success-stories.component.html',
-  styleUrl: './success-stories.component.scss'
+  styleUrl: './success-stories.component.scss',
 })
-
 export class SuccessStoriesComponent {
   successStories: SuccessStoriesDTO[];
   columnsDisplayed: string[] = successStoriesColumns.map((col) => col.key);
   columnsSchema: any = successStoriesColumns;
-  dataSource = new MatTableDataSource<SuccessStoriesDTO>()
+  dataSource = new MatTableDataSource<SuccessStoriesDTO>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -27,22 +26,25 @@ export class SuccessStoriesComponent {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor( private sharedService: SharedService, private dataService: DataService ) {
-    this.loadSuccessStories()
+  constructor(
+    private sharedService: SharedService,
+    private dataService: DataService
+  ) {
+    this.loadSuccessStories();
   }
 
   private loadSuccessStories(): void {
     let errorResponse: any;
     this.dataService.getSuccessStories().subscribe(
       (successStories: SuccessStoriesDTO[]) => {
-        this.successStories = successStories
-        console.log ("casos de éxito ", this.successStories)
-        this.dataSource = new MatTableDataSource<SuccessStoriesDTO>(this.successStories)
-        this.dataSource.sort = this.sort
+        this.successStories = successStories;
+        console.log('casos de éxito ', this.successStories);
+        this.dataSource = new MatTableDataSource<SuccessStoriesDTO>( this.successStories );
+        this.dataSource.sort = this.sort;
       },
       (error: HttpErrorResponse) => {
         errorResponse = error.error;
-        this.sharedService.errorLog(errorResponse)
+        this.sharedService.errorLog(errorResponse);
       }
     );
   }

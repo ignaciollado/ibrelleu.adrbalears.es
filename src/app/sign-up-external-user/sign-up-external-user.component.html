@@ -1,91 +1,85 @@
-<h1>Dona’t d’alta</h1>
 
-<section ngClass="large-box">
-  <p>Dona't d'alta en el nostre servei de IBrelleu emplenant aquest formulari:</p>
-  <form [formGroup]="profileForm" (ngSubmit)="validateForm()" [ngClass]="{'full-form': mustShowField}">
+<section ngClass="sign-up-container">
+  <img ngClass="logo-header" src='../../assets/images/ibrelleu-logos-formulari.png' title='el servei ibrelleu' alt='ibrelleu'>
+  <h2 ngClass="title-header">{{ "subTitleSignUp" | translate }}</h2>
+  <form [formGroup]="profileForm" (ngSubmit)="createContact()" ngClass="sign-up-form">
     <mat-form-field>
       <mat-label>DNI/NIE</mat-label>
       <input matInput formControlName="dni" minlength="9" maxlength="9">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Nom</mat-label>
+      <mat-label>{{ "name" | translate }}</mat-label>
       <input matInput formControlName="firstName">
     </mat-form-field>
       <mat-form-field *ngIf="mustShowField">
-      <mat-label>Cognoms</mat-label>
+      <mat-label>{{ "surname" | translate }}</mat-label>
       <input matInput formControlName="lastName">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Género</mat-label>
+      <mat-label>{{ "gender" | translate }}</mat-label>
       <mat-select formControlName="gender">
-        <mat-option value="Hombre">Home</mat-option>
-        <mat-option value="Mujer">Dona</mat-option>
-        <mat-option value="Otros">Altres</mat-option>
+        <mat-option value="male">{{ "male" | translate }}</mat-option>
+        <mat-option value="female">{{ "female" | translate }}</mat-option>
+        <mat-option value="others">{{ "others" | translate }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Fecha de Nacimiento</mat-label>
+      <mat-label>{{ "dob" | translate }}</mat-label>
       <input matInput formControlName="dob" type="date">
     </mat-form-field>
        <mat-form-field *ngIf="mustShowField">
-      <mat-label>Teléfono principal</mat-label>
-      <input matInput formControlName="mainPhone" minlength="9" maxlength="9">
+      <mat-label>{{ "mainPhone" | translate }}</mat-label>
+      <input matInput formControlName="mainPhone" minlength="9" maxlength="9" type="tel">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Correo electrónico principal</mat-label>
-      <input matInput formControlName="mainMail">
+      <mat-label>{{ "email" | translate }}</mat-label>
+      <input matInput formControlName="mainMail" type="email">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Dirección</mat-label>
+      <mat-label>{{ "address" | translate }}</mat-label>
       <input matInput formControlName="localizationAddress">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Código Postal</mat-label>
-      <input matInput formControlName="zipCode" maxlength="5" minlength="5" (blur)="selectedValue($event)" [matAutocomplete]="auto" />
-      <small *ngIf="profileForm.get('zipCode').errors">min length: 5 digits</small>
+      <mat-label>{{ "zipCode" | translate }}</mat-label>
+      <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto" (blur)="selectedValue($event)"/>
+      <small *ngIf="profileForm.get('zipCode').errors">min length: 5 digits{{ "minlength" | translate }}</small>
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
         @for (option of filteredOptions | async; track option) {
-          <mat-option [value]="option">{{option.zipCode}} {{option.town}}</mat-option>
+          <mat-option [value]="option" (click)="selectedValue($event)">{{option.zipCode}} {{option.town}}</mat-option>
         }
       </mat-autocomplete>
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Población</mat-label>
+      <mat-label>{{ "town" | translate }}</mat-label>
       <input matInput formControlName="localizationCity" readonly="readonly">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Municipio</mat-label>
+      <mat-label>{{ "municipality" | translate }}</mat-label>
       <input matInput formControlName="councilCity" readonly="readonly">
     </mat-form-field>    
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Illa</mat-label>
-      <input matInput formControlName="localizationCCAA" readonly="readonly">
+      <mat-label>{{ "island" | translate }}</mat-label>
+      <input matInput formControlName="island" readonly="readonly">
     </mat-form-field>
     <mat-form-field *ngIf="mustShowField">
-      <mat-label>Qui és el teu perfil?</mat-label>
+      <mat-label>{{ "yourProfile" | translate }}</mat-label>
       <mat-select formControlName="userProfile">
-        <mat-option value="cedent">Cedent</mat-option>
-        <mat-option value="emprendedor">Emprenedor</mat-option>
+        <mat-option value="grantor">{{ "grantor" | translate }}</mat-option>
+        <mat-option value="entrepreneur">{{ "entrepreneur" | translate }}</mat-option>
       </mat-select>
     </mat-form-field>    
     <section>
-      <mat-checkbox class="right-margin" (change) ="validateDNI($event)" formArrayName="acceptTerms">Accept the terms and the conditions</mat-checkbox>
+      <mat-checkbox class="right-margin" (change) ="validateDNI($event)" formArrayName="acceptTerms">{{ "acceptTermsAndConditions" | translate }}</mat-checkbox>
     </section>
     <section *ngIf="mustShowField">
-      <button mat-raised-button color="primary" type="submit">Validar</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">{{ "send" | translate }}</button>
     </section>
-    <section>
-      <label for="lopd_pas0" class="control-label label-required">He llegit i accepto la <a href="https://www.reempresa.org/Politica-de-Privadesa" target="_blank">Política de Privadesa</a></label>
       <br>
-      <br>
-      <section id="lbl_lopd_pas0" style="font-size:85%"><i>*Amb l'enviament d'aquest formulari confirmeu que heu llegit la següent Informació bàsica sobre Protecció de Dades:</i><br>
-        <br><b>Responsable:</b> Agència de desenvolupament regional de les Illes Balears.
-        <br><b>Finalitat:</b> L'atenció i gestió dels serveis que ofereix l'Agència de desenvolupament regional de les Illes Balears i el registre dels interessats per a la prestació de serveis d'Ibrelleu, i establir i mantenir relacions comercials.
-        <br><b>Legitimació:</b> La legitimació es realitza a través del consentiment de l'interessat/da; la prestació del consentiment de l'interessat/da al servei d'Ibrelleu per a l'alta en serveis de promocionals, i l'interès legítim per al desenvolupament de relacions comercials.
-        <br><b>Destinataris:</b> En qualitat de corresponsables del tractament, les institucions i entitats col·laboradores per tal que puguin treballar al seu favor així com les fundacions, gremis i associacions implicades per a l'establiment de relacions comercials.
-        <br><b>Drets:</b> Podreu exercir el vostre dret d'accés, rectificació, oposició, limitació i supressió de totes les dades a <a href="mailto:dpd@adrbalears.es">'dpd&#64;adrbalars.es'</a>.
-        <br><b>Informació addicional:</b> Podeu consultar la informació detallada sobre la nostra <a href="https://www.adrbalears.es/Politica-de-Privadesa" target="_blank">Política de Privadesa a la nostra pàgina web</a>.<br>
-      </section>
-    </section>
   </form>
+  <section *ngIf="!successSend"><i>* {{"sendingThisForm" | translate}}</i><br>
+    <article [innerHTML]="'rgpdTxt' | translate"></article>
+  </section>
+  <section *ngIf="successSend" ngClass="success-message">
+    <h2 [innerHTML]= "'successSendMessage' | translate"></h2>
+  </section>
 </section>

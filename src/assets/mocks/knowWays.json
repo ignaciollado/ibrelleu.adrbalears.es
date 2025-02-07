@@ -1,0 +1,61 @@
+[
+  { "value": "282310001", "label": "012", "label_ca": "012" },
+  {
+    "value": "282310013",
+    "label": "Actos y presentaciones",
+    "label_ca": "Actes i presentacions"
+  },
+  { "value": "282310004", "label": "Ayuntamiento", "label_ca": "Ajuntament" },
+  {
+    "value": "282310008",
+    "label": "Amigos / familiares / conocidos",
+    "label_ca": "Amics / familiars / coneguts"
+  },
+  {
+    "value": "282310006",
+    "label": "Asesoría / gestoría",
+    "label_ca": "Assessoria / gestoria"
+  },
+  {
+    "value": "282310007",
+    "label": "Asociación empresarial / Gremio / Colegio profesional",
+    "label_ca": "Associació empresarial / Gremi / Col·legi professional"
+  },
+  {
+    "value": "282310016",
+    "label": "Autocupación",
+    "label_ca": "Autoocupació"
+  },
+  { "value": "282310002", "label": "Caixabank", "label_ca": "Caixabank" },
+  {
+    "value": "282310011",
+    "label": "Entidad bancaria",
+    "label_ca": "Entitat bancària"
+  },
+  {
+    "value": "282310005",
+    "label": "Entidad pública",
+    "label_ca": "Entitat pública"
+  },
+  {
+    "value": "282310015",
+    "label": "Equipo comercial IBRelleu",
+    "label_ca": "Equip comercial IBRelleu"
+  },
+  {
+    "value": "121370001",
+    "label": "Folletos físicos",
+    "label_ca": "Fulletons físics"
+  },
+  { "value": "282310003", "label": "Generalitat", "label_ca": "Generalitat" },
+  {
+    "value": "282310000",
+    "label": "Medios de comunicación",
+    "label_ca": "Mitjans de comunicació"
+  },
+  {
+    "value": "121370000",
+    "label": "Internet y Redes sociales",
+    "label_ca": "Internet i Xarxes socials"
+  }
+]

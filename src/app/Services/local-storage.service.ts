@@ -10,27 +10,27 @@ export class LocalStorageService {
   constructor() {}
 
   clean(): void {
-    window.sessionStorage.clear();
+    window.localStorage.clear();
   }
 
   set(key: string, value: string) {
    /*  localStorage.setItem(key, value) */
-    sessionStorage.setItem(key, value)
+    localStorage.setItem(key, value)
   }
 
   get(key: string) {
-   /*  console.log(sessionStorage.getItem(key)) */
-    return sessionStorage.getItem(key)
+   /*  console.log(localStorage.getItem(key)) */
+    return localStorage.getItem(key)
   }
 
   remove(key: string) {
     /* localStorage.removeItem(key); */
-    sessionStorage.removeItem(key);
+    localStorage.removeItem(key);
 
   }
 
   public isLoggedIn(): boolean {
-    const user = sessionStorage.getItem(USER_KEY);
+    const user = localStorage.getItem(USER_KEY);
     /* const sessionUser = sessionStorage.getItem(USER_KEY); */
 
     console.log (user)

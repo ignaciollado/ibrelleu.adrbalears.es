@@ -1,4 +1,4 @@
-@use '../../../adr-colors';
+@use "../../../adr-colors";
 
 /* mat-tab-group {
   min-height: 78vh;
@@ -13,6 +13,11 @@ section {
   padding: 1rem;
 }
 
-button{
+.textArea {
+  display: grid;
+  grid-column: 1/3;
+}
+
+button {
   width: 100%;
 }

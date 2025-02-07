@@ -3,7 +3,9 @@
   {"value":"282310000", "label":"Eduació primària"},
   {"value":"282310001", "label":"Educació secundaria"},
   {"value":"282310002", "label":"Educació post secundària no superior"},
-  {"value":"282310003", "label":"Ensenyaments de formació professional"},
+  {"value":"282310003", "label":"Cicle Formatiu de Grau Bàsic"},
+  {"value":"282310006", "label":"Cicle Formatiu de Grau Mitjà"},
+  {"value":"282310007", "label":"Cicle Formatiu de Grau Superior"},
   {"value":"282310004", "label":"Grau o Diplomatura"},
   {"value":"282310005", "label":"Llicenciatura o màsters"},
   {"value":"121370001", "label":"Doctorat"}

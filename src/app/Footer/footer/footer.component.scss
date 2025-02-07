@@ -1,28 +1,42 @@
-@use '../../../adr-colors';
-@use '../../../utilities.scss';
+@use "../../../adr-colors";
+@use "../../../utilities.scss";
 
 footer {
-  z-index: -1;
-  opacity: .9;
+  /* z-index: 1; */
+  opacity: 0.9;
+  margin-top: 2rem;
   display: grid;
-  grid-template-areas: "logoBottom localizacionBottom" "logoBottom textosLegales";
-  text-align: left;
-  margin-bottom: 0;
+  grid-template-areas: "logoBottom localizacionBottom textosLegales";
+  /* grid-template-columns: 0.75fr 1.5fr 0.75fr;
+  margin-bottom: 0; */
   margin-top: 0;
-  padding: .5rem;
-  font-size: .75rem;
-  line-height: 1rem;
+  /* padding: 0.5rem; */
+  font-size: 0.75rem;
+  /* line-height: 1rem; */
   background-color: adr-colors.$primary-adr;
   color: #fff;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  max-height: 8vh;
+  align-items: center;
+  justify-items: center;
 }
 
-a {
-  color: #fff!important;
+.logo-adr-balears {
+  grid-area: logoBottom;
+}
+.localizacion-adr-balears {
+  grid-area: localizacionBottom;
+  span {
+    padding-right: .5rem;
+  }
+}
+.textos-legales {
+  grid-area: textosLegales;
+  span {
+    padding-right: .5rem;
+  }
 }
 
 a:visited {
@@ -33,53 +47,28 @@ a:hover {
   color: adr-colors.$secondary-adr;
 }
 
-.logo-adr-balears {
-  grid-area: logoBottom;
-}
-
-.bi{
-  font-size: 2rem;
-  height: auto;
-  width: 2rem;
-}
-
-.bi::before{
-  prefix: '\F8DB';
-}
-
-.social-media {
-  grid-area: socialMedia;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  padding-left: 0;
-  text-align: left;
-}
-
-.textos-legales {
-  grid-area: textosLegales;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  text-align: center;
-  margin-left: 0;
-  padding-right: 0;
-}
-
 @media screen and (max-width: 992px) {
-  footer{
+  footer {
     grid-template-columns: 100%;
-    grid-template-areas: "logoBottom" "localizacionBottom" "socialMedia" "textosLegales";
+    grid-template-areas: "logoBottom" "localizacionBottom" "textosLegales";
     text-align: center;
+    max-height: unset;
+    position: unset;
+  }
+  .logo-adr-balears {
+    grid-area: logoBottom;
+    a > img {
+      height: 75px;
+    }
   }
   .localizacion-adr-balears {
+    grid-area: localizacionBottom;
     margin-top: 1rem;
     padding-left: 0;
   }
-  .social-media {
-    margin-top: 1rem;
-    padding-left: 0;
-    text-align: center;
-  }
+
   .textos-legales {
+    grid-area: textosLegales;
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-left: 0;

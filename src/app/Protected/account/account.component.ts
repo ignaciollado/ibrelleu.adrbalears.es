@@ -23,7 +23,7 @@ export class AccountComponent {
   columnsDisplayed: string[] = accountColumns.map((col) => col.key)
   legalFormList: any[] = []
   columnsSchema: any = accountColumns
-  dataSource: any
+  dataSource = new MatTableDataSource()
   valid: any = {}
 
 
@@ -32,11 +32,10 @@ export class AccountComponent {
     this.loadLegalFormList()
   }
 
-
   loadAllAccounts() {
     this.dataService.getAllAccounts()
       .subscribe((accounts: AccountDTO[])=> {
-        this.dataSource = accounts
+        this.dataSource.data = accounts
       })
   }
 
@@ -55,14 +54,14 @@ export class AccountComponent {
     console.log (id)
   }
 
-  applyFilter(item: any) {
-    console.log (item.value)
-    const filterValue = item.value
+  applyFilter(event: any) {
+    const filterValue = (event.target as HTMLInputElement).value
+    /* console.log (filterValue) */
     this.dataSource.filter = filterValue.trim().toLowerCase()
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-    console.log (this.dataSource)
+/*     console.log (this.dataSource) */
   }
 
   selectedValue(item: any) {
