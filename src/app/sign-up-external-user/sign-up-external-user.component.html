@@ -79,7 +79,7 @@
   <section *ngIf="!successSend"><i>* {{"sendingThisForm" | translate}}</i><br>
     <article [innerHTML]="'rgpdTxt' | translate"></article>
   </section>
-  <section *ngIf="successSend" ngClass="success-footer">
-    <h2>{{ "successSendMessage" | translate }}</h2>
+  <section *ngIf="successSend" ngClass="success-message">
+    <h2 [innerHTML]= "'successSendMessage' | translate"></h2>
   </section>
 </section>

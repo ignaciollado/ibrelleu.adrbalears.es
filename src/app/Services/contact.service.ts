@@ -32,20 +32,26 @@ export class ContactService {
       catchError(this.handleError));
   }
 
-/*   getContactByDNI(dni: string): Observable<any> {
+  /*   getContactByDNI(dni: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/contactGetOneByDNI.php?dni=${dni}`).pipe(
       catchError(this.handleError));
   } */
   
   getContactByDNI(dni: string): Observable<any> {
-    return this.http.get(`${this.apiData}/contactGetOneByDNI?dni=${dni}`).pipe(
+    return this.http.get(`${this.apiData}/api/contact-by-dni/${dni}`).pipe(
       catchError(this.handleError));
   }
 
-  createContact(contact: any): Observable<any> {
+  /*   createContact(contact: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/contactInsert.php`, contact).pipe(
       catchError(this.handleError));
-  }
+  } */
+
+  createContactSignUp(contact: any): Observable<any> {
+    return this.http
+    .post<any>(`${this.apiData}/api/create-contact-from-sign-up/`, contact, httpOptions)
+    .pipe(catchError(this.handleError));
+  }      
 
   deleteContact(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/contactDelete.php?id=${id}`).pipe(
@@ -60,6 +66,9 @@ export class ContactService {
     } else {
       // Error del lado del servidor
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      if (error.status === 404) {
+        errorMessage = 'Not found'
+      }
     }
     return throwError(errorMessage);
   }

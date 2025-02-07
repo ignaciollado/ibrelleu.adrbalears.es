@@ -2,7 +2,7 @@
 
 .sign-up-container {
   display: grid;
-  grid-template-areas: "headerlogo" "headertitle" "signupform";
+  grid-template-areas: "logoheader" "titleheader" "signupform" "successfooter";
   border: 2px solid #71b796;
   width: 70%;
   margin: 2rem auto;
@@ -10,14 +10,14 @@
   padding: 2rem;
 }
 .logo-header {
-  grid-area: headerlogo;
+  grid-area: logoheader;
   max-width: 100%;
   height: auto;
   margin: auto;
 }
 
 .title-header {
-  grid-area: headertitle;
+  grid-area: titleheader;
 }
 
 .sign-up-form {
@@ -28,27 +28,19 @@
   gap: 1rem;
 }
 
-.success-footer {
+.success-message {
   grid-area: successfooter;
   border-radius: .5rem;
-  background-color: #008000;
+  background-color: #71b796;
   padding: 1rem;
-  color: #fff;
+  color: #000;
   text-align: center;
 }
-
-/* ::ng-deep .custom-snackbar {
-  border: 2px solid #71b796;
-  padding: 1rem;
-  background-color: #71b796;
-  color: #ffffff;
-} */
 
 @media only screen and (max-width: 992px) {
   .sign-up-container {
     margin: auto;
     width: 100%;
-    gap: .5rem;
     padding: .5rem;
   }
   img {
