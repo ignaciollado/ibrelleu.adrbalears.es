@@ -17,12 +17,12 @@ export class ContactService {
   private apiData = 'https://data.ibrelleu.es/public/index.php';
   constructor(private http: HttpClient) { }
 
-/*   getContacts(): Observable<any> {
+  /*   getContacts(): Observable<any> {
     return this.http.get(`${this.apiUrl}/contactList.php`).pipe(
       catchError(this.handleError));
   } */
 
-    getContacts(): Observable<any> {
+  getContacts(): Observable<any> {
       return this.http.get(`${this.apiData}/api/contacts/`, httpOptions).pipe(
         catchError(this.handleError));
     }
