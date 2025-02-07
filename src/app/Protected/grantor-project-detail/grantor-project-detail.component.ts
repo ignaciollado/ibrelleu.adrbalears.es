@@ -3,8 +3,9 @@ import { DataService } from '../../Services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { Observable } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 import { GrantorProjectsDTO } from '../../Models/grantor-project.dto';
+import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 
 @Component({
   selector: 'adr-grantor-project-detail',
@@ -15,6 +16,9 @@ export class GrantorProjectDetailComponent {
   id: string = this.route.snapshot.paramMap.get('id');
   grantorProjectForm: FormGroup;
   selectedIndex: number;
+  filteredOptions: Observable<ZipCodesIBDTO[]>;
+  options: ZipCodesIBDTO[] = [];
+  zipCodeList: ZipCodesIBDTO[] = [];
 
   knowWaysList: any[] = [];
   projectStatusList: any[] = [
@@ -79,9 +83,8 @@ export class GrantorProjectDetailComponent {
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
     this.grantorProjectForm = new FormGroup({
-      code: new FormControl(''),
-      projectCreationDate: new FormControl('', Validators.required),
       projectName: new FormControl('', Validators.required),
+      projectCreationDate: new FormControl('', Validators.required),
       sameContactAndOwner: new FormControl(''),
       ownerName: new FormControl('', Validators.required),
       // contactName: new FormControl({ value: '', disabled: true }),
@@ -102,17 +105,36 @@ export class GrantorProjectDetailComponent {
         Validators.min(1850),
         Validators.max(this.actualYear),
       ]),
+
+      // Necesario para el zipCode
+      direccion: new FormControl('', [Validators.required]),
+      zipCode: new FormControl('', [
+        Validators.minLength(5),
+        Validators.maxLength(5),
+      ]),
+      localizationCity: new FormControl({ value: '', disabled: true }),
+      councilCity: new FormControl({ value: '', disabled: true }),
+      localizationCCAA: new FormControl({ value: '', disabled: true }),
+      localizationCountry: new FormControl({ value: 'España', disabled: true }),
     });
 
     this.loadKnowWays();
     this.loadDelegationAndConsultant();
     this.loadCessionType();
+    this.getAllZipCodes();
   }
 
   ngOnInit() {
     this.selectedIndex = +sessionStorage.getItem('currentGrantorProjectTab');
-    this.grantorProjectForm.get('code').setValue(this.id);
-    console.log(this.actualYear);
+    this.filteredOptions = this.grantorProjectForm
+      .get('zipCode')
+      .valueChanges.pipe(
+        startWith(''),
+        map((value) => {
+          const name = typeof value === 'string' ? value : value;
+          return name ? this._filter(name as string) : this.options.slice();
+        })
+      );
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
@@ -164,6 +186,41 @@ export class GrantorProjectDetailComponent {
       });
   }
 
+  getAllZipCodes() {
+    this.dataService.getAllZipCodes().subscribe((zpCodes: ZipCodesIBDTO[]) => {
+      this.zipCodeList = zpCodes;
+      this.options = zpCodes;
+
+      /*  console.log(this.options); */
+    });
+  }
+
+  private _filter(name: string): ZipCodesIBDTO[] {
+    const filterValue = name;
+    return this.options.filter((option) =>
+      option.zipCode.includes(filterValue)
+    );
+  }
+
+  displayFn(zpCode: ZipCodesIBDTO): string {
+    return zpCode && zpCode.zipCode ? zpCode.zipCode : '';
+  }
+
+  selectedValue(event: any) {
+    console.log(
+      'zp seleccionado: ',
+      this.grantorProjectForm.get('zipCode').value
+    );
+    this.grantorProjectForm
+      .get('localizationCity')
+      .setValue(this.grantorProjectForm.get('zipCode').value['town']);
+    this.grantorProjectForm
+      .get('localizationCCAA')
+      .setValue(this.grantorProjectForm.get('zipCode').value['island']);
+    this.grantorProjectForm
+      .get('councilCity')
+      .setValue(this.grantorProjectForm.get('zipCode').value['council']);
+  }
   // validatorsChangeYesOrNo(
   //   event: any,
   //   trackedFormField: string,
