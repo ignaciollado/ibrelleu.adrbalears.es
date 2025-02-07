@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { CustomValidatorsService } from '../../Services/custom-validators.service';
 import { ContactDTO } from '../../Models/contact.dto';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'adr-contact-detail',
@@ -32,7 +33,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     'Extern',
     'Usuari de serveis PH/REC',
   ];
-  estadoContacto_es = [
+ /*  estadoContacto_es = [
     'Pendiente de contactar',
     'Activo',
     'Volver a contactar',
@@ -45,7 +46,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     'Tornar a contactar',
     'Cita programada',
     'Cancel·lat',
-  ];
+  ]; */
 
   timeFrame_es = ['Mañana', 'Tarde', 'Todo el día'];
   timeFrame_ca = ['Matí', 'Tarda', 'Tot el día'];
@@ -69,6 +70,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     private contactService: ContactService,
     private countriesService: CountriesService,
     private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
     private customValidators: CustomValidatorsService
   ) {
     this.theForm = new FormGroup({
@@ -197,7 +199,45 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   getContactById(id: number) {
     this.contactService.getContactById(id)
     .subscribe((contact:ContactDTO)=> {
-      console.log (contact)
+      this.theForm.patchValue({
+        nombre: contact.firstName,
+        apellidos: contact.lastName,
+        dni: contact.dni,
+        dob: contact.dob,
+        genero: contact.gender,
+        nacionalidad: contact.nationality,
+        perfilTecnicoCedente: contact.technical_profile,
+        estadoContacto: contact.contact_status,
+        perfil: contact.userProfile, 
+        /* consultor: contact.consultor, */
+        /* delegacion: contact.delegacion, */
+       /*  motivoEstado: contact.motivoEstado, */
+        mainPhone: contact.mainPhone,
+        mainMail: contact.mainMail,
+        secondaryPhone: contact.secondary_phone,
+        secondaryMail: contact.secondary_email,
+       /*  professionalPhone: contact.professionalPhone, */
+        /* contactTimePreference: contact.contactTimePreference, */
+        /* contactingComments: contact.contactingComments, */
+        localizationAddress: contact.localizationAddress,
+        zipCode: contact.zipCode,
+        localizationCity: contact.town,
+        councilCity: contact.council,
+        localizationCCAA: contact.localizationCCAA,
+        localizationCountry: contact.country,
+        /* employmentStatus: contact.employmentStatus, */
+        /* levelOfEducation: contact.levelOfEducation, */
+        /* workingMode: contact.workingMode, */
+       /*  formationObservations: contact.formationObservations, */
+        /* businessFormationCheck: contact.businessFormationCheck, */
+        /* businessTypology: contact.businessTypology, */
+        /* experienceAreas: contact.experienceAreas, */
+        /* experienceAndFormation: contact.experienceAndFormation */
+      });
+      this.showSnackBar("Contact retrieved successfully!!!")
+    },
+    error => {
+      this.showSnackBar(error)
     })
   }
 
@@ -277,5 +317,10 @@ export class ContactDetailComponent implements CanComponentDeactivate {
         this.theForm.get(form).disable();
       }
     });
+  }
+
+  private showSnackBar(error: string): void {
+    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }

@@ -25,9 +25,9 @@
         <mat-form-field>
           <mat-label>Género</mat-label>
           <mat-select formControlName="genero">
-            <mat-option value="Hombre">Home</mat-option>
-            <mat-option value="Mujer">Dona</mat-option>
-            <mat-option value="Otros">Altres</mat-option>
+            <mat-option value="male">Home</mat-option>
+            <mat-option value="female">Dona</mat-option>
+            <mat-option value="others">Altres</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
@@ -50,9 +50,13 @@
         <mat-form-field>
           <mat-label>Estat contacte</mat-label>
           <mat-select formControlName="estadoContacto">
-            @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
+            <mat-option value="Pending">{{'Pending' | translate}}</mat-option>
+            <mat-option value="Active">{{'Active' | translate}}</mat-option>
+            <mat-option value="ContactAgain">{{'ContactAgain' | translate}}</mat-option>
+
+          <!--   @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
             <mat-option [value]="estadoContactoItem">{{estadoContactoItem}}</mat-option>
-            }
+            } -->
           </mat-select>
         </mat-form-field>
         <mat-form-field>

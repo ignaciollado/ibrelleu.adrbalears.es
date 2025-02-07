@@ -52,16 +52,13 @@ export class ContactsComponent {
   }
 
   loadAllContacts() {
-    this.contactService.getContacts().subscribe((contacts: ContactDTO[]) => {
+    this.contactService.getContacts()
+    .subscribe((contacts: ContactDTO[]) => {
       this.dataSource.data = contacts
       this.dataSource.data.map( (contact: ContactDTO) => {
         contact.firstName += " "+contact.lastName
       })
-      console.log (this.dataSource.data)
       this.showSnackBar("Contacts retrieved successfully!!!")
-/*       contacts.forEach((contact: ContactDTO) => {
-        contact.contact_status = this.contactStates[contact.state].label; //En vez de números, muestra el estado en string
-      }) */
     },
     error => {
       this.showSnackBar(error)
