@@ -349,19 +349,19 @@
         </mat-form-field>
       </section>
     </mat-tab>
-    <mat-tab label="Estructura econòmica">
+    <mat-tab label="{{'economicStructure' | translate}}">
       <section>
         <mat-form-field>
-          <mat-label>Comentari sobre el finançament de l'empresa</mat-label>
+          <mat-label>{{'financingWay' | translate}}</mat-label>
           <textarea matInput formControlName="financingDescription"
             placeholder="Write more information about company financing"></textarea>
         </mat-form-field>
 
         <mat-checkbox formControlName="debtsCheck"
-          (click)="afterCheckChanges($event, 'debtsCheck', ['debtsList', 'debtsDescription'])">L'empresa té
-          deutes?</mat-checkbox>
+          (click)="afterCheckChanges($event, 'debtsCheck', ['debtsList', 'debtsDescription'])">{{'debtsCheck' |
+          translate}}</mat-checkbox>
         <mat-form-field>
-          <mat-label>Amb qui té deutes actualment?</mat-label>
+          <mat-label>{{'companyDebtors' | translate}}</mat-label>
           <mat-select formControlName="debtsList" multiple>
             @for (debtsSitesItem of debtsSitesList; track debtsSitesItem) {
             <mat-option [value]="debtsSitesItem.value">{{debtsSitesItem.label}}</mat-option>
@@ -369,61 +369,61 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre l'endeutament</mat-label>
+          <mat-label>{{'debtsComments' | translate}}</mat-label>
           <textarea matInput formControlName="debtsDescription"
             placeholder="Write more information about the debts"></textarea>
         </mat-form-field>
       </section>
       <section> <!-- Resultats -->
         <mat-form-field>
-          <mat-label>Facturació últim any fiscal</mat-label>
+          <mat-label>{{'companyFacturation' | translate}} {{'lastFiscalYear' | translate}}</mat-label>
           <input matInput type="number" formControlName="lastYearFacturation" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Resultat últim any fiscal</mat-label>
+          <mat-label>{{'companyResults' | translate}} {{'lastFiscalYear' | translate}}</mat-label>
           <input matInput type="number" formControlName="lastYearResult" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre els resultats últim any fiscal</mat-label>
+          <mat-label>{{'resultsComments' | translate}} {{'lastFiscalYear' | translate}}</mat-label>
           <textarea matInput formControlName="lastYearResultDescription"
             placeholder="Write more information about comany's last results"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>EBITDA últim any fiscal</mat-label>
+          <mat-label>EBITDA {{'lastFiscalYear' | translate}}</mat-label>
           <input matInput type="number" formControlName="lastYearBeforeTaxes" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Facturació any n-1</mat-label>
+          <mat-label>{{'companyFacturation' | translate}} {{'fiscalYear-1' | translate}}</mat-label>
           <input matInput type="number" formControlName="oneYearAgoFacturation" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Resultat any n-1</mat-label>
+          <mat-label>{{'companyResults' | translate}} {{'fiscalYear-1' | translate}}</mat-label>
           <input matInput type="number" formControlName="oneYearAgoResult" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre els resultats any n-1</mat-label>
+          <mat-label>{{'resultsComments' | translate}} {{'fiscalYear-1' | translate}}</mat-label>
           <textarea matInput formControlName="oneYearAgoResultDescription"
             placeholder="Write more information about comany's results"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>EBITDA any n-1</mat-label>
+          <mat-label>EBITDA {{'fiscalYear-1' | translate}}</mat-label>
           <input matInput type="number" formControlName="oneYearAgoBeforeTaxes" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Facturació any n-2</mat-label>
+          <mat-label>{{'companyFacturation' | translate}} {{'fiscalYear-2' | translate}}</mat-label>
           <input matInput type="number" formControlName="twoYearAgoFacturation" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Resultat any n-2</mat-label>
+          <mat-label>{{'companyResults' | translate}} {{'fiscalYear-2' | translate}}</mat-label>
           <input matInput type="number" formControlName="twoYearAgoResult" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Comentari sobre els resultats any n-2</mat-label>
+          <mat-label>{{'resultsComments' | translate}} {{'fiscalYear-2' | translate}}</mat-label>
           <textarea matInput formControlName="twoYearAgoResultDescription"
             placeholder="Write more information about comany's results"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>EBITDA any n-2</mat-label>
+          <mat-label>EBITDA {{'fiscalYear-2' | translate}}</mat-label>
           <input matInput type="number" formControlName="twoYearAgoBeforeTaxes" placeholder="2 Decimal: xxxx.xx">
         </mat-form-field>
       </section>

@@ -134,6 +134,18 @@
   "localContractConditions": "Condicions contractuals del local",
   "moreLocalSpecifications": "Altres especificacions del local",
 
+  "economicStructure": "Estructura econòmica",
+  "financingWay": "Comentari sobre el finançament de l'empresa",
+  "debtsCheck": "L'empresa té deutes?",
+  "companyDebtors": "Amb qui té deutes actualment?",
+  "debtsComments": "Comentari sobre l'endeutament",
+  "companyFacturation": "Facturació",
+  "companyResults": "Resultat",
+  "resultsComments": "Comentari sobre els resultats",
+  "lastFiscalYear": "últim any fiscal",
+  "fiscalYear-1": "any n-1",
+  "fiscalYear-2": "any n-2",
+
   "companyAddress": "Domicili",
   "companyCNAE": "CNAE de l'empresa",
   "selectObjectiveType": "Seleccioni el RATIO per l'objectiu ",

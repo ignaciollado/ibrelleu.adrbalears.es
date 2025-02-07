@@ -134,6 +134,18 @@
   "localContractConditions": "Condiciones contractuales del local",
   "moreLocalSpecifications": "Otras especificaciones del local",
 
+  "economicStructure": "Estructura económica",
+  "financingWay": "Comentario sobre el financiamiento de la empresa",
+  "debtsCheck": "¿La empresa tiene deudas?",
+  "companyDebtors": "¿Con quién tiene deudas actualmente?",
+  "debtsComments": "Comentarios sobre el endeudamiento",
+  "companyFacturation": "Facturación",
+  "companyResults": "Resultado",
+  "resultsComments": "Comentario sobre los resultados",
+  "lastFiscalYear": "último año fiscal",
+  "fiscalYear-1": "año n-1",
+  "fiscalYear-2": "año n-2",
+
   "companyAddress": "Domicilio",
   "companyCNAE": "CNAE de la empresa",
   "selectObjectiveType": "Seleccione el RATIO para el objetivo",
