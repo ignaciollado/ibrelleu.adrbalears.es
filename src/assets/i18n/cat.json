@@ -71,42 +71,6 @@
   "experienceArea": "Àrees d'experiencia",
   "contactDescriptionFormation": "Descripció perfil formació y experiència",
 
-  "contactInfo": "Informació del contacte",
-  "contactName": "Nom del contacte",
-  "contactLastName": "Cognoms del contacte",
-  "nacionality": "Nacionalitat",
-  "contactProfileTech": "És perfil tècnic que actúa com a cedent?",
-  "formContactStatus": "Estat del contacte",
-  "contactProfile": "Perfil del contacte",
-  "consultant": "Consultor",
-  "contactReasonStatus": "Motiu de l'estat",
-
-  "ibiza": "Eivissa",
-
-  "contactData": "Dades del contacte",
-  "contactMainPhone": "Telèfon principal del contacte",
-  "contactMainMail": "Correu electrónic principal del contacte",
-  "contactSecondaryPhone": "Telèfon secundari del contacte",
-  "contactSecondaryMail": "Correu electrònic secundari del contacte",
-  "contactProfessionalPhone": "Telèfon professional del contacte",
-  "contactTimePreference": "Franja horària  de preferència de contacte",
-  "contactCommentaries": "Comentaris per a contactar",
-
-  "localization": "Localització",
-  "country": "Pais",
-
-  "contactEmployeInfo": "Informació laboral i curricular",
-  "contactWorkSituation": "Situació laboral",
-  "contactStudyLevel": "Nivell d'estudis (formació completada)",
-  "contactWorkingMode": "Per compte propi o d'un altre?",
-  "workingModeOwn": "Propi",
-  "workingModeForOther": "D'un altre",
-  "contactStudyObservation": "Observacions formació completada",
-  "contactBusinessFormation": "Formació en gestió empresarial",
-  "businessFormationTypology": "Tipologia de formació en gestió empresarial",
-  "experienceArea": "Àrees d'experiencia",
-  "contactDescriptionFormation": "Descripció perfil formació y experiència",
-
   "homeTextp2": "Ibrelleu és el mercat de compravenda de petites i mitjanes empreses de les Illes Balears. És un model innovador d'emprenedoria i creixement empresarial que fomenta la continuïtat de les empreses que són viables econòmicament i cerquen un relleu en la propietat i direcció.",
   "homeTextp3": "La persona que emprèn agafa el testimoni en la gestió d'una empresa ja existent per continuar-ne l'activitat. Així, aporta a l'empresa una renovada línia d'actuació.",
   "homeTextp31": "L'objectiu d'Ibrelleu és evitar el tancament de negocis per mantenir-los en funcionament i per salvaguardar els llocs de treball. Ibrelleu ofereix assessorament personalitzat, neutral i gratuït a la part cedent i emprenedora per a l'elaboració del pla de cessió i d'empresa, així com assessorament durant tot el procés de transmissió de l'empresa.",
@@ -166,7 +130,7 @@
   "ancientComments": "Comentari sobre l'antiguitat",
   "salaryComments": "Comentari sobre els salaris",
   "collaborationComments": "Comentari sobre autònoms i col·laboradors directe",
-  
+
   "propertyStatus": "Local en propietat o lloguer",
   "property": "Propietat",
   "rent": "Lloguer",
