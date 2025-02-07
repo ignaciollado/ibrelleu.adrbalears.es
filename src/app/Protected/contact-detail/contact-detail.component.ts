@@ -4,6 +4,7 @@ import { CountriesDTO } from '../../Models/countries.dto';
 import { CountriesService } from '../../Services/countries.service';
 import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 import { DataService } from '../../Services/data.service';
+import { ContactService } from '../../Services/contact.service';
 import { map, Observable, startWith } from 'rxjs';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { ActivatedRoute } from '@angular/router';
@@ -31,7 +32,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     'Extern',
     'Usuari de serveis PH/REC',
   ];
-
   estadoContacto_es = [
     'Pendiente de contactar',
     'Activo',
@@ -66,6 +66,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
 
   constructor(
     private dataService: DataService,
+    private contactService: ContactService,
     private countriesService: CountriesService,
     private route: ActivatedRoute,
     private customValidators: CustomValidatorsService
@@ -137,6 +138,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     this.getLevelOfEducationList();
     this.getWorkingModes();
     this.loadConsultantAndDelegationInfo();
+    this.getContactById(+this.id)
   }
 
   ngOnInit() {
@@ -191,6 +193,14 @@ export class ContactDetailComponent implements CanComponentDeactivate {
       });
     });
   }
+
+  getContactById(id: number) {
+    this.contactService.getContactById(id)
+    .subscribe((contact:ContactDTO)=> {
+      console.log (contact)
+    })
+  }
+
   insertConsultantData(consultant: string) {
     if (!this.consultantList.includes(consultant)) {
       this.consultantList.push(consultant);

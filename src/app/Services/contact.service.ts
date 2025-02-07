@@ -27,10 +27,15 @@ export class ContactService {
         catchError(this.handleError));
     }
 
-  getContact(id: number): Observable<any> {
+/*   getContact(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/contactGetOne.php?id=${id}`).pipe(
       catchError(this.handleError));
-  }
+  } */
+
+  getContactById(id: number): Observable<any> {
+        return this.http.get(`${this.apiData}/api/contact-by-id/${id}`).pipe(
+          catchError(this.handleError));
+      }
 
   /*   getContactByDNI(dni: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/contactGetOneByDNI.php?dni=${dni}`).pipe(

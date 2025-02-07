@@ -30,8 +30,10 @@
   "waitingForData": "Esperant dades per mostrar...",
   "filterByColumn": "Filtrar per columnes",
 
-  "firstName": "<strong>Nom complet</strong>",
-  "dni": "<strong>DNI/NIE</strong>",
+  "firstName": "Nom complet",
+  "created_at": "Alta el",
+  "dni": "DNI/NIE",
+  "employementStatus": "Situació laboral",
 
   "contactInfo": "Informació del contacte",
   "contactName": "Nom del contacte",
@@ -194,7 +196,7 @@
   "personsList": "Llistat de personal",
   "monthlyObjective": "Objectiu",
 
-  "delegation": "Emplaçament",
+  "delegation": "Oficina de",
   "selectDelegation": "Seleccioni un emplaçament",
   "delegationAdd": "Afegir emplaçament",
   "delegationList": "Emplaçaments d'aquesta empresa",
@@ -288,12 +290,12 @@
   "rgpdTxt": "<br><b>Responsable:</b> Agència de desenvolupament regional de les Illes Balears. <br><b>Finalitat:</b> L'atenció i gestió dels serveis que ofereix l'Agència de desenvolupament regional de les Illes Balears i el registre dels interessats per a la prestació de serveis d'Ibrelleu, i establir i mantenir relacions comercials. <br><b>Legitimació:</b> La legitimació es realitza a través del consentiment de l'interessat/da; la prestació del consentiment de l'interessat/da al servei d'Ibrelleu per a l'alta en serveis de promocionals, i l'interès legítim per al desenvolupament de relacions comercials. <br><b>Destinataris:</b> En qualitat de corresponsables del tractament, les institucions i entitats col·laboradores per tal que puguin treballar al seu favor així com les fundacions, gremis i associacions implicades per a l'establiment de relacions comercials. <br><b>Drets:</b> Podreu exercir el vostre dret d'accés, rectificació, oposició, limitació i supressió de totes les dades a dpd@adrbalears.es.<br><b>Informació addicional:</b> Podeu consultar la informació detallada sobre la nostra Política de privadesa a la nostra pàgina web corporativa.<br>",
 
   "Name": "Nom",
-  "mainMail": "<strong>Adreça electrònica</strong>",
+  "mainMail": "Adreça electrònica",
   "email": "Adreça electrònica",
 
   "Mobile": "Mòbil",
-  "mainPhone": "<strong>Telèfon</strong>",
-  "userProfile": "<strong>Perfil</strong>",
+  "mainPhone": "Telèfon",
+  "userProfile": "Perfil",
   "contact_status": "Estat contacte",
   "Update": "Actualitzar",
   "Error": "Per favor, indiqui els detalls requerits.",
