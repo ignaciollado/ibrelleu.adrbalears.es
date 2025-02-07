@@ -315,9 +315,6 @@
   "dec": "Diciembre",
 
   "details": "Haz click para ver y editar los detalles",
-
-  "Código": "Código",
-  "Delegación": "Delegación",
   "Nombre": "Nombre",
   "Proceso": "Proceso",
   "Proyecto cedente": "Proyecto cedente",
@@ -340,11 +337,6 @@
   "grantorProject": "Proyecto Cedente",
   "mainSector": "Sector principal",
   "mainActivity": "Actividad principal",
-  "localizationCity": "Población",
-  "councilCity": "Municipio",
-  "localizationCCAA": "Isla",
-  "consultor": "Consultor",
-  "delegationOption": "Delegación",
 
   "acord": "Acuerdo",
   "transferDate": "Fecha de la cesión",

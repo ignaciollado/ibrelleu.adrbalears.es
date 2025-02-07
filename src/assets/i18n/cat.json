@@ -324,8 +324,6 @@
   "dec": "Decembre",
 
   "details": "Feu clic per veure i editar els detalls",
-  "Código": "Codi",
-  "Delegación": "Delegació",
   "Nombre": "Nom",
   "Proceso": "Procés",
   "Proyecto cedente": "Projecte cedent",
@@ -340,7 +338,6 @@
   "Fecha de creación": "Data de creació",
 
   "generalData": "Dades general",
-  "successStoriesCode": "Codi",
   "caseName": "Nom del cas",
   "ibRelleuTypology": "Tipologia d' IBRelleu",
   "successStoryProcess": "Procés",
@@ -348,11 +345,6 @@
   "grantorProject": "Projecte Cedent",
   "mainSector": "Sector principal",
   "mainActivity": "Activitat principal",
-  "localizationCity": "Població",
-  "councilCity": "Municipi",
-  "localizationCCAA": "Illa",
-  "consultor": "Consultor",
-  "delegationOption": "Delegació",
 
   "acord": "Acord",
   "transferDate": "Data de la cessió",

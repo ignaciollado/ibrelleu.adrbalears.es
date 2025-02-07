@@ -1,13 +1,9 @@
-<h1>Casos de éxito</h1>
+<h1>{{'successStories' | translate}}</h1>
 <form [formGroup]="theForm" (ngSubmit)="onSubmit()">
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight [(selectedIndex)]="selectedIndex"
     (selectedTabChange)="onTabChange($event)">
     <mat-tab label="{{'generalData' | translate}}">
       <section>
-        <mat-form-field>
-          <mat-label>{{'successStoriesCode' | translate}}</mat-label>
-          <input matInput formControlName="id" aria-label="id" readonly>
-        </mat-form-field>
         <mat-form-field>
           <mat-label>{{'caseName' | translate}}</mat-label>
           <input matInput formControlName="nombre" aria-label="Nombre">
@@ -68,34 +64,34 @@
           </mat-autocomplete>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'localizationCity' | translate}}</mat-label>
+          <mat-label>{{'town' | translate}}</mat-label>
           <input matInput formControlName="localizationCity" readonly="readonly">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'councilCity' | translate}}</mat-label>
+          <mat-label>{{'municipality' | translate}}</mat-label>
           <input matInput formControlName="councilCity" readonly="readonly">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'localizationCCAA' | translate}}</mat-label>
+          <mat-label>{{'island' | translate}}</mat-label>
           <input matInput formControlName="localizationCCAA" readonly="readonly">
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'consultor' | translate}}</mat-label>
+          <mat-label>{{'consultant' | translate}}</mat-label>
           <mat-select formControlName="consultor">
             @for(consultant of consultantList; track consultant) {
             <mat-option [value]="consultant">{{consultant}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>{{'delegationOption' | translate }}</mat-label>
-          <mat-select formControlName="delegation">
-            @for (delegation of delegationList; track delegation) {
-            <mat-option [value]="delegation">{{delegation}}</mat-option>
-            }
-          </mat-select>
-
-        </mat-form-field>
+        <section>
+          <mat-label>{{'delegation' | translate}}</mat-label>
+          <mat-radio-group formControlName="delegation">
+            <mat-radio-button value="Mallorca">Mallorca</mat-radio-button>
+            <mat-radio-button value="Menorca">Menorca</mat-radio-button>
+            <mat-radio-button value="Eivissa">{{'ibiza' | translate}}</mat-radio-button>
+            <mat-radio-button value="Formentera">Formentera</mat-radio-button>
+          </mat-radio-group>
+        </section>
       </section>
     </mat-tab>
 
