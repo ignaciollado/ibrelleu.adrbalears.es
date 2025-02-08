@@ -27,8 +27,11 @@ export class DocumentComponent implements OnInit {
 
   loadDocuments() {
     this.documentService.getDocuments(this.foldername, this.subfolderId).subscribe(
-      (data) => this.documents = data,
-      (error) => this.snackBar.open(error, 'Close', { duration: 3000 })
+      (data) => {
+        this.documents = data
+        this.snackBar.open("Documents listed successfully!!", 'Close', { duration: 30000 })
+      },
+      (error) => this.snackBar.open(error, 'Close', { duration: 30000 })
     );
   }
 
@@ -46,13 +49,13 @@ export class DocumentComponent implements OnInit {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round(100 * event.loaded / (event.total ?? 1));
           } else if (event.type === HttpEventType.Response) {
-            this.snackBar.open('Documents uploaded successfully!', 'Close', { duration: 3000 });
+            this.snackBar.open('Documents uploaded successfully!', 'Close', { duration: 30000 });
             this.loadDocuments();
             this.selectedFiles = [];
             this.progress = 0;
           }
         },
-        (error) => this.snackBar.open(error, 'Close', { duration: 3000 })
+        (error) => this.snackBar.open(error, 'Close', { duration: 30000 })
       );
     }
   }

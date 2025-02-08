@@ -30,11 +30,11 @@ export class DocumentService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
+    let errorMessage = '¡Error desconocido!';
     if (error.error instanceof ErrorEvent) {
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error Código: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);
   }
