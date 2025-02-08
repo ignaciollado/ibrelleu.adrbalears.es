@@ -16,9 +16,10 @@ import { CanDeactivateGuard } from './can-deactivate.guard';
 import { ShowGenericDataComponent } from './generic/show-generic-data/show-generic-data.component';
 import { GrantorProjectsComponent } from './Protected/grantor-projects/grantor-projects.component';
 import { GrantorProjectDetailComponent } from './Protected/grantor-project-detail/grantor-project-detail.component';
+import { DocumentComponent } from './Protected/document/document.component';
 
 const routes: Routes = [
-  { path: 'home', component: BodyComponent },
+  { path: 'home', component: DocumentComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: BodyComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: BodyComponent, canActivate: [AuthGuard] },

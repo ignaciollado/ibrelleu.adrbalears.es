@@ -62,6 +62,7 @@ import { GrantorProjectsComponent } from './Protected/grantor-projects/grantor-p
 import localeES from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { GrantorProjectDetailComponent } from './Protected/grantor-project-detail/grantor-project-detail.component';
+import { DocumentComponent } from './Protected/document/document.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem('access_token');
@@ -95,6 +96,7 @@ registerLocaleData(localeES, 'es-ES');
     ShowGenericDataComponent,
     GrantorProjectsComponent,
     GrantorProjectDetailComponent,
+    DocumentComponent,
   ],
   imports: [
     BrowserAnimationsModule,
