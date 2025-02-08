@@ -78,7 +78,7 @@ export class ContactsComponent {
   }
 
   removeRow(id: number) {
-    console.log(id);
+    this.showSnackBar(id.toString());
   }
 
   applyFilter(event: any) {
@@ -90,7 +90,7 @@ export class ContactsComponent {
   }
 
   selectedValue(contactStates: any) {
-    console.log('valor seleccionado: ', contactStates.value);
+    this.showSnackBar('valor seleccionado: ' + contactStates.value);
     //   this.dataService.getAllContacts().subscribe((contacts: ContactDTO[]) => {
     //     const matchedContacts: ContactDTO[] = contacts.filter(
     //       (item: ContactDTO) => {
@@ -102,7 +102,7 @@ export class ContactsComponent {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+    this.snackBar.open( error, 'Close', { duration: 5000, verticalPosition: 'top', 
       horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }

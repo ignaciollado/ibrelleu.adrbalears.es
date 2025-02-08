@@ -63,51 +63,6 @@ export class FileUploadService {
     );
   }
 
-  uploadDocument(file: File, foldername: string, id: number): Observable<any> {
-    const formData = new FormData();
-    formData.append('document', file, file.name);
-
-    return this.http.post<any>(`${this.apiUrl}/upload/${foldername}/${id}`, formData, {
-      reportProgress: true,
-      observe: 'events'
-    }).pipe(
-      map(event => {
-        switch (event.type) {
-          case HttpEventType.UploadProgress:
-            const progress = Math.round((100 * event.loaded) / event.total);
-            return { status: 'progress', message: progress };
-
-          case HttpEventType.Response:
-            return event.body;
-
-          default:
-            return `Unhandled event: ${event.type}`;
-        }
-      })
-    );
-  }
-
-  downloadDocument(foldername: string, id: number, filename: string): Observable<Blob> {
-    return this.http.get(`${this.apiUrl}/download/${foldername}/${id}/${filename}`, {
-      responseType: 'blob'
-    });
-  }
-
-  private getEventMessage(event: HttpEvent<any>, files: File[]): any {
-    switch (event.type) {
-      case HttpEventType.UploadProgress:
-        const percentDone = Math.round(100 * event.loaded / (event.total ?? 1));
-        const fileName = files.find(file => file.size === event.total)?.name || 'unknown';
-        return { status: 'progress', fileName, percentDone };
-
-      case HttpEventType.Response:
-        return event.body;
-
-      default:
-        return `Unhandled event: ${event.type}`;
-    }
-  }
-
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
     if (error.error instanceof ErrorEvent) {
