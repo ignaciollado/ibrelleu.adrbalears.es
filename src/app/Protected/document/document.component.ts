@@ -14,10 +14,10 @@ import { HttpEventType } from '@angular/common/http';
 export class DocumentComponent implements OnInit {
   documents: any[] = [];
   selectedFiles: File[] = [];
-  foldername = 'nacho';
-  subfolderId = 1001;
-  message = '';
-  progress = 0;
+  foldername:string = 'contact';
+  subfolderId:number = 1010;
+  message: string = '';
+  progress: number = 0
 
   constructor(private documentService: DocumentService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 

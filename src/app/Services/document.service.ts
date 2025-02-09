@@ -13,7 +13,7 @@ export class DocumentService {
   constructor(private http: HttpClient) { }
 
   uploadDocuments(foldername: string, id: number, formData: FormData): Observable<HttpEvent<any>> {
-    return this.http.post<any>(`${this.apiUrl}/${foldername}/${id}/upload`, formData, {
+    return this.http.post<any>(`/api/documents/upload/${foldername}/${id}`, formData, {
       reportProgress: true,
       observe: 'events'
     }).pipe(catchError(this.handleError));
