@@ -155,8 +155,8 @@
   "documentation": "Documentación",
   "anualIVA": "Liquidación anual del IVA (modelo 390) de los 3 últimos años",
   "190IRPF": "Liquidación IRPF (modelo 190) de los 3 últimos años",
-  "100IRPF": "Declaración IRPF (moDelo 100) de los 3 últimos años",
-  "130/131IRPF": "Pagamientos al contado IRPF (modelo 130 o 131) del 4º Trimestre último año",
+  "100IRPF": "Declaración IRPF (modelo 100) de los 3 últimos años",
+  "130/131IRPF": "Pagamentos al contado IRPF (modelo 130 o 131) del 4º Trimestre último año",
   "copyCifCompany": "Fotocopia CIF empresa",
   "constitutionScriptures": "Escrituras de constitución y modificación",
   "societyScriptures": "Escrituras de poderes de la sociedad (si cabe)",
@@ -580,5 +580,25 @@
   "difficult3": "Entorno y estructura del sector",
   "workersObservations": "Observaciones sobre los trabajadores",
   "stayWorkersAfterCession": "¿Pueden continuar las personas trabajadoras después del proceso de cesión?",
-  "workersKnowSituation": "¿Conocen las personas trabajadoras la situación?"
+  "workersKnowSituation": "¿Conocen las personas trabajadoras la situación?",
+
+  "results": "Resultados",
+
+  "ad": "Anuncio",
+
+  "situationBalance": "Balances de situación",
+
+  "resultsAccount": "Cuentas de resultados",
+
+  "activityLicense": "Licencia de actividad",
+
+  "rentContract": "Contrato de alquiler",
+  "RNT/RLC": "Relación nominal de los trabajadores (RNT o RLC) de los útlimos 12 meses",
+  "347customersSuppliers": "Relación de clientes-proveedores (modelo 347) de los últimos 3 años",
+
+  "activityAccountability": "Contabilidad de la actividad",
+
+  "administrativeConcessionDocs": "Reglamento concesión administrativa bares",
+
+  "docsObservation": "Observaciones y descripción de otra documentación aportada"
 }

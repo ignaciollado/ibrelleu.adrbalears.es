@@ -589,5 +589,25 @@
   "difficult3": "Entorn i estructura del sector",
   "workersObservations": "Observacions sobre el treballadors",
   "stayWorkersAfterCession": "Poden continuar les persones treballadores després del procés de cessió?",
-  "workersKnowSituation": "Conèixen les persones treballadores la situació?"
+  "workersKnowSituation": "Conèixen les persones treballadores la situació?",
+
+  "results": "Resultats",
+
+  "ad": "Anunci",
+
+  "situationBalance": "Balanços de situació",
+
+  "resultsAccount": "Compte de resultats",
+
+  "activityLicense": "Llicència d'activitat",
+
+  "rentContract": "Contracte de lloguer",
+  "RNT/RLC": "Relació nominal del treballadores (RNT o RLC) dels últims 12 mesos",
+  "347customersSuppliers": "Relació de clients-proveïdors (model 347) dels últimos 3 anys",
+
+  "activityAccountability": "Comptabilitat de l'activitat",
+
+  "administrativeConcessionDocs": "Reglament concessió administrativa bars",
+
+  "docsObservation": "Observacions i descripció d'altre documentació aportada"
 }
