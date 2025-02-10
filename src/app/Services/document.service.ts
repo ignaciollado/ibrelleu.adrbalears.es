@@ -24,9 +24,10 @@ export class DocumentService {
     return this.http.get<any[]>(`${this.apiUrl}/${foldername}/${id}`)
       .pipe(catchError(this.handleError));
   }
-
-  deleteDocument(foldername: string, id: number, docId: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${foldername}/${id}/${docId}`)
+  /* api/documents/(:segment)/(:num)/(:any) */
+  deleteDocument(folderName: string, id: number, docName: string): Observable<any> {
+    console.log (folderName, this.apiUrl)
+    return this.http.delete<any>(`/api/documents/delete/${folderName}/${id}/${docName}`)
       .pipe(catchError(this.handleError));
   }
 

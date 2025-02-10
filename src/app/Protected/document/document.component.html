@@ -1,8 +1,9 @@
 <section>
+  <h3>Documents to upload</h3>
     <input type="file" (change)="onFileSelected($event)">
-    <button (click)="uploadDocuments()">Upload</button>
+    <button (click)="uploadDocuments()" mat-raised-button color="primary">Upload</button>
     <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
-    <mat-table [dataSource]="selectedFiles">
+    <mat-table [dataSource]="selectedFiles" ngClass="mat-elevation-z8 tablecontainer">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> File Name </mat-header-cell>
         <mat-cell *matCellDef="let file"> {{ file.name }} </mat-cell>
@@ -14,8 +15,9 @@
       <mat-header-row *matHeaderRowDef="['name', 'size']"></mat-header-row>
       <mat-row *matRowDef="let row; columns: ['name', 'size'];"></mat-row>
     </mat-table>
+
     <h3>Uploaded Documents</h3>
-    <mat-table [dataSource]="documents">
+    <mat-table [dataSource]="documents" ngClass="mat-elevation-z8 tablecontainer">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> File Name </mat-header-cell>
         <mat-cell *matCellDef="let document"> {{ document.name }} </mat-cell>
@@ -23,7 +25,8 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
         <mat-cell *matCellDef="let document">
-          <button (click)="deleteDocument(document.id)">Delete</button>
+          <button (click)="viewDocument(document.url)" mat-raised-button>View</button>
+          <button (click)="deleteDocument(document.name)" mat-raised-button color="warn">Delete</button>
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="['name', 'actions']"></mat-header-row>

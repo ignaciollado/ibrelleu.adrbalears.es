@@ -29,9 +29,9 @@ export class DocumentComponent implements OnInit {
     this.documentService.getDocuments(this.foldername, this.subfolderId).subscribe(
       (data) => {
         this.documents = data
-        this.snackBar.open("Documents listed successfully!!", 'Close', { duration: 30000 })
+        this.showSnackBar("Documents listed successfully!!")
       },
-      (error) => this.snackBar.open(error, 'Close', { duration: 30000 })
+      (error) => this.showSnackBar(error)
     );
   }
 
@@ -49,25 +49,35 @@ export class DocumentComponent implements OnInit {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round(100 * event.loaded / (event.total ?? 1));
           } else if (event.type === HttpEventType.Response) {
-            this.snackBar.open('Documents uploaded successfully!', 'Close', { duration: 30000 });
+            this.showSnackBar('Documents uploaded successfully!');
             this.loadDocuments();
             this.selectedFiles = [];
             this.progress = 0;
           }
         },
-        (error) => this.snackBar.open(error, 'Close', { duration: 30000 })
+        (error) => this.showSnackBar(error)
       );
     }
   }
 
-  deleteDocument(docId: number) {
-    this.documentService.deleteDocument(this.foldername, this.subfolderId, docId).subscribe(
+  viewDocument(url: string) {
+    window.open(url, '_blank');
+  }
+
+  deleteDocument(docName: string) {
+    this.documentService.deleteDocument(this.foldername, this.subfolderId, docName).subscribe(
       (response) => {
-        this.snackBar.open('Document deleted successfully!', 'Close', { duration: 3000 });
+        this.documents = this.documents.filter(doc => doc.id !== docName);
+        this.showSnackBar('Document deleted successfully!');
         this.loadDocuments();
       },
-      (error) => this.snackBar.open(error, 'Close', { duration: 3000 })
+      (error) => this.showSnackBar(error)
     );
+  }
+
+  private showSnackBar(error: string): void {
+    this.snackBar.open( error, 'X', { duration: 20000, verticalPosition: 'top', 
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 
  /*  openFileContent(document: any) {

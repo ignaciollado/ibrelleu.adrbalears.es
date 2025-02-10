@@ -1,10 +1,8 @@
 {
   "/api": {
-    "target": "https://docs.ibrelleu.es",
+    "target": "https://data.ibrelleu.es",
     "secure": false,
     "changeOrigin": true,
-    "pathRewrite": {
-      "^/api": ""
-    }
-  }
+    "logLevel": "debug"
+}
 }

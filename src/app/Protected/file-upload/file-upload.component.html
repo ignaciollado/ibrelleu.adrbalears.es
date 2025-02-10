@@ -9,7 +9,7 @@
     <h3>Files to Upload</h3>
     <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <table mat-table [dataSource]="selectedFiles" class="mat-elevation-z8">
+    <table mat-table [dataSource]="selectedFiles" ngClass="mat-elevation-z8">
       <ng-container matColumnDef="fileName">
         <th mat-header-cell *matHeaderCellDef> File Name </th>
         <td mat-cell *matCellDef="let file"> {{file.name}} </td>
