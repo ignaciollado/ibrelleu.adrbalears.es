@@ -1,1 +1,298 @@
-<p>ibrelleu-project-detail works!</p>
+<h1>{{'ibRelleuProject' | translate}}</h1>
+<form [formGroup]="ibrelleuProjectForm" (ngSubmit)="onSubmit()">
+    <mat-tab-group animationDuration="500ms" mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight
+        [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
+        <mat-tab label="{{'identification' | translate }}">
+            <section>
+                <mat-form-field>
+                    <mat-label>{{'ibrelleuProjectName' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'creationDateProject' | translate}}</mat-label>
+                    <input type="date" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'responsableName' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+
+                <section>
+                    <mat-label>{{'sameContactAndResponsable' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'account' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'projectManagement' | translate }}">
+            <section>
+                <mat-form-field>
+                    <mat-label>{{'consultant' | translate}}</mat-label>
+                    <mat-select>
+                        @for(consultant of consultantList; track consultant) {
+                        <mat-option [value]="consultant">{{consultant}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'delegation' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="Mallorca">Mallorca</mat-radio-button>
+                        <mat-radio-button value="Menorca">Menorca</mat-radio-button>
+                        <mat-radio-button value="Eivissa">{{'ibiza' | translate}}</mat-radio-button>
+                        <mat-radio-button value="Formentera">Formentera</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'projectStatus' |translate}}</mat-label>
+                    <mat-select>
+                        <mat-option [value]="">---</mat-option>
+                        @for (projectStatus of projectStatusList; track projectStatus) {
+                        <mat-option [value]="projectStatus.value">{{projectStatus.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'cancelReason' | translate}}</mat-label>
+                    <mat-select>
+                        <mat-option [value]="">---</mat-option>
+                        @for(reason of projectCancelReasons; track reason) {
+                        <mat-option [value]="reason.value">{{reason.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="textArea">
+                    <mat-label>{{'projectStatusObservations' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'howKnowUs' | translate}}</mat-label>
+                    <mat-select formControlName="howKnowUs">
+                        <mat-option [value]="">---</mat-option>
+                        @for (knowWay of knowWaysList; track knowWay) {
+                        <mat-option [value]="knowWay.value">{{knowWay.label_ca}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'companyPreferencesIbrelleuProject' | translate }}">
+            <section>
+                <section>
+                    <mat-label>{{'automaticMail' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">Enviar</mat-radio-button>
+                        <mat-radio-button value="1">No enviar</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'desiredProfile' | translate}}</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'sector' | translate}}</mat-label>
+                    <mat-select multiple placeholder="Choose multiple options">
+                        @for (sectorItem of sectorList; track sectorItem) {
+                        <mat-option [value]="sectorItem.value">{{sectorItem.label | translate}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'activityType' | translate}}</mat-label>
+                    <mat-select multiple placeholder="Choose multiple options">
+                        @for (activityItem of activityList; track activityItem) {
+                        <mat-option [value]="activityItem.value">{{activityItem.label | translate}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-checkbox>{{'municipalMarketInteress' | translate}}</mat-checkbox>
+                <mat-checkbox>{{'franchiseInteress' | translate}}</mat-checkbox>
+                <mat-form-field>
+                    <mat-label>{{'ambit' | translate}}</mat-label>
+                    <mat-select>
+                        <mat-option>---</mat-option>
+                        @for(ambit of ambitos; track ambit) {
+                        <mat-option [value]="ambit.value">{{ambit.label | translate}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'maxWorkers' | translate}}</mat-label>
+                    <input matInput type="number">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'minWorkers' | translate}}</mat-label>
+                    <input matInput type="number">
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'propertyStatus' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="282310000">{{'property' |
+                            translate}}</mat-radio-button>
+                        <mat-radio-button value="282310001">{{'rent' |
+                            translate}}</mat-radio-button>
+                        <mat-radio-button value="282310002">{{'noLocal' |
+                            translate}}</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'cessionReason' | translate}}</mat-label>
+                    <mat-select>
+                        <!-- Temporal -->
+                        <mat-option>{{'reason1' | translate}}</mat-option>
+                        <mat-option>{{'reason2' | translate}}</mat-option>
+                        <mat-option>{{'reason3' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'inversionCapacity' | translate }}">
+            <section>
+                <mat-form-field>
+                    <mat-label>{{'transferPriceInterval' | translate}}</mat-label>
+                    <mat-select>
+                        <mat-option>---</mat-option>
+                        <mat-option value="282310000">0 € - 5.000 €</mat-option>
+                        <mat-option value="282310001">5.000 € - 10.000 €</mat-option>
+                        <mat-option value="282310002">20.000 € - 30.000 €</mat-option>
+                        <mat-option value="282310003">30.000 € - 40.000 €</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'partnersAportations' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'particularFinancing' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'bankFinancing' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'paroCapitalization' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'othersFinancing' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'totalEconomicCapacity' | translate}}</mat-label>
+                    <input matInput type="number">
+                </mat-form-field>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'desiredProfile' | translate }}">
+            <section>
+                <section>
+                    <mat-label>{{'howReenterprise' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">{{'alone' | translate}}</mat-radio-button>
+                        <mat-radio-button value="1">{{'withPartners' | translate}}</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <!-- Si howReenterprise es 1, este campo aparece-->
+                <mat-form-field>
+                    <mat-label>{{'withWho' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>{{'reenterpriseReasons' | translate}}</mat-label>
+                    <mat-select multiple>
+                        <mat-option value="">---</mat-option>
+                        <mat-option value="121370000">{{'autoOcupation' |translate}}</mat-option>
+                        <mat-option value="121370001">{{'personalProject' |translate}}</mat-option>
+                        <mat-option value="121370002">{{'familyBusinessManagement' |translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'reenterpriseSteps' | translate}}</mat-label>
+                    <!-- Temporal -->
+                    <mat-select>
+                        <mat-option value="121370000">{{'reenterpriseStep1' | translate}}</mat-option>
+                        <mat-option value="121370001">{{'reenterpriseStep2' | translate}}</mat-option>
+                        <mat-option value="121370002">{{'reenterpriseStep3' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'ibRelleuAdvantages' | translate}}</mat-label>
+                    <mat-select multiple>
+                        <mat-option>---</mat-option>
+                        <mat-option value="121370008">{{'acompanyamentGrantor' |translate}}</mat-option>
+                        <mat-option value="121370009">{{'acompanyamentIBrelleu' |translate}}</mat-option>
+                        <mat-option value="121370004">{{'clientsWallet' |translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'ibRelleuDisadvantages' | translate}}</mat-label>
+                    <mat-select>
+                        <mat-option>---</mat-option>
+                        <mat-option value="121370000">{{'reenterpriseDifficult1' |translate}}</mat-option>
+                        <mat-option value="121370001">{{'reenterpriseDifficult2' |translate}}</mat-option>
+                        <mat-option value="121370002">{{'reenterpriseDifficult3' |translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'activityFormation' | translate}}</mat-label>
+                    <mat-select multiple>
+                        <mat-option>---</mat-option>
+                        <mat-option value="121370000">{{'activityObjective' |translate}}</mat-option>
+                        <mat-option value="121370002">{{'valoration' |translate}}</mat-option>
+                        <mat-option value="121370003">{{'negociation' |translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'maxDateReenterprise' | translate}}</mat-label>
+                    <input matInput type="date">
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'contactWithGrantor' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field class="textArea">
+                    <mat-label>{{'externalContactGrantorDescription' | translate}}</mat-label>
+                    <textarea matInput cols="4"></textarea>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'intermediationContact' | translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="0">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field class="textArea">
+                    <mat-label>{{'intermediationContactDescription' |translate}}</mat-label>
+                    <textarea matInput cols="4"></textarea>
+                </mat-form-field>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'ad' | translate }}"></mat-tab>
+        <mat-tab label="{{'meetings' | translate }}"></mat-tab>
+        <mat-tab label="{{'situationBalance' | translate }}"></mat-tab>
+        <mat-tab label="{{'resultsAccount' | translate }}"></mat-tab>
+        <mat-tab label="{{'documentation' | translate }}"></mat-tab>
+
+    </mat-tab-group>
+    <div ngClass="centered-item">
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+    <div ngClass="centered-item">
+        <small ngClass="centered-item">
+            Status: {{ibrelleuProjectForm.status}} | Valid: {{ibrelleuProjectForm.valid}} | Pristine:
+            {{ibrelleuProjectForm.pristine}} | Touched: {{ibrelleuProjectForm.touched}} | Dirty:
+            {{ibrelleuProjectForm.dirty}}
+        </small>
+    </div>
+</form>
