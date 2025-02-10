@@ -609,5 +609,8 @@
 
   "administrativeConcessionDocs": "Reglament concessió administrativa bars",
 
-  "docsObservation": "Observacions i descripció d'altre documentació aportada"
+  "docsObservation": "Observacions i descripció d'altre documentació aportada",
+
+  "ibrelleuProjectName": "Nom del projecte IBRelleu",
+  "totalEconomicSituation": "Total capacitat econòmica"
 }
