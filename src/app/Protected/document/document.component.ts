@@ -76,7 +76,7 @@ export class DocumentComponent implements OnInit {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'X', { duration: 20000, verticalPosition: 'top', 
+    this.snackBar.open( error, 'Close', { duration: 20000, verticalPosition: 'top', 
       horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 
