@@ -26,9 +26,9 @@ export class IbrelleuProjectDetailComponent {
   sectorList: any[] = [];
 
   projectStatusList: any[] = [
-    { value: '282310000', label: 'Activo', label_ca: 'Actiu' },
-    { value: '282310001', label: 'Cancelado', label_ca: 'Cancel·lat' },
-    { value: '282310002', label: 'Standby', label_ca: 'Stanby' },
+    { value: '282310000', label: 'Active' },
+    { value: '282310001', label: 'Cancelled' },
+    { value: '282310002', label: 'Standby' },
     // Este estado aparece como display none en Reempresa
     // {"value": "282310003",
     //   "label": "Finalizado",
@@ -39,13 +39,11 @@ export class IbrelleuProjectDetailComponent {
   projectCancelReasons: any[] = [
     {
       value: '121370000',
-      label: 'No interesado en comprar un negocio',
-      label_ca: 'No interessat en comprar un negoci',
+      label: 'noBusinessInterested',
     },
     {
       value: '121370001',
-      label: 'Creación empresa desde cero',
-      label_ca: 'Creació empresa des de zero',
+      label: 'newBusinessCreation',
     },
   ];
 
@@ -54,19 +52,19 @@ export class IbrelleuProjectDetailComponent {
   ambitos: any[] = [
     {
       value: '282310000',
-      label: 'Població',
+      label: 'town',
     },
     {
       value: '282310001',
-      label: 'Comarca',
+      label: 'comarca',
     },
     {
       value: '282310002',
-      label: 'Província',
+      label: 'província',
     },
     {
       value: '282310003',
-      label: 'Comunitat autònoma',
+      label: 'CCAA',
     },
   ];
 

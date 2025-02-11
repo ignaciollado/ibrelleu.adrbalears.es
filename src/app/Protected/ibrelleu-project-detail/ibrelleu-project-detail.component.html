@@ -24,6 +24,11 @@
                         <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
+
+                <mat-form-field><!-- Si sameContactAndResponsable es 0 (No), aparece este campo-->
+                    <mat-label>{{'projectContactName' | translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'account' | translate}}</mat-label>
                     <input matInput>
@@ -54,7 +59,7 @@
                     <mat-select>
                         <mat-option [value]="">---</mat-option>
                         @for (projectStatus of projectStatusList; track projectStatus) {
-                        <mat-option [value]="projectStatus.value">{{projectStatus.label_ca}}</mat-option>
+                        <mat-option [value]="projectStatus.value">{{projectStatus.label | translate}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
@@ -63,7 +68,7 @@
                     <mat-select>
                         <mat-option [value]="">---</mat-option>
                         @for(reason of projectCancelReasons; track reason) {
-                        <mat-option [value]="reason.value">{{reason.label_ca}}</mat-option>
+                        <mat-option [value]="reason.value">{{reason.label | translate}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
@@ -76,7 +81,7 @@
                     <mat-select formControlName="howKnowUs">
                         <mat-option [value]="">---</mat-option>
                         @for (knowWay of knowWaysList; track knowWay) {
-                        <mat-option [value]="knowWay.value">{{knowWay.label_ca}}</mat-option>
+                        <mat-option [value]="knowWay.value">{{knowWay.label_ca | translate}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
