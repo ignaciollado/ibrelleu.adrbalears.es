@@ -7,6 +7,8 @@
         <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
           <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
           <span *ngSwitchCase="'date'" ngClass="small-data">{{element[col.key] | date:'short'}}</span>
+          <span *ngSwitchCase="'money'" ngClass="small-data">{{element[col.key] | currency :
+            "EUR" : "symbol" : "1.2-2" : "es-ES"}}</span>
           <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/success-stories-detail/', element.id]"
             title="{{'details' | translate}}">{{
             element[col.key] }}</a>
