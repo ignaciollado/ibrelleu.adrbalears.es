@@ -74,11 +74,13 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          
+          "options": {
+            "proxyConfig": ""
+          },
     
           "configurations": {
             "production": {
-              "buildTarget": "ibrelleu.adrbalears.es:build:production"
+              "buildTarget": "data.ibrelleu.es:build:production"
             },
             "development": {
               "buildTarget": "ibrelleu.adrbalears.es:build:development"

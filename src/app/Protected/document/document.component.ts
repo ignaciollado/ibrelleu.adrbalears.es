@@ -15,7 +15,7 @@ export class DocumentComponent implements OnInit {
   documents: any[] = [];
   selectedFiles: File[] = [];
   foldername:string = '';
-  subfolderId:string;
+  subfolderId:number;
   message: string = '';
   progress: number = 0
 
@@ -26,7 +26,7 @@ export class DocumentComponent implements OnInit {
 
   ngOnInit(): void {
     this.foldername = this.origin
-    this.subfolderId = this.id
+    this.subfolderId = +this.id
     this.loadDocuments();
   }
 

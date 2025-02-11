@@ -196,7 +196,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     this.contactService.getContactById(id)
     .subscribe((contact:ContactDTO)=> {
       this.theForm.patchValue({
-        nombre: contact.firstName,
+       /*  nombre: contact.firstName,
         apellidos: contact.lastName,
         dni: contact.dni,
         dob: contact.dob,
@@ -204,23 +204,23 @@ export class ContactDetailComponent implements CanComponentDeactivate {
         nacionalidad: contact.nationality,
         perfilTecnicoCedente: contact.technical_profile,
         estadoContacto: contact.contact_status,
-        perfil: contact.userProfile, 
+        perfil: contact.userProfile,  */
         /* consultor: contact.consultor, */
         /* delegacion: contact.delegacion, */
        /*  motivoEstado: contact.motivoEstado, */
-        mainPhone: contact.mainPhone,
+      /*   mainPhone: contact.mainPhone,
         mainMail: contact.mainMail,
         secondaryPhone: contact.secondary_phone,
-        secondaryMail: contact.secondary_email,
+        secondaryMail: contact.secondary_email, */
        /*  professionalPhone: contact.professionalPhone, */
         /* contactTimePreference: contact.contactTimePreference, */
         /* contactingComments: contact.contactingComments, */
-        localizationAddress: contact.localizationAddress,
+      /*   localizationAddress: contact.localizationAddress,
         zipCode: contact.zipCode,
         localizationCity: contact.town,
         councilCity: contact.council,
         localizationCCAA: contact.localizationCCAA,
-        localizationCountry: contact.country,
+        localizationCountry: contact.country, */
         /* employmentStatus: contact.employmentStatus, */
         /* levelOfEducation: contact.levelOfEducation, */
         /* workingMode: contact.workingMode, */
@@ -250,7 +250,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   onSubmit() {
-    console.log(this.theForm.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
@@ -316,7 +315,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'Close', { duration: 10000, verticalPosition: 'top', 
+    this.snackBar.open( error, 'Close', { duration: 10000, verticalPosition: 'bottom', 
       horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }
