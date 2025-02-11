@@ -78,7 +78,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'howKnowUs' | translate}}</mat-label>
-                    <mat-select formControlName="howKnowUs">
+                    <mat-select>
                         <mat-option [value]="">---</mat-option>
                         @for (knowWay of knowWaysList; track knowWay) {
                         <mat-option [value]="knowWay.value">{{knowWay.label_ca | translate}}</mat-option>
@@ -287,7 +287,9 @@
         <mat-tab label="{{'meetings' | translate }}"></mat-tab>
         <mat-tab label="{{'situationBalance' | translate }}"></mat-tab>
         <mat-tab label="{{'resultsAccount' | translate }}"></mat-tab>
-        <mat-tab label="{{'documentation' | translate }}"></mat-tab>
+        <mat-tab label="{{'documentation' | translate }}">
+            <app-file-upload id="{{id}}" origin="ibrelleuprojects" class="textArea"></app-file-upload>
+        </mat-tab>
 
     </mat-tab-group>
     <div ngClass="centered-item">
