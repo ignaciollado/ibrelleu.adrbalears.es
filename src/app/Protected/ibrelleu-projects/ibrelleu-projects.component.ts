@@ -53,9 +53,9 @@ export class IbrelleuProjectsComponent {
       {
         id: 'PIBR00001',
         ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Actiu',
-        mainSector: 'Serveis',
-        mainActivity: 'Altres',
+        projectStatus: 'Active',
+        mainSector: 'Servicios',
+        mainActivity: 'Otros',
         totalEconomicSituation: 2000,
         consultant: 'José Luis De Jesús',
         delegation: 'Mallorca',
