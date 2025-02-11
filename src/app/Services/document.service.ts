@@ -28,9 +28,9 @@ export class DocumentService {
 
   uploadDocuments(foldername: string, id: number, formData: FormData): Observable<HttpEvent<any>> {
     return this.http.post<any>(`${this.apiUrl}/api/documents/upload/${foldername}/${id}`, formData, {
-      headers: new HttpHeaders({
+/*       headers: new HttpHeaders({
         'Content-Type': 'multipart/form-data',
-      }),
+      }), */
       reportProgress: true,
       observe: 'events'})
       .pipe(catchError(this.handleError));
