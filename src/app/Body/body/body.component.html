@@ -8,8 +8,10 @@
       <p>{{'homeTextp4' | translate}}</p>
     </article>
     <article>
-      <button mat-raised-button color="accent" *ngIf="!sessionValid" (click)="loginUSER()">Login</button>
-      <button mat-raised-button color="accent" *ngIf="sessionValid" (click)="logOutUSER()">Logout</button>
+      <button mat-raised-button color="accent" *ngIf="!sessionValid" (click)="loginUSER()">{{'login' |
+        translate}}</button>
+      <button mat-raised-button color="accent" *ngIf="sessionValid" (click)="logOutUSER()">{{'logout' |
+        translate}}</button>
     </article>
   </section>
 </main>
