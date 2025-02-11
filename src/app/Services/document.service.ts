@@ -13,19 +13,26 @@ export class DocumentService {
 
   constructor(private http: HttpClient) { }
 
-  uploadDocuments(foldername: string, id: number, formData: FormData): Observable<HttpEvent<any>> {
+/*   uploadDocuments(foldername: string, id: number, formData: FormData): Observable<HttpEvent<any>> {
     return this.http.post<any>(`/api/documents/upload/${foldername}/${id}`, formData, {
       reportProgress: true,
       observe: 'events'
     }).pipe(catchError(this.handleError));
-  }
+  } */
 
-  getDocuments(foldername: string, id: number): Observable<any[]> {
+    uploadDocuments(foldername: string, id: string, formData: FormData): Observable<HttpEvent<any>> {
+      return this.http.post<any>(`${this.apiUrl}/upload/${foldername}/${id}`, formData, {
+        reportProgress: true,
+        observe: 'events'
+      }).pipe(catchError(this.handleError));
+    }
+
+  getDocuments(foldername: string, id: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/${foldername}/${id}`)
       .pipe(catchError(this.handleError));
   }
   /* api/documents/(:segment)/(:num)/(:any) */
-  deleteDocument(folderName: string, id: number, docName: string): Observable<any> {
+  deleteDocument(folderName: string, id: string, docName: string): Observable<any> {
     console.log (folderName, this.apiUrl)
     return this.http.delete<any>(`/api/documents/delete/${folderName}/${id}/${docName}`)
       .pipe(catchError(this.handleError));

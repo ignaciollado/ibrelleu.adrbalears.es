@@ -19,7 +19,7 @@ import { GrantorProjectDetailComponent } from './Protected/grantor-project-detai
 import { DocumentComponent } from './Protected/document/document.component';
 
 const routes: Routes = [
-  { path: 'home', component: DocumentComponent },
+  { path: 'home', component: BodyComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: BodyComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: BodyComponent, canActivate: [AuthGuard] },

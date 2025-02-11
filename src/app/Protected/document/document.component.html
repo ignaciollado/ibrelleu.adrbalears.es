@@ -1,7 +1,10 @@
 <section>
   <h3>Documents to upload</h3>
-    <input type="file" (change)="onFileSelected($event)">
-    <button (click)="uploadDocuments()" mat-raised-button color="primary">Upload</button>
+    <section>
+      <input type="file" (change)="onFileSelected($event)">
+      <button (click)="uploadDocuments()" mat-raised-button color="primary">Upload</button>
+    </section>
+
     <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
     <mat-table [dataSource]="selectedFiles" ngClass="mat-elevation-z8 tablecontainer">
       <ng-container matColumnDef="name">

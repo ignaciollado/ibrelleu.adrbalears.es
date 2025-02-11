@@ -29,7 +29,6 @@ export class FileUploadComponent {
   @Input() id: string;
   @Input() origin: string;
 
-
   constructor(private fileUploadService: FileUploadService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
@@ -106,11 +105,11 @@ export class FileUploadComponent {
         if (response.status === 'success') {
           this.existingFiles = response.files
         } else {
-          console.error('Failed to load existing files', response.message);
+          this.showSnackBar ('Failed to load existing files' + response.message);
         }
       },
       error => {
-        console.error('Failed to load existing files', error);
+        this.showSnackBar ('Failed to load existing files '+ error);
       }
     );
   }
@@ -122,9 +121,14 @@ export class FileUploadComponent {
       this.uploadedFiles = this.uploadedFiles.filter(f => f.name !== file.name);
       /* this.existingFilesDataSource.data = this.existingFiles */
       this.loadExistingFiles(this.id)
-      this.snackBar.open('File deleted successfully!', 'Close', { duration: 30000 });
+      this.showSnackBar ('File deleted successfully!');
     }, error => {
-      this.snackBar.open(error, 'Close', { duration: 30000 });
+      this.showSnackBar (error);
     });
+  }
+
+  private showSnackBar(error: string): void {
+    this.snackBar.open( error, 'Close', { duration: 20000, verticalPosition: 'bottom', 
+      horizontalPosition: 'center' });
   }
 }

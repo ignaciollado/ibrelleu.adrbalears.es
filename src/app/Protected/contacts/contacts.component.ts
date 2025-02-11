@@ -102,7 +102,7 @@ export class ContactsComponent {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+    this.snackBar.open( error, 'Close', { duration: 5000, verticalPosition: 'top', 
       horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }
