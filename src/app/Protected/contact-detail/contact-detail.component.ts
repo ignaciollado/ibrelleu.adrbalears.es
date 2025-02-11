@@ -21,19 +21,25 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ContactDetailComponent implements CanComponentDeactivate {
   id: string = this.route.snapshot.paramMap.get('id');
   selectedIndex: number;
-  perfilTecnicoItems_es = [
-    'Reemprendedor',
-    'Cedente',
-    'Externo',
-    'Usuario de servicio PH/REC',
+  perfilTecnicoItems = [
+    'reenterprise',
+    'grantorContact',
+    'external',
+    'PH/RECuser',
   ];
-  perfilTecnicoItems_ca = [
-    'Reemprenedor',
-    'Cedent',
-    'Extern',
-    'Usuari de serveis PH/REC',
-  ];
- /*  estadoContacto_es = [
+  // perfilTecnicoItems_es = [
+  //   'Reemprendedor',
+  //   'Cedente',
+  //   'Externo',
+  //   'Usuario de servicio PH/REC',
+  // ];
+  // perfilTecnicoItems_ca = [
+  //   'Reemprenedor',
+  //   'Cedent',
+  //   'Extern',
+  //   'Usuari de serveis PH/REC',
+  // ];
+  /*  estadoContacto_es = [
     'Pendiente de contactar',
     'Activo',
     'Volver a contactar',
@@ -48,8 +54,10 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     'Cancel·lat',
   ]; */
 
-  timeFrame_es = ['Mañana', 'Tarde', 'Todo el día'];
-  timeFrame_ca = ['Matí', 'Tarda', 'Tot el día'];
+  // timeFrame_es = ['Mañana', 'Tarde', 'Todo el día'];
+  // timeFrame_ca = ['Matí', 'Tarda', 'Tot el día'];
+
+  timeFrames = ['morning', 'afternoon', 'allDay'];
 
   expandedIndex = 0;
   isElevated: boolean = true;
@@ -140,7 +148,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     this.getLevelOfEducationList();
     this.getWorkingModes();
     this.loadConsultantAndDelegationInfo();
-    this.getContactById(+this.id)
+    this.getContactById(+this.id);
   }
 
   ngOnInit() {
@@ -197,48 +205,49 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   getContactById(id: number) {
-    this.contactService.getContactById(id)
-    .subscribe((contact:ContactDTO)=> {
-      this.theForm.patchValue({
-        nombre: contact.firstName,
-        apellidos: contact.lastName,
-        dni: contact.dni,
-        dob: contact.dob,
-        genero: contact.gender,
-        nacionalidad: contact.nationality,
-        perfilTecnicoCedente: contact.technical_profile,
-        estadoContacto: contact.contact_status,
-        perfil: contact.userProfile, 
-        /* consultor: contact.consultor, */
-        /* delegacion: contact.delegacion, */
-       /*  motivoEstado: contact.motivoEstado, */
-        mainPhone: contact.mainPhone,
-        mainMail: contact.mainMail,
-        secondaryPhone: contact.secondary_phone,
-        secondaryMail: contact.secondary_email,
-       /*  professionalPhone: contact.professionalPhone, */
-        /* contactTimePreference: contact.contactTimePreference, */
-        /* contactingComments: contact.contactingComments, */
-        localizationAddress: contact.localizationAddress,
-        zipCode: contact.zipCode,
-        localizationCity: contact.town,
-        councilCity: contact.council,
-        localizationCCAA: contact.localizationCCAA,
-        localizationCountry: contact.country,
-        /* employmentStatus: contact.employmentStatus, */
-        /* levelOfEducation: contact.levelOfEducation, */
-        /* workingMode: contact.workingMode, */
-       /*  formationObservations: contact.formationObservations, */
-        /* businessFormationCheck: contact.businessFormationCheck, */
-        /* businessTypology: contact.businessTypology, */
-        /* experienceAreas: contact.experienceAreas, */
-        /* experienceAndFormation: contact.experienceAndFormation */
-      });
-      this.showSnackBar("Contact retrieved successfully!!!")
-    },
-    error => {
-      this.showSnackBar(error)
-    })
+    this.contactService.getContactById(id).subscribe(
+      (contact: ContactDTO) => {
+        this.theForm.patchValue({
+          nombre: contact.firstName,
+          apellidos: contact.lastName,
+          dni: contact.dni,
+          dob: contact.dob,
+          genero: contact.gender,
+          nacionalidad: contact.nationality,
+          perfilTecnicoCedente: contact.technical_profile,
+          estadoContacto: contact.contact_status,
+          perfil: contact.userProfile,
+          /* consultor: contact.consultor, */
+          /* delegacion: contact.delegacion, */
+          /*  motivoEstado: contact.motivoEstado, */
+          mainPhone: contact.mainPhone,
+          mainMail: contact.mainMail,
+          secondaryPhone: contact.secondary_phone,
+          secondaryMail: contact.secondary_email,
+          /*  professionalPhone: contact.professionalPhone, */
+          /* contactTimePreference: contact.contactTimePreference, */
+          /* contactingComments: contact.contactingComments, */
+          localizationAddress: contact.localizationAddress,
+          zipCode: contact.zipCode,
+          localizationCity: contact.town,
+          councilCity: contact.council,
+          localizationCCAA: contact.localizationCCAA,
+          localizationCountry: contact.country,
+          /* employmentStatus: contact.employmentStatus, */
+          /* levelOfEducation: contact.levelOfEducation, */
+          /* workingMode: contact.workingMode, */
+          /*  formationObservations: contact.formationObservations, */
+          /* businessFormationCheck: contact.businessFormationCheck, */
+          /* businessTypology: contact.businessTypology, */
+          /* experienceAreas: contact.experienceAreas, */
+          /* experienceAndFormation: contact.experienceAndFormation */
+        });
+        this.showSnackBar('Contact retrieved successfully!!!');
+      },
+      (error) => {
+        this.showSnackBar(error);
+      }
+    );
   }
 
   insertConsultantData(consultant: string) {
@@ -320,7 +329,11 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
-      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
+    this.snackBar.open(error, 'X', {
+      duration: 10000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['custom-snackbar'],
+    });
   }
 }
