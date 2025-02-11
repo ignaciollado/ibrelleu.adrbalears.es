@@ -30,7 +30,7 @@
           <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key]}}</span>
           <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/account-detail/', element.id]"
             title="Click to view & edit account detail">{{element[col.key]}}</a>
-          <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] }}</span>
+          <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] | translate }}</span>
         </section>
 
         <!-- <section [ngSwitch]="col.type" *ngIf="element.isEdit">
