@@ -54,7 +54,8 @@
 
         <mat-form-field>
           <mat-label>{{'zipCode' | translate }}</mat-label>
-          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto" />
+          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto"
+            (blur)="selectedValue($event)" />
           <small *ngIf="theForm.get('zipCode').errors">min length: 5 digits</small>
 
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
