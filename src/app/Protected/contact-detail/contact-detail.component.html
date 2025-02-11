@@ -53,7 +53,7 @@
             <mat-option value="Active">{{'Active' | translate}}</mat-option>
             <mat-option value="ContactAgain">{{'ContactAgain' | translate}}</mat-option>
 
-          <!--   @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
+            <!--   @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
             <mat-option [value]="estadoContactoItem">{{estadoContactoItem}}</mat-option>
             } -->
           </mat-select>
@@ -61,8 +61,8 @@
         <mat-form-field>
           <mat-label>{{'contactProfile' | translate}}</mat-label>
           <mat-select formControlName="perfil" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
-            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+            @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -118,8 +118,8 @@
         <mat-form-field>
           <mat-label>{{'contactTimePreference' | translate}}</mat-label>
           <mat-select formControlName="contactTimePreference" multiple>
-            @for (timeFrame of timeFrame_ca; track timeFrame) {
-            <mat-option [value]="timeFrame">{{timeFrame}}</mat-option>
+            @for (timeFrame of timeFrames; track timeFrame) {
+            <mat-option [value]="timeFrame">{{timeFrame | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -137,7 +137,8 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'zipCode' | translate}}</mat-label>
-          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto">
+          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto"
+            (blur)="selectedValue($event)">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             @for (option of filteredOptions | async; track option) {
             <mat-option [value]="option" (click)="selectedValue($event)">{{option.zipCode}} {{option.town}}</mat-option>
@@ -196,16 +197,16 @@
         <mat-form-field>
           <mat-label>{{'businessFormationTypology' | translate}}</mat-label>
           <mat-select formControlName="businessTypology" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
-            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+            @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'experienceArea' | translate}}</mat-label>
           <mat-select formControlName="experienceAreas" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
-            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
+            @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
+            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
