@@ -12,8 +12,18 @@ section {
   padding-bottom: 0;
 }
 
+h3 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 p {
   margin-top: .5rem;
+}
+
+ol {
+  padding: 2rem;
+  list-style-position: inside;
 }
 
 article {

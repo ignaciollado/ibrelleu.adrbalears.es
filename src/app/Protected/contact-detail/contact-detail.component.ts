@@ -320,7 +320,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'X', { duration: 10000, verticalPosition: 'top', 
+    this.snackBar.open( error, 'Close', { duration: 10000, verticalPosition: 'top', 
       horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }

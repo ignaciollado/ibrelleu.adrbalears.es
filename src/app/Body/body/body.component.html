@@ -1,11 +1,17 @@
 <main>
   <section>
-    <h1>{{'appName' | translate}}: {{'homeTextp1' | translate}}</h1>
+    <h1>{{'appName' | translate}}</h1>
+    <h3>
+      {{'homeTextp1' | translate}}
+    </h3>
     <article>
       <p>{{'homeTextp2' | translate}}</p>
-      <p>{{'homeTextp3' | translate}}</p>
-      <p>{{'homeTextp31' | translate}}</p>
-      <p>{{'homeTextp4' | translate}}</p>
+      <ol>
+        <li>{{'homeTextp3' | translate}}</li>
+        <li>{{'homeTextp31' | translate}}</li>
+        <li>{{'homeTextp4' | translate}}</li>
+      </ol>
+
     </article>
     <article>
       <button mat-raised-button color="accent" *ngIf="!sessionValid" (click)="loginUSER()">Login</button>
