@@ -26,7 +26,7 @@
   "acceder": "Accedir",
   "giveAccess": "Encara no té accés?",
   "appName": "Ibrelleu",
-  "homeTextp1": "el mercat de compravenda de negocis de les Illes Balears",
+  "homeTextp1": "És un model innovador d'emprenedoria i creixement empresarial que fomenta la continuïtat de les empreses que són viables econòmicament i cerquen un relleu en la propietat.",
   "waitingForData": "Esperant dades per mostrar...",
   "filterByColumn": "Filtrar per columnes",
 
@@ -72,10 +72,10 @@
   "experienceArea": "Àrees d'experiencia",
   "contactDescriptionFormation": "Descripció perfil formació y experiència",
 
-  "homeTextp2": "Ibrelleu és el mercat de compravenda de petites i mitjanes empreses de les Illes Balears. És un model innovador d'emprenedoria i creixement empresarial que fomenta la continuïtat de les empreses que són viables econòmicament i cerquen un relleu en la propietat i direcció.",
-  "homeTextp3": "La persona que emprèn agafa el testimoni en la gestió d'una empresa ja existent per continuar-ne l'activitat. Així, aporta a l'empresa una renovada línia d'actuació.",
-  "homeTextp31": "L'objectiu d'Ibrelleu és evitar el tancament de negocis per mantenir-los en funcionament i per salvaguardar els llocs de treball. Ibrelleu ofereix assessorament personalitzat, neutral i gratuït a la part cedent i emprenedora per a l'elaboració del pla de cessió i d'empresa, així com assessorament durant tot el procés de transmissió de l'empresa.",
-  "homeTextp4": "",
+  "homeTextp2": "Ibrelleu ofereix diferents serveis d'assessorament i acompanyament empresarial:",
+  "homeTextp3": "Valoració de l'empresa que es vol comprar o vendre.",
+  "homeTextp31": "Servei de Marketplace, publicació d'anuncis d'empreses en funcionament.",
+  "homeTextp4": "Elaboració de la documentació jurídica necessària en el procés de compravenda.",
 
   "companyName": "Nom de l'empresa",
   "legalForm": "Forma jurídica",

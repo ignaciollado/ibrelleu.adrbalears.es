@@ -82,7 +82,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     private customValidators: CustomValidatorsService
   ) {
     this.theForm = new FormGroup({
-      // Información del contacto
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
       dni: new FormControl('', [
@@ -329,7 +328,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open(error, 'X', {
+    this.snackBar.open(error, 'Close', {
       duration: 10000,
       verticalPosition: 'top',
       horizontalPosition: 'center',

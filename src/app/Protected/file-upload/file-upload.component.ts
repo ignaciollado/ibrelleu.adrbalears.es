@@ -50,25 +50,23 @@ export class FileUploadComponent {
     this.showConfirmation = false;
   }
 
-  onUpload(): void {
+/*   onUpload(): void {
     this.isLoading = true;
     this.fileUploadService.upload(this.selectedFiles, this.id, this.origin).subscribe (  event => {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round(100 * event.loaded / event.total);
           } else if (event.type === HttpEventType.Response) {
             this.uploadedFiles.push(...this.selectedFiles);
-            this.progress = 0; // Reset progress after successful upload
+            this.progress = 0;
             this.isLoading = false;
-            this.snackBar.open('Files uploaded successfully!', 'Close', { duration: 3000 });
+            this.showSnackBar ('Files uploaded successfully!');
           }
       },
       error => {
         this.isLoading = false;
-        this.snackBar.open(error, 'Close', {
-          duration: 3000
-        });
+        this.showSnackBar (error);
       });
-    }
+    } */
 
   uploadFiles(files: File[], id: string, foldername: string) {
       this.isLoading = true;
@@ -80,7 +78,7 @@ export class FileUploadComponent {
           this.dataSource.data = this.uploadedFiles;
           this.progress = 0; // Reset progress after successful upload
           this.isLoading = false;
-          this.snackBar.open('Files uploaded successfully!', 'Close', { duration: 3000 });
+          this.showSnackBar ('Successfully files uploaded localy!');
           this.selectedFiles = []
           this.loadExistingFiles(this.id)
         }
@@ -104,12 +102,13 @@ export class FileUploadComponent {
       (response: any) => {
         if (response.status === 'success') {
           this.existingFiles = response.files
+          this.showSnackBar ('Loaded existing files!!');
         } else {
-          this.showSnackBar ('Failed to load existing files' + response.message);
+          this.showSnackBar ('Failed to load existing files ' + response.message);
         }
       },
       error => {
-        this.showSnackBar ('Failed to load existing files '+ error);
+        this.showSnackBar ('Failed to load existing files '+ error.message);
       }
     );
   }

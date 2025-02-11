@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ContactDTO } from '../Models/contact.dto';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -32,8 +33,8 @@ export class ContactService {
       catchError(this.handleError));
   } */
 
-  getContactById(id: number): Observable<any> {
-        return this.http.get(`${this.apiData}/api/contact-by-id/${id}`).pipe(
+  getContactById(id: number): Observable<ContactDTO> {
+        return this.http.get<ContactDTO>(`${this.apiData}/api/contact-by-id/${id}`).pipe(
           catchError(this.handleError));
       }
 

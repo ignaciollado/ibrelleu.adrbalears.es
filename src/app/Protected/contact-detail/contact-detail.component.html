@@ -214,7 +214,7 @@
           <mat-label>{{'contactDescriptionFormation' | translate}}</mat-label>
           <textarea matInput formControlName="experienceAndFormation"></textarea>
         </mat-form-field>
-        <app-file-upload id="{{id}}" origin="contacts" class="textArea"></app-file-upload>
+       <!--  <app-file-upload id="{{id}}" origin="contacts" class="textArea"></app-file-upload> -->
         <app-document id="{{id}}" origin="contacts" class="textArea"></app-document>
 
       </section>
@@ -223,10 +223,10 @@
   <div ngClass="centered-item">
     <button mat-raised-button color="primary" type="submit">Guardar</button>
   </div>
-  <div ngClass="centered-item">
+<!--   <div ngClass="centered-item">
     <small ngClass="centered-item">
       Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched:
       {{theForm.touched}} | Dirty: {{theForm.dirty}}
     </small>
-  </div>
+  </div> -->
 </form>

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { environment } from '../../environments/environment.prod';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,20 +12,20 @@ export class DocumentService {
 
   constructor(private http: HttpClient) { }
 
-/*   uploadDocuments(foldername: string, id: number, formData: FormData): Observable<HttpEvent<any>> {
+  uploadDocuments(foldername: string, id: string, formData: FormData): Observable<HttpEvent<any>> {
     return this.http.post<any>(`/api/documents/upload/${foldername}/${id}`, formData, {
       reportProgress: true,
       observe: 'events'
     }).pipe(catchError(this.handleError));
-  } */
+  }
 
-    uploadDocuments(foldername: string, id: string, formData: FormData): Observable<HttpEvent<any>> {
+/*     uploadDocuments(foldername: string, id: string, formData: FormData): Observable<HttpEvent<any>> {
       return this.http.post<any>(`${this.apiUrl}/upload/${foldername}/${id}`, formData, {
         reportProgress: true,
         observe: 'events'
       }).pipe(catchError(this.handleError));
     }
-
+ */
   getDocuments(foldername: string, id: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/${foldername}/${id}`)
       .pipe(catchError(this.handleError));

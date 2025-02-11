@@ -26,7 +26,7 @@
   "acceder": "Acceder",
   "giveAccess": "¿Aún no tienes acceso?",
   "appName": "Ibrelleu",
-  "homeTextp1": "el mercado de compraventa de negocios de las Islas Baleares",
+  "homeTextp1": "Es un modelo innovador de emprendimiento y crecimiento empresarial que fomenta la continuidad de los empresas que son viables económicamente y cerquen un relevo en la propiedad.",
   "waitingForData": "Esperando datos para mostrar...",
   "filterByColumn": "Filtrar por columnas",
 
@@ -72,10 +72,10 @@
   "experienceArea": "Areas de experiencia",
   "contactDescriptionFormation": "Descripción perfil formación y experiencia",
 
-  "homeTextp2": "Ibrelleu es el mercado de compraventa de pequeñas y medianas empresas de las Islas Baleares. Es un modelo innovador de emprendeduría y de crecimiento empresarial que fomenta la  continuidad de las empresas que son viables económicamente y buscan un relevo en la propiedad y dirección.",
-  "homeTextp3": "La persona que emprende coge el testigo en la gestión de una empresa ya existente para continuar la actividad. Así, aporta a la empresa una renovada linea de actuación.",
-  "homeTextp31": "El objetivo de Ibrelleu es evitar el cierre de negocios para mantenerlos en funcionamiento y para salvaguardar los puestos de trabajo. Ibrelleu ofrece asesoramiento personalizado, neutral y gratuíto a la parte cedente y emprendedora para la elaboración del plan de cesión y de empresa, así como asesoramiento durante todo el proceso de transmisión de la empresa.",
-  "homeTextp4": "",
+  "homeTextp2": "Ibrelleu ofrece diferentes servicios de asesoramiento y acompañamiento empresarial.",
+  "homeTextp3": "Valoración de la empresa que se quiere comprar o vender.",
+  "homeTextp31": "Servicio de Marketplace, publicación de anuncios de empresas en funcionamiento.",
+  "homeTextp4": "Elaboración de la documentación jurídica necesaria en el proceso de compraventa.",
 
   "companyName": "Nombre de la empresa",
   "legalForm": "Forma jurídica",

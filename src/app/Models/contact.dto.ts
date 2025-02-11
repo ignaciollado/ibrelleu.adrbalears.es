@@ -37,7 +37,7 @@ export interface ContactDTO {
   zipCode:                      string;
   town:                         string;
   council:                      string;
-  island:                       number;
+  island:                       string;
   province:                     null;
   localizationCCAA:             null;
   country:                      string;
