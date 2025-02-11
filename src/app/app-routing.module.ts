@@ -17,6 +17,8 @@ import { ShowGenericDataComponent } from './generic/show-generic-data/show-gener
 import { GrantorProjectsComponent } from './Protected/grantor-projects/grantor-projects.component';
 import { GrantorProjectDetailComponent } from './Protected/grantor-project-detail/grantor-project-detail.component';
 import { DocumentComponent } from './Protected/document/document.component';
+import { IbrelleuProjectsComponent } from './Protected/ibrelleu-projects/ibrelleu-projects.component';
+import { IbrelleuProjectDetailComponent } from './Protected/ibrelleu-project-detail/ibrelleu-project-detail.component';
 
 const routes: Routes = [
   { path: 'home', component: BodyComponent },
@@ -49,6 +51,18 @@ const routes: Routes = [
   {
     path: 'grantor-project-detail/:id',
     component: GrantorProjectDetailComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'ibrelleu-projects',
+    component: IbrelleuProjectsComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'ibrelleu-project-detail/:id',
+    component: IbrelleuProjectDetailComponent,
     canDeactivate: [CanDeactivateGuard],
     canActivate: [AuthGuard],
   },

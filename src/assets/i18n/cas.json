@@ -155,8 +155,8 @@
   "documentation": "Documentación",
   "anualIVA": "Liquidación anual del IVA (modelo 390) de los 3 últimos años",
   "190IRPF": "Liquidación IRPF (modelo 190) de los 3 últimos años",
-  "100IRPF": "Declaración IRPF (moDelo 100) de los 3 últimos años",
-  "130/131IRPF": "Pagamientos al contado IRPF (modelo 130 o 131) del 4º Trimestre último año",
+  "100IRPF": "Declaración IRPF (modelo 100) de los 3 últimos años",
+  "130/131IRPF": "Pagamentos al contado IRPF (modelo 130 o 131) del 4º Trimestre último año",
   "copyCifCompany": "Fotocopia CIF empresa",
   "constitutionScriptures": "Escrituras de constitución y modificación",
   "societyScriptures": "Escrituras de poderes de la sociedad (si cabe)",
@@ -555,7 +555,7 @@
   "offer3": "Actividad",
   "cessionOfertDetailsDescription": "Descripción del detalle de la oferta de cesión",
   "externalProfessionalName": "Nombre del profesional externo",
-  "cessionSteps": "¿Que pasos has realizado hasta ahora para ceder la empresa?",
+  "cessionSteps": "¿Qué pasos has realizado hasta ahora para ceder la empresa?",
   "step1": "Ha publicado un anuncio",
   "step2": "Ha ofrecido la empresa a los trabajadores",
   "step3": "Ha contactado con una persona interesada",
@@ -580,5 +580,82 @@
   "difficult3": "Entorno y estructura del sector",
   "workersObservations": "Observaciones sobre los trabajadores",
   "stayWorkersAfterCession": "¿Pueden continuar las personas trabajadoras después del proceso de cesión?",
-  "workersKnowSituation": "¿Conocen las personas trabajadoras la situación?"
+  "workersKnowSituation": "¿Conocen las personas trabajadoras la situación?",
+
+  "results": "Resultados",
+
+  "ad": "Anuncio",
+
+  "situationBalance": "Balances de situación",
+
+  "resultsAccount": "Cuentas de resultados",
+
+  "activityLicense": "Licencia de actividad",
+
+  "rentContract": "Contrato de alquiler",
+  "RNT/RLC": "Relación nominal de los trabajadores (RNT o RLC) de los útlimos 12 meses",
+  "347customersSuppliers": "Relación de clientes-proveedores (modelo 347) de los últimos 3 años",
+
+  "activityAccountability": "Contabilidad de la actividad",
+
+  "administrativeConcessionDocs": "Reglamento concesión administrativa bares",
+
+  "docsObservation": "Observaciones y descripción de otra documentación aportada",
+
+  "ibrelleuProjectName": "Nombre del proyecto IBRelleu",
+  "totalEconomicSituation": "Total capacidad económica",
+
+  "responsableName": "Persona responsable del proyecto",
+  "sameContactAndResponsable": "¿La persona responsable y de contacto es la misma?",
+
+  "projectManagement": "Gestión del proyecto",
+
+  "companyPreferencesIbrelleuProject": "Preferencias de la empresa a reemprender",
+  "automaticMail": "¿Enviar correo automático de propuestas de matching?",
+  "desiredProfile": "Perfil de la empresa deseada",
+  "municipalMarketInteress": "¿Interés en un mercado municipal?",
+  "franchiseInteress": "¿Interés en una franquicia?",
+  "ambit": "Ámbito geográfico",
+  "maxWorkers": "Número máximo de personas trabajadoras",
+  "minWorkers": "Número mínimo de personas trabajadoras",
+
+  "inversionCapacity": "Capacidad de inversión",
+  "partnersAportations": "Aportaciones de los socios",
+  "particularFinancing": "Financiación particular",
+  "bankFinancing": "Financiación bancaria",
+  "paroCapitalization": "Capitalización del paro",
+  "othersFinancing": "Financiación de otros",
+  "totalEconomicCapacity": "Total capacidad económica",
+
+  "howReenterprise": "¿Cómo reemprende?",
+  "alone": "Solo",
+  "withPartners": "Con socios",
+  "withWho": "¿Con quién?",
+  "reenterpriseReasons": "Motivo de reemprender",
+  "reenterpriseSteps": "Pasos realizados hasta ahora para reemprender",
+  "reenterpriseStep1": "Ha contactado con una empresa cedente",
+  "reenterpriseStep2": "Ha publicado un anuncio de reemprendedor",
+  "reenterpriseStep3": "Está en negociaciones con una empresa cedente",
+
+  "autoOcupation": "Autoocupación",
+  "personalProject": "Proyecto personal",
+  "familyBusinessManagement": "Gestionar un negocio en familia",
+  "ibRelleuAdvantages": "Ventajas con el proyecto IBRelleu",
+  "acompanyamentGrantor": "Acompañamiento de la persona cedente",
+  "acompanyamentIBrelleu": "Acompañamiento por parte de IBRelleu",
+  "clientsWallet": "Cartera de clientes",
+
+  "ibRelleuDisadvantages": "Dificultades con el proyecto IBRelleu",
+  "reenterpriseDifficult1": "Falta financiación",
+  "reenterpriseDifficult2": "Falta de experiencia en gestión empresarial",
+  "reenterpriseDifficult3": "Fuerte vinculación del cedente a la empresa",
+  "activityFormation": "¿Qué formación hace falta para reemprender la actividad?",
+  "activityObjective": "Plan de empresa",
+  "valoration": "Valoración",
+  "negociation": "Negociación",
+  "maxDateReenterprise": "Fecha límite para reemprender",
+  "contactWithGrantor": "¿Ha contactado con alguna empresa cedente externa?",
+  "externalContactGrantorDescription": "Datos de la empresa cedente",
+  "intermediationContact": "¿Ha contactado con algún intermediario?",
+  "intermediationContactDescription": "Datos del intermediario"
 }

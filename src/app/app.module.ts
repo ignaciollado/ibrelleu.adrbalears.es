@@ -63,6 +63,8 @@ import localeES from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { GrantorProjectDetailComponent } from './Protected/grantor-project-detail/grantor-project-detail.component';
 import { DocumentComponent } from './Protected/document/document.component';
+import { IbrelleuProjectsComponent } from './Protected/ibrelleu-projects/ibrelleu-projects.component';
+import { IbrelleuProjectDetailComponent } from './Protected/ibrelleu-project-detail/ibrelleu-project-detail.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem('access_token');
@@ -97,6 +99,8 @@ registerLocaleData(localeES, 'es-ES');
     GrantorProjectsComponent,
     GrantorProjectDetailComponent,
     DocumentComponent,
+    IbrelleuProjectsComponent,
+    IbrelleuProjectDetailComponent,
   ],
   imports: [
     BrowserAnimationsModule,

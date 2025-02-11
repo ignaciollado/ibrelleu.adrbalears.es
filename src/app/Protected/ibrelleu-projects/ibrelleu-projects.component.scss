@@ -1,0 +1,62 @@
+@use "../../../_adr-colors";
+
+section {
+  width: 98vw;
+  margin: auto;
+  padding-bottom: 5vh;
+}
+
+.btn-edit {
+  background-color: aqua;
+}
+
+.filter-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.5rem;
+}
+
+.small-data {
+  font-size: 0.75rem;
+  color: orange;
+}
+
+mat-table {
+  width: 100%;
+}
+
+.url-link {
+  color: adr-colors.$secondary-adr;
+}
+
+.url-link:hover {
+  text-decoration: lch(from color l c h);
+}
+
+.mat-column-demo-position {
+  width: 32px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-demo-name {
+  padding-left: 16px;
+  font-size: 20px;
+}
+
+.mat-column-demo-weight {
+  font-style: italic;
+}
+
+.mat-column-demo-symbol {
+  width: 32px;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 760px) {
+  .filter-area {
+    grid-template-columns: 1fr;
+  }
+}
