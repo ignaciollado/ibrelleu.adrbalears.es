@@ -74,13 +74,9 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     private customValidators: CustomValidatorsService
   ) {
     this.theForm = new FormGroup({
-      // Información del contacto
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
-      dni: new FormControl('', [
-        Validators.required,
-        this.customValidators.dniNieCifValidator(),
-      ]),
+      dni: new FormControl('', [ Validators.required, this.customValidators.dniNieCifValidator()]),
       dob: new FormControl('', [Validators.required]),
       genero: new FormControl(''),
       nacionalidad: new FormControl(''),

@@ -12,20 +12,20 @@ export class DocumentService {
 
   constructor(private http: HttpClient) { }
 
-/*   uploadDocuments(foldername: string, id: number, formData: FormData): Observable<HttpEvent<any>> {
+  uploadDocuments(foldername: string, id: string, formData: FormData): Observable<HttpEvent<any>> {
     return this.http.post<any>(`/api/documents/upload/${foldername}/${id}`, formData, {
       reportProgress: true,
       observe: 'events'
     }).pipe(catchError(this.handleError));
-  } */
+  }
 
-    uploadDocuments(foldername: string, id: string, formData: FormData): Observable<HttpEvent<any>> {
+/*     uploadDocuments(foldername: string, id: string, formData: FormData): Observable<HttpEvent<any>> {
       return this.http.post<any>(`${this.apiUrl}/upload/${foldername}/${id}`, formData, {
         reportProgress: true,
         observe: 'events'
       }).pipe(catchError(this.handleError));
     }
-
+ */
   getDocuments(foldername: string, id: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/${foldername}/${id}`)
       .pipe(catchError(this.handleError));
