@@ -728,5 +728,15 @@
   "Oceanía": "Oceanía",
 
   "plaza": "Plaza",
-  "balearicIslands": "Islas Baleares"
+  "balearicIslands": "Islas Baleares",
+
+  "rao_social": "Razón social",
+  "forma_juridica": "Forma jurídica",
+  "nom_comercial": "Nombre comercial",
+  "sector_principal": "Sector principal",
+  "activitat_principal": "Actividad principal",
+  "poblacio": "Población",
+  "consultor": "Consultor",
+  "delegacio": "Oficina de",
+  "data_entrada": "Fecha de entrada"
 }

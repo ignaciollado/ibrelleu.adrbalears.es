@@ -61,8 +61,8 @@
         <mat-form-field>
           <mat-label>{{'contactProfile' | translate}}</mat-label>
           <mat-select formControlName="perfil" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
-            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem | translate}}</mat-option>
+            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
+            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -118,8 +118,8 @@
         <mat-form-field>
           <mat-label>{{'contactTimePreference' | translate}}</mat-label>
           <mat-select formControlName="contactTimePreference" multiple>
-            @for (timeFrame of timeFrames; track timeFrame) {
-            <mat-option [value]="timeFrame">{{timeFrame | translate}}</mat-option>
+            @for (timeFrame of timeFrame_ca; track timeFrame) {
+            <mat-option [value]="timeFrame">{{timeFrame}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -137,8 +137,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'zipCode' | translate}}</mat-label>
-          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto"
-            (blur)="selectedValue($event)">
+          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             @for (option of filteredOptions | async; track option) {
             <mat-option [value]="option" (click)="selectedValue($event)">{{option.zipCode}} {{option.town}}</mat-option>
@@ -197,16 +196,16 @@
         <mat-form-field>
           <mat-label>{{'businessFormationTypology' | translate}}</mat-label>
           <mat-select formControlName="businessTypology" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
-            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem | translate}}</mat-option>
+            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
+            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'experienceArea' | translate}}</mat-label>
           <mat-select formControlName="experienceAreas" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems; track perfilTecnicoItem) {
-            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem | translate}}</mat-option>
+            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
+            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -214,7 +213,7 @@
           <mat-label>{{'contactDescriptionFormation' | translate}}</mat-label>
           <textarea matInput formControlName="experienceAndFormation"></textarea>
         </mat-form-field>
-       <!--  <app-file-upload id="{{id}}" origin="contact" class="textArea"></app-file-upload> -->
+        <!--  <app-file-upload id="{{id}}" origin="contact" class="textArea"></app-file-upload> -->
         <app-document id="{{id}}" origin="contact" class="textArea"></app-document>
 
       </section>
@@ -223,7 +222,7 @@
   <div ngClass="centered-item">
     <button mat-raised-button color="primary" type="submit">Guardar</button>
   </div>
-<!--   <div ngClass="centered-item">
+  <!--   <div ngClass="centered-item">
     <small ngClass="centered-item">
       Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched:
       {{theForm.touched}} | Dirty: {{theForm.dirty}}
