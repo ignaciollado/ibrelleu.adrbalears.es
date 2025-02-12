@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DocumentService } from '../../Services/document.service';
 //import { FilecontentdialogComponent } from '../filecontentdialog/filecontentdialog.component';
-import { HttpEventType } from '@angular/common/http';
+import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-document',
@@ -48,7 +48,6 @@ export class DocumentComponent implements OnInit {
     if (this.selectedFiles.length > 0) {
       const formData = new FormData();
       this.selectedFiles.forEach(file => formData.append('documents[]', file, file.name));
-
       this.documentService.uploadDocuments(this.foldername, this.subfolderId, formData).subscribe(
         (event) => {
           if (event.type === HttpEventType.UploadProgress) {
@@ -60,7 +59,10 @@ export class DocumentComponent implements OnInit {
             this.progress = 0;
           }
         },
-        (error) => this.showSnackBar(error)
+        (error: any) => {
+          this.showSnackBar(error)
+          this.loadDocuments()
+        }
       );
     }
   }
