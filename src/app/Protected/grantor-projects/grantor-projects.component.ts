@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { DataService } from '../../Services/data.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import {
   grantorProjectColumns,
   GrantorProjectsDTO,
@@ -17,6 +18,8 @@ export class GrantorProjectsComponent {
   dataSource = new MatTableDataSource();
   columnsSchema: any = grantorProjectColumns;
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private dataService: DataService) {
     this.loadAllGrantorsProjects();
   }
@@ -26,6 +29,7 @@ export class GrantorProjectsComponent {
       .getAllGrantorProjects()
       .subscribe((grantorProjects: GrantorProjectsDTO[]) => {
         this.dataSource.data = grantorProjects;
+        this.dataSource.paginator = this.paginator;
       });
   }
 }
