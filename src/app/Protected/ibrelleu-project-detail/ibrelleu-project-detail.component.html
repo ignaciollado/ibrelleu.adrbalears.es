@@ -81,7 +81,7 @@
                     <mat-select>
                         <mat-option [value]="">---</mat-option>
                         @for (knowWay of knowWaysList; track knowWay) {
-                        <mat-option [value]="knowWay.value">{{knowWay.label_ca | translate}}</mat-option>
+                        <mat-option [value]="knowWay.value">{{knowWay.label | translate}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
