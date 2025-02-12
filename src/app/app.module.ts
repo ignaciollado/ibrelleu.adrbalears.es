@@ -39,7 +39,8 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import {CdkMenuModule} from '@angular/cdk/menu';
+import { CdkMenuTrigger } from '@angular/cdk/menu';
 import { SelectLanguageComponent } from './select-language/select-language.component';
 import { ProtectedComponent } from './Protected/protected/protected.component';
 import { HeaderComponent } from './Header/header/header.component';
@@ -123,6 +124,8 @@ registerLocaleData(localeES, 'es-ES');
     MatCheckboxModule,
     MatRadioModule,
     MatProgressSpinnerModule,
+    CdkMenuModule,
+    CdkMenuTrigger,
     MatProgressBarModule,
     MatTabsModule,
     MatToolbarModule,

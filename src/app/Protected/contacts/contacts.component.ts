@@ -1,12 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
+import { Component } from '@angular/core';
+
 import { MatTableDataSource } from '@angular/material/table';
 import { contactColumns, contactColumnsBBDD, ContactDTO } from '../../Models/contact.dto';
 import { DataService } from '../../Services/data.service';

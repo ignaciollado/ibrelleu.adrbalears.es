@@ -8,9 +8,11 @@ import {
 } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
-import { accountColumns, AccountDTO } from '../../Models/account.dto';
+import { accountColumns, accountColumnsBBDD, AccountDTO } from '../../Models/account.dto';
 import { DataService } from '../../Services/data.service';
+import { AccountService } from '../../Services/account.service';
 import { LegalFormDTO } from '../../Models/legal-form.dto';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'adr-account',
@@ -20,24 +22,40 @@ import { LegalFormDTO } from '../../Models/legal-form.dto';
 
 export class AccountComponent {
   ambitos: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
-  columnsDisplayed: string[] = accountColumns.map((col) => col.key)
+  //columnsDisplayed: string[] = accountColumns.map((col) => col.key)
+  columnsDisplayed: string[] = accountColumnsBBDD.map((col) => col.key);
+  
   legalFormList: any[] = []
-  columnsSchema: any = accountColumns
+  //columnsSchema: any = accountColumns
+  columnsSchema: any = accountColumnsBBDD;
   dataSource = new MatTableDataSource()
   valid: any = {}
 
 
-  constructor( private dataService: DataService) {
+  constructor( private dataService: DataService, private accountService: AccountService, private snackBar: MatSnackBar) {
     this.loadAllAccounts()
     this.loadLegalFormList()
   }
 
-  loadAllAccounts() {
+/*   loadAllAccounts() {
     this.dataService.getAllAccounts()
       .subscribe((accounts: AccountDTO[])=> {
         this.dataSource.data = accounts
       })
   }
+ */
+
+  loadAllAccounts() {
+      this.accountService.getAccounts()
+      .subscribe((contacts: AccountDTO[]) => {
+        this.dataSource.data = contacts
+        this.showSnackBar("Accounts retrieved successfully!!!")
+      },
+      error => {
+        this.showSnackBar(error)
+      })
+    }
+
 
   loadLegalFormList() {
     this.dataService.getAllLegalForms()
@@ -66,5 +84,10 @@ export class AccountComponent {
 
   selectedValue(item: any) {
     console.log ("valor seleccionado: ", item.value)
+  }
+
+  private showSnackBar(error: string): void {
+    this.snackBar.open( error, 'Close', { duration: 5000, verticalPosition: 'top', 
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 }
