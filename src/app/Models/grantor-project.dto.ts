@@ -2,7 +2,7 @@ export class GrantorProjectsDTO {
   /* Debido a que, por el momento, no se está planteando
     utilizar relaciones con otras entidades, he creado este
     DTO básico que permita mostrar todos los datos en la tabla de grantor-project*/
-  id: number;
+  id: string;
   grantorProjectName: string;
   projectStatus: string;
   account: string;
@@ -22,7 +22,7 @@ export class GrantorProjectsDTO {
   creationDate: string;
 
   constructor(
-    id: number,
+    id: string,
     grantorProjectName: string,
     projectStatus: string,
     account: string,
