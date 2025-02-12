@@ -54,3 +54,33 @@ mat-tab-group {
     --mdc-snackbar-container-color: #71b796;
   }
 }
+
+adr-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+adr-body,
+adr-contacts,
+adr-contact-detail,
+adr-account,
+adr-account-detail,
+adr-ibrelleu-projects,
+adr-ibrelleu-project-detail,
+adr-grantor-projects,
+adr-grantor-project-detail,
+adr-success-stories,
+adr-success-stories-detail,
+adr-sign-up-external-user {
+  flex: 1.75 0 auto;
+}
+
+adr-footer {
+  padding-top: 25px;
+  flex-shrink: 0;
+}
+
+h1 {
+  margin: 0.5rem;
+}
