@@ -1,7 +1,10 @@
 {
     "/api": {
-        "target": "https://data.ibrelleu.es/public/index.php",
-        "changeOrigin": true,
-        "secure": false
+      "target": "https://data.ibrelleu.es/public/index.php",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
     }
-}
+  }

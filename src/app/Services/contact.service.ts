@@ -14,8 +14,10 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ContactService {
+
   private apiUrl = '../../assets/phpAPI/';
   private apiData = 'https://data.ibrelleu.es/public/index.php';
+
   constructor(private http: HttpClient) { }
 
   /*   getContacts(): Observable<any> {
@@ -24,9 +26,9 @@ export class ContactService {
   } */
 
   getContacts(): Observable<any> {
-      return this.http.get(`${this.apiData}/api/contacts/`, httpOptions).pipe(
-        catchError(this.handleError));
-    }
+    return this.http.get(`${this.apiData}/api/contacts/`, httpOptions).pipe(
+      catchError(this.handleError));
+  }
 
 /*   getContact(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/contactGetOne.php?id=${id}`).pipe(

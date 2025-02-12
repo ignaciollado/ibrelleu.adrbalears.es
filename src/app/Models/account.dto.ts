@@ -42,11 +42,6 @@ export class AccountDTO {
 }
 
 export const accountColumns = [
-  // {
-  //   key: "mainContact",
-  //   type: "readOnly",
-  //   label: "Contacte principal"
-  // },
   {
     key: 'companyName',
     type: 'url',
@@ -97,10 +92,59 @@ export const accountColumns = [
     type: 'date',
     label: "Data d'entrada",
     labeles: 'Fecha de entrada',
-  } /* ,  
+  }
+];
+
+export const accountColumnsBBDD = [
   {
-    key: "isEdit",
-    type: "isEdit",
-    label: "Edit row"
-  }, */,
+    key: 'rao_social',
+    type: 'url',
+    label: 'Raó Social',
+  },
+  {
+    key: 'forma_juridica',
+    type: 'readOnly',
+    label: 'Forma jurídica',
+  },
+  {
+    key: 'nif',
+    type: 'readOnly',
+    label: 'NIF',
+  },
+  {
+    key: 'nom_comercial',
+    type: 'readOnly',
+    label: 'Nombre marca comercial OLD',
+  },
+  {
+    key: 'sector_principal',
+    type: 'readOnly',
+    label: 'Sector',
+  },
+  {
+    key: 'activitat_principal',
+    type: 'readOnly',
+    label: 'Activitat',
+  },
+  {
+    key: 'poblacio',
+    type: 'readOnly',
+    label: 'Població',
+  },
+  {
+    key: 'consultor',
+    type: 'readOnly',
+    label: 'Consultor',
+  },
+  {
+    key: 'delegacio',
+    type: 'scope',
+    label: 'Delegació',
+  },
+  {
+    key: 'data_entrada',
+    type: 'date',
+    label: "Data d'entrada",
+    labeles: 'Fecha de entrada',
+  }
 ];

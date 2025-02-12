@@ -21,24 +21,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ContactDetailComponent implements CanComponentDeactivate {
   id: string = this.route.snapshot.paramMap.get('id');
   selectedIndex: number;
-  perfilTecnicoItems = [
-    'reenterprise',
-    'grantorContact',
-    'external',
-    'PH/RECuser',
+  perfilTecnicoItems_es = [
+    'Reemprendedor',
+    'Cedente',
+    'Externo',
+    'Usuario de servicio PH/REC',
   ];
-  // perfilTecnicoItems_es = [
-  //   'Reemprendedor',
-  //   'Cedente',
-  //   'Externo',
-  //   'Usuario de servicio PH/REC',
-  // ];
-  // perfilTecnicoItems_ca = [
-  //   'Reemprenedor',
-  //   'Cedent',
-  //   'Extern',
-  //   'Usuari de serveis PH/REC',
-  // ];
+  perfilTecnicoItems_ca = [
+    'Reemprenedor',
+    'Cedent',
+    'Extern',
+    'Usuari de serveis PH/REC',
+  ];
   /*  estadoContacto_es = [
     'Pendiente de contactar',
     'Activo',
@@ -54,10 +48,8 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     'Cancel·lat',
   ]; */
 
-  // timeFrame_es = ['Mañana', 'Tarde', 'Todo el día'];
-  // timeFrame_ca = ['Matí', 'Tarda', 'Tot el día'];
-
-  timeFrames = ['morning', 'afternoon', 'allDay'];
+  timeFrame_es = ['Mañana', 'Tarde', 'Todo el día'];
+  timeFrame_ca = ['Matí', 'Tarda', 'Tot el día'];
 
   expandedIndex = 0;
   isElevated: boolean = true;
@@ -207,31 +199,31 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     this.contactService.getContactById(id).subscribe(
       (contact: ContactDTO) => {
         this.theForm.patchValue({
-          nombre: contact.firstName,
-          apellidos: contact.lastName,
-          dni: contact.dni,
-          dob: contact.dob,
-          genero: contact.gender,
-          nacionalidad: contact.nationality,
-          perfilTecnicoCedente: contact.technical_profile,
-          estadoContacto: contact.contact_status,
-          perfil: contact.userProfile,
+          /*  nombre: contact.firstName,
+        apellidos: contact.lastName,
+        dni: contact.dni,
+        dob: contact.dob,
+        genero: contact.gender,
+        nacionalidad: contact.nationality,
+        perfilTecnicoCedente: contact.technical_profile,
+        estadoContacto: contact.contact_status,
+        perfil: contact.userProfile,  */
           /* consultor: contact.consultor, */
           /* delegacion: contact.delegacion, */
           /*  motivoEstado: contact.motivoEstado, */
-          mainPhone: contact.mainPhone,
-          mainMail: contact.mainMail,
-          secondaryPhone: contact.secondary_phone,
-          secondaryMail: contact.secondary_email,
+          /*   mainPhone: contact.mainPhone,
+        mainMail: contact.mainMail,
+        secondaryPhone: contact.secondary_phone,
+        secondaryMail: contact.secondary_email, */
           /*  professionalPhone: contact.professionalPhone, */
           /* contactTimePreference: contact.contactTimePreference, */
           /* contactingComments: contact.contactingComments, */
-          localizationAddress: contact.localizationAddress,
-          zipCode: contact.zipCode,
-          localizationCity: contact.town,
-          councilCity: contact.council,
-          localizationCCAA: contact.localizationCCAA,
-          localizationCountry: contact.country,
+          /*   localizationAddress: contact.localizationAddress,
+        zipCode: contact.zipCode,
+        localizationCity: contact.town,
+        councilCity: contact.council,
+        localizationCCAA: contact.localizationCCAA,
+        localizationCountry: contact.country, */
           /* employmentStatus: contact.employmentStatus, */
           /* levelOfEducation: contact.levelOfEducation, */
           /* workingMode: contact.workingMode, */
@@ -262,7 +254,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   onSubmit() {
-    console.log(this.theForm.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
@@ -330,7 +321,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   private showSnackBar(error: string): void {
     this.snackBar.open(error, 'Close', {
       duration: 10000,
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
       horizontalPosition: 'center',
       panelClass: ['custom-snackbar'],
     });

@@ -27,6 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -39,7 +40,8 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import {CdkMenuModule} from '@angular/cdk/menu';
+import { CdkMenuTrigger } from '@angular/cdk/menu';
 import { SelectLanguageComponent } from './select-language/select-language.component';
 import { ProtectedComponent } from './Protected/protected/protected.component';
 import { HeaderComponent } from './Header/header/header.component';
@@ -123,12 +125,15 @@ registerLocaleData(localeES, 'es-ES');
     MatCheckboxModule,
     MatRadioModule,
     MatProgressSpinnerModule,
+    CdkMenuModule,
+    CdkMenuTrigger,
     MatProgressBarModule,
     MatTabsModule,
     MatToolbarModule,
     MatIconModule,
     MatListModule,
     MatTableModule,
+    MatPaginatorModule,
     ReactiveFormsModule,
     I18nModule,
     JwtModule.forRoot({
