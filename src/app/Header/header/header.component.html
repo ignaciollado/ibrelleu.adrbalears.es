@@ -29,16 +29,16 @@
 
   <ng-template #ibrelleuMenu>
     <section ngClass="ibrelleuMenu">
-      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="contacts">{{ "contacts" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="accounts">{{ "accounts" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="ibrelleu-projects">{{ "ibrelleuProjects" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="grantor-projects">{{ "cedingProjects" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="#">{{ "processes" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="#">{{ "meetings" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="success-stories">{{ "successStories" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="#" >{{ "interests" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="#">HelpDesk</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="sign-up">{{ "requestForRegistration" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="contacts" (click)="menuTrigger.close()">{{ "contacts" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="accounts" (click)="menuTrigger.close()">{{ "accounts" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="ibrelleu-projects" (click)="menuTrigger.close()">{{ "ibrelleuProjects" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="grantor-projects" (click)="menuTrigger.close()">{{ "cedingProjects" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="#" (click)="menuTrigger.close()">{{ "processes" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="#" (click)="menuTrigger.close()">{{ "meetings" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="success-stories" (click)="menuTrigger.close()">{{ "successStories" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="#" (click)="menuTrigger.close()">{{ "interests" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="#" (click)="menuTrigger.close()">HelpDesk</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="sign-up" (click)="menuTrigger.close()">{{ "requestForRegistration" | translate }}</a>
     </section>
   </ng-template>
 
