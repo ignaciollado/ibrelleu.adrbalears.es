@@ -15,35 +15,23 @@ const httpOptions = {
 export class DocumentService {
 
   private apiUrl = 'https://data.ibrelleu.es/public/index.php';
-  private apiUrlproxy = '/api';
 
   constructor(private http: HttpClient) { }
 
-/*   uploadDocuments(foldername: string, id: string, formData: FormData): Observable<HttpEvent<any>> {
-    return this.http.post<any>(`${this.apiUrlproxy}/api/documents/upload/${foldername}/${id}`, formData, {
-      reportProgress: true,
-      observe: 'events'
-    }).pipe(catchError(this.handleError));
-  } */
-
   uploadDocuments(foldername: string, id: number, formData: FormData): Observable<HttpEvent<any>> {
     return this.http.post<any>(`${this.apiUrl}/api/documents/upload/${foldername}/${id}`, formData, {
-/*       headers: new HttpHeaders({
-        'Content-Type': 'multipart/form-data',
-      }), */
       reportProgress: true,
       observe: 'events'})
       .pipe(catchError(this.handleError));
-    }
-   
+  }
+
   getDocuments(foldername: string, id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/api/documents/${foldername}/${id}`)
       .pipe(catchError(this.handleError));
   }
 
   deleteDocument(folderName: string, id: number, docName: string): Observable<any> {
-    console.log (folderName, this.apiUrl)
-    return this.http.delete<any>(`/api/documents/delete/${folderName}/${id}/${docName}`)
+    return this.http.delete<any>(`${this.apiUrl}/api/documents/delete/${folderName}/${id}/${docName}`)
       .pipe(catchError(this.handleError));
   }
 

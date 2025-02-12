@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { DocumentService } from '../../Services/document.service';
 //import { FilecontentdialogComponent } from '../filecontentdialog/filecontentdialog.component';
-import { HttpEventType } from '@angular/common/http';
+import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-document',
@@ -12,6 +12,7 @@ import { HttpEventType } from '@angular/common/http';
   styleUrls: ['./document.component.scss']
 })
 export class DocumentComponent implements OnInit {
+  showConfirmation = false;
   documents: any[] = [];
   selectedFiles: File[] = [];
   foldername:string = '';
@@ -30,6 +31,15 @@ export class DocumentComponent implements OnInit {
     this.loadDocuments();
   }
 
+  onFileSelected(event: any): void {
+    this.selectedFiles = Array.from(event.target.files);
+    this.showConfirmation = true;
+  }
+
+  confirmUpload() {
+    this.uploadDocuments();
+  }
+
   loadDocuments() {
     this.documentService.getDocuments(this.foldername, this.subfolderId).subscribe(
       (data) => {
@@ -40,15 +50,11 @@ export class DocumentComponent implements OnInit {
     );
   }
 
-  onFileSelected(event: any) {
-    this.selectedFiles = Array.from(event.target.files);
-  }
-
   uploadDocuments() {
+    this.showConfirmation = false
     if (this.selectedFiles.length > 0) {
       const formData = new FormData();
       this.selectedFiles.forEach(file => formData.append('documents[]', file, file.name));
-
       this.documentService.uploadDocuments(this.foldername, this.subfolderId, formData).subscribe(
         (event) => {
           if (event.type === HttpEventType.UploadProgress) {
@@ -60,7 +66,10 @@ export class DocumentComponent implements OnInit {
             this.progress = 0;
           }
         },
-        (error) => this.showSnackBar(error)
+        (error: any) => {
+          this.showSnackBar(error)
+          this.loadDocuments()
+        }
       );
     }
   }

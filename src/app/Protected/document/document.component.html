@@ -1,8 +1,7 @@
 <section>
-  <h3>Documents to upload</h3>
     <section>
       <input type="file" (change)="onFileSelected($event)">
-      <button (click)="uploadDocuments()" mat-raised-button color="primary">Upload</button>
+      <button *ngIf="showConfirmation" (click)="uploadDocuments()" mat-raised-button color="primary">{{'upload' | translate}}</button>
     </section>
 
     <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
@@ -19,7 +18,7 @@
       <mat-row *matRowDef="let row; columns: ['name', 'size'];"></mat-row>
     </mat-table>
 
-    <h3>Uploaded Documents</h3>
+    <h3>{{'uploadedDocuments' | translate}}</h3>
     <mat-table [dataSource]="documents" ngClass="mat-elevation-z8 tablecontainer">
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> File Name </mat-header-cell>
