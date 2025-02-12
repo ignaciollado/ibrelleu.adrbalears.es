@@ -27,6 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -132,6 +133,7 @@ registerLocaleData(localeES, 'es-ES');
     MatIconModule,
     MatListModule,
     MatTableModule,
+    MatPaginatorModule,
     ReactiveFormsModule,
     I18nModule,
     JwtModule.forRoot({

@@ -1,13 +1,9 @@
-import { HttpErrorResponse } from '@angular/common/http';
+
 import { Component, ViewChild } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
-import {MatTableModule} from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+
+import {MatTableModule} from '@angular/material/table';
 import { accountColumns, accountColumnsBBDD, AccountDTO } from '../../Models/account.dto';
 import { DataService } from '../../Services/data.service';
 import { AccountService } from '../../Services/account.service';
@@ -31,10 +27,14 @@ export class AccountComponent {
   dataSource = new MatTableDataSource()
   valid: any = {}
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor( private dataService: DataService, private accountService: AccountService, private snackBar: MatSnackBar) {
     this.loadAllAccounts()
     this.loadLegalFormList()
+    this.dataSource.paginator = this.paginator
+    /* this.paginator.pageSizeOptions = [5, 10, 20];
+    this.paginator.showFirstLastButtons = true; */
   }
 
 /*   loadAllAccounts() {
@@ -47,8 +47,9 @@ export class AccountComponent {
 
   loadAllAccounts() {
       this.accountService.getAccounts()
-      .subscribe((contacts: AccountDTO[]) => {
-        this.dataSource.data = contacts
+      .subscribe((accounts: AccountDTO[]) => {
+        this.dataSource.data = accounts
+        this.dataSource.paginator = this.paginator
         this.showSnackBar("Accounts retrieved successfully!!!")
       },
       error => {
