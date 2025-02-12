@@ -30,21 +30,30 @@
 
   <ng-template #ibrelleuMenu>
     <section ngClass="ibrelleuMenu">
-      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="contacts">{{ "contacts" |
-        translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="accounts">{{ "accounts" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="ibrelleu-projects">{{ "ibrelleuProjects" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="grantor-projects">{{ "cedingProjects" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="#">{{ "processes" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="#">{{ "meetings" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="success-stories">{{ "successStories" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="#">{{ "interests" | translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="#">HelpDesk</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="sign-up">{{ "requestForRegistration" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="contacts"
+        cdkMenuItem>{{"contacts" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="accounts" cdkMenuItem>{{
+        "accounts" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="ibrelleu-projects"
+        cdkMenuItem>{{ "ibrelleuProjects" | translate
+        }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="grantor-projects"
+        cdkMenuItem>{{ "cedingProjects" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="#" cdkMenuItem>{{
+        "processes" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="#" cdkMenuItem>{{
+        "meetings" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="success-stories"
+        cdkMenuItem>{{ "successStories" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="#" cdkMenuItem>{{
+        "interests" | translate }}</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="#" cdkMenuItem>HelpDesk</a>
+      <a ngClass="ibrelleu-menu-item" (cdkMenuItemTriggered)="onMenuItemClick()" routerLink="sign-up" cdkMenuItem>{{
+        "requestForRegistration" | translate }}</a>
     </section>
   </ng-template>
 
-  <mat-sidenav-container>
+  <!-- <mat-sidenav-container>
     <mat-sidenav #sidenav mode="side" [class.mat-elevation-z4]="true" class="app-sidenav">
       <mat-nav-list>
         <a mat-list-item routerLink="contacts" (click)="sidenav.toggle()">{{
@@ -82,10 +91,10 @@
           <app-select-language class="languageMobile"></app-select-language>
         </section>
       </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <!--  <router-outlet></router-outlet> -->
-    </mat-sidenav-content>
+    </mat-sidenav> -->
+  <!-- <mat-sidenav-content> -->
+  <!--  <router-outlet></router-outlet> -->
+  <!-- </mat-sidenav-content> -->
 
-  </mat-sidenav-container>
+  <!-- </mat-sidenav-container> -->
 </header>
