@@ -1,5 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { DataService } from '../../Services/data.service';
+
+import {
+  IBRelleuProjectsDTO,
+  ibrelleuProjectColumns,
+} from '../../Models/ibrelleu-project.dto';
 
 @Component({
   selector: 'adr-ibrelleu-projects',
@@ -7,271 +14,23 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrl: './ibrelleu-projects.component.scss',
 })
 export class IbrelleuProjectsComponent {
+  columnsDisplayed: string[] = ibrelleuProjectColumns.map((col) => col.key);
   dataSource = new MatTableDataSource();
+  columnsSchema: any = ibrelleuProjectColumns;
 
-  columnsDisplayed: string[];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  columnsSchema: any;
+  constructor(private dataService: DataService) {
+    this.loadAllIbrelleuProjects();
+    this.dataSource.paginator = this.paginator;
+  }
 
-  constructor() {
-    this.columnsSchema = [
-      {
-        key: 'ibrelleuProjectName',
-        type: 'url',
-      },
-      {
-        key: 'projectStatus',
-        type: 'readOnly',
-      },
-      {
-        key: 'mainSector',
-        type: 'readOnly',
-      },
-      {
-        key: 'mainActivity',
-        type: 'readOnly',
-      },
-      {
-        key: 'totalEconomicSituation',
-        type: 'money',
-      },
-      {
-        key: 'consultant',
-        type: 'readOnly',
-      },
-      {
-        key: 'delegation',
-        type: 'readOnly',
-      },
-      {
-        key: 'creationDate',
-        type: 'date',
-      },
-    ];
-
-    this.dataSource.data = [
-      {
-        id: 'PIBR00001',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00002',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00003',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00004',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00005',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00006',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00007',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00008',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00009',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00010',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00011',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00012',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00013',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00014',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00015',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00016',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00017',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00018',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00019',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-      {
-        id: 'PIBR00020',
-        ibrelleuProjectName: 'Paquito Chocolatero',
-        projectStatus: 'Active',
-        mainSector: 'Servicios',
-        mainActivity: 'Otros',
-        totalEconomicSituation: 2000,
-        consultant: 'José Luis De Jesús',
-        delegation: 'Mallorca',
-        creationDate: '10/02/2025',
-      },
-    ];
-
-    this.columnsDisplayed = this.columnsSchema.map((col: any) => col.key);
+  loadAllIbrelleuProjects() {
+    this.dataService
+      .getAllIbRelleuProjects()
+      .subscribe((projects: IBRelleuProjectsDTO[]) => {
+        this.dataSource.data = projects;
+        this.dataSource.paginator = this.paginator;
+      });
   }
 }
