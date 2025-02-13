@@ -738,5 +738,7 @@
   "poblacio": "Población",
   "consultor": "Consultor",
   "delegacio": "Oficina de",
-  "data_entrada": "Fecha de entrada"
+  "data_entrada": "Fecha de entrada",
+
+  "accountForm": "Formulario de cuenta"
 }
