@@ -1,30 +1,30 @@
 [
   {
-    "value": "Amèrica del Nord",
-    "label": "Amèrica del Nord"
-  },
-  {
-    "value": "Amèrica Central",
-    "label": "Amèrica Central"
-  },
-  {
-    "value": "Amèrica del Sud",
-    "label": "Amèrica del Sud"
-  },
-  {
-    "value": "Europa",
+    "value": "121370000",
     "label": "Europa"
   },
   {
-    "value": "Àfrica",
-    "label": "Àfrica"
+    "value": "121370001",
+    "label": "Asia"
   },
   {
-    "value": "Europa",
-    "label": "Europa"
+    "value": "121370002",
+    "label": "África"
   },
   {
-    "value": "Oceania",
-    "label": "Oceania"
+    "value": "121370003",
+    "label": "América del Sur"
+  },
+  {
+    "value": "121370004",
+    "label": "América Central"
+  },
+  {
+    "value": "121370005",
+    "label": "América del Norte"
+  },
+  {
+    "value": "121370006",
+    "label": "Oceanía"
   }
 ]

@@ -38,6 +38,7 @@
   "contactInfo": "Informació del contacte",
   "contactName": "Nom del contacte",
   "contactLastName": "Cognoms del contacte",
+  "dni/nie": "DNI/NIE del contacte",
   "nacionality": "Nacionalitat",
   "contactProfileTech": "És perfil tècnic que actúa com a cedent?",
   "formContactStatus": "Estat del contacte",
@@ -111,7 +112,7 @@
   "marketDescription": "Descripció del mercat",
   "customersDescription": "Descripció de la clientela",
   "typologyClients": "Tipologia de la clientela",
-  "suppliersDescription": "Descripció dels proveîdors",
+  "suppliersDescription": "Descripció dels proveïdors",
   "competencyDescription": "Descripció de la competència",
   "exportCheck": "Exporta?",
   "export/importAmbit": "Àmbit geogràfic?",
@@ -276,7 +277,7 @@
   "male": "Home",
   "female": "Dona",
   "others": "Altres",
-  "dob": "Data de neixement",
+  "dob": "Data de naixement",
   "zipCode": "Codi postal",
   "town": "Població",
   "municipality": "Municipi",
@@ -666,5 +667,85 @@
   "contactWithGrantor": "Ha contactat amb alguna empresa cedent externa?",
   "externalContactGrantorDescription": "Dades de l'empresa cedent",
   "intermediationContact": "Ha contactat amb algun intermediari?",
-  "intermediationContactDescription": "Dades de l'intermediari"
+  "intermediationContactDescription": "Dades de l'intermediari",
+
+  "myAccount": "Meu compte",
+  "settings": "Ajustos",
+  "help": "Ajuda",
+
+  "Pending": "Pendent",
+  "Active": "Actiu",
+  "ContactAgain": "Tornar a contactar",
+
+  "reenterprise": "Reemprenedor",
+  "grantorContact": "Cedent",
+  "external": "Extern",
+  "PH/RECuser": "Usuari de serveis PH/REC",
+
+  "morning": "Matí",
+  "afternoon": "Tarda",
+  "allDay": "Tot el día",
+
+  "Banc": "Banc",
+  "Seguretat Social": "Seguretat Social",
+  "Hisenda Pública": "Hisenda Pública",
+  "Treballadors": "Treballadors",
+  "Subministraments": "Subministraments",
+  "Proveïdors": "Proveïdors",
+  "Altres empreses": "Altres empreses",
+  "Altres": "Altres",
+
+  "userOf": "Usuari de",
+
+  "Cancelled": "Cancel·lat",
+
+  "noBusinessInterested": "No interessat en comprar un negoci",
+  "newBusinessCreation": "Creació empresa des de zero",
+
+  "Actos y presentaciones": "Actes i presentacions",
+  "Ayuntamiento": "Ajuntament",
+  "Amigos / familiares / conocidos": "Amics / familiars / coneguts",
+  "Asesoría / gestoría": "Assessoria / gestoria",
+  "Asociación empresarial / Gremio / Colegio profesional": "Associació empresarial / Gremi / Col·legi professional",
+  "Autoempleo": "Autoocupació",
+  "Entidad bancaria": "Entitat bancària",
+  "Entidad pública": "Entitat pública",
+  "Equipo comercial IBRelleu": "Equip comercial IBRelleu",
+  "Folletos físicos": "Fulletons físics",
+  "Medios de comunicación": "Mitjans de comunicació",
+  "Internet y Redes sociales": "Internet i Xarxes socials",
+
+  "comarca": "Comarca",
+  "província": "Província",
+  "CCAA": "Comunitat Autònoma",
+
+  "Cansancio": "Cansament",
+  "Salud": "Salut",
+
+  "closedBusiness": "Empresa tancada",
+  "continueBusiness": "Continua amb el negoci",
+  "notInteressedIBRelleu": "No interessat en continuar amb IBRelleu",
+
+  "district": "Districte",
+
+  "Europa": "Europa",
+  "Asia": "Asia",
+  "África": "Àfrica",
+  "América del Sur": "Amèrica del Sud",
+  "América Central": "Amèrica Central",
+  "América del Norte": "Amèrica del Nord",
+  "Oceanía": "Oceania",
+
+  "plaza": "Plaça",
+  "balearicIslands": "Illes Balears",
+
+  "rao_social": "Raó social",
+  "forma_juridica": "Forma jurídica",
+  "nom_comercial": "Nom comercial",
+  "sector_principal": "Sector principal",
+  "activitat_principal": "Activitat principal",
+  "poblacio": "Població",
+  "consultor": "Consultor",
+  "delegacio": "Oficina de",
+  "data_entrada": "Data d'entrada"
 }

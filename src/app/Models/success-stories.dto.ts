@@ -1,5 +1,5 @@
 export class SuccessStoriesDTO {
-  id: number;
+  id: string;
   delegation: string;
   companyName: string;
   proces: string;
@@ -15,7 +15,7 @@ export class SuccessStoriesDTO {
   creationDate: Date;
 
   constructor(
-    id: number,
+    id: string,
     delegation: string,
     companyName: string,
     proces: string,

@@ -98,7 +98,8 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'zipCode' | translate}}</mat-label>
-          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto">
+          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto"
+            (blur)="selectedValue($event)">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             @for (option of filteredOptions | async; track option) {
             <mat-option [value]="option" (click)="selectedValue($event)">{{option.zipCode}} {{option.town}}</mat-option>
@@ -237,7 +238,7 @@
           <mat-label>{{'export/importAmbit' | translate}}</mat-label>
           <mat-select formControlName="exportAmbit" placeholder="Choose one option">
             @for (continentItem of continentList; track continentItem) {
-            <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+            <mat-option [value]="continentItem.value">{{continentItem.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -254,7 +255,7 @@
           <mat-label>{{'export/importAmbit' | translate}}</mat-label>
           <mat-select formControlName="importAmbit" placeholder="Choose one option">
             @for (continentItem of continentList; track continentItem) {
-            <mat-option [value]="continentItem.value">{{continentItem.label}}</mat-option>
+            <mat-option [value]="continentItem.value">{{continentItem.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -366,7 +367,7 @@
           <mat-label>{{'companyDebtors' | translate}}</mat-label>
           <mat-select formControlName="debtsList" multiple>
             @for (debtsSitesItem of debtsSitesList; track debtsSitesItem) {
-            <mat-option [value]="debtsSitesItem.value">{{debtsSitesItem.label}}</mat-option>
+            <mat-option [value]="debtsSitesItem.value">{{debtsSitesItem.label | translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
@@ -447,16 +448,17 @@
         <mat-checkbox class="example-margin">{{'situationBalanceDocs' | translate}}</mat-checkbox>
         <mat-checkbox class="example-margin">{{'societyTax200' | translate}}</mat-checkbox>
       </section>
+
       <!-- <app-file-upload id="{{id}}" origin="accounts"></app-file-upload> -->
       <app-document id="{{id}}" origin="account"></app-document>
     </mat-tab>
-    <mat-tab label="Usuari de (pendiente decidir)">
+    <mat-tab label="{{'userOf' | translate }} (pendiente decidir)">
       <section>
-        <mat-checkbox class="example-margin">Projectes Cedents</mat-checkbox>
-        <mat-checkbox class="example-margin">Projectes Reempresa</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'grantorProject' | translate}}</mat-checkbox>
+        <mat-checkbox class="example-margin">{{'ibRelleuProject' | translate}}</mat-checkbox>
       </section>
     </mat-tab>
-    <mat-tab label="Reunions (pendiente decidir)">
+    <mat-tab label="{{'meetings' | translate}} (pendiente decidir)">
       <section>
         <mat-form-field>
           <mat-label>Tema </mat-label>

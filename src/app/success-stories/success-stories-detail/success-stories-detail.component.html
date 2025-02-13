@@ -1,4 +1,5 @@
-<h1>{{'successStories' | translate}}</h1>
+<!-- <h1>{{'successStories' | translate}}</h1> -->
+<h1>Success Story Form</h1>
 <form [formGroup]="theForm" (ngSubmit)="onSubmit()">
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight [(selectedIndex)]="selectedIndex"
     (selectedTabChange)="onTabChange($event)">
@@ -54,7 +55,8 @@
 
         <mat-form-field>
           <mat-label>{{'zipCode' | translate }}</mat-label>
-          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto" />
+          <input matInput formControlName="zipCode" maxlength="5" minlength="5" [matAutocomplete]="auto"
+            (blur)="selectedValue($event)" />
           <small *ngIf="theForm.get('zipCode').errors">min length: 5 digits</small>
 
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
@@ -226,7 +228,7 @@
     </mat-tab>
 
     <mat-tab label="{{'documentation' | translate}}">
-      <app-file-upload id="{{id}}" origin="successstories"></app-file-upload>
+      <app-file-upload id="{{id}}" origin="successstories" class="textArea"></app-file-upload>
     </mat-tab>
   </mat-tab-group>
   <div ngClass="centered-item">

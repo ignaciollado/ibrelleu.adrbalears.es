@@ -33,7 +33,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     'Extern',
     'Usuari de serveis PH/REC',
   ];
- /*  estadoContacto_es = [
+  /*  estadoContacto_es = [
     'Pendiente de contactar',
     'Activo',
     'Volver a contactar',
@@ -76,7 +76,10 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     this.theForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
       apellidos: new FormControl('', [Validators.required]),
-      dni: new FormControl('', [ Validators.required, this.customValidators.dniNieCifValidator()]),
+      dni: new FormControl('', [
+        Validators.required,
+        this.customValidators.dniNieCifValidator(),
+      ]),
       dob: new FormControl('', [Validators.required]),
       genero: new FormControl(''),
       nacionalidad: new FormControl(''),
@@ -136,7 +139,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     this.getLevelOfEducationList();
     this.getWorkingModes();
     this.loadConsultantAndDelegationInfo();
-    this.getContactById(+this.id)
+    this.getContactById(+this.id);
   }
 
   ngOnInit() {
@@ -193,10 +196,10 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   getContactById(id: number) {
-    this.contactService.getContactById(id)
-    .subscribe((contact:ContactDTO)=> {
-      this.theForm.patchValue({
-       /*  nombre: contact.firstName,
+    this.contactService.getContactById(id).subscribe(
+      (contact: ContactDTO) => {
+        this.theForm.patchValue({
+          /*  nombre: contact.firstName,
         apellidos: contact.lastName,
         dni: contact.dni,
         dob: contact.dob,
@@ -205,36 +208,37 @@ export class ContactDetailComponent implements CanComponentDeactivate {
         perfilTecnicoCedente: contact.technical_profile,
         estadoContacto: contact.contact_status,
         perfil: contact.userProfile,  */
-        /* consultor: contact.consultor, */
-        /* delegacion: contact.delegacion, */
-       /*  motivoEstado: contact.motivoEstado, */
-      /*   mainPhone: contact.mainPhone,
+          /* consultor: contact.consultor, */
+          /* delegacion: contact.delegacion, */
+          /*  motivoEstado: contact.motivoEstado, */
+          /*   mainPhone: contact.mainPhone,
         mainMail: contact.mainMail,
         secondaryPhone: contact.secondary_phone,
         secondaryMail: contact.secondary_email, */
-       /*  professionalPhone: contact.professionalPhone, */
-        /* contactTimePreference: contact.contactTimePreference, */
-        /* contactingComments: contact.contactingComments, */
-      /*   localizationAddress: contact.localizationAddress,
+          /*  professionalPhone: contact.professionalPhone, */
+          /* contactTimePreference: contact.contactTimePreference, */
+          /* contactingComments: contact.contactingComments, */
+          /*   localizationAddress: contact.localizationAddress,
         zipCode: contact.zipCode,
         localizationCity: contact.town,
         councilCity: contact.council,
         localizationCCAA: contact.localizationCCAA,
         localizationCountry: contact.country, */
-        /* employmentStatus: contact.employmentStatus, */
-        /* levelOfEducation: contact.levelOfEducation, */
-        /* workingMode: contact.workingMode, */
-       /*  formationObservations: contact.formationObservations, */
-        /* businessFormationCheck: contact.businessFormationCheck, */
-        /* businessTypology: contact.businessTypology, */
-        /* experienceAreas: contact.experienceAreas, */
-        /* experienceAndFormation: contact.experienceAndFormation */
-      });
-      this.showSnackBar("Contact retrieved successfully!!!")
-    },
-    error => {
-      this.showSnackBar(error)
-    })
+          /* employmentStatus: contact.employmentStatus, */
+          /* levelOfEducation: contact.levelOfEducation, */
+          /* workingMode: contact.workingMode, */
+          /*  formationObservations: contact.formationObservations, */
+          /* businessFormationCheck: contact.businessFormationCheck, */
+          /* businessTypology: contact.businessTypology, */
+          /* experienceAreas: contact.experienceAreas, */
+          /* experienceAndFormation: contact.experienceAndFormation */
+        });
+        this.showSnackBar('Contact retrieved successfully!!!');
+      },
+      (error) => {
+        this.showSnackBar(error);
+      }
+    );
   }
 
   insertConsultantData(consultant: string) {
@@ -315,7 +319,11 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'Close', { duration: 10000, verticalPosition: 'bottom', 
-      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
+    this.snackBar.open(error, 'Close', {
+      duration: 10000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+      panelClass: ['custom-snackbar'],
+    });
   }
 }

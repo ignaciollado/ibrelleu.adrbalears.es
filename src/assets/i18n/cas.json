@@ -287,7 +287,7 @@
   "mainMail": "Dirección electrónica",
   "email": "Dirección electrónica",
   "userProfile": "Perfil",
-  "contact_status": "Estat contacte",
+  "contact_status": "Estado contacto",
   "Mobile": "Mobil",
   "mainPhone": "Teléfono",
   "Update": "Actualizar",
@@ -637,7 +637,7 @@
   "reenterpriseStep2": "Ha publicado un anuncio de reemprendedor",
   "reenterpriseStep3": "Está en negociaciones con una empresa cedente",
 
-  "autoOcupation": "Autoocupación",
+  "autoOcupation": "Autoempleo",
   "personalProject": "Proyecto personal",
   "familyBusinessManagement": "Gestionar un negocio en familia",
   "ibRelleuAdvantages": "Ventajas con el proyecto IBRelleu",
@@ -657,5 +657,86 @@
   "contactWithGrantor": "¿Ha contactado con alguna empresa cedente externa?",
   "externalContactGrantorDescription": "Datos de la empresa cedente",
   "intermediationContact": "¿Ha contactado con algún intermediario?",
-  "intermediationContactDescription": "Datos del intermediario"
+  "intermediationContactDescription": "Datos del intermediario",
+
+  "myAccount": "Mi cuenta",
+  "settings": "Ajustes",
+  "help": "Ayuda",
+
+  "Pending": "Pendiente",
+  "Active": "Activo",
+  "ContactAgain": "Volver a contactar",
+
+  "reenterprise": "Reemprendedor",
+  "grantorContact": "Cedente",
+  "external": "Externo",
+  "PH/RECuser": "Usuario de servicios PH/REC",
+
+  "morning": "Mañana",
+  "afternoon": "Tarde",
+  "allDay": "Todo el día",
+
+  "Banc": "Banco",
+  "Seguretat Social": "Seguridad Social",
+  "Hisenda Pública": "Hacienda Pública",
+  "Treballadors": "Trabajadores",
+  "Subministraments": "Suministramientos",
+  "Proveïdors": "Proveedores",
+  "Altres empreses": "Otras empresas",
+  "Altres": "Otros",
+
+  "userOf": "Usuario de",
+
+  "Cancelled": "Cancelado",
+
+  "noBusinessInterested": "No interesado en comprar un negocio",
+  "newBusinessCreation": "Creación empresa desde cero",
+
+  "Actos y presentaciones": "Actos y presentaciones",
+  "Ayuntamiento": "Ayuntamiento",
+  "Amigos / familiares / conocidos": "Amigos / familiares / conocidos",
+  "Asesoría / gestoría": "Asesoría / gestoría",
+  "Asociación empresarial / Gremio / Colegio profesional": "Asociación empresarial / Gremio / Colegio profesional",
+  "Autoempleo": "Autoempleo",
+  "Entidad bancaria": "Entidad bancaria",
+  "Entidad pública": "Entidad pública",
+  "Equipo comercial IBRelleu": "Equipo comercial IBRelleu",
+  "Folletos físicos": "Folletos físicos",
+  "Medios de comunicación": "Medios de comunicación",
+
+  "Internet y Redes sociales": "Internet y Redes sociales",
+
+  "comarca": "Comarca",
+  "província": "Provincia",
+  "CCAA": "Comunidad Autónoma",
+
+  "Cansancio": "Cansancio",
+  "Salud": "Salud",
+
+  "closedBusiness": "Empresa cerrada",
+  "continueBusiness": "Continua con el negocio",
+  "notInteressedIBRelleu": "No interesado en continuar en IBRelleu",
+
+  "district": "Distrito",
+
+  "Europa": "Europa",
+  "Asia": "Asia",
+  "África": "África",
+  "América del Sur": "América del Sur",
+  "América Central": "América Central",
+  "América del Norte": "América del Norte",
+  "Oceanía": "Oceanía",
+
+  "plaza": "Plaza",
+  "balearicIslands": "Islas Baleares",
+
+  "rao_social": "Razón social",
+  "forma_juridica": "Forma jurídica",
+  "nom_comercial": "Nombre comercial",
+  "sector_principal": "Sector principal",
+  "activitat_principal": "Actividad principal",
+  "poblacio": "Población",
+  "consultor": "Consultor",
+  "delegacio": "Oficina de",
+  "data_entrada": "Fecha de entrada"
 }

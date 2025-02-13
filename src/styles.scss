@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 @use 'adr-colors';
 @use '@angular/material' as mat;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -9,13 +10,14 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
 
-body { 
-  font-family: Inter, sans-serif; 
+body {
+  font-family: Inter, sans-serif;
 }
 
 html {
@@ -50,6 +52,36 @@ mat-tab-group {
 
 :root {
   .custom-snackbar {
-      --mdc-snackbar-container-color: #71b796;
+    --mdc-snackbar-container-color: #71b796;
   }
+}
+
+adr-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+adr-body,
+adr-contacts,
+adr-contact-detail,
+adr-account,
+adr-account-detail,
+adr-ibrelleu-projects,
+adr-ibrelleu-project-detail,
+adr-grantor-projects,
+adr-grantor-project-detail,
+adr-success-stories,
+adr-success-stories-detail,
+adr-sign-up-external-user {
+  flex: 1.75 0 auto;
+}
+
+adr-footer {
+  padding-top: 25px;
+  flex-shrink: 0;
+}
+
+h1 {
+  margin: 0.5rem;
 }

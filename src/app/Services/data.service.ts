@@ -9,6 +9,7 @@ import { LegalFormDTO } from '../Models/legal-form.dto';
 import { ContactStatesDTO } from '../Models/contact-states.dto';
 import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
 import { GrantorProjectsDTO } from '../Models/grantor-project.dto';
+import { IBRelleuProjectsDTO } from '../Models/ibrelleu-project.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -78,6 +79,12 @@ export class DataService {
   getAllGrantorProjects(): Observable<GrantorProjectsDTO[]> {
     return this.http
       .get<GrantorProjectsDTO[]>(`${this.urlAPIMock}grantor-projects.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+  getAllIbRelleuProjects(): Observable<IBRelleuProjectsDTO[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}ibrelleuProjects.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 

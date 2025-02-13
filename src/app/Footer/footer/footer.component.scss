@@ -2,17 +2,22 @@
 @use "../../../utilities.scss";
 
 footer {
-  /* z-index: -1; */
+  /* z-index: 1; */
   opacity: 0.9;
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: grid;
   grid-template-areas: "logoBottom localizacionBottom textosLegales";
+  grid-template-columns: 0.75fr 1.5fr 0.75fr;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0.5rem;
   font-size: 0.75rem;
+  line-height: 1rem;
   background-color: adr-colors.$primary-adr;
   color: #fff;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  // position: fixed;
+  // left: 0;
+  // bottom: 0;
   width: 100%;
   align-items: center;
   justify-items: center;
@@ -24,18 +29,16 @@ footer {
 .localizacion-adr-balears {
   grid-area: localizacionBottom;
   span {
-    padding-right: .5rem;
+    padding-right: 0.5rem;
   }
 }
 .textos-legales {
   grid-area: textosLegales;
   span {
-    padding-right: .5rem;
+    // padding-right: 0.5rem;
+    display: grid;
+    text-align: end;
   }
-}
-
-a:visited {
-  color: adr-colors.$primary-adr;
 }
 
 a:hover {

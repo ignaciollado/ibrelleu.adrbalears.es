@@ -53,7 +53,7 @@
             <mat-option value="Active">{{'Active' | translate}}</mat-option>
             <mat-option value="ContactAgain">{{'ContactAgain' | translate}}</mat-option>
 
-          <!--   @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
+            <!--   @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
             <mat-option [value]="estadoContactoItem">{{estadoContactoItem}}</mat-option>
             } -->
           </mat-select>
@@ -216,13 +216,14 @@
        <!--  <app-file-upload id="{{id}}" origin="contact" class="textArea"></app-file-upload> -->
         <app-document id="{{id}}" origin="contact"></app-document>
 
+
       </section>
     </mat-tab>
   </mat-tab-group>
   <div ngClass="centered-item">
     <button mat-raised-button color="primary" type="submit">Guardar</button>
   </div>
-<!--   <div ngClass="centered-item">
+  <!--   <div ngClass="centered-item">
     <small ngClass="centered-item">
       Status: {{theForm.status}} | Valid: {{theForm.valid}} | Pristine: {{theForm.pristine}} | Touched:
       {{theForm.touched}} | Dirty: {{theForm.dirty}}
