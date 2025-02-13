@@ -754,5 +754,15 @@
   "grantorProjectForm": "Formulari de Projecte Cedent",
   "successStoriesForm": "Formulari de Cas d'Èxit",
 
-  "uploadedDocuments": "Documents penjats"
+  "uploadedDocuments": "Documents penjats",
+
+  "contact": "Contacte",
+  "interestStatus": "Estat de l'interès",
+  "interestIbrelleuProject": "Projecte IBRelleu de l'Interessat",
+  "interestConsultant": "Consultor de l'Interessat",
+  "interestDelegation": "Oficina de l'Interessat",
+  "interestedGrantorProject": "Projecte Cedent interessat en",
+  "interestedConsultant": "Consultor del Projecte Cedent interessat en",
+  "interestedDelegation": "Oficina del Projecte Cedent interessat en",
+  "sendInterest": "Enviar interès"
 }

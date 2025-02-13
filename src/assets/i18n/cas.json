@@ -745,5 +745,15 @@
   "grantorProjectForm": "Formulario de Proyecto Cedente",
   "successStoriesForm": "Formulario de Caso de éxito",
 
-  "uploadedDocuments": "Documentos subidos"
+  "uploadedDocuments": "Documentos subidos",
+
+  "contact": "Contacto",
+  "interestStatus": "Estado del interés",
+  "interestIbrelleuProject": "Proyecto IBRelleu del Interesado",
+  "interestConsultant": "Consultor del Interesado",
+  "interestDelegation": "Oficina del Interesado",
+  "interestedGrantorProject": "Proyecto Cedente interesado en",
+  "interestedConsultant": "Consultor del Proyecto Cedente interesado en",
+  "interestedDelegation": "Oficina del Proyecto Cedente interesado en",
+  "sendInterest": "Enviar interés"
 }

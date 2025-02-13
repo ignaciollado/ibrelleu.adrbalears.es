@@ -20,6 +20,7 @@ import { DocumentComponent } from './Protected/document/document.component';
 import { IbrelleuProjectsComponent } from './Protected/ibrelleu-projects/ibrelleu-projects.component';
 import { IbrelleuProjectDetailComponent } from './Protected/ibrelleu-project-detail/ibrelleu-project-detail.component';
 import { InterestComponent } from './Protected/interest/interest.component';
+import { InterestDetailComponent } from './Protected/interest-detail/interest-detail.component';
 
 const routes: Routes = [
   { path: 'home', component: BodyComponent },
@@ -70,6 +71,12 @@ const routes: Routes = [
   {
     path: 'interests',
     component: InterestComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'interests-detail/:id',
+    component: InterestDetailComponent,
     canDeactivate: [CanDeactivateGuard],
     canActivate: [AuthGuard]
   },
