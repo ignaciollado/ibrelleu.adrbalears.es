@@ -15,22 +15,22 @@ import {
 })
 export class IbrelleuProjectsComponent {
   columnsDisplayed: string[] = ibrelleuProjectColumns.map((col) => col.key);
-  dataSource = new MatTableDataSource();
-  columnsSchema: any = ibrelleuProjectColumns;
+  dataSource = new MatTableDataSource()
+  columnsSchema: any = ibrelleuProjectColumns
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator
 
   constructor(private dataService: DataService) {
-    this.loadAllIbrelleuProjects();
-    this.dataSource.paginator = this.paginator;
+    this.loadAllIbrelleuProjects()
+    this.dataSource.paginator = this.paginator
   }
 
   loadAllIbrelleuProjects() {
     this.dataService
       .getAllIbRelleuProjects()
       .subscribe((projects: IBRelleuProjectsDTO[]) => {
-        this.dataSource.data = projects;
-        this.dataSource.paginator = this.paginator;
+        this.dataSource.data = projects
+        this.dataSource.paginator = this.paginator
       });
   }
 }
