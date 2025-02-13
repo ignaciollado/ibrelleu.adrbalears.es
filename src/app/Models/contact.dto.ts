@@ -18,6 +18,7 @@ export interface ContactDTO {
   contact_status:               string;
   userProfile:                  string;
   gender:                       string;
+  perfilTecnicoCedente:          boolean;
   state_reason:                 null;
   consultant:                   null;
   acceptTerms:                  number;

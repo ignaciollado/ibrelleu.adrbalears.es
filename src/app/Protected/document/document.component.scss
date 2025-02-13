@@ -1,8 +1,10 @@
 @use "../../../adr-colors";
 @use "../../../utilities.scss";
+
+.uploaddocumentarea {
+  margin-bottom: .5rem;
+}
 .tablecontainer {
-  margin: 0.1rem;
-  padding: 1rem;
   border: 1px solid adr-colors.$primary-adr;
 }
 

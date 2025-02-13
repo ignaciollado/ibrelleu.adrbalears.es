@@ -42,7 +42,7 @@
 
         <mat-label>{{'contactProfileTech' | translate}}</mat-label>
         <mat-radio-group formControlName="perfilTecnicoCedente">
-          <mat-radio-button value="1">Si</mat-radio-button>
+          <mat-radio-button value="-1">Si</mat-radio-button>
           <mat-radio-button value="0">No</mat-radio-button>
         </mat-radio-group>
 
@@ -52,21 +52,21 @@
             <mat-option value="Pending">{{'Pending' | translate}}</mat-option>
             <mat-option value="Active">{{'Active' | translate}}</mat-option>
             <mat-option value="ContactAgain">{{'ContactAgain' | translate}}</mat-option>
-
-            <!--   @for (estadoContactoItem of estadoContacto_ca; track estadoContactoItem) {
-            <mat-option [value]="estadoContactoItem">{{estadoContactoItem}}</mat-option>
-            } -->
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>{{'contactProfile' | translate}}</mat-label>
-          <mat-select formControlName="perfil" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
-            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
-            }
+          <mat-label>{{'userProfile' | translate}}</mat-label>
+          <mat-select formControlName="userProfile" multiple>
+            <mat-option value="reentrepreneur">{{'Reemprenedor' | translate}}</mat-option>
+            <mat-option value="grantor">{{'Cedent' | translate}}</mat-option>
+            <mat-option value="external">{{'Extern' | translate}}</mat-option>
+            <mat-option value="phrecserviceuser">{{'UsuariServeisPHREC' | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
-
+        <mat-form-field class="textArea">
+          <mat-label>{{'contactReasonStatus' | translate}}</mat-label>
+          <textarea matInput formControlName="motivoEstado"></textarea>
+        </mat-form-field>
         <mat-form-field>
           <mat-label>{{'consultant' | translate}}</mat-label>
           <mat-select formControlName="consultor">
@@ -84,10 +84,6 @@
             <mat-radio-button value="Formentera">Formentera</mat-radio-button>
           </mat-radio-group>
         </section>
-        <mat-form-field class="textArea">
-          <mat-label>{{'contactReasonStatus' | translate}}</mat-label>
-          <textarea matInput formControlName="motivoEstado"></textarea>
-        </mat-form-field>
       </section>
     </mat-tab>
     <mat-tab label="{{'contactData' | translate}}">
@@ -196,28 +192,21 @@
         <mat-form-field>
           <mat-label>{{'businessFormationTypology' | translate}}</mat-label>
           <mat-select formControlName="businessTypology" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
-            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
-            }
+          
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'experienceArea' | translate}}</mat-label>
           <mat-select formControlName="experienceAreas" multiple>
-            @for (perfilTecnicoItem of perfilTecnicoItems_ca; track perfilTecnicoItem) {
-            <mat-option [value]="perfilTecnicoItem">{{perfilTecnicoItem}}</mat-option>
-            }
+          
           </mat-select>
         </mat-form-field>
         <mat-form-field class="textArea">
           <mat-label>{{'contactDescriptionFormation' | translate}}</mat-label>
           <textarea matInput formControlName="experienceAndFormation"></textarea>
         </mat-form-field>
-       <!--  <app-file-upload id="{{id}}" origin="contact" class="textArea"></app-file-upload> -->
-        <app-document id="{{id}}" origin="contact"></app-document>
-
-
       </section>
+      <app-document id="{{id}}" origin="contact"></app-document>
     </mat-tab>
   </mat-tab-group>
   <div ngClass="centered-item">

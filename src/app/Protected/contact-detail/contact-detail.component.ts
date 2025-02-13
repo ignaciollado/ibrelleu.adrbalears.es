@@ -21,32 +21,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ContactDetailComponent implements CanComponentDeactivate {
   id: string = this.route.snapshot.paramMap.get('id');
   selectedIndex: number;
-  perfilTecnicoItems_es = [
-    'Reemprendedor',
-    'Cedente',
-    'Externo',
-    'Usuario de servicio PH/REC',
-  ];
-  perfilTecnicoItems_ca = [
-    'Reemprenedor',
-    'Cedent',
-    'Extern',
-    'Usuari de serveis PH/REC',
-  ];
-  /*  estadoContacto_es = [
-    'Pendiente de contactar',
-    'Activo',
-    'Volver a contactar',
-    'Cita programada',
-    'Cancelado',
-  ];
-  estadoContacto_ca = [
-    'Pendent de contactar',
-    'Actiu',
-    'Tornar a contactar',
-    'Cita programada',
-    'Cancel·lat',
-  ]; */
 
   timeFrame_es = ['Mañana', 'Tarde', 'Todo el día'];
   timeFrame_ca = ['Matí', 'Tarda', 'Tot el día'];
@@ -83,9 +57,9 @@ export class ContactDetailComponent implements CanComponentDeactivate {
       dob: new FormControl('', [Validators.required]),
       genero: new FormControl(''),
       nacionalidad: new FormControl(''),
-      perfilTecnicoCedente: new FormControl('', [Validators.required]),
+      perfilTecnicoCedente: new FormControl([Validators.required]),
       estadoContacto: new FormControl('', [Validators.required]),
-      perfil: new FormControl('', [Validators.required]),
+      userProfile: new FormControl('', [Validators.required]),
       consultor: new FormControl('', [Validators.required]),
       delegacion: new FormControl(''),
       motivoEstado: new FormControl(''),
@@ -98,12 +72,13 @@ export class ContactDetailComponent implements CanComponentDeactivate {
         Validators.pattern('^[0-9]{9}'),
       ]),
       mainMail: new FormControl('', [Validators.required, Validators.email]),
+
+      secondaryMail: new FormControl('', [Validators.email]),
       secondaryPhone: new FormControl('', [
         Validators.minLength(9),
         Validators.maxLength(9),
         Validators.pattern('^[0-9]{9}'),
       ]),
-      secondaryMail: new FormControl('', [Validators.email]),
       professionalPhone: new FormControl('', [Validators.pattern('^[0-9]{9}')]),
       contactTimePreference: new FormControl(''),
       contactingComments: new FormControl(''),
@@ -163,6 +138,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   getCountries() {
     this.countriesService.getAll().subscribe((countries: CountriesDTO[]) => {
       this.countries = countries;
+      console.log('countries: ', countries);
     });
   }
 
@@ -198,40 +174,31 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   getContactById(id: number) {
     this.contactService.getContactById(id).subscribe(
       (contact: ContactDTO) => {
+        console.log(
+          'delegation: ',
+          Array.isArray(contact.delegation),
+          contact.delegation
+        );
         this.theForm.patchValue({
-          /*  nombre: contact.firstName,
-        apellidos: contact.lastName,
-        dni: contact.dni,
-        dob: contact.dob,
-        genero: contact.gender,
-        nacionalidad: contact.nationality,
-        perfilTecnicoCedente: contact.technical_profile,
-        estadoContacto: contact.contact_status,
-        perfil: contact.userProfile,  */
-          /* consultor: contact.consultor, */
-          /* delegacion: contact.delegacion, */
-          /*  motivoEstado: contact.motivoEstado, */
-          /*   mainPhone: contact.mainPhone,
-        mainMail: contact.mainMail,
-        secondaryPhone: contact.secondary_phone,
-        secondaryMail: contact.secondary_email, */
-          /*  professionalPhone: contact.professionalPhone, */
-          /* contactTimePreference: contact.contactTimePreference, */
-          /* contactingComments: contact.contactingComments, */
-          /*   localizationAddress: contact.localizationAddress,
-        zipCode: contact.zipCode,
-        localizationCity: contact.town,
-        councilCity: contact.council,
-        localizationCCAA: contact.localizationCCAA,
-        localizationCountry: contact.country, */
-          /* employmentStatus: contact.employmentStatus, */
-          /* levelOfEducation: contact.levelOfEducation, */
-          /* workingMode: contact.workingMode, */
-          /*  formationObservations: contact.formationObservations, */
-          /* businessFormationCheck: contact.businessFormationCheck, */
-          /* businessTypology: contact.businessTypology, */
-          /* experienceAreas: contact.experienceAreas, */
-          /* experienceAndFormation: contact.experienceAndFormation */
+          nombre: contact.firstName,
+          apellidos: contact.lastName,
+          dni: contact.dni,
+          dob: contact.dob,
+          genero: contact.gender,
+          nacionalidad: Array.isArray(contact.nationality)
+            ? contact.nationality
+            : [contact.nationality],
+          perfilTecnicoCedente: contact.perfilTecnicoCedente,
+          userProfile: Array.isArray(contact.userProfile)
+            ? contact.userProfile
+            : [contact.userProfile],
+          estadoContacto: contact.contact_status,
+          delegacion: contact.delegation,
+          mainPhone: contact.mainPhone,
+          mainMail: contact.mainMail,
+          secondaryPhone: contact.secondary_phone,
+          professionalPhone: contact.professional_phone,
+          secondaryMail: contact.secondary_email,
         });
         this.showSnackBar('Contact retrieved successfully!!!');
       },

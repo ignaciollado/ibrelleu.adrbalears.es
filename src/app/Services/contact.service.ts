@@ -20,40 +20,20 @@ export class ContactService {
 
   constructor(private http: HttpClient) { }
 
-  /*   getContacts(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/contactList.php`).pipe(
-      catchError(this.handleError));
-  } */
-
   getContacts(): Observable<any> {
     return this.http.get(`${this.apiData}/api/contacts/`, httpOptions).pipe(
       catchError(this.handleError));
   }
-
-/*   getContact(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/contactGetOne.php?id=${id}`).pipe(
-      catchError(this.handleError));
-  } */
 
   getContactById(id: number): Observable<ContactDTO> {
         return this.http.get<ContactDTO>(`${this.apiData}/api/contact-by-id/${id}`).pipe(
           catchError(this.handleError));
       }
 
-  /*   getContactByDNI(dni: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/contactGetOneByDNI.php?dni=${dni}`).pipe(
-      catchError(this.handleError));
-  } */
-  
   getContactByDNI(dni: string): Observable<any> {
     return this.http.get(`${this.apiData}/api/contact-by-dni/${dni}`).pipe(
       catchError(this.handleError));
   }
-
-  /*   createContact(contact: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/contactInsert.php`, contact).pipe(
-      catchError(this.handleError));
-  } */
 
   createContactSignUp(contact: any): Observable<any> {
     return this.http

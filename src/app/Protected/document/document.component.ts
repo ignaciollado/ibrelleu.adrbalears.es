@@ -12,7 +12,8 @@ import { HttpErrorResponse, HttpEventType } from '@angular/common/http';
   styleUrls: ['./document.component.scss']
 })
 export class DocumentComponent implements OnInit {
-  showConfirmation = false;
+  showConfirmation:boolean = false;
+  isLoading:boolean = false;
   documents: any[] = [];
   selectedFiles: File[] = [];
   foldername:string = '';
@@ -51,6 +52,7 @@ export class DocumentComponent implements OnInit {
   }
 
   uploadDocuments() {
+    this.isLoading = true;
     this.showConfirmation = false
     if (this.selectedFiles.length > 0) {
       const formData = new FormData();
@@ -60,6 +62,7 @@ export class DocumentComponent implements OnInit {
           if (event.type === HttpEventType.UploadProgress) {
             this.progress = Math.round(100 * event.loaded / (event.total ?? 1));
           } else if (event.type === HttpEventType.Response) {
+            this.isLoading = false;
             this.showSnackBar('Documents uploaded successfully!');
             this.loadDocuments();
             this.selectedFiles = [];
@@ -90,7 +93,7 @@ export class DocumentComponent implements OnInit {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'Close', { duration: 20000, verticalPosition: 'top', 
+    this.snackBar.open( error, 'Close', { duration: 5000, verticalPosition: 'top', 
       horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
   }
 
