@@ -94,7 +94,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
       ]),
       localizationCity: new FormControl({ value: '', disabled: true }),
       councilCity: new FormControl({ value: '', disabled: true }),
-      localizationCCAA: new FormControl({ value: '', disabled: true }),
+      island: new FormControl({ value: '', disabled: true }),
       localizationCountry: new FormControl({ value: 'España', disabled: true }),
 
       // Información laboral y curricular
@@ -138,7 +138,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   getCountries() {
     this.countriesService.getAll().subscribe((countries: CountriesDTO[]) => {
       this.countries = countries;
-      console.log('countries: ', countries);
     });
   }
 
@@ -174,11 +173,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   getContactById(id: number) {
     this.contactService.getContactById(id).subscribe(
       (contact: ContactDTO) => {
-        console.log(
-          'delegation: ',
-          Array.isArray(contact.delegation),
-          contact.delegation
-        );
         this.theForm.patchValue({
           nombre: contact.firstName,
           apellidos: contact.lastName,
@@ -199,6 +193,10 @@ export class ContactDetailComponent implements CanComponentDeactivate {
           secondaryPhone: contact.secondary_phone,
           professionalPhone: contact.professional_phone,
           secondaryMail: contact.secondary_email,
+          zipCode: contact.zipCode,
+          localizationCity: contact.town,
+          councilCity: contact.council,
+          island: contact.island
         });
         this.showSnackBar('Contact retrieved successfully!!!');
       },
