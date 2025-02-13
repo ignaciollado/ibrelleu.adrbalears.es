@@ -749,5 +749,8 @@
   "delegacio": "Oficina de",
   "data_entrada": "Data d'entrada",
 
-  "accountForm": "Formulari de compte"
+  "accountForm": "Formulari de compte",
+  "ibRelleuProjectForm": "Formulari de Projecte IBRelleu",
+  "grantorProjectForm": "Formulari de Projecte Cedent",
+  "successStoriesForm": "Formulari de Cas d'Èxit"
 }
