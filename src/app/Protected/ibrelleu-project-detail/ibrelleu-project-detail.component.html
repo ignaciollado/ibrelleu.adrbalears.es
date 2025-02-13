@@ -283,12 +283,13 @@
                 </mat-form-field>
             </section>
         </mat-tab>
-        <mat-tab label="{{'ad' | translate }}"></mat-tab>
+        <!-- <mat-tab label="{{'ad' | translate }}"></mat-tab> -->
         <mat-tab label="{{'meetings' | translate }}"></mat-tab>
         <mat-tab label="{{'situationBalance' | translate }}"></mat-tab>
         <mat-tab label="{{'resultsAccount' | translate }}"></mat-tab>
         <mat-tab label="{{'documentation' | translate }}">
-            <app-file-upload id="{{id}}" origin="ibrelleuprojects" class="textArea"></app-file-upload>
+            <!-- <app-file-upload id="{{id}}" origin="ibrelleuprojects" class="textArea"></app-file-upload> -->
+            <app-document id="{{id}}" origin="ibrelleuproject"></app-document>
         </mat-tab>
 
     </mat-tab-group>

@@ -1,5 +1,5 @@
 export class IBRelleuProjectsDTO {
-  id: string;
+  id: number;
   ibrelleuProjectName: string;
   projectStatus: string;
   mainSector: string;
@@ -10,7 +10,7 @@ export class IBRelleuProjectsDTO {
   creationDate: string;
 
   constructor(
-    id: string,
+    id: number,
     ibrelleuProjectName: string,
     projectStatus: string,
     mainSector: string,
