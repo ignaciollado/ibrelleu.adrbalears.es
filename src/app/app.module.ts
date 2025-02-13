@@ -67,6 +67,7 @@ import { GrantorProjectDetailComponent } from './Protected/grantor-project-detai
 import { DocumentComponent } from './Protected/document/document.component';
 import { IbrelleuProjectsComponent } from './Protected/ibrelleu-projects/ibrelleu-projects.component';
 import { IbrelleuProjectDetailComponent } from './Protected/ibrelleu-project-detail/ibrelleu-project-detail.component';
+import { InterestComponent } from './Protected/interest/interest.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem('access_token');
@@ -103,6 +104,7 @@ registerLocaleData(localeES, 'es-ES');
     DocumentComponent,
     IbrelleuProjectsComponent,
     IbrelleuProjectDetailComponent,
+    InterestComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -19,6 +19,7 @@ import { GrantorProjectDetailComponent } from './Protected/grantor-project-detai
 import { DocumentComponent } from './Protected/document/document.component';
 import { IbrelleuProjectsComponent } from './Protected/ibrelleu-projects/ibrelleu-projects.component';
 import { IbrelleuProjectDetailComponent } from './Protected/ibrelleu-project-detail/ibrelleu-project-detail.component';
+import { InterestComponent } from './Protected/interest/interest.component';
 
 const routes: Routes = [
   { path: 'home', component: BodyComponent },
@@ -67,6 +68,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'interests',
+    component: InterestComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'protected',
     component: ProtectedComponent,
     canActivate: [AuthGuard],
@@ -92,4 +99,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
