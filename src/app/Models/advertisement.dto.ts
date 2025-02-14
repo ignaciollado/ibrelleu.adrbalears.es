@@ -1,45 +1,45 @@
 export class AdvertisementDTO {
-  anunci?: string;
-  codi?: string;
-  interesPublicarMarketplace?: boolean;
-  estatAnunci?: string;
-  idioma?: string;
-  titolAnunci?: string;
-  dataPublicacio?: Date;
-  descripcioAnunci?: string;
+  advertisement?: string;
+  code?: string;
+  publicinmarketplace?: boolean;
+  advertisementstate?: string;
+  language?: string;
+  title?: string;
+  publicationdate?: Date;
+  description?: string;
   experienciaCompetencies?: string;
-  publicatWeb?: boolean;
+  publicinweb?: boolean;
   notes?: string;
-  idAccount: number;
+  grantorprojectid: number;
   id: number;
 
   constructor(
-    idAccount: number,
+    grantorprojectid: number,
     id: number,
-    anunci?: string,
-    codi?: string,
-    interesPublicarMarketplace?: boolean,
-    estatAnunci?: string,
-    idioma?: string,
-    titolAnunci?: string,
-    dataPublicacio?: Date,
-    descripcioAnunci?: string,
+    advertisement?: string,
+    code?: string,
+    publicinmarketplace?: boolean,
+    advertisementstate?: string,
+    language?: string,
+    title?: string,
+    publicationdate?: Date,
+    description?: string,
     experienciaCompetencies?: string,
-    publicatWeb?: boolean,
+    publicinweb?: boolean,
     notes?: string,
   ) {
-    this.idAccount = idAccount;
+    this.grantorprojectid = grantorprojectid;
     this.id = id;
-    this.anunci = anunci;
-    this.codi = codi;
-    this.interesPublicarMarketplace = interesPublicarMarketplace;
-    this.estatAnunci = estatAnunci;
-    this.idioma = idioma;
-    this.titolAnunci = titolAnunci;
-    this.dataPublicacio = dataPublicacio;
-    this.descripcioAnunci = descripcioAnunci;
+    this.advertisement = advertisement;
+    this.code = code;
+    this.publicinmarketplace = publicinmarketplace;
+    this.advertisementstate = advertisementstate;
+    this.language = language;
+    this.title = title;
+    this.publicationdate = publicationdate;
+    this.description = description;
     this.experienciaCompetencies = experienciaCompetencies;
-    this.publicatWeb = publicatWeb;
+    this.publicinweb =  	publicinweb;
     this.notes = notes;
   }
 }

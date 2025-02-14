@@ -18,11 +18,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class AccountComponent {
   ambitos: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
-  //columnsDisplayed: string[] = accountColumns.map((col) => col.key)
   columnsDisplayed: string[] = accountColumnsBBDD.map((col) => col.key);
   
   legalFormList: any[] = []
-  //columnsSchema: any = accountColumns
   columnsSchema: any = accountColumnsBBDD;
   dataSource = new MatTableDataSource()
   valid: any = {}
@@ -33,17 +31,7 @@ export class AccountComponent {
     this.loadAllAccounts()
     this.loadLegalFormList()
     this.dataSource.paginator = this.paginator
-    /* this.paginator.pageSizeOptions = [5, 10, 20];
-    this.paginator.showFirstLastButtons = true; */
   }
-
-/*   loadAllAccounts() {
-    this.dataService.getAllAccounts()
-      .subscribe((accounts: AccountDTO[])=> {
-        this.dataSource.data = accounts
-      })
-  }
- */
 
   loadAllAccounts() {
       this.accountService.getAccounts()
