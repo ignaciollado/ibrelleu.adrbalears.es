@@ -70,6 +70,7 @@ import { IbrelleuProjectDetailComponent } from './Protected/ibrelleu-project-det
 import { InterestComponent } from './Protected/interest/interest.component';
 import { InterestDetailComponent } from './Protected/interest-detail/interest-detail.component';
 import { AdvertisementsComponent } from './Protected/advertisements/advertisements.component';
+import { AdvertisementDetailComponent } from './Protected/advertisement-detail/advertisement-detail.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem('access_token');
@@ -109,6 +110,7 @@ registerLocaleData(localeES, 'es-ES');
     InterestComponent,
     InterestDetailComponent,
     AdvertisementsComponent,
+    AdvertisementDetailComponent,
   ],
   imports: [
     BrowserAnimationsModule,
