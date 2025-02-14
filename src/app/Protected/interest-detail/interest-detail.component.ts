@@ -3,6 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { DataService } from '../../Services/data.service';
+import { InterestDTO } from '../../Models/interest.dto';
 
 @Component({
   selector: 'adr-interest-detail',
@@ -14,8 +16,17 @@ export class InterestDetailComponent {
   interestForm: FormGroup
   id: string = this.route.snapshot.paramMap.get('id')
 
-  constructor(private route: ActivatedRoute) {
+  interestConsultantList: string[] = []
+  grantorProjectsConsultantList: string[] = []
+
+  constructor(private route: ActivatedRoute, private dataService: DataService) {
     this.interestForm = new FormGroup({})
+
+    this.loadConsultants();
+  }
+
+  ngOnInit() {
+    this.selectedIndex = +sessionStorage.getItem('currentInterestTab')
   }
 
 
@@ -33,6 +44,23 @@ export class InterestDetailComponent {
 
   onTabChange(event: MatTabChangeEvent) {
     sessionStorage.setItem('currentInterestTab', event.index.toString());
+  }
+
+  loadConsultants() {
+    this.dataService.getAllInterests().subscribe((interestList: InterestDTO[]) => {
+      interestList.forEach((interest) => {
+        if (!this.interestConsultantList.includes(interest.interestConsultant)) {
+          this.interestConsultantList.push(interest.interestConsultant)
+        }
+
+        if (!this.grantorProjectsConsultantList.includes(interest.desiredGrantorProjectConsultant)) {
+          this.grantorProjectsConsultantList.push(interest.desiredGrantorProjectConsultant)
+        }
+      })
+    })
+
+
+
   }
 
 }

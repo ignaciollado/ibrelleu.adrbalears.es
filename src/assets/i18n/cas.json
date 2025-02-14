@@ -757,5 +757,26 @@
   "interestedDelegation": "Oficina del Proyecto Cedente interesado en",
   "sendInterest": "Enviar interés",
 
-  "interestForm": "Formulario interés"
+  "interestForm": "Formulario interés",
+
+  "interestCreationDate": "Fecha de generación del interés",
+  "contactPending": "Pendiente de contactar",
+  "schedulePending": "Pendiente de programar",
+  "meetingScheduled": "Reunión programada entre las partes",
+  "reenterpriseNotInterested": "Persona reemprendedora no interesada en el proceso",
+  "grantorNotInterested": "Persona cedente no interesada en el proceso",
+  "processCreated": "Proceso creado",
+  "comment": "Comentario",
+  "contactPhone": "Teléfono contacto",
+  "contactMail": "Correo contacto",
+  "interestConsultantPhone": "Teléfono del consultor del Interesado",
+  "interestConsultantMail": "Correo electrónico del consultor del Interesado",
+  "desiredGrantorProject": "Proyecto Cedente deseado",
+  "desiredGrantorProjectConsultant": "Consultor del Proyecto Cedente deseado",
+  "desiredGrantorProjectDelegation": "Oficina del Proyecto Cedente deseado",
+  "desiredGrantorProjectConsultantPhone": "Teléfono del consultor del Proyecto Cedente deseado",
+  "desiredGrantorProjectConsultantMail": "Correo electrónico del consultor del Proyecto Cedente deseado",
+
+  "interestDerivation": "Derivación interés",
+  "interestDerivationComment": "Comentario de derivación"
 }

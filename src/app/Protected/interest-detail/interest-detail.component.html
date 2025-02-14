@@ -2,7 +2,121 @@
 <form [formGroup]="interestForm" (ngSubmit)="onSubmit()">
     <mat-tab-group animationDuration="500ms" mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight
         [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
-
+        <mat-tab label="{{'identification'|translate}}">
+            <section>
+                <mat-form-field>
+                    <mat-label>{{'interestCreationDate'|translate}}</mat-label>
+                    <input matInput type="date">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'interestStatus'|translate}}</mat-label>
+                    <mat-select>
+                        <mat-option value="">---</mat-option>
+                        <mat-option value="282310000">{{'contactPending'|translate}}</mat-option>
+                        <mat-option value="282310001">{{'schedulePending'|translate}}</mat-option>
+                        <mat-option value="282310002">{{'meetingScheduled'|translate}}</mat-option>
+                        <mat-option value="282310003">{{'reenterpriseNotInterested'|translate}}</mat-option>
+                        <mat-option value="282310004">{{'grantorNotInterested'|translate}}</mat-option>
+                        <mat-option value="282310005">{{'processCreated'|translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field ngClass="textArea">
+                    <mat-label>{{'comment'|translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+            </section>
+            <section> <!-- Interessat -->
+                <mat-form-field>
+                    <mat-label>{{'contact'|translate}}</mat-label>
+                    <input type="text" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'contactPhone'|translate}}</mat-label>
+                    <input type="tel" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'contactMail'|translate}}</mat-label>
+                    <input type="email" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'interestIbrelleuProject'|translate}}</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'interestConsultant'|translate}}</mat-label>
+                    <mat-select>
+                        @for (interestConsultant of interestConsultantList; track interestConsultant) {
+                        <mat-option value="{{interestConsultant}}">{{interestConsultant}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'interestDelegation'|translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="Mallorca">Mallorca</mat-radio-button>
+                        <mat-radio-button value="Menorca">Menorca</mat-radio-button>
+                        <mat-radio-button value="Eivissa">{{'ibiza' | translate}}</mat-radio-button>
+                        <mat-radio-button value="Formentera">Formentera</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'interestConsultantPhone'|translate}}</mat-label>
+                    <input matInput type="phone">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'interestConsultantMail'|translate}}</mat-label>
+                    <input matInput type="mail">
+                </mat-form-field>
+            </section>
+            <section>
+                <mat-form-field>
+                    <mat-label>{{'ad'|translate}}</mat-label>
+                    <input type="text" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'desiredGrantorProject'|translate}}</mat-label>
+                    <input type="text" matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'desiredGrantorProjectConsultant'|translate}}</mat-label>
+                    <mat-select>
+                        @for (grantorProjectsConsultant of grantorProjectsConsultantList; track
+                        grantorProjectsConsultant) {
+                        <mat-option value="{{grantorProjectsConsultant}}">{{grantorProjectsConsultant}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <section>
+                    <mat-label>{{'desiredGrantorProjectDelegation'|translate}}</mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button value="Mallorca">Mallorca</mat-radio-button>
+                        <mat-radio-button value="Menorca">Menorca</mat-radio-button>
+                        <mat-radio-button value="Eivissa">{{'ibiza' | translate}}</mat-radio-button>
+                        <mat-radio-button value="Formentera">Formentera</mat-radio-button>
+                    </mat-radio-group>
+                </section>
+                <mat-form-field>
+                    <mat-label>{{'desiredGrantorProjectConsultantPhone'|translate}}</mat-label>
+                    <input matInput type="phone">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>{{'desiredGrantorProjectConsultantMail'|translate}}</mat-label>
+                    <input matInput type="mail">
+                </mat-form-field>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'interestDerivation'|translate}}">
+            <section>
+                <mat-form-field>
+                    <mat-label>{{'interestDerivationComment' | translate}}</mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+                <mat-checkbox>{{'sendInterest' | translate}}</mat-checkbox>
+            </section>
+        </mat-tab>
+        <mat-tab label="{{'documentation'|translate}}">
+            <app-document id="{{id}}" origin="interests"></app-document>
+        </mat-tab>
     </mat-tab-group>
     <div ngClass="centered-item">
         <button mat-raised-button color="primary" type="submit">Guardar</button>

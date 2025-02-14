@@ -766,5 +766,26 @@
   "interestedDelegation": "Oficina del Projecte Cedent interessat en",
   "sendInterest": "Enviar interès",
 
-  "interestForm": "Formulari interès"
+  "interestForm": "Formulari interès",
+
+  "interestCreationDate": "Data de generació del interès",
+  "contactPending": "Pendent de contactar",
+  "schedulePending": "Pendent de programar",
+  "meetingScheduled": "Reunió programada entre les parts",
+  "reenterpriseNotInterested": "Persona reemprenedora no interessada en el procés",
+  "grantorNotInterested": "Persona cedent no interessada en el procés",
+  "processCreated": "Procés creat",
+  "comment": "Comentari",
+  "contactPhone": "Telèfon contacte",
+  "contactMail": "Correu contacte",
+  "interestConsultantPhone": "Telèfon del consultor de l'Interessat",
+  "interestConsultantMail": "Correu electrònic del consultor de l'Interessat",
+  "desiredGrantorProject": "Projecte Cedent desitjat",
+  "desiredGrantorProjectConsultant": "Consultor del Projecte Cedent desitjat",
+  "desiredGrantorProjectDelegation": "Oficina del Projecte Cedent desitjat",
+  "desiredGrantorProjectConsultantPhone": "Telèfon del consultor del Projecte Cedent desitjat",
+  "desiredGrantorProjectConsultantMail": "Correu electrònic del consultor del Projecte Cedent desitjat",
+
+  "interestDerivation": "Derivació interès",
+  "interestDerivationComment": "Comentari de derivació"
 }
