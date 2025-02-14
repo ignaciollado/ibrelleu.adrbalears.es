@@ -17,14 +17,14 @@ export class InterestComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator
 
   constructor(private dataService: DataService) {
-    this.loadAllInterestData()
+    // this.loadAllInterestData()
   }
 
-  loadAllInterestData() {
-    this.dataService.getAllInterests().subscribe((interests: InterestDTO[]) => {
-      this.dataSource.data = interests;
-      this.dataSource.paginator = this.paginator
-    })
-  }
+  // loadAllInterestData() {
+  //   this.dataService.getAllInterests().subscribe((interests: InterestDTO[]) => {
+  //     this.dataSource.data = interests;
+  //     this.dataSource.paginator = this.paginator
+  //   })
+  // }
 
 }

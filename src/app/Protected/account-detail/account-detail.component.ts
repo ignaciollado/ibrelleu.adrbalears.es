@@ -193,7 +193,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     this.getCountries();
     this.getAllZipCodes();
     this.loadLegalFormList();
-    this.loadConsultantAndDelegationInfo();
+    // this.loadConsultantAndDelegationInfo();
     this.loadSectorInfo();
     this.loadActivityInfo();
     this.loadClientInfo();
@@ -227,27 +227,27 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       });
   }
 
-  loadConsultantAndDelegationInfo() {
-    this.dataService
-      .getAllAccounts()
-      .subscribe((accountsList: AccountDTO[]) => {
-        accountsList.forEach((account) => {
-          this.insertConsultantData(account.consultant);
-          this.insertDelegationData(account.delegation);
-        });
-      });
-  }
-  insertConsultantData(consultant: string) {
-    if (!this.consultantList.includes(consultant)) {
-      this.consultantList.push(consultant);
-    }
-  }
+  // loadConsultantAndDelegationInfo() {
+  //   this.dataService
+  //     .getAllAccounts()
+  //     .subscribe((accountsList: AccountDTO[]) => {
+  //       accountsList.forEach((account) => {
+  //         this.insertConsultantData(account.consultant);
+  //         this.insertDelegationData(account.delegation);
+  //       });
+  //     });
+  // }
+  // insertConsultantData(consultant: string) {
+  //   if (!this.consultantList.includes(consultant)) {
+  //     this.consultantList.push(consultant);
+  //   }
+  // }
 
-  insertDelegationData(delegation: string) {
-    if (!this.delegationList.includes(delegation)) {
-      this.delegationList.push(delegation);
-    }
-  }
+  // insertDelegationData(delegation: string) {
+  //   if (!this.delegationList.includes(delegation)) {
+  //     this.delegationList.push(delegation);
+  //   }
+  // }
 
   loadSectorInfo() {
     this.dataService.getAllSectors().subscribe((sectorItems: any[]) => {

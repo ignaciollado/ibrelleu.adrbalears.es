@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { map, Observable, startWith } from 'rxjs';
-import { GrantorProjectsDTO } from '../../Models/grantor-project.dto';
+import { GrantorProjectsDTO } from '../../Models/grantorProject.dto';
 import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 
 @Component({
@@ -123,7 +123,7 @@ export class GrantorProjectDetailComponent {
     });
 
     this.loadKnowWays();
-    this.loadDelegationAndConsultant();
+    // this.loadDelegationAndConsultant();
     this.loadCessionType();
     this.getAllZipCodes();
     this.loadSectorInfo();
@@ -166,15 +166,15 @@ export class GrantorProjectDetailComponent {
     });
   }
 
-  loadDelegationAndConsultant() {
-    this.dataService
-      .getAllGrantorProjects()
-      .subscribe((grantorProjectsList: GrantorProjectsDTO[]) => {
-        grantorProjectsList.forEach((project) => {
-          this.insertData(project.consultant, project.delegation);
-        });
-      });
-  }
+  // loadDelegationAndConsultant() {
+  //   this.dataService
+  //     .getAllGrantorProjects()
+  //     .subscribe((grantorProjectsList: GrantorProjectsDTO[]) => {
+  //       grantorProjectsList.forEach((project) => {
+  //         this.insertData(project.consultant, project.delegation);
+  //       });
+  //     });
+  // }
 
   insertData(consultant?: string, delegation?: string) {
     if (consultant && !this.consultantList.includes(consultant)) {

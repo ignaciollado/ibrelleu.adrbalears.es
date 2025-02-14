@@ -8,9 +8,8 @@ import { ContactDTO } from '../Models/contact.dto';
 import { LegalFormDTO } from '../Models/legal-form.dto';
 import { ContactStatesDTO } from '../Models/contact-states.dto';
 import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
-import { GrantorProjectsDTO } from '../Models/grantor-project.dto';
-import { IBRelleuProjectsDTO } from '../Models/ibrelleu-project.dto';
-import { InterestDTO } from '../Models/interest.dto';
+import { GrantorProjectsDTO } from '../Models/grantorProject.dto';
+import { IBRelleuProjectsDTO } from '../Models/ibrelleuproject.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -85,7 +84,7 @@ export class DataService {
 
   getAllIbRelleuProjects(): Observable<IBRelleuProjectsDTO[]> {
     return this.http
-      .get<IBRelleuProjectsDTO[]>(`${this.urlAPIMock}ibrelleuProjects.json`)
+      .get<any[]>(`${this.urlAPIMock}ibrelleuProjects.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -93,10 +92,6 @@ export class DataService {
     return this.http
       .get<any[]>(`${this.urlAPIMock}ibrelleuTypology.json`)
       .pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllInterests(): Observable<InterestDTO[]> {
-    return this.http.get<InterestDTO[]>(`${this.urlAPIMock}interests.json`).pipe(catchError(this.sharedService.handleError))
   }
 
   getAllKnowWays(): Observable<any[]> {

@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { map, Observable, startWith } from 'rxjs';
-import { GrantorProjectsDTO } from '../../Models/grantor-project.dto';
+import { GrantorProjectsDTO } from '../../Models/grantorProject.dto';
 import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 
 @Component({
@@ -72,7 +72,7 @@ export class IbrelleuProjectDetailComponent {
     this.ibrelleuProjectForm = new FormGroup({});
 
     this.loadKnowWays();
-    this.loadDelegationAndConsultant();
+    // this.loadDelegationAndConsultant();
     this.loadSectorInfo();
     this.loadActivityInfo();
   }
@@ -96,25 +96,25 @@ export class IbrelleuProjectDetailComponent {
     sessionStorage.setItem('currentIbrelleuProjectTab', event.index.toString());
   }
 
-  loadDelegationAndConsultant() {
-    this.dataService
-      .getAllGrantorProjects()
-      .subscribe((grantorProjectsList: GrantorProjectsDTO[]) => {
-        grantorProjectsList.forEach((project) => {
-          this.insertData(project.consultant, project.delegation);
-        });
-      });
-  }
+  // loadDelegationAndConsultant() {
+  //   this.dataService
+  //     .getAllGrantorProjects()
+  //     .subscribe((grantorProjectsList: GrantorProjectsDTO[]) => {
+  //       grantorProjectsList.forEach((project) => {
+  //         this.insertData(project.consultant, project.delegation);
+  //       });
+  //     });
+  // }
 
-  insertData(consultant?: string, delegation?: string) {
-    if (consultant && !this.consultantList.includes(consultant)) {
-      this.consultantList.push(consultant);
-    }
+  // insertData(consultant?: string, delegation?: string) {
+  //   if (consultant && !this.consultantList.includes(consultant)) {
+  //     this.consultantList.push(consultant);
+  //   }
 
-    if (delegation && !this.delegationList.includes(delegation)) {
-      this.delegationList.push(delegation);
-    }
-  }
+  //   if (delegation && !this.delegationList.includes(delegation)) {
+  //     this.delegationList.push(delegation);
+  //   }
+  // }
 
   loadSectorInfo() {
     this.dataService.getAllSectors().subscribe((sectorItems: any[]) => {

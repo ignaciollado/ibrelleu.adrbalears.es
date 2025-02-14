@@ -22,7 +22,7 @@ export class InterestDetailComponent {
   constructor(private route: ActivatedRoute, private dataService: DataService) {
     this.interestForm = new FormGroup({})
 
-    this.loadConsultants();
+    // this.loadConsultants();
   }
 
   ngOnInit() {
@@ -46,21 +46,21 @@ export class InterestDetailComponent {
     sessionStorage.setItem('currentInterestTab', event.index.toString());
   }
 
-  loadConsultants() {
-    this.dataService.getAllInterests().subscribe((interestList: InterestDTO[]) => {
-      interestList.forEach((interest) => {
-        if (!this.interestConsultantList.includes(interest.interestConsultant)) {
-          this.interestConsultantList.push(interest.interestConsultant)
-        }
+  // loadConsultants() {
+  //   this.dataService.getAllInterests().subscribe((interestList: InterestDTO[]) => {
+  //     interestList.forEach((interest) => {
+  //       if (!this.interestConsultantList.includes(interest.interestConsultant)) {
+  //         this.interestConsultantList.push(interest.interestConsultant)
+  //       }
 
-        if (!this.grantorProjectsConsultantList.includes(interest.desiredGrantorProjectConsultant)) {
-          this.grantorProjectsConsultantList.push(interest.desiredGrantorProjectConsultant)
-        }
-      })
-    })
+  //       if (!this.grantorProjectsConsultantList.includes(interest.desiredGrantorProjectConsultant)) {
+  //         this.grantorProjectsConsultantList.push(interest.desiredGrantorProjectConsultant)
+  //       }
+  //     })
+  //   })
 
 
 
-  }
+  // }
 
 }
