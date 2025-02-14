@@ -21,6 +21,7 @@ import { IbrelleuProjectsComponent } from './Protected/ibrelleu-projects/ibrelle
 import { IbrelleuProjectDetailComponent } from './Protected/ibrelleu-project-detail/ibrelleu-project-detail.component';
 import { InterestComponent } from './Protected/interest/interest.component';
 import { InterestDetailComponent } from './Protected/interest-detail/interest-detail.component';
+import { AdvertisementsComponent } from './Protected/advertisements/advertisements.component';
 
 const routes: Routes = [
   { path: 'home', component: BodyComponent },
@@ -55,6 +56,12 @@ const routes: Routes = [
     component: GrantorProjectDetailComponent,
     canDeactivate: [CanDeactivateGuard],
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'advertisements',
+    component: AdvertisementsComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard]
   },
   {
     path: 'ibrelleu-projects',

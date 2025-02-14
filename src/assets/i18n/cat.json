@@ -787,5 +787,7 @@
   "desiredGrantorProjectConsultantMail": "Correu electrònic del consultor del Projecte Cedent desitjat",
 
   "interestDerivation": "Derivació interès",
-  "interestDerivationComment": "Comentari de derivació"
+  "interestDerivationComment": "Comentari de derivació",
+
+  "advertisements": "Anuncis"
 }

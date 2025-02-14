@@ -40,7 +40,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {CdkMenuModule} from '@angular/cdk/menu';
+import { CdkMenuModule } from '@angular/cdk/menu';
 import { CdkMenuTrigger } from '@angular/cdk/menu';
 import { SelectLanguageComponent } from './select-language/select-language.component';
 import { ProtectedComponent } from './Protected/protected/protected.component';
@@ -69,6 +69,7 @@ import { IbrelleuProjectsComponent } from './Protected/ibrelleu-projects/ibrelle
 import { IbrelleuProjectDetailComponent } from './Protected/ibrelleu-project-detail/ibrelleu-project-detail.component';
 import { InterestComponent } from './Protected/interest/interest.component';
 import { InterestDetailComponent } from './Protected/interest-detail/interest-detail.component';
+import { AdvertisementsComponent } from './Protected/advertisements/advertisements.component';
 
 export function tokenGetter() {
   return sessionStorage.getItem('access_token');
@@ -107,6 +108,7 @@ registerLocaleData(localeES, 'es-ES');
     IbrelleuProjectDetailComponent,
     InterestComponent,
     InterestDetailComponent,
+    AdvertisementsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -165,4 +167,4 @@ registerLocaleData(localeES, 'es-ES');
 
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
