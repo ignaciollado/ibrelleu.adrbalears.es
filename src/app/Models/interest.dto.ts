@@ -5,9 +5,9 @@ export class InterestDTO {
     interestIbrelleuProject: string;
     interestConsultant: string;
     interestDelegation: string;
-    interestedGrantorProject: string;
-    interestedConsultant: string;
-    interestedDelegation: string;
+    desiredGrantorProject: string;
+    desiredGrantorProjectConsultant: string;
+    desiredGrantorProjectDelegation: string;
     sendInterest: string;
     creationDate: Date
 
@@ -18,9 +18,9 @@ export class InterestDTO {
         interestIbrelleuProject: string,
         interestConsultant: string,
         interestDelegation: string,
-        interestedGrantorProject: string,
-        interestedConsultant: string,
-        interestedDelegation: string,
+        desiredGrantorProject: string,
+        desiredGrantorProjectConsultant: string,
+        desiredGrantorProjectDelegation: string,
         sendInterest: string,
         creationDate: Date
     ) {
@@ -30,9 +30,9 @@ export class InterestDTO {
         this.interestIbrelleuProject = interestIbrelleuProject
         this.interestConsultant = interestConsultant
         this.interestDelegation = interestDelegation
-        this.interestedGrantorProject = interestedGrantorProject
-        this.interestedConsultant = interestedConsultant
-        this.interestedDelegation = interestedDelegation
+        this.desiredGrantorProject = desiredGrantorProject
+        this.desiredGrantorProjectConsultant = desiredGrantorProjectConsultant
+        this.desiredGrantorProjectDelegation = desiredGrantorProjectDelegation
         this.sendInterest = sendInterest
         this.creationDate = creationDate
     }
@@ -65,19 +65,19 @@ export const interestColumns = [
         label: "interestDelegation"
     },
     {
-        key: "interestedGrantorProject",
+        key: "desiredGrantorProject",
         type: "scope",
-        label: "interestedGrantorProject"
+        label: "desiredGrantorProject"
     },
     {
-        key: "interestedConsultant",
+        key: "desiredGrantorProjectConsultant",
         type: "scope",
-        label: "interestedConsultant"
+        label: "desiredGrantorProjectConsultant"
     },
     {
-        key: "interestedDelegation",
+        key: "desiredGrantorProjectDelegation",
         type: "scope",
-        label: "interestedDelegation"
+        label: "desiredGrantorProjectDelegation"
     },
     {
         key: "sendInterest",
