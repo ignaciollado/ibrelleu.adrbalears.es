@@ -764,5 +764,7 @@
   "interestedGrantorProject": "Projecte Cedent interessat en",
   "interestedConsultant": "Consultor del Projecte Cedent interessat en",
   "interestedDelegation": "Oficina del Projecte Cedent interessat en",
-  "sendInterest": "Enviar interès"
+  "sendInterest": "Enviar interès",
+
+  "interestForm": "Formulari interès"
 }

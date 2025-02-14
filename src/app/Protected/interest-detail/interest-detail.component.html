@@ -1,1 +1,17 @@
-<p>interest-detail works!</p>
+<h1>{{'interestForm' | translate}}</h1>
+<form [formGroup]="interestForm" (ngSubmit)="onSubmit()">
+    <mat-tab-group animationDuration="500ms" mat-stretch-tabs="false" mat-align-tabs="center" dynamicHeight
+        [(selectedIndex)]="selectedIndex" (selectedTabChange)="onTabChange($event)">
+
+    </mat-tab-group>
+    <div ngClass="centered-item">
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+    <div ngClass="centered-item">
+        <small ngClass="centered-item">
+            Status: {{interestForm.status}} | Valid: {{interestForm.valid}} | Pristine: {{interestForm.pristine}} |
+            Touched:
+            {{interestForm.touched}} | Dirty: {{interestForm.dirty}}
+        </small>
+    </div>
+</form>
