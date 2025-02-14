@@ -16,7 +16,6 @@ import { CanDeactivateGuard } from './can-deactivate.guard';
 import { ShowGenericDataComponent } from './generic/show-generic-data/show-generic-data.component';
 import { GrantorProjectsComponent } from './Protected/grantor-projects/grantor-projects.component';
 import { GrantorProjectDetailComponent } from './Protected/grantor-project-detail/grantor-project-detail.component';
-import { DocumentComponent } from './Protected/document/document.component';
 import { IbrelleuProjectsComponent } from './Protected/ibrelleu-projects/ibrelleu-projects.component';
 import { IbrelleuProjectDetailComponent } from './Protected/ibrelleu-project-detail/ibrelleu-project-detail.component';
 import { InterestComponent } from './Protected/interest/interest.component';
