@@ -8,8 +8,8 @@ import { ContactDTO } from '../Models/contact.dto';
 import { LegalFormDTO } from '../Models/legal-form.dto';
 import { ContactStatesDTO } from '../Models/contact-states.dto';
 import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
-import { GrantorProjectsDTO } from '../Models/grantor-project.dto';
-import { IBRelleuProjectsDTO } from '../Models/ibrelleu-project.dto';
+import { GrantorProjectsDTO } from '../Models/grantorProject.dto';
+import { IBRelleuProjectsDTO } from '../Models/ibrelleuproject.dto';
 
 @Injectable({
   providedIn: 'root',

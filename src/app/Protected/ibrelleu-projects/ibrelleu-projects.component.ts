@@ -6,7 +6,7 @@ import { DataService } from '../../Services/data.service';
 import {
   IBRelleuProjectsDTO,
   ibrelleuProjectColumns,
-} from '../../Models/ibrelleu-project.dto';
+} from '../../Models/ibrelleuproject.dto';
 
 @Component({
   selector: 'adr-ibrelleu-projects',

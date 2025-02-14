@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import {
   grantorProjectColumns,
   GrantorProjectsDTO,
-} from '../../Models/grantor-project.dto';
+} from '../../Models/grantorProject.dto';
 
 @Component({
   selector: 'adr-grantor-projects',

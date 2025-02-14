@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { map, Observable, startWith } from 'rxjs';
-import { GrantorProjectsDTO } from '../../Models/grantor-project.dto';
+import { GrantorProjectsDTO } from '../../Models/grantorProject.dto';
 import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 
 @Component({

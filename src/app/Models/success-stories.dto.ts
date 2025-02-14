@@ -1,51 +1,156 @@
 export class SuccessStoriesDTO {
-  id: string;
-  delegation: string;
-  companyName: string;
-  proces: string;
-  grantorProject: string;
-  reInterpriseProject: string;
-  mainSector: string;
-  activityType: string;
-  transferPrice: number;
-  numWorkersToBehired: number;
-  numWorkersSaved: number;
-  numEntrepreneursWhoWillWork: number;
-  numPeopleWoringAtReempres: number;
-  creationDate: Date;
-
-  constructor(
-    id: string,
-    delegation: string,
-    companyName: string,
-    proces: string,
-    grantorProject: string,
-    reInterpriseProject: string,
-    mainSector: string,
-    activityType: string,
-    transferPrice: number,
-    numWorkersToBehired: number,
-    numWorkersSaved: number,
-    numEntrepreneursWhoWillWork: number,
-    numPeopleWoringAtReempres: number,
-    creationDate: Date
-  ) {
-    this.id = id;
-    (this.delegation = delegation),
-      (this.companyName = companyName),
-      (this.proces = proces),
-      (this.grantorProject = grantorProject),
-      (this.reInterpriseProject = reInterpriseProject),
-      (this.mainSector = mainSector),
-      (this.activityType = activityType),
-      (this.transferPrice = transferPrice),
-      (this.numWorkersToBehired = numWorkersToBehired),
-      (this.numWorkersSaved = numWorkersSaved),
-      (this.numEntrepreneursWhoWillWork = numEntrepreneursWhoWillWork),
-      (this.numPeopleWoringAtReempres = numPeopleWoringAtReempres),
-      (this.creationDate = creationDate);
+    identificacio: string;
+    codi: string;
+    dataEntradaTransmissio: Date;
+    nomProjecte: string;
+    personaResponsable: string;
+    personaResponsableContacte: boolean;
+    compte: string;
+    gestioProjecte: string;
+    consultor: string;
+    delegacio: string;
+    estatProjecte: string;
+    observacionsEstatProjecte: string;
+    comEnsHaConegut: string;
+    preferenciesEmpresaReemprendre: string;
+    enviarCorreuAutomatic: boolean;
+    perfilEmpresaDesitjada: string;
+    sectorPrincipal: string;
+    activitat1: string;
+    sector2: string;
+    activitat2: string;
+    interesMercatMunicipal: boolean;
+    interesFranquicia: boolean;
+    ambitGeografic: string;
+    provincia: string;
+    comunidadAutonoma: string;
+    pais: string;
+    numeroMaximTreballadors: number;
+    numeroMinimTreballadors: number;
+    propietatLocal: boolean;
+    motiuCessio: string;
+    capacitatInversio: number;
+    intervalPreuCessio: number;
+    aportacionsSocis: number;
+    financamentParticular: number;
+    financamentBancari: number;
+    capitalitzacioAtur: number;
+    financamentAltres: number;
+    totalCapacitatEconomica: number;
+    comReempren: string;
+    motiuReemprendre: string;
+    passesRealitzades: string;
+    avantatgesProjecteReempresa: string;
+    dificultatsProjecteReempresa: string;
+    formacioManca: string;
+    dataLimitReemprendre: Date;
+    contacteEmpresaCedent: boolean;
+    dadesEmpresaCedent: string;
+    contacteIntermediari: boolean;
+    dadesIntermediari: string;
+  
+    constructor(
+      identificacio: string,
+      codi: string,
+      dataEntradaTransmissio: Date,
+      nomProjecte: string,
+      personaResponsable: string,
+      personaResponsableContacte: boolean,
+      compte: string,
+      gestioProjecte: string,
+      consultor: string,
+      delegacio: string,
+      estatProjecte: string,
+      observacionsEstatProjecte: string,
+      comEnsHaConegut: string,
+      preferenciesEmpresaReemprendre: string,
+      enviarCorreuAutomatic: boolean,
+      perfilEmpresaDesitjada: string,
+      sectorPrincipal: string,
+      activitat1: string,
+      sector2: string,
+      activitat2: string,
+      interesMercatMunicipal: boolean,
+      interesFranquicia: boolean,
+      ambitGeografic: string,
+      provincia: string,
+      comunidadAutonoma: string,
+      pais: string,
+      numeroMaximTreballadors: number,
+      numeroMinimTreballadors: number,
+      propietatLocal: boolean,
+      motiuCessio: string,
+      capacitatInversio: number,
+      intervalPreuCessio: number,
+      aportacionsSocis: number,
+      financamentParticular: number,
+      financamentBancari: number,
+      capitalitzacioAtur: number,
+      financamentAltres: number,
+      totalCapacitatEconomica: number,
+      comReempren: string,
+      motiuReemprendre: string,
+      passesRealitzades: string,
+      avantatgesProjecteReempresa: string,
+      dificultatsProjecteReempresa: string,
+      formacioManca: string,
+      dataLimitReemprendre: Date,
+      contacteEmpresaCedent: boolean,
+      dadesEmpresaCedent: string,
+      contacteIntermediari: boolean,
+      dadesIntermediari: string
+    ) {
+      this.identificacio = identificacio;
+      this.codi = codi;
+      this.dataEntradaTransmissio = dataEntradaTransmissio;
+      this.nomProjecte = nomProjecte;
+      this.personaResponsable = personaResponsable;
+      this.personaResponsableContacte = personaResponsableContacte;
+      this.compte = compte;
+      this.gestioProjecte = gestioProjecte;
+      this.consultor = consultor;
+      this.delegacio = delegacio;
+      this.estatProjecte = estatProjecte;
+      this.observacionsEstatProjecte = observacionsEstatProjecte;
+      this.comEnsHaConegut = comEnsHaConegut;
+      this.preferenciesEmpresaReemprendre = preferenciesEmpresaReemprendre;
+      this.enviarCorreuAutomatic = enviarCorreuAutomatic;
+      this.perfilEmpresaDesitjada = perfilEmpresaDesitjada;
+      this.sectorPrincipal = sectorPrincipal;
+      this.activitat1 = activitat1;
+      this.sector2 = sector2;
+      this.activitat2 = activitat2;
+      this.interesMercatMunicipal = interesMercatMunicipal;
+      this.interesFranquicia = interesFranquicia;
+      this.ambitGeografic = ambitGeografic;
+      this.provincia = provincia;
+      this.comunidadAutonoma = comunidadAutonoma;
+      this.pais = pais;
+      this.numeroMaximTreballadors = numeroMaximTreballadors;
+      this.numeroMinimTreballadors = numeroMinimTreballadors;
+      this.propietatLocal = propietatLocal;
+      this.motiuCessio = motiuCessio;
+      this.capacitatInversio = capacitatInversio;
+      this.intervalPreuCessio = intervalPreuCessio;
+      this.aportacionsSocis = aportacionsSocis;
+      this.financamentParticular = financamentParticular;
+      this.financamentBancari = financamentBancari;
+      this.capitalitzacioAtur = capitalitzacioAtur;
+      this.financamentAltres = financamentAltres;
+      this.totalCapacitatEconomica = totalCapacitatEconomica;
+      this.comReempren = comReempren;
+      this.motiuReemprendre = motiuReemprendre;
+      this.passesRealitzades = passesRealitzades;
+      this.avantatgesProjecteReempresa = avantatgesProjecteReempresa;
+      this.dificultatsProjecteReempresa = dificultatsProjecteReempresa;
+      this.formacioManca = formacioManca;
+      this.dataLimitReemprendre = dataLimitReemprendre;
+      this.contacteEmpresaCedent = contacteEmpresaCedent;
+      this.dadesEmpresaCedent = dadesEmpresaCedent;
+      this.contacteIntermediari = contacteIntermediari;
+      this.dadesIntermediari = dadesIntermediari;
+    }
   }
-}
 
 export const successStoriesColumns = [
   {
