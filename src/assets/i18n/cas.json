@@ -783,5 +783,6 @@
   "language": "Lenguaje",
   "advertisementstate": "Estado del anuncio",
   "grantorprojectid": "ID Proyecto Cedente",
-  "publicationdate": "Fecha de publicación"
+  "publicationdate": "Fecha de publicación",
+  "createAdvertisement": "Crear nuevo anuncio"
 }

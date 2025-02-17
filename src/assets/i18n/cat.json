@@ -791,5 +791,6 @@
   "language": "Llenguatge",
   "advertisementstate": "Estat de l'anunci",
   "grantorprojectid": "ID Projecte Cedent",
-  "publicationdate": "Data de publicació"
+  "publicationdate": "Data de publicació",
+  "createAdvertisement": "Crear nou anunci"
 }

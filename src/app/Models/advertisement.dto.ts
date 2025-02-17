@@ -39,7 +39,35 @@ export class AdvertisementDTO {
     this.publicationdate = publicationdate;
     this.description = description;
     this.experienciaCompetencies = experienciaCompetencies;
-    this.publicinweb =  	publicinweb;
+    this.publicinweb = publicinweb;
     this.notes = notes;
   }
 }
+
+export const advertisementColumnsBBDD = [
+  {
+    key: "title",
+    type: "url",
+    label: "Títol de l'anunci"
+  },
+  {
+    key: "language",
+    type: "scope",
+    label: "Idioma"
+  },
+  {
+    key: "advertisementstate",
+    type: "scope",
+    label: "Estat de l'anunci"
+  },
+  {
+    key: "grantorprojectid",
+    type: "scope",
+    label: "Projecte Cedent"
+  },
+  {
+    key: "publicationdate",
+    type: "date",
+    label: "Data de publicació"
+  },
+]
