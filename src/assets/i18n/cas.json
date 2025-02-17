@@ -788,5 +788,13 @@
   "createAdvertisement": "Crear nuevo anuncio",
 
   "adForm": "Formulario anuncio",
-  "marketPlaceInterest": "¿Interés en publicar anuncio en MarketPlace?"
+  "marketPlaceInterest": "¿Interés en publicar anuncio en MarketPlace?",
+  "adTitle": "Título del anuncio",
+  "publish": "Publicado",
+  "noPublish": "No publicado",
+  "adDescription": "Descripción del anuncio",
+  "cas": "Castellano",
+  "cat": "Catalán",
+  "en": "Inglés",
+  "webAdPublish": "Publicado a la web"
 }

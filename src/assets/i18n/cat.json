@@ -796,5 +796,13 @@
   "createAdvertisement": "Crear nou anunci",
 
   "adForm": "Formulari anunci",
-  "marketPlaceInterest": "Interès en publicar anunci al MarketPlace?"
+  "marketPlaceInterest": "Interès en publicar anunci al MarketPlace?",
+  "adTitle": "Títol de l'anunci",
+  "publish": "Publicat",
+  "noPublish": "No publicat",
+  "adDescription": "Descripció de l'anunci",
+  "cas": "Castellà",
+  "cat": "Català",
+  "en": "Anglés",
+  "webAdPublish": "Publicat a la web"
 }
