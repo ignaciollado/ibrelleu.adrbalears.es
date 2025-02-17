@@ -754,8 +754,6 @@
   "grantorProjectForm": "Formulari de Projecte Cedent",
   "successStoriesForm": "Formulari de Cas d'Èxit",
 
-  "uploadedDocuments": "Documents penjats",
-
   "contact": "Contacte",
   "interestStatus": "Estat de l'interès",
   "interestIbrelleuProject": "Projecte IBRelleu de l'Interessat",
@@ -789,5 +787,9 @@
   "interestDerivation": "Derivació interès",
   "interestDerivationComment": "Comentari de derivació",
 
-  "advertisements": "Anuncis"
+  "advertisements": "Anuncis",
+  "language": "Llenguatge",
+  "advertisementstate": "Estat de l'anunci",
+  "grantorprojectid": "ID Projecte Cedent",
+  "publicationdate": "Data de publicació"
 }

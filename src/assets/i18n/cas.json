@@ -746,8 +746,6 @@
   "grantorProjectForm": "Formulario de Proyecto Cedente",
   "successStoriesForm": "Formulario de Caso de éxito",
 
-  "uploadedDocuments": "Documentos subidos",
-
   "contact": "Contacto",
   "interestStatus": "Estado del interés",
   "interestIbrelleuProject": "Proyecto IBRelleu del Interesado",
@@ -781,5 +779,9 @@
   "interestDerivation": "Derivación interés",
   "interestDerivationComment": "Comentario de derivación",
 
-  "advertisements": "Anuncios"
+  "advertisements": "Anuncios",
+  "language": "Lenguaje",
+  "advertisementstate": "Estado del anuncio",
+  "grantorprojectid": "ID Proyecto Cedente",
+  "publicationdate": "Fecha de publicación"
 }
