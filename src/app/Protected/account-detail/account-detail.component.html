@@ -8,7 +8,7 @@
           <mat-label>{{'legalForm' | translate}}</mat-label>
           <mat-select formControlName="legalFormat">
             @for (legalFormItem of legalFormList; track legalFormItem) {
-            <mat-option [value]="legalFormItem.value">{{legalFormItem.label}}</mat-option>
+            <mat-option [value]="legalFormItem.label">{{legalFormItem.label}}</mat-option>
             }
           </mat-select>
         </mat-form-field>

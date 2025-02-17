@@ -11,6 +11,7 @@ import { AccountDTO } from '../../Models/account.dto';
 import { CustomValidatorsService } from '../../Services/custom-validators.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { AccountService } from '../../Services/account.service';
 
 @Component({
   selector: 'adr-account-detail',
@@ -47,7 +48,8 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     private dataService: DataService,
     private countriesService: CountriesService,
     private customValidatorsService: CustomValidatorsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private accountService: AccountService
   ) {
     this.theForm = new FormGroup({
       // Identificació
@@ -199,6 +201,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     this.loadClientInfo();
     this.loadContinentInfo();
     this.loadDebtsSitesInfo();
+    this.loadTargetAccount();
   }
 
   ngOnInit() {
@@ -210,6 +213,8 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         return name ? this._filter(name as string) : this.options.slice();
       })
     );
+
+
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
@@ -218,6 +223,36 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     }
     return true;
   }
+
+  loadTargetAccount() {
+    this.accountService.getAccounts().subscribe((accounts: AccountDTO[]) => {
+      let targetAccount = accounts.find(account => account.id.toString() === this.id)
+      console.log(targetAccount)
+      this.loadFormData(targetAccount);
+    })
+
+  }
+
+  loadFormData(targetAccount: AccountDTO) {
+    let account = targetAccount;
+
+    this.theForm.patchValue({
+      legalFormat: account['forma_juridica'],
+      contact: account['contacte_principal'],
+      companyName: account['rao_social'],
+      nif: account['nif'],
+      tradeName: account['nomComercial'],
+      paradesMercat: account.gestionaParadesMercat,
+      collaborationCompanys: account.empresaEntitatColaboradora,
+      councilTitularity: account.gestionaEstablimentsComercials,
+      sportConcessions: account.gestionaConcessionsAdministratives,
+      activeBusiness: account.empresaEnFuncionament,
+      creationYear: account.anyConstitucio
+    })
+
+  }
+
+
 
   loadLegalFormList() {
     this.dataService
