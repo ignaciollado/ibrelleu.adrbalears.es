@@ -22,9 +22,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   id: string = this.route.snapshot.paramMap.get('id');
   selectedIndex: number;
 
-  timeFrame_es = ['Mañana', 'Tarde', 'Todo el día'];
-  timeFrame_ca = ['Matí', 'Tarda', 'Tot el día'];
-
   expandedIndex = 0;
   isElevated: boolean = true;
   theForm: FormGroup;
@@ -32,7 +29,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   zipCodeList: ZipCodesIBDTO[] = [];
   employmentStatusList: any[] = [];
   levelOfEducationList: any[] = [];
-  workingModeList: any[] = [];
   filteredOptions: Observable<ZipCodesIBDTO[]>;
   options: ZipCodesIBDTO[] = [];
 
@@ -110,9 +106,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
 
     this.getCountries();
     this.getAllZipCodes();
-    this.getEmployementStatusList();
     this.getLevelOfEducationList();
-    this.getWorkingModes();
     this.loadConsultantAndDelegationInfo();
     this.getContactById(+this.id);
   }
@@ -141,13 +135,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     });
   }
 
-  getEmployementStatusList() {
-    this.dataService
-      .getAllEmployementsStatus()
-      .subscribe((employStatus: any[]) => {
-        this.employmentStatusList = employStatus;
-      });
-  }
 
   getLevelOfEducationList() {
     this.dataService.getAllLevelsOfEducation().subscribe((levelOFEd: any[]) => {
@@ -155,11 +142,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     });
   }
 
-  getWorkingModes() {
-    this.dataService.getAllWorkingModes().subscribe((workingMode: any[]) => {
-      this.workingModeList = workingMode;
-    });
-  }
 
   loadConsultantAndDelegationInfo() {
     this.dataService.getAllContacts().subscribe((contactList: ContactDTO[]) => {
@@ -173,6 +155,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   getContactById(id: number) {
     this.contactService.getContactById(id).subscribe(
       (contact: ContactDTO) => {
+        console.log(contact)
         this.theForm.patchValue({
           nombre: contact.firstName,
           apellidos: contact.lastName,
@@ -183,21 +166,40 @@ export class ContactDetailComponent implements CanComponentDeactivate {
             ? contact.nationality
             : [contact.nationality],
           perfilTecnicoCedente: contact.perfilTecnicoCedente,
+          estadoContacto: contact.contact_status,
           userProfile: Array.isArray(contact.userProfile)
             ? contact.userProfile
             : [contact.userProfile],
-          estadoContacto: contact.contact_status,
+          motivoEstado: contact.state_reason,
+          consultor: contact.consultant,
           delegacion: contact.delegation,
           mainPhone: contact.mainPhone,
           mainMail: contact.mainMail,
           secondaryPhone: contact.secondary_phone,
-          professionalPhone: contact.professional_phone,
           secondaryMail: contact.secondary_email,
+          professionalPhone: contact.professional_phone,
+          contactTimePreference: Array.isArray(contact.preferred_contact_time) ? contact.preferred_contact_time : [contact.preferred_contact_time],
+          contactingComments: contact.contact_comments,
+          localizationAddress: contact.localizationAddress,
           zipCode: contact.zipCode,
           localizationCity: contact.town,
           councilCity: contact.council,
-          island: contact.island
+          island: contact.island,
+          employmentStatus: contact.job_status,
+          levelOfEducation: Array.isArray(contact.education_level)
+            ? contact.education_level
+            : [contact.education_level],
+          workingMode: contact.self_employed,
+          businessFormationCheck: contact.business_management_training,
+          businessTypology: Array.isArray(contact.training_type)
+            ? contact.training_type
+            : [contact.training_type],
+          experienceAreas: Array.isArray(contact.experience_areas)
+            ? contact.experience_areas
+            : [contact.experience_areas],
         });
+
+
         this.showSnackBar('Contact retrieved successfully!!!');
       },
       (error) => {
@@ -220,6 +222,8 @@ export class ContactDetailComponent implements CanComponentDeactivate {
 
   onSubmit() {
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
+    console.log(this.theForm.valid)
+    console.log(this.theForm.value)
   }
 
   onTabChange(event: MatTabChangeEvent) {
@@ -242,7 +246,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
       .get('localizationCity')
       .setValue(this.theForm.get('zipCode').value['town']);
     this.theForm
-      .get('localizationCCAA')
+      .get('island')
       .setValue(this.theForm.get('zipCode').value['island']);
     this.theForm
       .get('councilCity')
