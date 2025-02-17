@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "grantorProjectName": "ADR",
+    "nomProjecte": "ADR",
     "projectStatus": "Cancelled",
     "account": "ADR Balears",
     "mainSector": "Servicios",
@@ -21,7 +21,7 @@
   },
   {
     "id": 2,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -41,7 +41,7 @@
   },
   {
     "id": 3,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -61,7 +61,7 @@
   },
   {
     "id": 4,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -81,7 +81,7 @@
   },
   {
     "id": 5,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -101,7 +101,7 @@
   },
   {
     "id": 6,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -121,7 +121,7 @@
   },
   {
     "id": 7,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -141,7 +141,7 @@
   },
   {
     "id": 8,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -161,7 +161,7 @@
   },
   {
     "id": 9,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -181,7 +181,7 @@
   },
   {
     "id": 10,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -201,7 +201,7 @@
   },
   {
     "id": 11,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -221,7 +221,7 @@
   },
   {
     "id": 12,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -241,7 +241,7 @@
   },
   {
     "id": 13,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -261,7 +261,7 @@
   },
   {
     "id": 14,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -281,7 +281,7 @@
   },
   {
     "id": 15,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -301,7 +301,7 @@
   },
   {
     "id": 16,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -321,7 +321,7 @@
   },
   {
     "id": 17,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -341,7 +341,7 @@
   },
   {
     "id": 18,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -361,7 +361,7 @@
   },
   {
     "id": 19,
-    "grantorProjectName": "Patata Frita al por mejor",
+    "nomProjecte": "Patata Frita al por mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",
@@ -381,7 +381,7 @@
   },
   {
     "id": 20,
-    "grantorProjectName": "Patata Frita, la mejor",
+    "nomProjecte": "Patata Frita, la mejor",
     "projectStatus": "Active",
     "account": "Patata Frita SL",
     "mainSector": "Comercio",

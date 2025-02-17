@@ -497,6 +497,7 @@
   "serviceSummary": "Resum del servei ofert",
 
   "grantorProjectName": "Nom del projecte",
+  "nomProjecte": "Nom del projecte",
   "projectStatus": "Estat del projecte",
   "account": "Compte",
   "transferReason": "Motiu de cessió/venda",
@@ -792,5 +793,8 @@
   "advertisementstate": "Estat de l'anunci",
   "grantorprojectid": "ID Projecte Cedent",
   "publicationdate": "Data de publicació",
-  "createAdvertisement": "Crear nou anunci"
+  "createAdvertisement": "Crear nou anunci",
+
+  "adForm": "Formulari anunci",
+  "marketPlaceInterest": "Interès en publicar anunci al MarketPlace?"
 }

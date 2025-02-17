@@ -488,6 +488,7 @@
   "serviceSummary": "Resumen del servicio ofrecido",
 
   "grantorProjectName": "Nombre del proyecto",
+  "nomProjecte": "Nombre del proyecto",
   "projectStatus": "Estado del proyecto",
   "account": "Cuenta",
   "transferReason": "Motivación de cesión/venta",
@@ -784,5 +785,8 @@
   "advertisementstate": "Estado del anuncio",
   "grantorprojectid": "ID Proyecto Cedente",
   "publicationdate": "Fecha de publicación",
-  "createAdvertisement": "Crear nuevo anuncio"
+  "createAdvertisement": "Crear nuevo anuncio",
+
+  "adForm": "Formulario anuncio",
+  "marketPlaceInterest": "¿Interés en publicar anuncio en MarketPlace?"
 }
