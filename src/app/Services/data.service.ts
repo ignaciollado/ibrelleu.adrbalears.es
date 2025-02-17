@@ -70,12 +70,6 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllEmployementsStatus(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}employmentStatus.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
   getAllGrantorProjects(): Observable<GrantorProjectsDTO[]> {
     return this.http
       .get<GrantorProjectsDTO[]>(`${this.urlAPIMock}grantor-projects.json`)
@@ -139,12 +133,6 @@ export class DataService {
   getAllTransmissionTypologies(): Observable<any[]> {
     return this.http
       .get<any[]>(`${this.urlAPIMock}transmissionTypology.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllWorkingModes(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}workingMode.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
