@@ -34,15 +34,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   sectorList: any[] = [];
   activityList: any[] = [];
 
-  clientTypologyList: any[] = [];
   continentList: any[] = [];
-
-  propertyStatus: any[] = [
-    { value: '282310000', view: 'Propietat' },
-    { value: '282310001', view: 'Lloguer' },
-  ];
-
-  debtsSitesList: any[] = [];
 
   constructor(
     private dataService: DataService,
@@ -198,9 +190,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     // this.loadConsultantAndDelegationInfo();
     this.loadSectorInfo();
     this.loadActivityInfo();
-    this.loadClientInfo();
     this.loadContinentInfo();
-    this.loadDebtsSitesInfo();
     this.loadTargetAccount();
   }
 
@@ -293,20 +283,6 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   loadActivityInfo() {
     this.dataService.getAllActivities().subscribe((activityItems: any[]) => {
       this.activityList = activityItems;
-    });
-  }
-
-  loadClientInfo() {
-    this.dataService
-      .getAllClientTypologies()
-      .subscribe((typologyItems: any[]) => {
-        this.clientTypologyList = typologyItems;
-      });
-  }
-
-  loadDebtsSitesInfo() {
-    this.dataService.getAllDebtsSites().subscribe((debtsSitesItems: any[]) => {
-      this.debtsSitesList = debtsSitesItems;
     });
   }
 

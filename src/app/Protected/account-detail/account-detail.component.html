@@ -214,9 +214,10 @@
         <mat-form-field>
           <mat-label>{{'typologyClients' | translate}}</mat-label>
           <mat-select formControlName="typologyClients" placeholder="Choose an option">
-            @for (typologyItem of clientTypologyList; track typologyItem) {
-            <mat-option [value]="typologyItem.value">{{typologyItem.label}}</mat-option>
-            }
+            <mat-option value="B2A">B2A</mat-option>
+            <mat-option value="B2B">B2B</mat-option>
+            <mat-option value="B2C">B2C</mat-option>
+            <mat-option value="B2E">B2E</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
@@ -366,9 +367,15 @@
         <mat-form-field>
           <mat-label>{{'companyDebtors' | translate}}</mat-label>
           <mat-select formControlName="debtsList" multiple>
-            @for (debtsSitesItem of debtsSitesList; track debtsSitesItem) {
-            <mat-option [value]="debtsSitesItem.value">{{debtsSitesItem.label | translate}}</mat-option>
-            }
+            <mat-option value="Banc">{{'Banc' | translate}}</mat-option>
+            <mat-option value="Seguretat Social">{{'Seguretat Social' | translate}}</mat-option>
+            <mat-option value="Hisenda Pública">{{'Hisenda Pública' | translate}}</mat-option>
+            <mat-option value="Treballadors">{{'Treballadors' | translate}}</mat-option>
+            <mat-option value="Subministraments">{{'Subministraments' | translate}}</mat-option>
+            <mat-option value="Proveïdors">{{'Proveïdors' | translate}}</mat-option>
+            <mat-option value="Altres empreses">{{'Altres empreses' | translate}}</mat-option>
+            <mat-option value="Altres">{{'Altres' | translate}}</mat-option>
+
           </mat-select>
         </mat-form-field>
         <mat-form-field>

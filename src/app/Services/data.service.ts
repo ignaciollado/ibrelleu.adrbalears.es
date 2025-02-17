@@ -64,11 +64,6 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllDebtsSites(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}debtsSites.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
 
   getAllGrantorProjects(): Observable<GrantorProjectsDTO[]> {
     return this.http
