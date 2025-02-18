@@ -709,6 +709,7 @@
   "userOf": "Usuario de",
 
   "Cancelled": "Cancelado",
+  "Finished": "Finalizado",
 
   "noBusinessInterested": "No interesado en comprar un negocio",
   "newBusinessCreation": "Creación empresa desde cero",
@@ -728,7 +729,7 @@
   "Internet y Redes sociales": "Internet y Redes sociales",
 
   "comarca": "Comarca",
-  "província": "Provincia",
+  "provincia": "Provincia",
   "CCAA": "Comunidad Autónoma",
 
   "Cansancio": "Cansancio",
