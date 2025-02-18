@@ -136,8 +136,6 @@ export class IbrelleuProjectDetailComponent {
   }
 
   loadProjectFormInfo(project: IBRelleuProjectsDTO) {
-    this.ibrelleuProjectForm.get('municipalMarketInterest').setValue(true)
-    console.log(project)
     this.ibrelleuProjectForm.patchValue({
       projectName: project.nomProjecte,
       creationDate: project.dataEntrada,

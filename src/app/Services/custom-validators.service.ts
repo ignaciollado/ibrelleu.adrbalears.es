@@ -158,7 +158,6 @@ export class CustomValidatorsService {
     switch (organizationType) {
       case 'letter': {
         validControlDigit = this.controlDigitList[controlDigit];
-        console.log('letter', validControlDigit);
         return cifOrganizationCode + cifNumeration + validControlDigit;
       }
       case 'number': {
@@ -166,47 +165,6 @@ export class CustomValidatorsService {
         return cifOrganizationCode + cifNumeration + validControlDigit;
       }
     }
-
-    // let cifOrganizationCode = cif.substring(0, 1);
-
-    // let cifProvinceCode = cif.substring(1, 3);
-
-    // let cifNumeration = cif.substring(3, 8);
-
-    // let cifControlDigit = cif.substring(8, 9);
-
-    // let validOrganizationCode: boolean =
-    //   this.organizationCode.indexOf(cifOrganizationCode) != -1;
-
-    // let validProvinceCode: boolean =
-    //   this.provinceCode.indexOf(cifProvinceCode) != -1;
-
-    // let validNumeration: boolean = !isNaN(cifNumeration);
-
-    // let validControlDigit: boolean = false;
-
-    // if (
-    //   isNaN(cifControlDigit) &&
-    //   this.letterControlDigit.indexOf(cifOrganizationCode) != -1
-    // ) {
-    //   validControlDigit = true;
-    // } else if (
-    //   !isNaN(cifControlDigit) &&
-    //   this.numberControlDigit.indexOf(cifOrganizationCode) != -1
-    // ) {
-    //   validControlDigit = true;
-    // }
-
-    // if (
-    //   !validOrganizationCode ||
-    //   !validProvinceCode ||
-    //   !validNumeration ||
-    //   !validControlDigit
-    // ) {
-    //   return false;
-    // } else {
-    //   return true;
-    // }
   }
 
   dniNieValidator(dni: string, type: string) {
