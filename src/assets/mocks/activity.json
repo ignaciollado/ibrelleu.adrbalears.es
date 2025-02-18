@@ -132,10 +132,10 @@
     "label_ca": "Joieria, bijuteria i complements"
   },
   {
-    "value": "Llibreria, papereria, quiosc i material d'oficina",
+    "value": "Llibreria, papereria, quiosc i material d’oficina",
     "label": "Librería, papelería, quiosco y material de oficina",
     "sector": "Comerç",
-    "label_ca": "Llibreria, papereria, quiosc i material d'oficina"
+    "label_ca": "Llibreria, papereria, quiosc i material d’oficina"
   },
   {
     "value": "Mobles, decoració i articles de la llar",
@@ -324,10 +324,10 @@
     "label_ca": "Informàtica"
   },
   {
-    "value": "Parc d'Oci, Parc d'Atraccions",
+    "value": "Parc d’Oci, Parc d’Atraccions",
     "label": "Parque de Ocio, Parque de Atracciones",
     "sector": "Serveis",
-    "label_ca": "Parc d'Oci, Parc d'Atraccions"
+    "label_ca": "Parc d’Oci, Parc d’Atraccions"
   },
   {
     "value": "Parking",
