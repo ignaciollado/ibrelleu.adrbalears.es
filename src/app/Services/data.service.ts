@@ -52,12 +52,6 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllContinents(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}continents.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
   getAllContractTypologies(): Observable<any[]> {
     return this.http
       .get<any[]>(`${this.urlAPIMock}contractTypology.json`)
