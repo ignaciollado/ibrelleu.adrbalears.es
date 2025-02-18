@@ -815,5 +815,11 @@
   "cas": "Castellano",
   "cat": "Catalán",
   "en": "Inglés",
-  "webAdPublish": "Publicado a la web"
+  "webAdPublish": "Publicado a la web",
+
+  "estatProjecte": "Estado del proyecto",
+  "sectorPrincipal": "Sector principal",
+  "activitat1": "Actividad principal",
+  "totalCapacitatEconomica": "Capacidad económica total",
+  "dataEntrada": "Fecha de entrada"
 }

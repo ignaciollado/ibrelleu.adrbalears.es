@@ -824,5 +824,11 @@
   "cas": "Castellà",
   "cat": "Català",
   "en": "Anglés",
-  "webAdPublish": "Publicat a la web"
+  "webAdPublish": "Publicat a la web",
+
+  "estatProjecte": "Estat del projecte",
+  "sectorPrincipal": "Sector principal",
+  "activitat1": "Activitat principal",
+  "totalCapacitatEconomica": "Capacitat econòmica total",
+  "dataEntrada": "Data d'entradad"
 }
