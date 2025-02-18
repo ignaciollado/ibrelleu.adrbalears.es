@@ -222,8 +222,6 @@ export class ContactDetailComponent implements CanComponentDeactivate {
 
   onSubmit() {
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
-    console.log(this.theForm.valid)
-    console.log(this.theForm.value)
   }
 
   onTabChange(event: MatTabChangeEvent) {
