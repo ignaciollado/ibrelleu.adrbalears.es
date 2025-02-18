@@ -3,8 +3,8 @@ import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
-import {MatTableModule} from '@angular/material/table';
-import { accountColumns, accountColumnsBBDD, AccountDTO } from '../../Models/account.dto';
+import { MatTableModule } from '@angular/material/table';
+import { accountColumnsBBDD, AccountDTO } from '../../Models/account.dto';
 import { DataService } from '../../Services/data.service';
 import { AccountService } from '../../Services/account.service';
 import { LegalFormDTO } from '../../Models/legal-form.dto';
@@ -17,9 +17,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class AccountComponent {
-  ambitos: string[] = ['AUTONÓMICO','BALEAR','ESTATAL','UNIÓN EUROPEA']
+  ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA']
   columnsDisplayed: string[] = accountColumnsBBDD.map((col) => col.key);
-  
+
   legalFormList: any[] = []
   columnsSchema: any = accountColumnsBBDD;
   dataSource = new MatTableDataSource()
@@ -27,38 +27,38 @@ export class AccountComponent {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor( private dataService: DataService, private accountService: AccountService, private snackBar: MatSnackBar) {
+  constructor(private dataService: DataService, private accountService: AccountService, private snackBar: MatSnackBar) {
     this.loadAllAccounts()
     this.loadLegalFormList()
     this.dataSource.paginator = this.paginator
   }
 
   loadAllAccounts() {
-      this.accountService.getAccounts()
+    this.accountService.getAccounts()
       .subscribe((accounts: AccountDTO[]) => {
         this.dataSource.data = accounts
         this.dataSource.paginator = this.paginator
         this.showSnackBar("Accounts retrieved successfully!!!")
       },
-      error => {
-        this.showSnackBar(error)
-      })
-    }
+        error => {
+          this.showSnackBar(error)
+        })
+  }
 
 
   loadLegalFormList() {
     this.dataService.getAllLegalForms()
-      .subscribe((legalItems: LegalFormDTO[])=> {
+      .subscribe((legalItems: LegalFormDTO[]) => {
         this.legalFormList = legalItems
       })
   }
 
   editRow(row: AccountDTO) {
-    console.log (row)
+    console.log(row)
   }
 
   removeRow(id: number) {
-    console.log (id)
+    console.log(id)
   }
 
   applyFilter(event: any) {
@@ -68,15 +68,17 @@ export class AccountComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-/*     console.log (this.dataSource) */
+    /*     console.log (this.dataSource) */
   }
 
   selectedValue(item: any) {
-    console.log ("valor seleccionado: ", item.value)
+    console.log("valor seleccionado: ", item.value)
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'Close', { duration: 5000, verticalPosition: 'top', 
-      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
+    this.snackBar.open(error, 'Close', {
+      duration: 5000, verticalPosition: 'top',
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]
+    });
   }
 }
