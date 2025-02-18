@@ -62,6 +62,8 @@
 
   "contactEmployeInfo": "Informació laboral i curricular",
   "contactWorkSituation": "Situació laboral",
+  "noActive": "Inactiu",
+  "unemployeed": "Desocupat",
   "contactStudyLevel": "Nivell d'estudis (formació completada)",
   "contactWorkingMode": "Per compte propi o d'un altre?",
   "workingModeOwn": "Propi",
@@ -69,7 +71,25 @@
   "contactStudyObservation": "Observacions formació completada",
   "contactBusinessFormation": "Formació en gestió empresarial",
   "businessFormationTypology": "Tipologia de formació en gestió empresarial",
-  "experienceArea": "Àrees d'experiencia",
+  "businessFP": "Formació professional",
+  "businessDegree": "Grau o diplomatura",
+  "businessLicense": "Llicenciatura",
+  "businessMaster": "Màster",
+  "businessMBA": "MBA",
+  "businessPhD": "Doctorat",
+  "experienceArea": "Àrees d'experiència",
+  "direction": "Direcció",
+  "management": "Gerència",
+  "presidency": "Presidència",
+  "technical": "Tècnic",
+  "operator": "Operari",
+  "commercial": "Comercial",
+  "administration": "Administració",
+  "administrationAuxiliar": "Auxiliar administratiu",
+  "functionary": "Funcionari/a",
+  "waiter": "Cambrer/a",
+  "dependent": "Dependent/a",
+  "artisant": "Artesà/na",
   "contactDescriptionFormation": "Descripció perfil formació y experiència",
 
   "homeTextp2": "Ibrelleu ofereix diferents serveis d'assessorament i acompanyament empresarial:",
@@ -497,6 +517,7 @@
   "serviceSummary": "Resum del servei ofert",
 
   "grantorProjectName": "Nom del projecte",
+  "nomProjecte": "Nom del projecte",
   "projectStatus": "Estat del projecte",
   "account": "Compte",
   "transferReason": "Motiu de cessió/venda",
@@ -698,6 +719,7 @@
   "userOf": "Usuari de",
 
   "Cancelled": "Cancel·lat",
+  "Finished": "Final·lizat",
 
   "noBusinessInterested": "No interessat en comprar un negoci",
   "newBusinessCreation": "Creació empresa des de zero",
@@ -716,7 +738,7 @@
   "Internet y Redes sociales": "Internet i Xarxes socials",
 
   "comarca": "Comarca",
-  "província": "Província",
+  "provincia": "Província",
   "CCAA": "Comunitat Autònoma",
 
   "Cansancio": "Cansament",
@@ -729,7 +751,7 @@
   "district": "Districte",
 
   "Europa": "Europa",
-  "Asia": "Asia",
+  "Asia": "Àsia",
   "África": "Àfrica",
   "América del Sur": "Amèrica del Sud",
   "América Central": "Amèrica Central",
@@ -753,8 +775,6 @@
   "ibRelleuProjectForm": "Formulari de Projecte IBRelleu",
   "grantorProjectForm": "Formulari de Projecte Cedent",
   "successStoriesForm": "Formulari de Cas d'Èxit",
-
-  "uploadedDocuments": "Documents penjats",
 
   "contact": "Contacte",
   "interestStatus": "Estat de l'interès",
@@ -789,5 +809,27 @@
   "interestDerivation": "Derivació interès",
   "interestDerivationComment": "Comentari de derivació",
 
-  "advertisements": "Anuncis"
+  "advertisements": "Anuncis",
+  "language": "Llenguatge",
+  "advertisementstate": "Estat de l'anunci",
+  "grantorprojectid": "ID Projecte Cedent",
+  "publicationdate": "Data de publicació",
+  "createAdvertisement": "Crear nou anunci",
+
+  "adForm": "Formulari anunci",
+  "marketPlaceInterest": "Interès en publicar anunci al MarketPlace?",
+  "adTitle": "Títol de l'anunci",
+  "publish": "Publicat",
+  "noPublish": "No publicat",
+  "adDescription": "Descripció de l'anunci",
+  "cas": "Castellà",
+  "cat": "Català",
+  "en": "Anglés",
+  "webAdPublish": "Publicat a la web",
+
+  "estatProjecte": "Estat del projecte",
+  "sectorPrincipal": "Sector principal",
+  "activitat1": "Activitat principal",
+  "totalCapacitatEconomica": "Capacitat econòmica total",
+  "dataEntrada": "Data d'entrada"
 }

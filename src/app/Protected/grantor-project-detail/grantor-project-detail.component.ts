@@ -77,7 +77,6 @@ export class GrantorProjectDetailComponent {
 
   clientTypologyList: any[] = [];
 
-  continentList: any[] = [];
 
   /* Permite validar que la fecha del inicio de la actividad no sea superior 
   al año actual. ¿Es posible que una empresa que cede haya empezado su actividad
@@ -129,7 +128,6 @@ export class GrantorProjectDetailComponent {
     this.loadSectorInfo();
     this.loadActivityInfo();
     this.loadClientInfo();
-    this.loadContinentInfo();
   }
 
   ngOnInit() {
@@ -250,11 +248,6 @@ export class GrantorProjectDetailComponent {
       });
   }
 
-  loadContinentInfo() {
-    this.dataService.getAllContinents().subscribe((continentItems: any[]) => {
-      this.continentList = continentItems;
-    });
-  }
   // validatorsChangeYesOrNo(
   //   event: any,
   //   trackedFormField: string,

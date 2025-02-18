@@ -63,6 +63,8 @@
 
   "contactEmployeInfo": "Información laboral y curricular",
   "contactWorkSituation": "Situación laboral",
+  "noActive": "Inactivo",
+  "unemployeed": "Desocupado",
   "contactStudyLevel": "Nivel de estudios (formación completada)",
   "contactWorkingMode": "¿Por cuenta propia o de otro?",
   "workingModeOwn": "Propia",
@@ -70,9 +72,26 @@
   "contactStudyObservation": "Observaciones formación completada",
   "contactBusinessFormation": "Formación en gestión empresarial",
   "businessFormationTypology": "Tipología de formación en gestión empresarial",
-  "experienceArea": "Areas de experiencia",
+  "businessFP": "Formación profesional",
+  "businessDegree": "Grado o diplomatura",
+  "businessLicense": "Licenciatura",
+  "businessMaster": "Máster",
+  "businessMBA": "MBA",
+  "businessPhD": "Doctorado",
+  "experienceArea": "Áreas de experiencia",
+  "direction": "Dirección",
+  "management": "Gerencia",
+  "presidency": "Presidencia",
+  "technical": "Técnico",
+  "operator": "Operario",
+  "commercial": "Comercial",
+  "administration": "Administración",
+  "administrationAuxiliar": "Auxiliar administrativo",
+  "functionary": "Funcionario/a",
+  "waiter": "Camarero/a",
+  "dependent": "Dependiente/a",
+  "artisant": "Artesano/a",
   "contactDescriptionFormation": "Descripción perfil formación y experiencia",
-
   "homeTextp2": "Ibrelleu ofrece diferentes servicios de asesoramiento y acompañamiento empresarial.",
   "homeTextp3": "Valoración de la empresa que se quiere comprar o vender.",
   "homeTextp31": "Servicio de Marketplace, publicación de anuncios de empresas en funcionamiento.",
@@ -488,6 +507,7 @@
   "serviceSummary": "Resumen del servicio ofrecido",
 
   "grantorProjectName": "Nombre del proyecto",
+  "nomProjecte": "Nombre del proyecto",
   "projectStatus": "Estado del proyecto",
   "account": "Cuenta",
   "transferReason": "Motivación de cesión/venta",
@@ -689,6 +709,7 @@
   "userOf": "Usuario de",
 
   "Cancelled": "Cancelado",
+  "Finished": "Finalizado",
 
   "noBusinessInterested": "No interesado en comprar un negocio",
   "newBusinessCreation": "Creación empresa desde cero",
@@ -708,7 +729,7 @@
   "Internet y Redes sociales": "Internet y Redes sociales",
 
   "comarca": "Comarca",
-  "província": "Provincia",
+  "provincia": "Provincia",
   "CCAA": "Comunidad Autónoma",
 
   "Cansancio": "Cansancio",
@@ -746,8 +767,6 @@
   "grantorProjectForm": "Formulario de Proyecto Cedente",
   "successStoriesForm": "Formulario de Caso de éxito",
 
-  "uploadedDocuments": "Documentos subidos",
-
   "contact": "Contacto",
   "interestStatus": "Estado del interés",
   "interestIbrelleuProject": "Proyecto IBRelleu del Interesado",
@@ -781,5 +800,27 @@
   "interestDerivation": "Derivación interés",
   "interestDerivationComment": "Comentario de derivación",
 
-  "advertisements": "Anuncios"
+  "advertisements": "Anuncios",
+  "language": "Lenguaje",
+  "advertisementstate": "Estado del anuncio",
+  "grantorprojectid": "ID Proyecto Cedente",
+  "publicationdate": "Fecha de publicación",
+  "createAdvertisement": "Crear nuevo anuncio",
+
+  "adForm": "Formulario anuncio",
+  "marketPlaceInterest": "¿Interés en publicar anuncio en MarketPlace?",
+  "adTitle": "Título del anuncio",
+  "publish": "Publicado",
+  "noPublish": "No publicado",
+  "adDescription": "Descripción del anuncio",
+  "cas": "Castellano",
+  "cat": "Catalán",
+  "en": "Inglés",
+  "webAdPublish": "Publicado a la web",
+
+  "estatProjecte": "Estado del proyecto",
+  "sectorPrincipal": "Sector principal",
+  "activitat1": "Actividad principal",
+  "totalCapacitatEconomica": "Capacidad económica total",
+  "dataEntrada": "Fecha de entrada"
 }

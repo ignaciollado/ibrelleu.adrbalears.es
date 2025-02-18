@@ -11,6 +11,7 @@ import { AccountDTO } from '../../Models/account.dto';
 import { CustomValidatorsService } from '../../Services/custom-validators.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { AccountService } from '../../Services/account.service';
 
 @Component({
   selector: 'adr-account-detail',
@@ -29,25 +30,18 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   id: string = this.route.snapshot.paramMap.get('id');
 
   consultantList: string[] = [];
-  delegationList: string[] = [];
+
   sectorList: any[] = [];
   activityList: any[] = [];
 
-  clientTypologyList: any[] = [];
-  continentList: any[] = [];
 
-  propertyStatus: any[] = [
-    { value: '282310000', view: 'Propietat' },
-    { value: '282310001', view: 'Lloguer' },
-  ];
-
-  debtsSitesList: any[] = [];
 
   constructor(
     private dataService: DataService,
     private countriesService: CountriesService,
     private customValidatorsService: CustomValidatorsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private accountService: AccountService
   ) {
     this.theForm = new FormGroup({
       // Identificació
@@ -188,17 +182,24 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         Validators.maxLength(1024)
       ),
       twoYearAgoBeforeTaxes: new FormControl(''),
+      documentationAnualIVA: new FormControl(''),
+      documentation190IRPF: new FormControl(''),
+      documentation100IRPF: new FormControl(''),
+      documentation130or131IRPF: new FormControl(''),
+      documentationCopyCifCompany: new FormControl(''),
+      documentationConstitutionScriptures: new FormControl(''),
+      documentationSocietyScriptures: new FormControl(''),
+      documentationLostGain: new FormControl(''),
+      documentationSituationBalance: new FormControl(''),
+      documentationSocietyTax200: new FormControl('')
     });
 
     this.getCountries();
     this.getAllZipCodes();
     this.loadLegalFormList();
-    // this.loadConsultantAndDelegationInfo();
+    this.loadConsultants()
     this.loadSectorInfo();
     this.loadActivityInfo();
-    this.loadClientInfo();
-    this.loadContinentInfo();
-    this.loadDebtsSitesInfo();
   }
 
   ngOnInit() {
@@ -210,6 +211,12 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         return name ? this._filter(name as string) : this.options.slice();
       })
     );
+    this.accountService.getAccounts().subscribe((accounts: AccountDTO[]) => {
+      let targetAccount = accounts.find(account => account.id.toString() === this.id)
+      this.loadFormData(targetAccount)
+    })
+
+
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
@@ -217,6 +224,98 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       return confirm('You have unsaved changes. Do you really want to leave?');
     }
     return true;
+  }
+
+  loadFormData(account: AccountDTO) {
+    this.theForm.patchValue({
+      legalFormat: account['forma_juridica'],
+      contact: account['contacte_principal'],
+      companyName: account['rao_social'],
+      nif: account['nif'],
+      tradeName: account['nomComercial'],
+      paradesMercat: account.gestionaParadesMercat,
+      collaborationCompanys: account.empresaEntitatColaboradora,
+      councilTitularity: account.gestionaEstablimentsComercials,
+      sportConcessions: account.gestionaConcessionsAdministratives,
+      activeBusiness: account.empresaEnFuncionament,
+      creationYear: account["any_constitució"],
+      consultor: account["consultor"],
+      delegacion: account["delegacio"],
+      direccion: account.adreca,
+      zipCode: account.codiPostal,
+      localizationCity: account["poblacio"],
+      councilCity: account["council"],
+      localizationCCAA: account["island"],
+      companyMail: account.correuElectronic,
+      companyPhone: account.telefonPrincipal,
+      companyWeb: account.web,
+      companySector: Array.isArray(account["sector_principal"]) ? account["sector_principal"] : [account["sector_principal"]],
+      companyActivity: Array.isArray(account["activitat_principal"]) ? account["activitat_principal"] : [account["activitat_principal"]],
+      activityDescription: account.descripcioActivitat,
+      carrerDescription: account.breuDescripcioTrajectoriaEconomica,
+      checkProduct: account.disposaProductePropi,
+      descriptionProduct: account.descripcioProducteServei,
+      descriptionProductProcess: account.descripcioProcesProductiu,
+      brandCheck: account.disposaMarquesPropies,
+      brandDescription: account.nomsMarques,
+      stockCheck: account.disposaInventari,
+      stockDescription: account.descripcioEstatEstoc,
+      auditoryCheck: account.disposaAuditoria,
+      licenseCheck: account.disposaLlicenciaActivitat,
+      marketDescription: account.descripcioMercat,
+      targetDescription: account.descripcioClientela,
+      typologyClients: account.tipologiaClientela,
+      suppliersDescription: account.descripcioProveidors,
+      competitionDescription: account.descripcioCompetencia,
+      exportCheck: account.exporta,
+      exportAmbit: account.ambitGeograficExportacio,
+      exportDescription: account.comentariExportacio,
+      importCheck: account.importa,
+      importAmbit: account.ambitGeograficImportacio,
+      importDescription: account.comentariImportacio,
+      partnerNumber: account.numeroSocis,
+      organizationDescription: account.estructuraEmpresa,
+      distributionDescription: account.comentariSocis,
+      workingDayDescription: account.comentariGestioDiaADia,
+      fullTimeWorkers: account.jornadaComplerta,
+      partialTimeWorkers: account.jornadaParcial,
+      totalWorkers: account.numeroTreballadorsTotals,
+      workersCarrerDescription: account.comentariAntiguitat,
+      workersSalaryDescription: account.comentariSalaris,
+      colaborationDescription: account.comentariAutonomsColaboradors,
+      property: account.localPropietatLloguer,
+      rentValue: account.preuLloguer,
+      localSize: account.superficieLocal,
+      localRentingDescription: account.condicionsContractualsLocal,
+      anotherSpecificationsDescription: account.altresEspecificacionsLocal,
+      financingDescription: account.comentariFinancamentEmpresa,
+      debtsCheck: account.empresaAmbDeutes,
+      // debtsList: 
+      // debtsDescription: 
+      lastYearFacturation: account.facturacioUltimAnyFiscal,
+      lastYearResult: account.resultatUltimAnyFiscal,
+      lastYearResultDescription: account.comentariResultatsUltimAnyFiscal,
+      lastYearBeforeTaxes: account.ebitdaUltimAnyFiscal,
+      oneYearAgoFacturation: account.facturacioAnyN1,
+      oneYearAgoResult: account.resultatAnyN1,
+      oneYearAgoResultDescription: account.comentariResultatsAnyN1,
+      oneYearAgoBeforeTaxes: account.ebitdaAnyN1,
+      twoYearAgoFacturation: account.facturacioAnyN2,
+      twoYearAgoResult: account.resultatAnyN2,
+      twoYearAgoResultDescription: account.comentariResultatsAnyN2,
+      twoYearAgoBeforeTaxes: account.ebitdaAnyN2,
+      documentationAnualIVA: account.liquidacioIvaModel390,
+      documentation190IRPF: account.liquidacioIrpfModel190,
+      documentation100IRPF: account.declaracioIrpfModel100,
+      documentation130or131IRPF: account.pagamentsCompteIrpfModel130131,
+      documentationCopyCifCompany: account.fotocopiaCifEmpresa,
+      documentationConstitutionScriptures: account.escripturesConstitucioModificacio,
+      documentationSocietyScriptures: account.escripturesPodersSocietat,
+      documentationLostGain: account.perduesGuanysUltimsAnys,
+      documentationSituationBalance: account.balancSituacioUltimsAnys,
+      documentationSocietyTax200: account.impostSocietatsModel200
+    })
+
   }
 
   loadLegalFormList() {
@@ -227,27 +326,18 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       });
   }
 
-  // loadConsultantAndDelegationInfo() {
-  //   this.dataService
-  //     .getAllAccounts()
-  //     .subscribe((accountsList: AccountDTO[]) => {
-  //       accountsList.forEach((account) => {
-  //         this.insertConsultantData(account.consultant);
-  //         this.insertDelegationData(account.delegation);
-  //       });
-  //     });
-  // }
-  // insertConsultantData(consultant: string) {
-  //   if (!this.consultantList.includes(consultant)) {
-  //     this.consultantList.push(consultant);
-  //   }
-  // }
-
-  // insertDelegationData(delegation: string) {
-  //   if (!this.delegationList.includes(delegation)) {
-  //     this.delegationList.push(delegation);
-  //   }
-  // }
+  loadConsultants() {
+    this.accountService.getAccounts().subscribe((accounts: AccountDTO[]) => {
+      accounts.forEach((account) => {
+        this.insertConsultantData(account["consultor"])
+      })
+    })
+  }
+  insertConsultantData(consultant: string) {
+    if (!this.consultantList.includes(consultant)) {
+      this.consultantList.push(consultant);
+    }
+  }
 
   loadSectorInfo() {
     this.dataService.getAllSectors().subscribe((sectorItems: any[]) => {
@@ -258,20 +348,6 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   loadActivityInfo() {
     this.dataService.getAllActivities().subscribe((activityItems: any[]) => {
       this.activityList = activityItems;
-    });
-  }
-
-  loadClientInfo() {
-    this.dataService
-      .getAllClientTypologies()
-      .subscribe((typologyItems: any[]) => {
-        this.clientTypologyList = typologyItems;
-      });
-  }
-
-  loadDebtsSitesInfo() {
-    this.dataService.getAllDebtsSites().subscribe((debtsSitesItems: any[]) => {
-      this.debtsSitesList = debtsSitesItems;
     });
   }
 
@@ -289,11 +365,6 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     });
   }
 
-  loadContinentInfo() {
-    this.dataService.getAllContinents().subscribe((continentItems: any[]) => {
-      this.continentList = continentItems;
-    });
-  }
 
   onTabChange(event: MatTabChangeEvent) {
     sessionStorage.setItem('currentAccountTab', event.index.toString());
@@ -303,6 +374,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     console.log(this.theForm.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
+
 
   selectedValue(event: any) {
     console.log('zp seleccionado: ', this.theForm.get('zipCode').value);
@@ -352,17 +424,9 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     }
   }
 
-  calculateTotalWorkers(event: any) {
-    let fullTimeWorkersNumber = this.theForm.get('fullTimeWorkers').value;
-    let partialTimeWorkersNumber = this.theForm.get('partialTimeWorkers').value;
-
-    this.theForm
-      .get('totalWorkers')
-      .setValue(fullTimeWorkersNumber + partialTimeWorkersNumber);
-  }
-
-  checkPropertyStatus(event: any, propertyValue: any) {
+  checkPropertyStatus(event: any) {
     let rentValue = this.theForm.get('rentValue');
+    let propertyValue = this.theForm.get('property').value
 
     switch (propertyValue == '282310001') {
       case true: {

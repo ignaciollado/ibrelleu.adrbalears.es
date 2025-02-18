@@ -12,7 +12,7 @@
                         title="{{'details' | translate}}">{{element[col.key]}}</a>
                     <span *ngSwitchCase="'money'" ngClass="small-data">{{element[col.key] | currency :
                         "EUR" : "symbol" : "1.2-2" : "es-ES"}}</span>
-                    <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key]}}</span>
+                    <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key] | date : "dd-MM-yyyy"}}</span>
                     <span *ngSwitchDefault ngClass="small-data">{{element[col.key] | translate}}</span>
                 </section>
             </mat-cell>

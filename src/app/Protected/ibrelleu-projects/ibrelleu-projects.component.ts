@@ -5,7 +5,7 @@ import { DataService } from '../../Services/data.service';
 
 import {
   IBRelleuProjectsDTO,
-  ibrelleuProjectColumns,
+  ibrelleuProjectColumnsBBDD,
 } from '../../Models/ibrelleuproject.dto';
 
 @Component({
@@ -14,9 +14,9 @@ import {
   styleUrl: './ibrelleu-projects.component.scss',
 })
 export class IbrelleuProjectsComponent {
-  columnsDisplayed: string[] = ibrelleuProjectColumns.map((col) => col.key);
+  columnsDisplayed: string[] = ibrelleuProjectColumnsBBDD.map((col) => col.key);
+  columnsSchema: any = ibrelleuProjectColumnsBBDD
   dataSource = new MatTableDataSource()
-  columnsSchema: any = ibrelleuProjectColumns
 
   @ViewChild(MatPaginator) paginator: MatPaginator
 
