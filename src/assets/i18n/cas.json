@@ -822,5 +822,15 @@
   "sectorPrincipal": "Sector principal",
   "activitat1": "Actividad principal",
   "totalCapacitatEconomica": "Capacidad económica total",
-  "dataEntrada": "Fecha de entrada"
+  "dataEntrada": "Fecha de entrada",
+
+  "compte": "Cuenta",
+  "sector1": "Sector principal",
+  "motivacionsCessio": "Motivo de cesión/venta",
+  "numeroTreballadorsTotals": "Número de trabajadores total",
+  "localPropietatLloguer": "Local en propiedad o alquiler",
+  "preuCessio": "Precio cesión",
+  "intervalPreuCessio": "Intervalo de precio de cesión",
+  "facturacioUltimAnyFiscal": "Facturación",
+  "resultatUltimAnyFiscal": "Beneficio"
 }

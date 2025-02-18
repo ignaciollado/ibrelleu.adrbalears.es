@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import {
   grantorProjectColumns,
+  grantorProjectColumnsBBDD,
   GrantorProjectsDTO,
 } from '../../Models/grantorProject.dto';
 
@@ -14,9 +15,9 @@ import {
 })
 export class GrantorProjectsComponent {
   ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA'];
-  columnsDisplayed: string[] = grantorProjectColumns.map((col) => col.key);
+  columnsDisplayed: string[] = grantorProjectColumnsBBDD.map((col) => col.key);
   dataSource = new MatTableDataSource();
-  columnsSchema: any = grantorProjectColumns;
+  columnsSchema: any = grantorProjectColumnsBBDD;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

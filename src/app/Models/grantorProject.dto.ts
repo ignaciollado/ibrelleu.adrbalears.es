@@ -323,6 +323,73 @@ export class GrantorProjectsDTO {
   }
 }
 
+export const grantorProjectColumnsBBDD = [
+  {
+    key: 'nomProjecte',
+    type: 'url'
+  },
+  {
+    key: 'estatProjecte',
+    type: 'readOnly'
+  },
+  {
+    key: 'compte',
+    type: 'readOnly'
+  },
+  {
+    key: 'sector1',
+    type: 'scope'
+  },
+  {
+    key: 'activitat1',
+    type: 'scope'
+  },
+  {
+    key: 'poblacio',
+    type: 'scope'
+  },
+  {
+    key: 'motivacionsCessio',
+    type: 'readOnly'
+  },
+  {
+    key: 'numeroTreballadorsTotals',
+    type: 'scope'
+  },
+  {
+    key: 'localPropietatLloguer',
+    type: 'scope'
+  },
+  {
+    key: 'preuCessio',
+    type: 'money'
+  },
+  {
+    key: 'intervalPreuCessio',
+    type: 'scope'
+  },
+  {
+    key: 'facturacioUltimAnyFiscal',
+    type: 'money'
+  },
+  {
+    key: 'resultatUltimAnyFiscal',
+    type: 'money'
+  },
+  {
+    key: 'consultor',
+    type: 'scope'
+  },
+  {
+    key: 'delegacio',
+    type: 'scope'
+  },
+  {
+    key: 'dataEntrada',
+    type: 'date'
+  },
+]
+
 export const grantorProjectColumns = [
   {
     key: 'nomProjecte',
