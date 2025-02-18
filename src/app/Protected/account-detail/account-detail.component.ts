@@ -200,7 +200,6 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     this.loadConsultants()
     this.loadSectorInfo();
     this.loadActivityInfo();
-    this.loadTargetAccount();
   }
 
   ngOnInit() {
@@ -212,6 +211,11 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         return name ? this._filter(name as string) : this.options.slice();
       })
     );
+    this.accountService.getAccounts().subscribe((accounts: AccountDTO[]) => {
+      let targetAccount = accounts.find(account => account.id.toString() === this.id)
+      this.loadFormData(targetAccount)
+    })
+
 
   }
 
@@ -222,18 +226,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     return true;
   }
 
-  loadTargetAccount() {
-    this.accountService.getAccounts().subscribe((accounts: AccountDTO[]) => {
-      let targetAccount = accounts.find(account => account.id.toString() === this.id)
-      console.log(targetAccount)
-      this.loadFormData(targetAccount);
-    })
-
-  }
-
-  loadFormData(targetAccount: AccountDTO) {
-    let account = targetAccount;
-
+  loadFormData(account: AccountDTO) {
     this.theForm.patchValue({
       legalFormat: account['forma_juridica'],
       contact: account['contacte_principal'],
