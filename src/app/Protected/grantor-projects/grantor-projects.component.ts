@@ -34,9 +34,11 @@ export class GrantorProjectsComponent {
               grantorProject.intervalPreuCessio = intervalPrices.find(intervalPrice => intervalPrice.value === grantorProject.intervalPreuCessio).label
             })
           }
-
           this.dataService.getAllCessionReasons().subscribe((cessionReasons) => {
             grantorProject.motiuCessio = cessionReasons.find(cessionReason => cessionReason.value === grantorProject.motiuCessio).label
+          })
+          this.dataService.getAllPropertyStatus().subscribe((propertyStatusList) => {
+            grantorProject.localPropietatLloguer = propertyStatusList.find(propertyStatus => propertyStatus.value === grantorProject.localPropietatLloguer).label
           })
           this.dataSource.data = grantorProjects;
           this.dataSource.paginator = this.paginator;

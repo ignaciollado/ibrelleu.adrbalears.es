@@ -105,6 +105,12 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
+  getAllPropertyStatus(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}propertyStatus.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
   getAllSectors(): Observable<any[]> {
     return this.http
       .get<any[]>(`${this.urlAPIMock}sectors.json`)
