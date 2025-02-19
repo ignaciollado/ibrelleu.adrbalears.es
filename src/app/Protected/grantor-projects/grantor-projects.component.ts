@@ -31,10 +31,13 @@ export class GrantorProjectsComponent {
         grantorProjects.forEach(grantorProject => {
           if (grantorProject.intervalPreuCessio.length == 9) {
             this.dataService.getAllTransferPriceInterval().subscribe((intervalPrices) => {
-              let intervalPriceProject = intervalPrices.find(intervalPrice => intervalPrice.value === grantorProject.intervalPreuCessio)
-              grantorProject.intervalPreuCessio = intervalPriceProject.label
+              grantorProject.intervalPreuCessio = intervalPrices.find(intervalPrice => intervalPrice.value === grantorProject.intervalPreuCessio).label
             })
           }
+
+          this.dataService.getAllCessionReasons().subscribe((cessionReasons) => {
+            grantorProject.motiuCessio = cessionReasons.find(cessionReason => cessionReason.value === grantorProject.motiuCessio).label
+          })
           this.dataSource.data = grantorProjects;
           this.dataSource.paginator = this.paginator;
         })
