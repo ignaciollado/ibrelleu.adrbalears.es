@@ -14,5 +14,6 @@
   },
   { "value": "Hostaleria", "label": "Hostelería" },
   { "value": "Indústria", "label": "Industria" },
-  { "value": "Serveis", "label": "Servicios" }
+  { "value": "Serveis", "label": "Servicios" },
+  { "value": "Producció", "label": "Producción" }
 ]

@@ -484,5 +484,11 @@
     "label": "Jardinería",
     "sector": "Serveis",
     "label_ca": "Jardineria"
+  },
+  {
+    "value": "Altres",
+    "label": "Otros",
+    "sector": "Producció",
+    "label_ca": "Altres"
   }
 ]
