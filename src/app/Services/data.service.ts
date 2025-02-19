@@ -119,6 +119,10 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
+  getAllTransferPriceInterval(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.urlAPIMock}transferPriceInterval.json`).pipe(catchError(this.sharedService.handleError))
+  }
+
   getAllTransmissionTypologies(): Observable<any[]> {
     return this.http
       .get<any[]>(`${this.urlAPIMock}transmissionTypology.json`)

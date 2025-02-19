@@ -87,8 +87,10 @@ export class GrantorProjectsDTO {
   detallPersonesTreballadores?: string;
   numeroTreballadorsTotals?: number;
   comentariSalaris?: string;
+  // Boolean?
   jornadaCompleta?: boolean;
   comentariAutonomsColaboradors?: string;
+  // Boolean?
   jornadaParcial?: boolean;
   observacionsTreballadors?: string;
   continuenTreballadorsDespresCessio?: boolean;
@@ -349,7 +351,7 @@ export const grantorProjectColumnsBBDD = [
     type: 'scope'
   },
   {
-    key: 'motivacionsCessio',
+    key: 'motiuCessio',
     type: 'readOnly'
   },
   {
@@ -390,107 +392,107 @@ export const grantorProjectColumnsBBDD = [
   },
 ]
 
-export const grantorProjectColumns = [
-  {
-    key: 'nomProjecte',
-    type: 'url',
-    label: 'Nombre del proyecto',
-    label_ca: 'Nom del projecte',
-  },
-  {
-    key: 'projectStatus',
-    type: 'readOnly',
-    label: 'Estado del proyecto',
-    label_ca: 'Estat del projecte',
-  },
-  {
-    key: 'account',
-    type: 'readOnly',
-    label: 'Cuenta',
-    label_ca: 'Compte',
-  },
-  {
-    key: 'mainSector',
-    type: 'readOnly',
-    label: 'Sector principal',
-    label_ca: 'Sector principal',
-  },
-  {
-    key: 'mainActivity',
-    type: 'readOnly',
-    label: 'Actividad principal',
-    label_ca: 'Activitat principal',
-  },
-  {
-    key: 'town',
-    type: 'readOnly',
-    label: 'Población',
-    label_ca: 'Població',
-  },
-  {
-    key: 'transferReason',
-    type: 'readOnly',
-    label: 'Motivación de la venta',
-    label_ca: 'Motivació de la venda',
-  },
-  {
-    key: 'partnersNum',
-    type: 'number',
-    label: 'Número de socios',
-    label_ca: 'Número de socis',
-  },
-  {
-    key: 'workersNum',
-    type: 'number',
-    label: 'Número de trabajadores',
-    label_ca: 'Número de treballadors',
-  },
-  {
-    key: 'propertyStatus',
-    type: 'readOnly',
-    label: 'Local en propiedad o alquiler',
-    label_ca: 'Local en propietat o lloguer',
-  },
-  {
-    key: 'transferPrice',
-    type: 'money',
-    label: 'Precio de cesión',
-    label_ca: 'Preu de cessió',
-  },
-  {
-    key: 'transferPriceInterval',
-    type: 'readOnly',
-    label: 'Intervalo de precio de cesión',
-    label_ca: 'Interval de preu de cessió',
-  },
-  {
-    key: 'facturation',
-    type: 'money',
-    label: 'Facturación',
-    label_ca: 'Facturació',
-  },
-  {
-    key: 'earnings',
-    type: 'money',
-    label: 'Beneficio',
-    label_ca: 'Benefici',
-  },
-  {
-    key: 'consultant',
-    type: 'readOnly',
-    label: 'Consultor',
-    label_ca: 'Consultor',
-  },
-  {
-    key: 'delegation',
-    type: 'readOnly',
-    label: 'Delegación',
-    label_ca: 'Degelació',
-  },
-  {
-    key: 'creationDate',
-    type: 'date',
-    label: 'Fecha de creación',
-    label_ca: 'Data de creació',
-  },
-];
+// export const grantorProjectColumns = [
+//   {
+//     key: 'nomProjecte',
+//     type: 'url',
+//     label: 'Nombre del proyecto',
+//     label_ca: 'Nom del projecte',
+//   },
+//   {
+//     key: 'projectStatus',
+//     type: 'readOnly',
+//     label: 'Estado del proyecto',
+//     label_ca: 'Estat del projecte',
+//   },
+//   {
+//     key: 'account',
+//     type: 'readOnly',
+//     label: 'Cuenta',
+//     label_ca: 'Compte',
+//   },
+//   {
+//     key: 'mainSector',
+//     type: 'readOnly',
+//     label: 'Sector principal',
+//     label_ca: 'Sector principal',
+//   },
+//   {
+//     key: 'mainActivity',
+//     type: 'readOnly',
+//     label: 'Actividad principal',
+//     label_ca: 'Activitat principal',
+//   },
+//   {
+//     key: 'town',
+//     type: 'readOnly',
+//     label: 'Población',
+//     label_ca: 'Població',
+//   },
+//   {
+//     key: 'transferReason',
+//     type: 'readOnly',
+//     label: 'Motivación de la venta',
+//     label_ca: 'Motivació de la venda',
+//   },
+//   {
+//     key: 'partnersNum',
+//     type: 'number',
+//     label: 'Número de socios',
+//     label_ca: 'Número de socis',
+//   },
+//   {
+//     key: 'workersNum',
+//     type: 'number',
+//     label: 'Número de trabajadores',
+//     label_ca: 'Número de treballadors',
+//   },
+//   {
+//     key: 'propertyStatus',
+//     type: 'readOnly',
+//     label: 'Local en propiedad o alquiler',
+//     label_ca: 'Local en propietat o lloguer',
+//   },
+//   {
+//     key: 'transferPrice',
+//     type: 'money',
+//     label: 'Precio de cesión',
+//     label_ca: 'Preu de cessió',
+//   },
+//   {
+//     key: 'transferPriceInterval',
+//     type: 'readOnly',
+//     label: 'Intervalo de precio de cesión',
+//     label_ca: 'Interval de preu de cessió',
+//   },
+//   {
+//     key: 'facturation',
+//     type: 'money',
+//     label: 'Facturación',
+//     label_ca: 'Facturació',
+//   },
+//   {
+//     key: 'earnings',
+//     type: 'money',
+//     label: 'Beneficio',
+//     label_ca: 'Benefici',
+//   },
+//   {
+//     key: 'consultant',
+//     type: 'readOnly',
+//     label: 'Consultor',
+//     label_ca: 'Consultor',
+//   },
+//   {
+//     key: 'delegation',
+//     type: 'readOnly',
+//     label: 'Delegación',
+//     label_ca: 'Degelació',
+//   },
+//   {
+//     key: 'creationDate',
+//     type: 'date',
+//     label: 'Fecha de creación',
+//     label_ca: 'Data de creació',
+//   },
+// ];

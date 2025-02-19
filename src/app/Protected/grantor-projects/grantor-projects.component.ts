@@ -3,7 +3,6 @@ import { DataService } from '../../Services/data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import {
-  grantorProjectColumns,
   grantorProjectColumnsBBDD,
   GrantorProjectsDTO,
 } from '../../Models/grantorProject.dto';
@@ -29,8 +28,17 @@ export class GrantorProjectsComponent {
     this.dataService
       .getAllGrantorProjects()
       .subscribe((grantorProjects: GrantorProjectsDTO[]) => {
-        this.dataSource.data = grantorProjects;
-        this.dataSource.paginator = this.paginator;
+        grantorProjects.forEach(grantorProject => {
+          if (grantorProject.intervalPreuCessio.length == 9) {
+            this.dataService.getAllTransferPriceInterval().subscribe((intervalPrices) => {
+              let intervalPriceProject = intervalPrices.find(intervalPrice => intervalPrice.value === grantorProject.intervalPreuCessio)
+              grantorProject.intervalPreuCessio = intervalPriceProject.label
+            })
+          }
+          this.dataSource.data = grantorProjects;
+          this.dataSource.paginator = this.paginator;
+        })
       });
   }
 }
+
