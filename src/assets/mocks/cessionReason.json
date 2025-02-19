@@ -1,0 +1,70 @@
+[
+  {
+    "value": "282310012",
+    "label": "health"
+  },
+  {
+    "value": "282310000",
+    "label": "retirement"
+  },
+  {
+    "value": "282310001",
+    "label": "earlyRetirement"
+  },
+  {
+    "value": "282310002",
+    "label": "tiredness"
+  },
+  {
+    "value": "282310003",
+    "label": "professionChange"
+  },
+  {
+    "value": "282310004",
+    "label": "locationChange"
+  },
+  {
+    "value": "282310005",
+    "label": "inversorSearch"
+  },
+  {
+    "value": "121370002",
+    "label": "familiarConciliation"
+  },
+  {
+    "value": "282310006",
+    "label": "disengagementPartners"
+  },
+  {
+    "value": "282310009",
+    "label": "needTime"
+  },
+  {
+    "value": "282310008",
+    "label": "impossibleManagement"
+  },
+  {
+    "value": "282310007",
+    "label": "badManagement"
+  },
+  {
+    "value": "282310014",
+    "label": "marketParadaAvailable"
+  },
+  {
+    "value": "121370001",
+    "label": "municipalLocalAvailable"
+  },
+  {
+    "value": "282310010",
+    "label": "personalReason"
+  },
+  {
+    "value": "282310011",
+    "label": "problemsWithWorkers"
+  },
+  {
+    "value": "121370003",
+    "label": "administrativeConcession"
+  }
+]

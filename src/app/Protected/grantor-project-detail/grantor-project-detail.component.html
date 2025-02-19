@@ -44,20 +44,22 @@
                 <mat-form-field>
                     <mat-label>{{'projectStatus' |translate}}</mat-label>
                     <mat-select formControlName="projectStatus">
-                        <mat-option [value]="">---</mat-option>
-                        @for (projectStatus of projectStatusList; track projectStatus) {
-                        <mat-option [value]="projectStatus.value">{{projectStatus.label | translate}}</mat-option>
-                        }
+                        <mat-option>---</mat-option>
+                        <mat-option value="Active">{{'Active'| translate}}</mat-option>
+                        <mat-option value="Cancelled">{{'Cancelled'| translate}}</mat-option>
+                        <mat-option value="Standby">{{'Standby'| translate}}</mat-option>
+
                     </mat-select>
                 </mat-form-field>
                 <!-- Si el valor es '292310001' -> Cancelado, aparecería este campo que por defecto no aparece-->
                 <mat-form-field>
                     <mat-label>{{'cancelReason' | translate}}</mat-label>
                     <mat-select formControlName="cancelReason">
-                        <mat-option [value]="">---</mat-option>
-                        @for(reason of projectCancelReasons; track reason) {
-                        <mat-option [value]="reason.value">{{reason.label | translate}}</mat-option>
-                        }
+                        <mat-option>---</mat-option>
+                        <mat-option value="121370000">{{'closedBusiness'| translate}}</mat-option>
+                        <mat-option value="121370001">{{'continueBusiness'| translate}}</mat-option>
+                        <mat-option value="121370002">{{'notInteressedIBRelleu'| translate}}</mat-option>
+                        <mat-option value="121370003">{{'ns/nc'| translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
@@ -121,16 +123,16 @@
                 <section>
                     <mat-label>{{'municipalMarket' | translate}}</mat-label>
                     <mat-radio-group>
-                        <mat-radio-button value="">Si</mat-radio-button>
-                        <mat-radio-button value="">No</mat-radio-button>
+                        <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <section>
                     <mat-label>{{'municipalInstalationType' | translate}}</mat-label>
                     <mat-radio-group>
-                        <mat-radio-button value="">{{'pool' | translate}}</mat-radio-button>
-                        <mat-radio-button value="">{{'pavillion' | translate}}</mat-radio-button>
-                        <mat-radio-button value="">{{'others' | translate}}</mat-radio-button>
+                        <mat-radio-button value="121370000">{{'pool' | translate}}</mat-radio-button>
+                        <mat-radio-button value="121370001">{{'pavillion' | translate}}</mat-radio-button>
+                        <mat-radio-button value="121370002">{{'others' | translate}}</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <mat-form-field>
@@ -143,7 +145,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'address' | translate}}</mat-label>
-                    <input matInput formControlName="direccion" aria-label="Adreça es un camp obligatori">
+                    <input matInput>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'district' | translate}}</mat-label>
@@ -214,10 +216,9 @@
                 <mat-form-field>
                     <mat-label>{{'cessionReason' | translate}}</mat-label>
                     <mat-select>
-                        <!-- Temporal -->
-                        <mat-option>{{'reason1' | translate}}</mat-option>
-                        <mat-option>{{'reason2' | translate}}</mat-option>
-                        <mat-option>{{'reason3' | translate}}</mat-option>
+                        @for (cessionReason of cessionReasonsList; track cessionReason) {
+                        <mat-option [value]="cessionReason.value">{{cessionReason.label | translate}}</mat-option>
+                        }
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
@@ -232,10 +233,9 @@
                 <mat-form-field>
                     <mat-label>{{'transferPriceInterval' | translate}}</mat-label>
                     <mat-select>
-                        <mat-option>0€ - 5.000€</mat-option>
-                        <mat-option>5.000€ - 10.000€</mat-option>
-                        <mat-option>10.000€ - 20.000€</mat-option>
-                        <mat-option>20.000€ - 30.000€</mat-option>
+                        @for (interval of intervalList; track interval) {
+                        <mat-option [value]="interval.value">{{interval.label}}</mat-option>
+                        }
                     </mat-select>
                 </mat-form-field>
                 <section>
@@ -248,8 +248,8 @@
                 <section>
                     <mat-label>{{'variationPrice' | translate}}</mat-label>
                     <mat-radio-group>
-                        <mat-radio-button value="">{{'puja' | translate}}</mat-radio-button>
-                        <mat-radio-button value="">{{'baixa' | translate}}</mat-radio-button>
+                        <mat-radio-button value="1">{{'puja' | translate}}</mat-radio-button>
+                        <mat-radio-button value="0">{{'baixa' | translate}}</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <mat-form-field>
@@ -297,11 +297,13 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'cessionOfertDetails' | translate}}</mat-label>
-                    <!-- Temporal -->
                     <mat-select multiple>
-                        <mat-option value="">{{'offer1' | translate}}</mat-option>
-                        <mat-option value="">{{'offer2' | translate}}</mat-option>
-                        <mat-option value="">{{'offer3' | translate}}</mat-option>
+                        <mat-option value="121370000">{{'fonsComerç' | translate}}</mat-option>
+                        <mat-option value="121370001">{{'elementsActiu' | translate}}</mat-option>
+                        <mat-option value="121370002">{{'carteraClients' | translate}}</mat-option>
+                        <mat-option value="121370003">{{'stock' | translate}}</mat-option>
+                        <mat-option value="121370004">{{'societat' | translate}}</mat-option>
+                        <mat-option value="121370005">{{'activitat' | translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
@@ -314,11 +316,14 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'cessionSteps' | translate}}</mat-label>
-                    <!-- Temporal -->
                     <mat-select multiple>
-                        <mat-option value="">{{'step1' | translate}}</mat-option>
-                        <mat-option value="">{{'step2' | translate}}</mat-option>
-                        <mat-option value="">{{'step3' | translate}}</mat-option>
+                        <mat-option value="121370000">{{'publicatAnunci' | translate}}</mat-option>
+                        <mat-option value="121370001">{{'ofertTreballadors' | translate}}</mat-option>
+                        <mat-option value="121370002">{{'conversesCedirTreballadors' | translate}}</mat-option>
+                        <mat-option value="121370003">{{'conversesCedirFamiliar' | translate}}</mat-option>
+                        <mat-option value="121370004">{{'contacteInteresada' | translate}}</mat-option>
+                        <mat-option value="121370005">{{'negociacionsInteresada' | translate}}</mat-option>
+                        <mat-option value="121370006">{{'tramitsGestoria' | translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
@@ -383,9 +388,10 @@
                 <mat-form-field>
                     <mat-label>{{'typologyClients' | translate}}</mat-label>
                     <mat-select multiple placeholder="Choose an option">
-                        @for (typologyItem of clientTypologyList; track typologyItem) {
-                        <mat-option [value]="typologyItem.value">{{typologyItem.label}}</mat-option>
-                        }
+                        <mat-option value="B2A">B2A</mat-option>
+                        <mat-option value="B2B">B2B</mat-option>
+                        <mat-option value="B2C">B2C</mat-option>
+                        <mat-option value="B2E">B2E</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
@@ -425,27 +431,38 @@
                 <mat-checkbox>{{'licenseCheck' | translate}}</mat-checkbox>
                 <mat-form-field>
                     <mat-label>{{'companyAdvantages' |translate}}</mat-label>
-                    <!-- Temporal-->
+                    <!-- Cambiar-->
                     <mat-select multiple>
-                        <mat-option value="">{{'advantage1' |translate}}</mat-option>
-                        <mat-option value="">{{'advantage2' |translate}}</mat-option>
-                        <mat-option value="">{{'advantage3' |translate}}</mat-option>
+                        <mat-option value="121370000">{{'lowRiskAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370001">{{'equipamentAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370002">{{'businessAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370003">{{'brandAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370004">{{'diverseClientWalletAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370005">{{'clientWalletAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370006">{{'infrastructureAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370007">{{'futureProjectionAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370008">{{'businessStrategyAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370009">{{'activityLicenseAdvantage' |translate}}</mat-option>
+                        <mat-option value="121370010">{{'ubicationAdvantage' |translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'companyDisadvantages' |translate}}</mat-label>
-                    <!-- Temporal-->
                     <mat-select multiple>
-                        <mat-option value="">{{'difficult1' |translate}}</mat-option>
-                        <mat-option value="">{{'difficult2' |translate}}</mat-option>
-                        <mat-option value="">{{'difficult3' |translate}}</mat-option>
+                        <mat-option value="121370000">{{'ancientProcessAndStrategyDisadvantage'
+                            |translate}}</mat-option>
+                        <mat-option value="121370001">{{'searchReenterpriseDisadvantage' |translate}}</mat-option>
+                        <mat-option value="121370002">{{'workPasivesDisadvantage' |translate}}</mat-option>
+                        <mat-option value="121370003">{{'actualEconomSituationDisadvantage' |translate}}</mat-option>
+                        <mat-option value="121370004">{{'highCompetitionDisadvantage' |translate}}</mat-option>
+                        <mat-option value="121370005">{{'sectorStructureDisadvantage' |translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-checkbox>{{'exportCheck' |
                     translate}}</mat-checkbox>
                 <mat-form-field>
                     <mat-label>{{'export/importAmbit' | translate}}</mat-label>
-                    <mat-select placeholder="Choose one option">
+                    <mat-select multiple>
                         <mat-option value="121370000">{{'Europa' | translate}}</mat-option>
                         <mat-option value="121370001">{{'Asia' | translate}}</mat-option>
                         <mat-option value="121370002">{{'África' | translate}}</mat-option>
@@ -463,7 +480,7 @@
                     translate}}</mat-checkbox>
                 <mat-form-field>
                     <mat-label>{{'export/importAmbit' | translate}}</mat-label>
-                    <mat-select placeholder="Choose one option">
+                    <mat-select multiple>
                         <mat-option value="121370000">{{'Europa' | translate}}</mat-option>
                         <mat-option value="121370001">{{'Asia' | translate}}</mat-option>
                         <mat-option value="121370002">{{'África' | translate}}</mat-option>

@@ -34,10 +34,8 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllClientTypologies(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}clientTypology.json`)
-      .pipe(catchError(this.sharedService.handleError));
+  getAllCessionReasons(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.urlAPIMock}cessionReason.json`).pipe(catchError(this.sharedService.handleError))
   }
 
   getAllContacts(): Observable<ContactDTO[]> {
@@ -120,7 +118,7 @@ export class DataService {
   }
 
   getAllTransferPriceInterval(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.urlAPIMock}transferPriceInterval.json`).pipe(catchError(this.sharedService.handleError))
+    return this.http.get<any[]>(`${this.urlAPIMock}transferPriceInterval.json`).pipe(catchError(this.sharedService.handleError));
   }
 
   getAllTransmissionTypologies(): Observable<any[]> {
