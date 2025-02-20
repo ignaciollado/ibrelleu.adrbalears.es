@@ -214,7 +214,6 @@ export class SuccessStoriesDTO {
     zipCode?: string,
     poblacio?: string,
     comarca?: string,
-
     province?: string,
     consultant?: string,
     delegation?: string,
