@@ -865,5 +865,16 @@
   "preuCessio": "Precio cesión",
   "intervalPreuCessio": "Intervalo de precio de cesión",
   "facturacioUltimAnyFiscal": "Facturación",
-  "resultatUltimAnyFiscal": "Beneficio"
+  "resultatUltimAnyFiscal": "Beneficio",
+
+  "codi": "Código",
+  "estatInteres": "Estado del interés",
+  "contacte": "Contacto",
+  "codiPCInteressat": "Código PC Interesado",
+  "consultorContacteInteressat": "Consultor del Interesado",
+  "delegacioInteressat": "Oficina del Interesado",
+  "codiPRDesitjat": "Código PR deseado",
+  "consultorProjecteDesitjat": "Consultor del proyecto deseado",
+  "delegacioProjecteDesitjat": "Oficina del proyecto deseado",
+  "dataGeneracio": "Fecha de generación"
 }

@@ -104,41 +104,84 @@ export class InterestDTO {
   }
 }
 
-export const interestColumns = [
+// export const interestColumns = [
+//   {
+//     key: 'codi',
+//     type: 'url',
+//   },
+//   {
+//     key: 'crationDate',
+//     type: 'date',
+//   },
+//   {
+//     key: 'interestState',
+//     type: 'readOnly',
+//   },
+//   {
+//     key: 'contact',
+//     type: 'readOnly',
+//   },
+//   {
+//     key: 'pcCodeInter',
+//     type: 'readOnly',
+//   },
+//   {
+//     key: 'prCodeInter',
+//     type: 'readOnly',
+//   },
+//   {
+//     key: 'consultInter',
+//     type: 'readOnly',
+//   },
+//   {
+//     key: 'delegationInter',
+//     type: 'readOnly',
+//   },
+//   {
+//     key: 'creationDate',
+//     type: 'date',
+//   },
+// ];
+
+export const InterestColumnsBBDD = [
   {
-    key: 'codi',
-    type: 'url',
+    key: "codi",
+    type: "url",
   },
   {
-    key: 'crationDate',
-    type: 'date',
+    key: "estatInteres",
+    type: "scope",
   },
   {
-    key: 'interestState',
-    type: 'readOnly',
+    key: "contacte",
+    type: "scope",
   },
   {
-    key: 'contact',
-    type: 'readOnly',
+    key: "codiPCInteressat",
+    type: "readOnly",
   },
   {
-    key: 'pcCodeInter',
-    type: 'readOnly',
+    key: "consultorContacteInteressat",
+    type: "scope",
   },
   {
-    key: 'prCodeInter',
-    type: 'readOnly',
+    key: "delegacioInteressat",
+    type: "scope",
   },
   {
-    key: 'consultInter',
-    type: 'readOnly',
+    key: "codiPRDesitjat",
+    type: "readOnly",
   },
   {
-    key: 'delegationInter',
-    type: 'readOnly',
+    key: "consultorProjecteDesitjat",
+    type: "scope",
   },
   {
-    key: 'creationDate',
-    type: 'date',
+    key: "delegacioProjecteDesitjat",
+    type: "scope",
   },
-];
+  {
+    key: "dataGeneracio",
+    type: "date",
+  },
+]

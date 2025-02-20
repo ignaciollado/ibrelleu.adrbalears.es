@@ -871,5 +871,16 @@
   "preuCessio": "Preu de cessió",
   "intervalPreuCessio": "Interval de preu de cessió",
   "facturacioUltimAnyFiscal": "Facturació",
-  "resultatUltimAnyFiscal": "Benefici"
+  "resultatUltimAnyFiscal": "Benefici",
+
+  "codi": "Codi",
+  "estatInteres": "Estat de l'interès",
+  "contacte": "Contacte",
+  "codiPCInteressat": "Codi PC Interessat",
+  "consultorContacteInteressat": "Consultor de l'Interessat",
+  "delegacioInteressat": "Oficina de l'Interessat",
+  "codiPRDesitjat": "Codi PR Desitjat",
+  "consultorProjecteDesitjat": "Consultor del projecte desitjat",
+  "delegacioProjecteDesitjat": "Oficina del projecte desitjat",
+  "dataGeneracio": "Data de generació"
 }
