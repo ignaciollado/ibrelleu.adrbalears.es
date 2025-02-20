@@ -70,6 +70,13 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
+  getAllInterestsStatus(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}interestsStatus.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
+
   getAllKnowWays(): Observable<any[]> {
     return this.http
       .get<any[]>(`${this.urlAPIMock}knowWays.json`)
