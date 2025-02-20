@@ -6,46 +6,45 @@
       <section>
         <mat-form-field>
           <mat-label>{{'caseName' | translate}}</mat-label>
-          <input matInput formControlName="nombre" aria-label="Nombre">
+          <input matInput aria-label="Nombre">
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>{{'ibRelleuTypology' | translate}}</mat-label>
-          <mat-select formControlName="ibRelleuTypology">
-            @for (ibRelleuTypology of ibRelleuTypologyList; track ibRelleuTypology) {
-            <mat-option [value]="ibRelleuTypology.value">{{ibRelleuTypology.label | translate}}</mat-option>
-            }
+          <mat-select>
+            <mat-option value="282310000">{{'Asesoramiento integral en todo el proceso' | translate}}</mat-option>
+            <mat-option value="282310001">{{'Presentación de las partes y seguimiento' | translate}}</mat-option>
+            <mat-option value="282310002">{{'Asesoramiento a la parte cedente' | translate}}</mat-option>
+            <mat-option value="282310003">{{'Asesoramiento a la parte emprendedora' | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'successStoryProcess' | translate}}</mat-label>
-          <input matInput formControlName="process" aria-label="Nombre">
+          <input matInput aria-label="Nombre">
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>{{'ibRelleuProject' | translate}}</mat-label>
-          <input matInput formControlName="ibRelleuProject">
+          <input matInput>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'grantorProject' | translate}}</mat-label>
-          <input matInput formControlName="cedentProject">
+          <input matInput>
         </mat-form-field>
 
         <!-- Pendiente multichoice y arreglar la lógica -->
         <mat-form-field>
           <mat-label>{{'mainSector' | translate}}</mat-label>
-          <mat-select formControlName="mainSector">
-            <mat-option [value]="" (click)="activateAndFilterActivities($event)">---</mat-option>
+          <mat-select>
             @for (sector of sectorList; track sector) {
-            <mat-option [value]="sector.value" (click)="activateAndFilterActivities($event)">{{sector.label |
+            <mat-option [value]="sector.value">{{sector.label |
               translate}}</mat-option>
             }
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'mainActivity' | translate }}</mat-label>
-          <mat-select formControlName="mainActivity">
-            <mat-option [value]="">---</mat-option>
+          <mat-select>
             @for (activity of activityList; track activity) {
             <mat-option [value]="activity.value">{{activity.label | translate}}</mat-option>
             }
@@ -78,7 +77,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'consultant' | translate}}</mat-label>
-          <mat-select formControlName="consultor">
+          <mat-select>
             @for(consultant of consultantList; track consultant) {
             <mat-option [value]="consultant">{{consultant}}</mat-option>
             }
@@ -86,7 +85,7 @@
         </mat-form-field>
         <section>
           <mat-label>{{'delegation' | translate}}</mat-label>
-          <mat-radio-group formControlName="delegation">
+          <mat-radio-group>
             <mat-radio-button value="Mallorca">Mallorca</mat-radio-button>
             <mat-radio-button value="Menorca">Menorca</mat-radio-button>
             <mat-radio-button value="Eivissa">{{'eivissa' | translate}}</mat-radio-button>
@@ -100,70 +99,85 @@
       <section>
         <mat-form-field>
           <mat-label>{{'transferDate' | translate}}</mat-label>
-          <input matInput formControlName="transferDate" type="date" aria-label="transferDate">
+          <input matInput type="date" aria-label="transferDate">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'contractTypology' | translate}}</mat-label>
-          <mat-select formControlName="contractTypology">
-            @for(contractTypology of contractTypologyList; track contractTypology) {
-            <mat-option [value]="contractTypology.value">{{contractTypology.label | translate}}</mat-option>
-            }
+          <mat-select>
+            <mat-option value="282310001">{{'Compraventa de actividad' | translate}}</mat-option>
+            <mat-option value="282310003">{{'Compraventa de participaciones' | translate}}</mat-option>
+            <mat-option value="121370000">{{'Compraventa de acciones' | translate}}</mat-option>
+            <mat-option value="282310002">{{'Contrato de activos' | translate}}</mat-option>
+            <mat-option value="121370001">{{'Alquiler de la actividad' | translate}}</mat-option>
+            <mat-option value="121370002">{{'Donación de la empresa/actividad' | translate}}</mat-option>
+            <mat-option value="282310000">{{'Desconocida' | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
-
+        <section>
+          <mat-label>{{'transferTypology' | translate}}</mat-label>
+          <mat-radio-group>
+            <mat-radio-button value="282310000">{{'workerTransmission' | translate}}</mat-radio-button>
+            <mat-radio-button value="282310001">{{'thirdTransmission' | translate}}</mat-radio-button>
+            <mat-radio-button value="282310002">{{'familiarSuccession' | translate}}</mat-radio-button>
+          </mat-radio-group>
+        </section>
         <mat-form-field>
           <mat-label>{{'transferPrice' | translate}}</mat-label>
-          <input matInput formControlName="transferPrice" type="number" aria-label="transferPrice">
+          <input matInput type="number" aria-label="transferPrice">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'propertyValue' | translate}}</mat-label>
-          <input matInput formControlName="propertyValue" type="number">
+          <input matInput type="number">
         </mat-form-field>
         <section>
           <mat-label>{{'selledProperty' | translate}}</mat-label>
-          <mat-radio-group formControlName="propertySelled">
+          <mat-radio-group>
             <mat-radio-button value="1">Si</mat-radio-button>
             <mat-radio-button value="0">No</mat-radio-button>
           </mat-radio-group>
         </section>
         <mat-form-field>
           <mat-label>{{'paymentForm' | translate}}</mat-label>
-          <mat-select formControlName="paymentType">
-            @for(paymentType of paymentTypeList; track paymentType) {
-            <mat-option [value]="paymentType.value">{{paymentType.label | translate}}</mat-option>
-            }
+          <mat-select>
+            <mat-option value="282310004">{{'Transferencia' | translate}}</mat-option>
+            <mat-option value="282310003">{{'Cheque' | translate}}</mat-option>
+            <mat-option value="282310002">{{'Cheque conformado' | translate}}</mat-option>
+            <mat-option value="282310000">{{'Efectivo' | translate}}</mat-option>
+            <mat-option value="282310005">{{'Pagaré' | translate}}</mat-option>
+            <mat-option value="282310006">{{'Otros' | translate}}</mat-option>
+
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'paymentTypology' | translate}}</mat-label>
-          <mat-select formControlName="paymentTypology">
-            @for(paymentTypology of paymentTypologyList; track paymentTypology) {
-            <mat-option [value]="paymentTypology.value">{{paymentTypology.label | translate}}</mat-option>
-            }
+          <mat-select>
+            <mat-option value="282310000">{{'Al contado' | translate}}</mat-option>
+            <mat-option value="282310001">{{'Una parte al contado y una parte a plazos' | translate}}</mat-option>
+            <mat-option value="282310002">{{'A plazos' | translate}}</mat-option>
+            <mat-option value="282310003">{{'Una parte al contado y una parte en variable' | translate}}</mat-option>
+            <mat-option value="282310004">{{'Pagos variables' | translate}}</mat-option>
+            <mat-option value="282310006">{{'Otros' | translate}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'hiringWorkersNumber' | translate}}</mat-label>
-          <input matInput type="number" formControlName="hiringWorkersNumber" min="0"
-            (keyup)="calculateTotalWorkers($event)">
+          <input matInput type="number" min="0">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'savedWorkersNumber' | translate}}</mat-label>
-          <input matInput type="number" formControlName="savedWorkersNumber" min="0"
-            (keyup)="calculateTotalWorkers($event)">
+          <input matInput type="number" min="0">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'entrepreneurWorkersNumber' | translate}}</mat-label>
-          <input matInput type="number" formControlName="ibRelleuWorkersNumber" min="0"
-            (keyup)="calculateTotalWorkers($event)">
+          <input matInput type="number" min="0">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'totalWorkersNumber' | translate}}</mat-label>
-          <input matInput type="number" formControlName="totalWorkers">
+          <input matInput type="number">
         </mat-form-field>
         <mat-form-field class="textArea">
           <mat-label>{{'acordMark' | translate}}</mat-label>
-          <textarea matInput formControlName="agreement" rows="3"></textarea>
+          <textarea matInput rows="3"></textarea>
         </mat-form-field>
       </section>
     </mat-tab>
@@ -172,23 +186,23 @@
       <section>
         <mat-form-field>
           <mat-label>{{'totalNameIbRelleu' | translate}}</mat-label>
-          <input matInput formControlName="totalNameIbRelleu">
+          <input matInput>
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'phoneIbRelleu' | translate}}</mat-label>
-          <input matInput formControlName="phoneIbRelleu" minlength="9" maxlength="9">
+          <input matInput minlength="9" maxlength="9">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'mailIbRelleu' | translate}}</mat-label>
-          <input matInput type="email" formControlName="mailIbRelleu">
+          <input matInput type="email">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'dni/nieIbRelleu' | translate}}</mat-label>
-          <input matInput formControlName="nifIbRelleu" maxlength="9">
+          <input matInput maxlength="9">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'legalFormIbRelleu' | translate}}</mat-label>
-          <mat-select formControlName="legalFormIbRelleu">
+          <mat-select>
             @for(legalForm of legalFormList; track legalForm) {
             <mat-option [value]="legalForm.value">{{legalForm.label}}</mat-option>
             }
@@ -196,7 +210,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{'cifIbRelleu' | translate}}</mat-label>
-          <input matInput formControlName="nifCompanyIbRelleu" maxlength="9">
+          <input matInput maxlength="9">
         </mat-form-field>
       </section>
     </mat-tab>
@@ -205,14 +219,14 @@
       <section>
         <section>
           <mat-label>Testimonial web</mat-label>
-          <mat-radio-group formControlName="testimonialWeb">
-            <mat-radio-button [value]="121370000">{{'webSolicitation' | translate}}</mat-radio-button>
-            <mat-radio-button [value]="121370001">{{'webPublish' | translate}}</mat-radio-button>
+          <mat-radio-group>
+            <mat-radio-button value="121370000">{{'webSolicitation' | translate}}</mat-radio-button>
+            <mat-radio-button value="121370001">{{'webPublish' | translate}}</mat-radio-button>
           </mat-radio-group>
         </section>
         <mat-form-field class="textArea">
           <mat-label>{{'testimonialObservations' | translate}}</mat-label>
-          <textarea matInput formControlName="testimonialObservations" rows="5"></textarea>
+          <textarea matInput rows="5"></textarea>
         </mat-form-field>
       </section>
     </mat-tab>
@@ -221,13 +235,12 @@
       <section>
         <mat-form-field class="textArea">
           <mat-label>{{'serviceSummary' | translate}}</mat-label>
-          <textarea matInput formControlName="offeredServiceSummary" rows="10"></textarea>
+          <textarea matInput rows="10"></textarea>
         </mat-form-field>
       </section>
     </mat-tab>
 
     <mat-tab label="{{'documentation' | translate}}">
-      <!-- <app-file-upload id="{{id}}" origin="successstories" class="textArea"></app-file-upload> -->
       <app-document id="{{id}}" origin="successstory"></app-document>
     </mat-tab>
   </mat-tab-group>

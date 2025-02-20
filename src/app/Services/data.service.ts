@@ -50,12 +50,6 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllContractTypologies(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}contractTypology.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
 
   getAllGrantorProjects(): Observable<GrantorProjectsDTO[]> {
     return this.http
@@ -66,12 +60,6 @@ export class DataService {
   getAllIbRelleuProjects(): Observable<IBRelleuProjectsDTO[]> {
     return this.http
       .get<any[]>(`${this.urlAPIMock}ibrelleuProjects.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllIbRelleuTypologies(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}ibrelleuTypology.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -90,18 +78,6 @@ export class DataService {
   getAllLevelsOfEducation(): Observable<any[]> {
     return this.http
       .get<any[]>(`${this.urlAPIMock}levelOfEducation.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllPaymentType(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}paymentType.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllPaymentTypology(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}paymentTypology.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -125,12 +101,6 @@ export class DataService {
 
   getAllTransferPriceInterval(): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlAPIMock}transferPriceInterval.json`).pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllTransmissionTypologies(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}transmissionTypology.json`)
-      .pipe(catchError(this.sharedService.handleError));
   }
 
   getAllZipCodes(): Observable<ZipCodesIBDTO[]> {
