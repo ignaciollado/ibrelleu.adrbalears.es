@@ -185,11 +185,11 @@
   "societyTax200": "Impuesto de sociedades (modelo 200) de los 3 últimos años",
 
   "process": "Proceso",
-  "reInterpriseProject": "Proyecto IBRelleu",
-  "numWorkersToBehired": "Núm. de trabajadores para contratar",
-  "numWorkersSaved": "Núm. de trabajadores salvados",
-  "numEntrepreneursWhoWillWork": "Núm. de trabajadores emprendedores que trabajarán",
-  "numPeopleWorkingAtIbRelleu": "Núm. total de personas trabajadoras",
+  "ibrelleuProject": "Proyecto IBRelleu",
+  "numberOfHiredWorkers": "Núm. de trabajadores para contratar",
+  "numberOfSavedWorkers": "Núm. de trabajadores salvados",
+  "numberOfEnterpriseWorkers": "Núm. de trabajadores emprendedores que trabajarán",
+  "totalOfWorkers": "Núm. total de personas trabajadoras",
   "creationDate": "Fecha de creación",
 
   "companyAddress": "Domicilio",

@@ -185,11 +185,11 @@
   "societyTax200": "Impost de societats (model 200) dels 3 últims anys",
 
   "process": "Procés",
-  "reInterpriseProject": "Projecte IBRelleu",
-  "numWorkersToBehired": "Núm. de treballadors per contractar",
-  "numWorkersSaved": "Núm. de treballadors salvats",
-  "numEntrepreneursWhoWillWork": "Núm. de treballadors emprenedors que treballaran",
-  "numPeopleWorkingAtIbRelleu": "Núm. total de persones treballadores",
+  "ibrelleuProject": "Projecte IBRelleu",
+  "numberOfHiredWorkers": "Núm. de treballadors per contractar",
+  "numberOfSavedWorkers": "Núm. de treballadors salvats",
+  "numberOfEnterpriseWorkers": "Núm. de treballadors emprenedors que treballaran",
+  "totalOfWorkers": "Núm. total de persones treballadores",
   "creationDate": "Data de creació",
 
   "companyAddress": "Domicili",
