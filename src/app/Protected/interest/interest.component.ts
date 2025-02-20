@@ -22,6 +22,11 @@ export class InterestComponent {
 
   loadAllInterestData() {
     this.dataService.getAllInterests().subscribe((interests: InterestDTO[]) => {
+      interests.forEach(interest => {
+        this.dataService.getAllInterestsStatus().subscribe((statusList: any[]) => {
+          interest.estatInteres = statusList.find(status => status.value === interest.estatInteres).label
+        })
+      })
       this.dataSource.data = interests;
       this.dataSource.paginator = this.paginator
     })

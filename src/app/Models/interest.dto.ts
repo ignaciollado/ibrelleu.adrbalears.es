@@ -157,7 +157,7 @@ export const InterestColumnsBBDD = [
     type: "scope",
   },
   {
-    key: "codiPCInteressat",
+    key: "codiPRInteressat",
     type: "readOnly",
   },
   {
@@ -169,7 +169,7 @@ export const InterestColumnsBBDD = [
     type: "scope",
   },
   {
-    key: "codiPRDesitjat",
+    key: "codiPCDesitjat",
     type: "readOnly",
   },
   {

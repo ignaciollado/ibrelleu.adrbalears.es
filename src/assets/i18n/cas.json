@@ -870,10 +870,10 @@
   "codi": "Código",
   "estatInteres": "Estado del interés",
   "contacte": "Contacto",
-  "codiPCInteressat": "Código PC Interesado",
+  "codiPRInteressat": "Código PR Interesado",
   "consultorContacteInteressat": "Consultor del Interesado",
   "delegacioInteressat": "Oficina del Interesado",
-  "codiPRDesitjat": "Código PR deseado",
+  "codiPCDesitjat": "Código PC deseado",
   "consultorProjecteDesitjat": "Consultor del proyecto deseado",
   "delegacioProjecteDesitjat": "Oficina del proyecto deseado",
   "dataGeneracio": "Fecha de generación"
