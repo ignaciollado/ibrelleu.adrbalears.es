@@ -21,62 +21,15 @@ export class GrantorProjectDetailComponent {
   zipCodeList: ZipCodesIBDTO[] = [];
 
   knowWaysList: any[] = [];
-  projectStatusList: any[] = [
-    { value: '282310000', label: 'Active', label_ca: 'Actiu' },
-    { value: '282310001', label: 'Cancelled', label_ca: 'Cancel·lat' },
-    { value: '282310002', label: 'Standby', label_ca: 'Stanby' },
-    // Este estado aparece como display none en Reempresa
-    // {"value": "282310003",
-    //   "label": "Finalizado",
-    //   "label_ca": "Finalitzat"
-    // }
-  ];
 
-  projectCancelReasons: any[] = [
-    {
-      value: '121370000',
-      label: 'closedBusiness',
-    },
-    {
-      value: '121370001',
-      label: 'continueBusiness',
-    },
-    {
-      value: '121370002',
-      label: 'notInteressedIBRelleu',
-    },
-    { value: '121370003', label: 'ns/nc', label_ca: 'ns/nc' },
-  ];
-
-  localTypologyList: any[] = [
-    {
-      value: '121370000',
-      label: 'Parada disponible de Mercado Municipal',
-      label_ca: 'Parada disponible de Mercat Municipal',
-    },
-    {
-      value: '121370001',
-      label: 'Establecimiento comercial de titularidad municipal disponible',
-      label_ca: 'Establiment comercial de titularitat municipal disponible',
-    },
-    {
-      value: '121370002',
-      label: 'Concesión administrativa del bar de las instalaciones deportivas',
-      label_ca:
-        'Concessió administrativa del bar de les instal·lacions esportives',
-    },
-  ];
-
-  delegationList: string[] = [];
   consultantList: string[] = [];
-
-  cessionTypeList: any[] = [];
 
   sectorList: any[] = [];
   activityList: any[] = [];
 
-  clientTypologyList: any[] = [];
-
+  cessionReasonsList: any[] = [];
+  intervalList: any[] = [];
+  propertyStatusList: any[] = [];
 
   /* Permite validar que la fecha del inicio de la actividad no sea superior 
   al año actual. ¿Es posible que una empresa que cede haya empezado su actividad
@@ -86,31 +39,30 @@ export class GrantorProjectDetailComponent {
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
     this.grantorProjectForm = new FormGroup({
-      projectName: new FormControl('', Validators.required),
-      projectCreationDate: new FormControl('', Validators.required),
-      sameContactAndOwner: new FormControl(''),
-      ownerName: new FormControl('', Validators.required),
-      // contactName: new FormControl({ value: '', disabled: true }),
-      contactName: new FormControl(''),
-      accountName: new FormControl('', Validators.required),
-      howKnowUs: new FormControl('', Validators.required),
-      projectStatus: new FormControl('', Validators.required),
-      cancelReason: new FormControl('', Validators.required),
-      delegation: new FormControl('', Validators.required),
-      consultant: new FormControl('', Validators.required),
-      statusObservation: new FormControl(''),
+      projectName: new FormControl(''),
+      entryDate: new FormControl(''),
+      sameContactOwner: new FormControl(''),
+      ownerName: new FormControl(''),
+      projectContactName: new FormControl(''),
+      projectAccount: new FormControl(''),
+      howKnowUs: new FormControl(''),
+      projectStatus: new FormControl(''),
+      cancelReason: new FormControl(''),
+      delegation: new FormControl(''),
+      consultant: new FormControl(''),
+      projectStatusObservations: new FormControl(''),
       activeBusiness: new FormControl(''),
-      // localTypology: new FormControl({ value: '', disabled: true }),
       localTypology: new FormControl(''),
-      cessionType: new FormControl(''),
-      startYear: new FormControl('', [
-        Validators.pattern('[0-9]{4}'),
-        Validators.min(1850),
-        Validators.max(this.actualYear),
-      ]),
+      transferType: new FormControl(''),
+      startYear: new FormControl(''),
 
-      // Necesario para el zipCode
-      direccion: new FormControl('', [Validators.required]),
+      activitySameLocationAccount: new FormControl(''),
+      municipalMarketUbication: new FormControl(''),
+      municipalFacilityType: new FormControl(''),
+      facilityName: new FormControl(''),
+      specifyTypeFacility: new FormControl(''),
+      address: new FormControl(''),
+      district: new FormControl(''),
       zipCode: new FormControl('', [
         Validators.minLength(5),
         Validators.maxLength(5),
@@ -119,15 +71,116 @@ export class GrantorProjectDetailComponent {
       councilCity: new FormControl({ value: '', disabled: true }),
       localizationCCAA: new FormControl({ value: '', disabled: true }),
       localizationCountry: new FormControl({ value: 'España', disabled: true }),
+      noDifusion: new FormControl(''),
+      propertyStatus: new FormControl(''),
+      localSize: new FormControl(''),
+      localContractConditions: new FormControl(''),
+      localSellSubject: new FormControl(''),
+      anotherLocalSpecifications: new FormControl(''),
+
+      cessionReason: new FormControl(''),
+      lastDateCession: new FormControl(''),
+      cessionReasonDescription: new FormControl(''),
+      partnerAutorization: new FormControl(''),
+      cessionPriceInterval: new FormControl(''),
+      cessionPlan: new FormControl(''),
+      variationPrice: new FormControl(''),
+      dateVariation: new FormControl(''),
+      cessionPrice: new FormControl(''),
+      ibrelleuValorationInterest: new FormControl(''),
+      valorationAspects: new FormControl(''),
+      lastFiscalYearValoration: new FormControl(''),
+      valorationStatus: new FormControl(''),
+      externalValoration: new FormControl(''),
+      metodsValorationExternalDescription: new FormControl(''),
+      cessionOfferDetails: new FormControl(''),
+      cessionOfferDetailsDescription: new FormControl(''),
+      externalProfessionalName: new FormControl(''),
+      cessionStepsDone: new FormControl(''),
+      externalProfessionalMail: new FormControl(''),
+      externalProfessionalPhone: new FormControl(''),
+      externalIBRelleuContact: new FormControl(''),
+      desiredIBRelleuProfile: new FormControl(''),
+
+      activityCessionSameAccount: new FormControl(''),
+      mainSector: new FormControl(''),
+      mainActivity: new FormControl(''),
+      paradaMarketNoSedentary: new FormControl(''),
+      cessionActivityDescription: new FormControl(''),
+      companyCarrerAndStrategy: new FormControl(''),
+      marketDescription: new FormControl(''),
+      clientsTypology: new FormControl(''),
+      clientsDescription: new FormControl(''),
+      suppliersDescription: new FormControl(''),
+      competencyDescription: new FormControl(''),
+      productCheck: new FormControl(''),
+      brandCheck: new FormControl(''),
+      productServiceDescription: new FormControl(''),
+      brandsNames: new FormControl(''),
+      renovationTrademarkName: new FormControl(''),
+      stockCheck: new FormControl(''),
+      auditoryCheck: new FormControl(''),
+      activityLicenseCheck: new FormControl(''),
+      companyAdvantages: new FormControl(''),
+      companyDisadvantages: new FormControl(''),
+      exportCheck: new FormControl(''),
+      exportGeograficAmbit: new FormControl(''),
+      exportDescription: new FormControl(''),
+      importCheck: new FormControl(''),
+      importGeograficAmbit: new FormControl(''),
+      importDescription: new FormControl(''),
+      fullTimeWorkers: new FormControl(''),
+      partialTimeWorkers: new FormControl(''),
+      totalWorkers: new FormControl(''),
+      workersAntiquity: new FormControl(''),
+      salaryComments: new FormControl(''),
+      collaborationComments: new FormControl(''),
+      workersObservations: new FormControl(''),
+      stayWorkersAfterCession: new FormControl(''),
+      workersKnowSituation: new FormControl(''),
+
+      lastFiscalYearFacturation: new FormControl(''),
+      lastFiscalYearResults: new FormControl(''),
+      commentsLastFiscalYearResults: new FormControl(''),
+      LastFiscalYearEBITDA: new FormControl(''),
+      oneYearAgoFacturation: new FormControl(''),
+      oneYearAgoResults: new FormControl(''),
+      commentsOneYearAgoResults: new FormControl(''),
+      oneYearAgoEBITDA: new FormControl(''),
+      twoYearsAgoFacturation: new FormControl(''),
+      twoYearsAgoResults: new FormControl(''),
+      commentsTwoYearsAgoResults: new FormControl(''),
+      twoYearsAgoEBITDA: new FormControl(''),
+
+      documentationActivityLicense: new FormControl(''),
+      documentation190IRPF: new FormControl(''),
+      documentationRentContract: new FormControl(''),
+      documentationRNTorRLC: new FormControl(''),
+      documentation347CustomersSuppliers: new FormControl(''),
+      documentation130or131IRPF: new FormControl(''),
+      documentationActivitAccountability: new FormControl(''),
+      documentationAnualIVA390: new FormControl(''),
+      documentation100IRPF: new FormControl(''),
+      documentationLostGains: new FormControl(''),
+      documentationCopyCifCompany: new FormControl(''),
+      documentationConstitutionScriptures: new FormControl(''),
+      documentationSocietyTax200: new FormControl(''),
+      documentationSocietyScriptures: new FormControl(''),
+      documentationSituationBalance: new FormControl(''),
+      documentationAdministrativeConcession: new FormControl(''),
+      documentationObservations: new FormControl('')
+
+
     });
 
     this.loadKnowWays();
-    // this.loadDelegationAndConsultant();
-    this.loadCessionType();
+    this.loadConsultant();
     this.getAllZipCodes();
     this.loadSectorInfo();
     this.loadActivityInfo();
-    this.loadClientInfo();
+    this.loadCessionReasons();
+    this.loadIntervalInfo();
+    this.loadPropertyStatus();
   }
 
   ngOnInit() {
@@ -141,6 +194,11 @@ export class GrantorProjectDetailComponent {
           return name ? this._filter(name as string) : this.options.slice();
         })
       );
+
+    this.dataService.getAllGrantorProjects().subscribe((grantorProjects: GrantorProjectsDTO[]) => {
+      let targetProject = grantorProjects.find(grantorProject => grantorProject.id.toString() === this.id)
+      this.loadProjectFormInfo(targetProject)
+    })
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
@@ -164,33 +222,22 @@ export class GrantorProjectDetailComponent {
     });
   }
 
-  // loadDelegationAndConsultant() {
-  //   this.dataService
-  //     .getAllGrantorProjects()
-  //     .subscribe((grantorProjectsList: GrantorProjectsDTO[]) => {
-  //       grantorProjectsList.forEach((project) => {
-  //         this.insertData(project.consultant, project.delegation);
-  //       });
-  //     });
-  // }
+  loadConsultant() {
+    this.dataService
+      .getAllGrantorProjects()
+      .subscribe((grantorProjectsList: GrantorProjectsDTO[]) => {
+        grantorProjectsList.forEach((project) => {
+          this.insertData(project.consultor);
+        });
+      });
+  }
 
-  insertData(consultant?: string, delegation?: string) {
+  insertData(consultant?: string) {
     if (consultant && !this.consultantList.includes(consultant)) {
       this.consultantList.push(consultant);
     }
-
-    if (delegation && !this.delegationList.includes(delegation)) {
-      this.delegationList.push(delegation);
-    }
   }
 
-  loadCessionType() {
-    return this.dataService
-      .getAllTransmissionTypologies()
-      .subscribe((transmissionTypology: any[]) => {
-        this.cessionTypeList = transmissionTypology;
-      });
-  }
 
   getAllZipCodes() {
     this.dataService.getAllZipCodes().subscribe((zpCodes: ZipCodesIBDTO[]) => {
@@ -240,29 +287,119 @@ export class GrantorProjectDetailComponent {
     });
   }
 
-  loadClientInfo() {
-    this.dataService
-      .getAllClientTypologies()
-      .subscribe((typologyItems: any[]) => {
-        this.clientTypologyList = typologyItems;
-      });
+  loadCessionReasons() {
+    this.dataService.getAllCessionReasons().subscribe((cessionReasons: any[]) => {
+      this.cessionReasonsList = cessionReasons
+    })
   }
 
-  // validatorsChangeYesOrNo(
-  //   event: any,
-  //   trackedFormField: string,
-  //   objectiveFormField: string
-  // ) {
-  //   let value = this.grantorProjectForm.get(trackedFormField).value;
-  //   let formField = this.grantorProjectForm.get(objectiveFormField);
+  loadIntervalInfo() {
+    return this.dataService.getAllTransferPriceInterval().subscribe((intervals: any[]) => {
+      this.intervalList = intervals
+    })
+  }
 
-  //   if (value == '0') {
-  //     formField.addValidators([Validators.required]);
-  //     formField.enable();
-  //   } else if (value == '1') {
-  //     formField.clearValidators();
-  //     formField.disable();
-  //   }
-  //   formField.updateValueAndValidity();
-  // }
+  loadPropertyStatus() {
+    return this.dataService.getAllPropertyStatus().subscribe((statusList: any[]) => {
+      this.propertyStatusList = statusList;
+    })
+  }
+
+  loadProjectFormInfo(project: GrantorProjectsDTO) {
+    this.grantorProjectForm.patchValue({
+      projectName: project.nomProjecte,
+      entryDate: project.dataEntrada,
+      sameContactOwner: project.esPropietariContacte,
+      ownerName: project.personaPropietaria,
+      projectAccount: project.compte,
+      howKnowUs: project.coneixement,
+      projectStatus: project.estatProjecte,
+      cancelReason: project.motiuEstatCancelat,
+      delegation: project.delegacio,
+      consultant: project.consultor,
+      projectStatusObservations: project.observacionsEstat,
+      transferType: project.tipusCessio,
+      startYear: project.anyIniciActivitat,
+      activitySameLocationAccount: project.mateixaLocalitzacioCompte,
+      municipalMarketUbication: project.mercatMunicipal,
+      municipalFacilityType: project.tipusInstalacioMunicipal,
+      facilityName: project.nomInstalacio,
+      specifyTypeFacility: project.especificarInstalacio,
+      address: project.adreca,
+      district: project.districte,
+      zipCode: project.codiPostal,
+      localizationCity: project.poblacio,
+      councilCity: project.comarca,
+      localizationCCAA: project.comunitatAutonoma,
+      localizationCountry: project.pais,
+      noDifusion: project.noDifusioPoblacio,
+      propertyStatus: project.localPropietatLloguer,
+      localSize: project.superficieLocal,
+      localContractConditions: project.condicionsContractuals,
+      localSellSubject: project.localNegociVenda,
+      anotherLocalSpecifications: project.altresEspecificacionsLocal,
+      cessionReason: project.motiuCessio,
+      lastDateCession: project.dataMaximaCessio,
+      cessionReasonDescription: project.descripcioActivitatCessio,
+      partnerAutorization: project.autoritzacioSocis,
+      cessionPriceInterval: project.intervalPreuCessio,
+      cessionPlan: project.disposaPlaCessio,
+      variationPrice: project.variacioPreu,
+      dateVariation: project.dataVariacio,
+      cessionPrice: project.preuCessio,
+      ibrelleuValorationInterest: project.interesValoracioReempresa,
+      externalValoration: project.disposaValoracioAliena,
+      metodsValorationExternalDescription: project.descripcioMetodesValoracio,
+      cessionOfferDetails: Array.isArray(project.detallOfertaCessio) ? project.detallOfertaCessio : [project.detallOfertaCessio],
+      externalProfessionalName: project.professionalExtern,
+      cessionStepsDone: Array.isArray(project.passesRealitzades) ? project.passesRealitzades : [project.passesRealitzades],
+      externalProfessionalMail: project.emailProfessionalExtern,
+      externalProfessionalPhone: project.telefonProfessionalExtern,
+      externalIBRelleuContact: project.contacteReemprenedoraExterna,
+      desiredIBRelleuProfile: project.perfilReemprenedora,
+      mainSector: Array.isArray(project.sector1) ? project.sector1 : [project.sector1],
+      mainActivity: Array.isArray(project.activitat1) ? project.activitat1 : [project.activitat1],
+      paradaMarketNoSedentary: project.paradaMercatNoSedentaria,
+      cessionActivityDescription: project.descripcioActivitatCessio,
+      marketDescription: project.descripcioMercat,
+      clientsTypology: Array.isArray(project.tipologiaClientela) ? project.tipologiaClientela : [project.tipologiaClientela],
+      clientsDescription: project.descripcioClientela,
+      suppliersDescription: project.descripcioProveidors,
+      competencyDescription: project.descripcioCompetencia,
+      productCheck: project.productePropi,
+      brandCheck: project.marquesPropies,
+      productServiceDescription: project.descripcioProducteServei,
+      brandsNames: project.nomsMarques,
+      renovationTrademarkName: project.renovarNomComercial,
+      stockCheck: project.disposaInventari,
+      auditoryCheck: project.disposaAuditoria,
+      activityLicenseCheck: project.disposaLlicenciaActivitat,
+      companyAdvantages: Array.isArray(project.avantatgesEmpresa) ? project.avantatgesEmpresa : [project.avantatgesEmpresa],
+      companyDisadvantages: Array.isArray(project.dificultatsEmpresa) ? project.dificultatsEmpresa : [project.dificultatsEmpresa],
+      exportCheck: project.exporta,
+      exportGeograficAmbit: Array.isArray(project.ambitGeograficExport) ? project.ambitGeograficExport : [project.ambitGeograficExport],
+      importCheck: project.importa,
+      importGeograficAmbit: Array.isArray(project.ambitGeograficImport) ? project.ambitGeograficImport : [project.ambitGeograficImport],
+      fullTimeWorkers: project.jornadaCompleta,
+      partialTimeWorkers: project.jornadaParcial,
+      totalWorkers: project.numeroTreballadorsTotals,
+      salaryComments: project.comentariSalaris,
+      collaborationComments: project.comentariAutonomsColaboradors,
+      workersObservations: project.observacionsTreballadors,
+      stayWorkersAfterCession: project.continuenTreballadorsDespresCessio,
+      workersKnowSituation: project.coneixenTreballadorsSituacio,
+      lastFiscalYearFacturation: project.facturacioUltimAnyFiscal,
+      lastFiscalYearResults: project.resultatUltimAnyFiscal,
+      commentsLastFiscalYearResults: project.comentariResultatsUltimAnyFiscal,
+      LastFiscalYearEBITDA: project.EBITDAUltimAnyFiscal,
+      oneYearAgoFacturation: project.facturacioAnyN1,
+      oneYearAgoResults: project.resultatAnyN1,
+      commentsOneYearAgoResults: project.comentariResultatsAnyN1,
+      oneYearAgoEBITDA: project.EBITDAAnyN1,
+      twoYearsAgoFacturation: project.facturacioAnyN2,
+      twoYearsAgoResults: project.resultatAnyN2,
+      commentsTwoYearsAgoResults: project.comentariResultatsAnyN2,
+      twoYearsAgoEBITDA: project.EBITDAAnyN2,
+    })
+  }
 }

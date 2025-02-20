@@ -10,7 +10,7 @@
                     <a *ngSwitchCase="'url'" ngClass="small-data url-link"
                         [routerLink]="['/interests-detail/', element.id]"
                         title="{{'details' | translate}}">{{element[col.key]}}</a>
-                    <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key]}}</span>
+                    <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key] | date : "dd-MM-YYYY"}}</span>
                     <span *ngSwitchDefault ngClass="small-data">{{element[col.key] | translate}}</span>
                 </section>
             </mat-cell>

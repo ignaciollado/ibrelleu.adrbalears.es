@@ -10,12 +10,11 @@ import { map, startWith } from 'rxjs/operators';
 import { DataService } from '../../Services/data.service';
 import { CanComponentDeactivate } from '../../can-deactivate.guard';
 import { CountriesDTO } from '../../Models/countries.dto';
-import { CountriesService } from '../../Services/countries.service';
 import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
 import { Observable } from 'rxjs';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { AccountDTO } from '../../Models/account.dto';
 import { CustomValidatorsService } from '../../Services/custom-validators.service';
+import { SuccessStoriesDTO } from '../../Models/success-stories.dto';
 
 @Component({
   selector: 'adr-success-stories-detail',
@@ -24,44 +23,33 @@ import { CustomValidatorsService } from '../../Services/custom-validators.servic
 })
 export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   submitted: boolean = true;
-  theForm: FormGroup;
-  countries: CountriesDTO[] = [];
+  storyForm: FormGroup;
+
   public zipCodeList: ZipCodesIBDTO[] = [];
   filteredOptions: Observable<ZipCodesIBDTO[]>;
   options: ZipCodesIBDTO[] = [];
   id: string = this.route.snapshot.paramMap.get('id');
   selectedIndex: number;
 
-  ibRelleuTypologyList: any[] = [];
-
-  delegationList: any[] = [];
   consultantList: any[] = [];
   sectorList: any[] = [];
   activityList: any[] = [];
-
-  contractTypologyList: any[] = [];
-  transmissionTypologyList: any[] = [];
-  paymentTypeList: any[] = [];
-  paymentTypologyList: any[] = [];
 
   legalFormList: any[] = [];
 
   constructor(
     private dataService: DataService,
-    private countriesService: CountriesService,
     private route: ActivatedRoute,
-    private customValidatorService: CustomValidatorsService
   ) {
-    this.theForm = new FormGroup({
+    this.storyForm = new FormGroup({
       // Datos generales
-      nombre: new FormControl('', [Validators.required]),
-      ibRelleuTypology: new FormControl('', [Validators.required]),
+      caseName: new FormControl(''),
+      ibrelleuTypology: new FormControl(''),
       process: new FormControl(''),
-      ibRelleuProject: new FormControl(''),
-      cedentProject: new FormControl(''),
+      ibrelleuProject: new FormControl(''),
+      grantorProject: new FormControl(''),
       mainSector: new FormControl(''),
-      mainActivity: new FormControl({ value: '', disabled: true }),
-
+      mainActivity: new FormControl(''),
       zipCode: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
@@ -70,90 +58,84 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       localizationCity: new FormControl({ value: '', disabled: true }),
       councilCity: new FormControl({ value: '', disabled: true }),
       localizationCCAA: new FormControl({ value: '', disabled: true }),
-      consultor: new FormControl('', [Validators.required]),
+      consultant: new FormControl('', [Validators.required]),
       delegation: new FormControl(''),
 
       // Acuerdo
-      transferDate: new FormControl('', [Validators.required]),
+      cessionDate: new FormControl(''),
       contractTypology: new FormControl(''),
+      transferTypology: new FormControl(''),
       transferPrice: new FormControl(''),
       propertyValue: new FormControl(''),
-      propertySelled: new FormControl(''),
+      comercialEstablishmentSell: new FormControl(''),
       paymentType: new FormControl(''),
       paymentTypology: new FormControl(''),
-      agreement: new FormControl(''),
-      hiringWorkersNumber: new FormControl(''),
-      savedWorkersNumber: new FormControl(''),
-      ibRelleuWorkersNumber: new FormControl(''),
-      totalWorkers: new FormControl({ value: '-', disabled: true }),
+      numberOfHiredWorkers: new FormControl(''),
+      numberOfSavedWorkers: new FormControl(''),
+      numberOfEnterpriseWorkers: new FormControl(''),
+      totalOfWorkers: new FormControl(''),
+      agreementFramework: new FormControl(''),
 
-      // Datos Proyecto Reemprendedor
-      totalNameIbRelleu: new FormControl(''),
-      phoneIbRelleu: new FormControl('', Validators.pattern('[0-9]{9}')),
-      mailIbRelleu: new FormControl('', Validators.email),
-      nifIbRelleu: new FormControl('', [
-        Validators.minLength(9),
-        this.customValidatorService.dniNieCifValidator(),
-      ]),
-      legalFormIbRelleu: new FormControl(''),
-      nifCompanyIbRelleu: new FormControl('', [
-        Validators.minLength(9),
-        customValidatorService.dniNieCifValidator(),
-      ]),
+      // Datos proyecto IBRelleu
+      ibrelleuPersonFullName: new FormControl(''),
+      ibrelleuPersonPhone: new FormControl(''),
+      ibrelleuPersonMail: new FormControl(''),
+      ibrelleuPersonDniNie: new FormControl(''),
+      ibrelleuPersonLegalForm: new FormControl(''),
+      ibrelleuCompanyNif: new FormControl(''),
 
       // Testimonial
-      testimonialWeb: new FormControl(''),
-      testimonialObservations: new FormControl(''),
+      webTestimonial: new FormControl(''),
+      testimonialsObservations: new FormControl(''),
 
-      // Seguiment
+      // Seguimiento
       offeredServiceSummary: new FormControl(''),
+
     });
+
+
     this.getAllZipCodes();
-    this.loadIbRelleuTypology();
     this.loadSectorList();
     this.loadActivityList();
-    // this.loadConsultantAndDelegationInfo();
-    this.loadContractTypology();
-    this.loadTransmissionTypology();
-    this.loadPaymentType();
-    this.loadPaymentTypology();
     this.loadLegalForm();
+    this.loadConsultantData();
 
-    // this.theForm.statusChanges.subscribe((newStaus) => {
-    //   console.log('form Status changed event');
-    //   console.log(newStaus, this.theForm.pristine, this.theForm.invalid);
-    // });
   }
 
   ngOnInit() {
     this.selectedIndex = +sessionStorage.getItem('currentSuccessStoryTab');
-    this.filteredOptions = this.theForm.get('zipCode').valueChanges.pipe(
+    this.filteredOptions = this.storyForm.get('zipCode').valueChanges.pipe(
       startWith(''),
       map((value) => {
         const name = typeof value === 'string' ? value : value;
         return name ? this._filter(name as string) : this.options.slice();
       })
     );
+
+    this.dataService.getSuccessStories().subscribe((successStories: SuccessStoriesDTO[]) => {
+      let targetSuccessStory = successStories.find(successStory => successStory.id.toString() === this.id)
+      this.loadStoryFormInfo(targetSuccessStory)
+    })
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.theForm.dirty) {
+    if (this.storyForm.dirty) {
       return confirm('You have unsaved changes. Do you really want to leave?');
     }
     return true;
   }
 
   get f(): { [key: string]: AbstractControl } {
-    console.log(this.theForm.status);
-    return this.theForm.controls;
+    console.log(this.storyForm.status);
+    return this.storyForm.controls;
   }
 
   onSubmit() {
     this.submitted = true;
-    if (this.theForm.invalid) {
+    if (this.storyForm.invalid) {
       return;
     }
-    console.log(this.theForm.value);
+    console.log(this.storyForm.value);
     // Aquí puedes llamar a tu servicio para guardar los datos en MariaDB
   }
 
@@ -163,28 +145,6 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
       this.options = zpCodes;
     });
   }
-
-  // loadConsultantAndDelegationInfo() {
-  //   this.dataService
-  //     .getAllAccounts()
-  //     .subscribe((accountsList: AccountDTO[]) => {
-  //       accountsList.forEach((account) => {
-  //         this.insertConsultantData(account.consultant);
-  //         this.insertDelegationData(account.delegation);
-  //       });
-  //     });
-  // }
-  // insertConsultantData(consultant: string) {
-  //   if (!this.consultantList.includes(consultant)) {
-  //     this.consultantList.push(consultant);
-  //   }
-  // }
-
-  // insertDelegationData(delegation: string) {
-  //   if (!this.delegationList.includes(delegation)) {
-  //     this.delegationList.push(delegation);
-  //   }
-  // }
 
   loadSectorList() {
     this.dataService.getAllSectors().subscribe((sectors) => {
@@ -198,42 +158,6 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
     });
   }
 
-  loadIbRelleuTypology() {
-    this.dataService
-      .getAllIbRelleuTypologies()
-      .subscribe((ibRelleuTypology) => {
-        this.ibRelleuTypologyList = ibRelleuTypology;
-      });
-  }
-
-  loadContractTypology() {
-    this.dataService
-      .getAllContractTypologies()
-      .subscribe((contractTypology) => {
-        this.contractTypologyList = contractTypology;
-      });
-  }
-
-  loadTransmissionTypology() {
-    this.dataService
-      .getAllTransmissionTypologies()
-      .subscribe((transmissionTypology) => {
-        this.transmissionTypologyList = transmissionTypology;
-      });
-  }
-
-  loadPaymentType() {
-    this.dataService.getAllPaymentType().subscribe((paymentType) => {
-      this.paymentTypeList = paymentType;
-    });
-  }
-
-  loadPaymentTypology() {
-    this.dataService.getAllPaymentTypology().subscribe((paymentTypology) => {
-      this.paymentTypologyList = paymentTypology;
-    });
-  }
-
   loadLegalForm() {
     this.dataService.getAllLegalForms().subscribe((legalForm) => {
       this.legalFormList = legalForm;
@@ -241,16 +165,16 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
   }
 
   selectedValue(event: any) {
-    // console.log ("zp seleccionado: ", this.theForm.get('zipCode').value, this.theForm.get('zipCode').value.length)
-    this.theForm
+    // console.log ("zp seleccionado: ", this.storyForm.get('zipCode').value, this.storyForm.get('zipCode').value.length)
+    this.storyForm
       .get('localizationCity')
-      .setValue(this.theForm.get('zipCode').value['town']);
-    this.theForm
+      .setValue(this.storyForm.get('zipCode').value['town']);
+    this.storyForm
       .get('councilCity')
-      .setValue(this.theForm.get('zipCode').value['council']);
-    this.theForm
+      .setValue(this.storyForm.get('zipCode').value['council']);
+    this.storyForm
       .get('localizationCCAA')
-      .setValue(this.theForm.get('zipCode').value['island']);
+      .setValue(this.storyForm.get('zipCode').value['island']);
   }
 
   displayFn(zpCode: ZipCodesIBDTO): string {
@@ -268,29 +192,53 @@ export class SuccessStoriesDetailComponent implements CanComponentDeactivate {
     sessionStorage.setItem('currentSuccessStoryTab', event.index.toString());
   }
 
-  calculateTotalWorkers(event: any) {
-    let hiringWorkersNumber = this.theForm.get('hiringWorkersNumber').value;
-    let savedWorkersNumber = this.theForm.get('savedWorkersNumber').value;
-    let ibRelleuWorkersNumber = this.theForm.get('ibRelleuWorkersNumber').value;
-
-    let totalWorkers =
-      hiringWorkersNumber + savedWorkersNumber + ibRelleuWorkersNumber;
-
-    this.theForm.get('totalWorkers').setValue(totalWorkers);
+  loadConsultantData() {
+    this.dataService.getSuccessStories().subscribe((successStories: SuccessStoriesDTO[]) => {
+      successStories.forEach(successStory => {
+        if (!this.consultantList.includes(successStory.consultant)) {
+          this.consultantList.push(successStory.consultant)
+        }
+      });
+    })
   }
 
-  activateAndFilterActivities(event: any) {
-    let mainSectorValue = this.theForm.get('mainSector').value;
-    if (mainSectorValue == undefined) {
-      this.theForm.get('mainActivity').disable();
-      this.theForm.get('mainActivity').setValue(undefined);
-    } else {
-      this.dataService.getAllActivities().subscribe((activities) => {
-        this.activityList = activities.filter((activity) => {
-          return activity.sector === mainSectorValue;
-        });
-      });
-      this.theForm.get('mainActivity').enable();
-    }
+  loadStoryFormInfo(story: SuccessStoriesDTO) {
+    this.storyForm.patchValue({
+      caseName: story.caseName,
+      ibrelleuTypology: story.reenterpriseTypology,
+      process: story.process,
+      ibrelleuProject: story.ibrelleuProject,
+      grantorProject: story.grantorProject,
+      mainSector: Array.isArray(story.mainSector) ? story.mainSector : [story.mainSector],
+      mainActivity: Array.isArray(story.mainActivity) ? story.mainActivity : [story.mainActivity],
+      zipCode: story.zipCode,
+      localizationCity: story.poblacio,
+      councilCity: story.comarca,
+      localizationCCAA: story.province,
+      consultant: story.consultant,
+      delegation: story.delegation,
+      cessionDate: story.cessionDate,
+      contractTypology: story.contractTypology,
+      transferTypology: story.transferTypology,
+      transferPrice: story.transferPrice,
+      propertyValue: story.propertyValue,
+      comercialEstablishmentSell: story.comercialEstablishmentSell,
+      paymentType: story.paymentType,
+      paymentTypology: story.paymentTypology,
+      numberOfHiredWorkers: story.numberOfHiredWorkers,
+      numberOfSavedWorkers: story.numberOfSavedWorkers,
+      numberOfEnterpriseWorkers: story.numberOfEnterpriseWorkers,
+      totalOfWorkers: story.totalOfWorkers,
+      agreementFramework: story.agreementFramework,
+      ibrelleuPersonFullName: story.ibrelleuPersonFullName,
+      ibrelleuPersonPhone: story.ibrelleuPersonPhone,
+      ibrelleuPersonMail: story.ibrelleuPersonMail,
+      ibrelleuPersonDniNie: story.ibrelleuPersonDniNie,
+      ibrelleuPersonLegalForm: story.ibrelleuPersonLegalForm,
+      ibrelleuCompanyNif: story.ibrelleuCompanyNif,
+      webTestimonial: story.webTestimonial,
+      testimonialsObservations: story.testimonialsObservations,
+      offeredServiceSummary: story.offeredServiceSummary
+    })
   }
 }

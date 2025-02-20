@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {
-  successStoriesColumns,
+  SuccessStoriesColumnsBBDD,
   SuccessStoriesDTO,
 } from '../../Models/success-stories.dto';
 import { DataService } from '../../Services/data.service';
@@ -17,8 +17,8 @@ import { MatSort } from '@angular/material/sort';
 })
 export class SuccessStoriesComponent {
   successStories: SuccessStoriesDTO[];
-  columnsDisplayed: string[] = successStoriesColumns.map((col) => col.key);
-  columnsSchema: any = successStoriesColumns;
+  columnsDisplayed: string[] = SuccessStoriesColumnsBBDD.map((col) => col.key);
+  columnsSchema: any = SuccessStoriesColumnsBBDD
   dataSource = new MatTableDataSource<SuccessStoriesDTO>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

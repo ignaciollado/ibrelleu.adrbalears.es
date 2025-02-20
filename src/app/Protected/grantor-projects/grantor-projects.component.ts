@@ -3,7 +3,7 @@ import { DataService } from '../../Services/data.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import {
-  grantorProjectColumns,
+  grantorProjectColumnsBBDD,
   GrantorProjectsDTO,
 } from '../../Models/grantorProject.dto';
 
@@ -14,9 +14,9 @@ import {
 })
 export class GrantorProjectsComponent {
   ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA'];
-  columnsDisplayed: string[] = grantorProjectColumns.map((col) => col.key);
+  columnsDisplayed: string[] = grantorProjectColumnsBBDD.map((col) => col.key);
   dataSource = new MatTableDataSource();
-  columnsSchema: any = grantorProjectColumns;
+  columnsSchema: any = grantorProjectColumnsBBDD;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -28,8 +28,22 @@ export class GrantorProjectsComponent {
     this.dataService
       .getAllGrantorProjects()
       .subscribe((grantorProjects: GrantorProjectsDTO[]) => {
-        this.dataSource.data = grantorProjects;
-        this.dataSource.paginator = this.paginator;
+        grantorProjects.forEach(grantorProject => {
+          if (grantorProject.intervalPreuCessio.length == 9) {
+            this.dataService.getAllTransferPriceInterval().subscribe((intervalPrices) => {
+              grantorProject.intervalPreuCessio = intervalPrices.find(intervalPrice => intervalPrice.value === grantorProject.intervalPreuCessio).label
+            })
+          }
+          this.dataService.getAllCessionReasons().subscribe((cessionReasons) => {
+            grantorProject.motiuCessio = cessionReasons.find(cessionReason => cessionReason.value === grantorProject.motiuCessio).label
+          })
+          this.dataService.getAllPropertyStatus().subscribe((propertyStatusList) => {
+            grantorProject.localPropietatLloguer = propertyStatusList.find(propertyStatus => propertyStatus.value === grantorProject.localPropietatLloguer).label
+          })
+          this.dataSource.data = grantorProjects;
+          this.dataSource.paginator = this.paginator;
+        })
       });
   }
 }
+

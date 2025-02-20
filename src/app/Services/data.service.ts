@@ -10,6 +10,7 @@ import { ContactStatesDTO } from '../Models/contact-states.dto';
 import { ZipCodesIBDTO } from '../Models/zip-codes-ib.dto';
 import { GrantorProjectsDTO } from '../Models/grantorProject.dto';
 import { IBRelleuProjectsDTO } from '../Models/ibrelleuproject.dto';
+import { InterestDTO } from '../Models/interest.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -34,10 +35,8 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllClientTypologies(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}clientTypology.json`)
-      .pipe(catchError(this.sharedService.handleError));
+  getAllCessionReasons(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.urlAPIMock}cessionReason.json`).pipe(catchError(this.sharedService.handleError))
   }
 
   getAllContacts(): Observable<ContactDTO[]> {
@@ -49,12 +48,6 @@ export class DataService {
   getAllContactStates(): Observable<ContactStatesDTO[]> {
     return this.http
       .get<ContactStatesDTO[]>(`${this.urlAPIMock}contactStates.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllContractTypologies(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}contractTypology.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -71,11 +64,18 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllIbRelleuTypologies(): Observable<any[]> {
+  getAllInterests(): Observable<InterestDTO[]> {
     return this.http
-      .get<any[]>(`${this.urlAPIMock}ibrelleuTypology.json`)
+      .get<any[]>(`${this.urlAPIMock}interests.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
+
+  getAllInterestsStatus(): Observable<any[]> {
+    return this.http
+      .get<any[]>(`${this.urlAPIMock}interestsStatus.json`)
+      .pipe(catchError(this.sharedService.handleError));
+  }
+
 
   getAllKnowWays(): Observable<any[]> {
     return this.http
@@ -95,15 +95,9 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllPaymentType(): Observable<any[]> {
+  getAllPropertyStatus(): Observable<any[]> {
     return this.http
-      .get<any[]>(`${this.urlAPIMock}paymentType.json`)
-      .pipe(catchError(this.sharedService.handleError));
-  }
-
-  getAllPaymentTypology(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}paymentTypology.json`)
+      .get<any[]>(`${this.urlAPIMock}propertyStatus.json`)
       .pipe(catchError(this.sharedService.handleError));
   }
 
@@ -119,10 +113,8 @@ export class DataService {
       .pipe(catchError(this.sharedService.handleError));
   }
 
-  getAllTransmissionTypologies(): Observable<any[]> {
-    return this.http
-      .get<any[]>(`${this.urlAPIMock}transmissionTypology.json`)
-      .pipe(catchError(this.sharedService.handleError));
+  getAllTransferPriceInterval(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.urlAPIMock}transferPriceInterval.json`).pipe(catchError(this.sharedService.handleError));
   }
 
   getAllZipCodes(): Observable<ZipCodesIBDTO[]> {

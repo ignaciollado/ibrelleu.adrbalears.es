@@ -1,0 +1,26 @@
+[
+  {
+    "value": "282310000",
+    "label": "contactPending"
+  },
+  {
+    "value": "282310001",
+    "label": "schedulePending"
+  },
+  {
+    "value": "282310002",
+    "label": "meetingScheduled"
+  },
+  {
+    "value": "282310003",
+    "label": "reenterpriseNotInterested"
+  },
+  {
+    "value": "282310004",
+    "label": "grantorNotInterested"
+  },
+  {
+    "value": "282310005",
+    "label": "processCreated"
+  }
+]

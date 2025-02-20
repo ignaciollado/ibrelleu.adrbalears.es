@@ -1,18 +1,19 @@
 [
   {
     "value": "Agropecuari",
-    "label": "Agropecuario"
+    "label": "Agropecuari"
   },
   {
     "value": "Altres sectors",
-    "label": "Otros sectores"
+    "label": "Altres sectors"
   },
-  { "value": "Comerç", "label": "Comercio" },
+  { "value": "Comerç", "label": "Comerç" },
   {
     "value": "Construcció, reformes i immobiliària",
-    "label": "Construcción, reformas e inmobiliaria"
+    "label": "Construcció, reformes i immobiliària"
   },
-  { "value": "Hostaleria", "label": "Hostelería" },
-  { "value": "Indústria", "label": "Industria" },
-  { "value": "Serveis", "label": "Servicios" }
+  { "value": "Hostaleria", "label": "Hostaleria" },
+  { "value": "Indústria", "label": "Indústria" },
+  { "value": "Serveis", "label": "Serveis" },
+  { "value": "Producció", "label": "Producció" }
 ]
