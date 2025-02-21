@@ -35,7 +35,6 @@
                 <mat-form-field>
                     <mat-label>{{'howKnowUs' | translate}}</mat-label>
                     <mat-select formControlName="howKnowUs">
-                        <mat-option [value]="">---</mat-option>
                         @for (knowWay of knowWaysList; track knowWay) {
                         <mat-option [value]="knowWay.value">{{knowWay.label | translate}}</mat-option>
                         }
@@ -44,7 +43,6 @@
                 <mat-form-field>
                     <mat-label>{{'projectStatus' |translate}}</mat-label>
                     <mat-select formControlName="projectStatus">
-                        <mat-option>---</mat-option>
                         <mat-option value="Active">{{'Active'| translate}}</mat-option>
                         <mat-option value="Cancelled">{{'Cancelled'| translate}}</mat-option>
                         <mat-option value="Standby">{{'Standby'| translate}}</mat-option>
@@ -55,7 +53,6 @@
                 <mat-form-field>
                     <mat-label>{{'cancelReason' | translate}}</mat-label>
                     <mat-select formControlName="cancelReason">
-                        <mat-option>---</mat-option>
                         <mat-option value="121370000">{{'closedBusiness'| translate}}</mat-option>
                         <mat-option value="121370001">{{'continueBusiness'| translate}}</mat-option>
                         <mat-option value="121370002">{{'notInteressedIBRelleu'| translate}}</mat-option>
@@ -241,8 +238,8 @@
                 <section>
                     <mat-label>{{'cessionPlan' | translate}}</mat-label>
                     <mat-radio-group formControlName="cessionPlan">
-                        <mat-radio-button value="0">No</mat-radio-button>
                         <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <section>
@@ -263,8 +260,8 @@
                 <section>
                     <mat-label>{{'ibRelleuValoration' | translate}}</mat-label>
                     <mat-radio-group formControlName="ibrelleuValorationInterest">
-                        <mat-radio-button value="0">No</mat-radio-button>
                         <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <!-- sI ibrelleuValorationInterest es 1 (si), aparecen estos campos-->
@@ -287,8 +284,8 @@
                 <section>
                     <mat-label>{{'otherValoration' | translate}}</mat-label>
                     <mat-radio-group formControlName="externalValoration">
-                        <mat-radio-button value="0">No</mat-radio-button>
                         <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <mat-form-field>
@@ -337,8 +334,8 @@
                 <section>
                     <mat-label>{{'contactOtherIBRelleu' | translate}}</mat-label>
                     <mat-radio-group formControlName="externalIBRelleuContact">
-                        <mat-radio-button value="0">No</mat-radio-button>
                         <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <mat-form-field>
@@ -370,8 +367,8 @@
                 <section>
                     <mat-label>{{'paradaMercatNoSedentaria' | translate}}</mat-label>
                     <mat-radio-group formControlName="paradaMarketNoSedentary">
-                        <mat-radio-button value="0">No</mat-radio-button>
                         <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <mat-form-field>
@@ -428,8 +425,8 @@
                 <section>
                     <mat-label>{{'renovationTrademarkName' | translate}}</mat-label>
                     <mat-radio-group formControlNAme="renovationTrademarkName">
-                        <mat-radio-button value="0">No</mat-radio-button>
                         <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <mat-checkbox formControlName="stockCheck">{{'stockCheck' |
@@ -539,15 +536,15 @@
                 <section>
                     <mat-label>{{'stayWorkersAfterCession' |translate}}</mat-label>
                     <mat-radio-group formControlName="stayWorkersAfterCession">
-                        <mat-radio-button value="0">No</mat-radio-button>
                         <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
                 <section>
                     <mat-label>{{'workersKnowSituation' |translate}}</mat-label>
                     <mat-radio-group formControlName="workersKnowSituation">
-                        <mat-radio-button value="0">No</mat-radio-button>
                         <mat-radio-button value="1">Si</mat-radio-button>
+                        <mat-radio-button value="0">No</mat-radio-button>
                     </mat-radio-group>
                 </section>
             </section>
