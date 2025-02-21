@@ -864,7 +864,7 @@
   "marketPlaceInterest": "¿Interés en publicar anuncio en MarketPlace?",
   "adTitle": "Título del anuncio",
   "publish": "Publicado",
-  "noPublish": "No publicado",
+  "unpublish": "No publicado",
   "adDescription": "Descripción del anuncio",
   "cas": "Castellano",
   "cat": "Catalán",

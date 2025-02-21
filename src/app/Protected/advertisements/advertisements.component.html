@@ -12,10 +12,18 @@
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
-          <span *ngSwitchCase="'scope'" ngClass="small-data" [innerHTML]="element[col.key]"></span>
-          <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key]}}</span>
           <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/advertisement-detail', element.id]"
             title="Click to view & edit account detail">{{element[col.key]}}</a>
+          <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key] | date : "dd-MM-YYYY"}}</span>
+          <span *ngSwitchCase="'language'" ngClass="small-data">
+            @if (element[col.key] == "282310000") {
+            {{'cas'| translate}}
+            } @else if (element[col.key] == "282310001") {
+            {{'cat'| translate}}
+            } @else {
+            {{'en'| translate}}
+            }
+          </span>
           <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] | translate }}</span>
         </section>
       </mat-cell>
