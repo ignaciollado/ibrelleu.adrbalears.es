@@ -24,6 +24,8 @@ export class IbrelleuProjectDetailComponent {
   activityList: any[] = [];
   sectorList: any[] = [];
 
+  cessionReasonsList: any[] = [];
+
   knowWaysList: any[] = [];
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
@@ -76,12 +78,11 @@ export class IbrelleuProjectDetailComponent {
       intermediateContactDescription: new FormControl('')
 
     });
-
-
     this.loadKnowWays();
     this.loadConsultant();
     this.loadSectorInfo();
     this.loadActivityInfo();
+    this.loadCessionReasons();
   }
 
   ngOnInit() {
@@ -135,6 +136,12 @@ export class IbrelleuProjectDetailComponent {
     });
   }
 
+  loadCessionReasons() {
+    this.dataService.getAllCessionReasons().subscribe((cessionReasons: any[]) => {
+      this.cessionReasonsList = cessionReasons
+    })
+  }
+
   loadProjectFormInfo(project: IBRelleuProjectsDTO) {
     this.ibrelleuProjectForm.patchValue({
       projectName: project.nomProjecte,
@@ -158,7 +165,7 @@ export class IbrelleuProjectDetailComponent {
       maxWorkersNum: project.numMaxTreballadors,
       minWorkersNum: project.numMinTreballadors,
       propertyStatus: project.propietatLocal,
-      cessionReason: project.motiuCessio,
+      cessionReason: Array.isArray(project.motiuCessio) ? project.motiuCessio : [project.motiuCessio],
       transferInterval: project.intervalPreuCessio,
       partnersAportation: project.aportacionsSocis,
       particularFinancing: project.financamentParticular,
