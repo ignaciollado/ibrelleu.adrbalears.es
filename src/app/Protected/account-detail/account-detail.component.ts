@@ -232,7 +232,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       contact: account['contacte_principal'],
       companyName: account['rao_social'],
       nif: account['nif'],
-      tradeName: account['nomComercial'],
+      tradeName: account['nom_comercial'],
       paradesMercat: account.gestionaParadesMercat,
       collaborationCompanys: account.empresaEntitatColaboradora,
       councilTitularity: account.gestionaEstablimentsComercials,
