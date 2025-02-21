@@ -35,11 +35,14 @@ export class AdvertisementDetailComponent {
   }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-
-    this.adService.getAllAdvertisements().subscribe((ads: AdvertisementDTO[]) => {
-      let targetAd: AdvertisementDTO = ads.find(ad => ad.id.toString() === this.id)
-      this.loadAdFormInfo(targetAd)
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id')
+      if (this.id) {
+        this.adService.getAllAdvertisements().subscribe((ads: AdvertisementDTO[]) => {
+          let targetAd: AdvertisementDTO = ads.find(ad => ad.id.toString() === this.id)
+          this.loadAdFormInfo(targetAd)
+        })
+      }
     })
   }
 
