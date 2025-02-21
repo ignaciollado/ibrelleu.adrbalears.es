@@ -211,10 +211,18 @@ export class AccountDetailComponent implements CanComponentDeactivate {
         return name ? this._filter(name as string) : this.options.slice();
       })
     );
+
+    // Datos producción
     this.accountService.getAccounts().subscribe((accounts: AccountDTO[]) => {
       let targetAccount = accounts.find(account => account.id.toString() === this.id)
       this.loadFormData(targetAccount)
     })
+
+    // Datos mockeados
+    // this.dataService.getAllAccounts().subscribe((accounts: AccountDTO[]) => {
+    //   let targetAccount = accounts.find(account => account.id.toString() === this.id)
+    //   this.loadFormData(targetAccount)
+    // })
 
 
   }
@@ -228,29 +236,21 @@ export class AccountDetailComponent implements CanComponentDeactivate {
 
   loadFormData(account: AccountDTO) {
     this.theForm.patchValue({
-      legalFormat: account['forma_juridica'],
-      contact: account['contacte_principal'],
-      companyName: account['rao_social'],
-      nif: account['nif'],
-      tradeName: account['nomComercial'],
+      // nif: account.documentacioNif,
       paradesMercat: account.gestionaParadesMercat,
       collaborationCompanys: account.empresaEntitatColaboradora,
       councilTitularity: account.gestionaEstablimentsComercials,
       sportConcessions: account.gestionaConcessionsAdministratives,
       activeBusiness: account.empresaEnFuncionament,
-      creationYear: account["any_constitució"],
-      consultor: account["consultor"],
-      delegacion: account["delegacio"],
+      creationYear: account.anyConstitucio,
       direccion: account.adreca,
       zipCode: account.codiPostal,
-      localizationCity: account["poblacio"],
-      councilCity: account["council"],
-      localizationCCAA: account["island"],
-      companyMail: account.correuElectronic,
+      localizationCity: account.provincia,
+      councilCity: account.comarca,
+      localizationCCAA: account.comunitatAutonoma,
+      companyEmail: account.correuElectronic,
       companyPhone: account.telefonPrincipal,
       companyWeb: account.web,
-      companySector: Array.isArray(account["sector_principal"]) ? account["sector_principal"] : [account["sector_principal"]],
-      companyActivity: Array.isArray(account["activitat_principal"]) ? account["activitat_principal"] : [account["activitat_principal"]],
       activityDescription: account.descripcioActivitat,
       carrerDescription: account.breuDescripcioTrajectoriaEconomica,
       checkProduct: account.disposaProductePropi,
@@ -290,8 +290,6 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       anotherSpecificationsDescription: account.altresEspecificacionsLocal,
       financingDescription: account.comentariFinancamentEmpresa,
       debtsCheck: account.empresaAmbDeutes,
-      // debtsList: 
-      // debtsDescription: 
       lastYearFacturation: account.facturacioUltimAnyFiscal,
       lastYearResult: account.resultatUltimAnyFiscal,
       lastYearResultDescription: account.comentariResultatsUltimAnyFiscal,
@@ -313,7 +311,22 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       documentationSocietyScriptures: account.escripturesPodersSocietat,
       documentationLostGain: account.perduesGuanysUltimsAnys,
       documentationSituationBalance: account.balancSituacioUltimsAnys,
-      documentationSocietyTax200: account.impostSocietatsModel200
+      documentationSocietyTax200: account.impostSocietatsModel200,
+
+      /* Estos campos no tiene una propiedad dentro del modelo, por lo que, o no se
+      aplica, o se debe hacer de la siguiente forma. Lo dejo sin comentar para que siga
+      realizando el printado*/
+      legalFormat: account['forma_juridica'],
+      contact: account['contacte_principal'],
+      companyName: account['rao_social'],
+      nif: account["nif"],
+      tradeName: account['nom_comercial'],
+      consultor: account["consultor"],
+      delegacion: account["delegacio"],
+      companySector: Array.isArray(account["sector_principal"]) ? account["sector_principal"] : [account["sector_principal"]],
+      companyActivity: Array.isArray(account["activitat_principal"]) ? account["activitat_principal"] : [account["activitat_principal"]],
+      // debtsList: 
+      // debtsDescription: 
     })
 
   }
@@ -419,7 +432,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   deleteNif(event: any) {
     let nifValue = this.theForm.get('nif').value;
 
-    if (nifValue != '' && nifValue.length != 9 && nifValue.length != 0) {
+    if (nifValue != '' && nifValue != null && nifValue.length != 9 && nifValue.length != 0) {
       this.theForm.get('nif').setValue('');
     }
   }

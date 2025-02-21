@@ -48,26 +48,21 @@ export const advertisementColumnsBBDD = [
   {
     key: "title",
     type: "url",
-    label: "Títol de l'anunci"
   },
   {
     key: "language",
-    type: "scope",
-    label: "Idioma"
+    type: "language",
   },
   {
     key: "advertisementstate",
     type: "scope",
-    label: "Estat de l'anunci"
   },
   {
     key: "grantorprojectid",
     type: "scope",
-    label: "Projecte Cedent"
   },
   {
     key: "publicationdate",
     type: "date",
-    label: "Data de publicació"
   },
 ]

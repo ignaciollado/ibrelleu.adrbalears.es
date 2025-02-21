@@ -64,6 +64,12 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'advertisement-detail',
+    component: AdvertisementDetailComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'advertisement-detail/:id',
     component: AdvertisementDetailComponent,
     canDeactivate: [CanDeactivateGuard],

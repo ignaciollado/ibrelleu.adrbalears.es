@@ -147,11 +147,10 @@
                 </section>
                 <mat-form-field>
                     <mat-label>{{'cessionReason' | translate}}</mat-label>
-                    <mat-select formControlName="cessionReason">
-                        <!-- Temporal -->
-                        <mat-option value="Reason1">{{'reason1' | translate}}</mat-option>
-                        <mat-option value="Reason2">{{'reason2' | translate}}</mat-option>
-                        <mat-option value="Reason3">{{'reason3' | translate}}</mat-option>
+                    <mat-select multiple formControlName="cessionReason">
+                        @for (reason of cessionReasonsList; track reason) {
+                        <mat-option [value]="reason.value">{{reason.label | translate}}</mat-option>
+                        }
                     </mat-select>
                 </mat-form-field>
             </section>
@@ -215,15 +214,20 @@
                         <mat-option value="121370000">{{'autoOcupation' |translate}}</mat-option>
                         <mat-option value="121370001">{{'personalProject' |translate}}</mat-option>
                         <mat-option value="121370002">{{'familyBusinessManagement' |translate}}</mat-option>
+                        <mat-option value="121370003">{{'ownBoss' |translate}}</mat-option>
+                        <mat-option value="121370004">{{'unemployeementExit' |translate}}</mat-option>
+                        <mat-option value="121370005">{{'locationChange' |translate}}</mat-option>
+                        <mat-option value="121370006">{{'professionChange' |translate}}</mat-option>
+                        <mat-option value="121370007">{{'newBusinessAlternative' |translate}}</mat-option>
+                        <mat-option value="121370008">{{'inversion' |translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'reenterpriseSteps' | translate}}</mat-label>
-                    <!-- Temporal -->
                     <mat-select multiple formControlName="reenterpriseSteps">
-                        <mat-option value="121370000">{{'reenterpriseStep1' | translate}}</mat-option>
-                        <mat-option value="121370001">{{'reenterpriseStep2' | translate}}</mat-option>
-                        <mat-option value="121370002">{{'reenterpriseStep3' | translate}}</mat-option>
+                        <mat-option value="121370000">{{'reenterpriseContactGrantor' | translate}}</mat-option>
+                        <mat-option value="121370001">{{'reenterpriseAd' | translate}}</mat-option>
+                        <mat-option value="121370002">{{'grantorNegociations' | translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
@@ -232,22 +236,39 @@
                         <mat-option value="121370008">{{'acompanyamentGrantor' |translate}}</mat-option>
                         <mat-option value="121370009">{{'acompanyamentIBrelleu' |translate}}</mat-option>
                         <mat-option value="121370004">{{'clientsWallet' |translate}}</mat-option>
+                        <mat-option value="121370006">{{'suppliersWallet' |translate}}</mat-option>
+                        <mat-option value="121370007">{{'unorganicGrowth' |translate}}</mat-option>
+                        <mat-option value="121370000">{{'elementsActiu' |translate}}</mat-option>
+                        <mat-option value="121370001">{{'workingBusiness' |translate}}</mat-option>
+                        <mat-option value="121370005">{{'solidLegalForm' |translate}}</mat-option>
+                        <mat-option value="121370003">{{'laboralWorldIncorporation' |translate}}</mat-option>
+                        <mat-option value="121370002">{{'know-how' |translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'ibRelleuDisadvantages' | translate}}</mat-label>
                     <mat-select multiple formControlName="projectDisadvantages">
-                        <mat-option value="121370000">{{'reenterpriseDifficult1' |translate}}</mat-option>
-                        <mat-option value="121370001">{{'reenterpriseDifficult2' |translate}}</mat-option>
-                        <mat-option value="121370002">{{'reenterpriseDifficult3' |translate}}</mat-option>
+                        <mat-option value="121370000">{{'needFinancing' |translate}}</mat-option>
+                        <mat-option value="121370001">{{'needBusinessExperience' |translate}}</mat-option>
+                        <mat-option value="121370002">{{'strongRelationGrantorBusiness' |translate}}</mat-option>
+                        <mat-option value="121370003">{{'workLoads' |translate}}</mat-option>
+                        <mat-option value="121370004">{{'transmissionProcessInsecurity' |translate}}</mat-option>
+                        <mat-option value="121370005">{{'staySameClientsWallet' |translate}}</mat-option>
+                        <mat-option value="121370006">{{'hardViabilityValidation' |translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>{{'activityFormation' | translate}}</mat-label>
                     <mat-select multiple formControlName="neededFormation">
                         <mat-option value="121370000">{{'activityObjective' |translate}}</mat-option>
+                        <mat-option value="121370001">{{'legalLaboralFiscalsAspects' |translate}}</mat-option>
                         <mat-option value="121370002">{{'valoration' |translate}}</mat-option>
                         <mat-option value="121370003">{{'negociation' |translate}}</mat-option>
+                        <mat-option value="121370004">{{'accountabilityAnalysis' |translate}}</mat-option>
+                        <mat-option value="121370005">{{'businessManagement' |translate}}</mat-option>
+                        <mat-option value="121370006">{{'businessModel' |translate}}</mat-option>
+                        <mat-option value="121370007">{{'financing' |translate}}</mat-option>
+                        <mat-option value="121370008">{{'buySellProcess' |translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>

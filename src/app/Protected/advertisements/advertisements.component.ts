@@ -3,7 +3,7 @@ import { advertisementColumnsBBDD, AdvertisementDTO } from '../../Models/adverti
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { AdvertisementService } from '../../Services/advertisement.service';
-import { Router } from '@angular/router';
+import { DataService } from '../../Services/data.service';
 
 @Component({
   selector: 'adr-advertisements',
@@ -19,7 +19,7 @@ export class AdvertisementsComponent {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private advertisementsService: AdvertisementService) {
+  constructor(private advertisementsService: AdvertisementService, private dataService: DataService) {
 
     this.loadAllAdvertisements();
 

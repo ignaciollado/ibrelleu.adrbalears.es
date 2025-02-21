@@ -80,7 +80,7 @@
     "numMaxTreballadors": 2,
     "numMinTreballadors": 1,
     "propietatLocal": "282310002",
-    "motiuCessio": "Reason1",
+    "motiuCessio": ["282310000", "282310011", "282310010"],
     "capacitatInversio": "",
     "intervalPreuCessio": "282310002",
     "aportacionsSocis": 40000,

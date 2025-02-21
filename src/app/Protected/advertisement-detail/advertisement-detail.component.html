@@ -3,7 +3,7 @@
     <section>
         <mat-form-field>
             <mat-label>{{'grantorProject' |translate}}</mat-label>
-            <mat-select>
+            <mat-select formControlName="grantorProject">
                 @for (grantorProject of grantorProjectList; track grantorProject) {
                 <mat-option [value]="grantorProject.id">{{grantorProject.nomProjecte}}</mat-option>
                 }
@@ -11,36 +11,46 @@
         </mat-form-field>
         <section>
             <mat-label>{{'marketPlaceInterest' | translate}}</mat-label>
-            <mat-radio-group>
+            <mat-radio-group formControlName="publicinmarketplace">
                 <mat-radio-button value="1">Si</mat-radio-button>
                 <mat-radio-button value="0">No</mat-radio-button>
             </mat-radio-group>
         </section>
         <mat-form-field>
             <mat-label>{{'adTitle' | translate}}</mat-label>
-            <input matInput type="text">
+            <input matInput type="text" formControlName="title">
         </mat-form-field>
         <section>
             <mat-label>{{'advertisementstate' | translate}}</mat-label>
-            <mat-radio-group>
+            <mat-radio-group formControlName="advertisementstate">
                 <mat-radio-button value="publish">{{'publish' | translate}}</mat-radio-button>
-                <mat-radio-button value="unpublish">{{'noPublish' | translate}}</mat-radio-button>
+                <mat-radio-button value="unpublish">{{'unpublish' | translate}}</mat-radio-button>
             </mat-radio-group>
         </section>
         <mat-form-field ngClass="textArea">
             <mat-label>{{'adDescription' | translate}}</mat-label>
-            <textarea matInput rows="4"></textarea>
+            <textarea matInput rows="4" formControlName="description"></textarea>
         </mat-form-field>
         <section>
             <mat-label>{{'language' | translate}}</mat-label>
-            <span>
+            <!-- Hago este cambio temporal. Veo la lógica de que 
+             sean checkbox, pero en este momento, no tengo forma de
+             se hagan los 3 a la vez para un anuncio con 3
+             idiomas. Haré un radio-group con un solo form
+             control-->
+            <mat-radio-group formControlName="language">
+                <mat-radio-button value="282310000">{{'cas' | translate}}</mat-radio-button>
+                <mat-radio-button value="282310001">{{'cat' | translate}}</mat-radio-button>
+                <mat-radio-button value="282310002">{{'en' | translate}}</mat-radio-button>
+            </mat-radio-group>
+            <!-- <span>
                 <mat-checkbox value="282310000">{{'cas' | translate}}</mat-checkbox>
                 <mat-checkbox value="282310001">{{'cat' | translate}}</mat-checkbox>
                 <mat-checkbox value="282310002">{{'en' | translate}}</mat-checkbox>
-            </span>
+            </span> -->
         </section>
         <section>
-            <mat-checkbox>{{'webAdPublish' | translate}}</mat-checkbox>
+            <mat-checkbox formControlName="publicinweb">{{'webAdPublish' | translate}}</mat-checkbox>
         </section>
     </section>
 
