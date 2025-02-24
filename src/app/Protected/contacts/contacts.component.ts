@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { contactColumns, contactColumnsBBDD, ContactDTO } from '../../Models/contact.dto';
@@ -6,6 +6,7 @@ import { DataService } from '../../Services/data.service';
 import { ContactService } from '../../Services/contact.service';
 import { ContactStatesDTO } from '../../Models/contact-states.dto';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
 
 export interface PeriodicElement {
   name: string;
@@ -28,7 +29,7 @@ export interface PeriodicElement {
 })
 export class ContactsComponent {
   ambitos: string[] = ['AUTONÓMICO', 'BALEAR', 'ESTATAL', 'UNIÓN EUROPEA']
-  
+
   //columnsDisplayed: string[] = contactColumns.map((col) => col.key);
   columnsDisplayed: string[] = contactColumnsBBDD.map((col) => col.key);
 
@@ -39,6 +40,7 @@ export class ContactsComponent {
   dataSource = new MatTableDataSource();
   valid: any = {};
 
+  @ViewChild(MatPaginator) paginator: MatPaginator
   constructor(private dataService: DataService, private contactService: ContactService, private snackBar: MatSnackBar) {
     this.loadContactStates();
     this.loadAllContacts();
@@ -46,16 +48,17 @@ export class ContactsComponent {
 
   loadAllContacts() {
     this.contactService.getContacts()
-    .subscribe((contacts: ContactDTO[]) => {
-      this.dataSource.data = contacts
-      this.dataSource.data.map( (contact: ContactDTO) => {
-        contact.firstName += " "+contact.lastName
-      })
-      this.showSnackBar("Contacts retrieved successfully!!!")
-    },
-    error => {
-      this.showSnackBar(error)
-    })
+      .subscribe((contacts: ContactDTO[]) => {
+        this.dataSource.data = contacts
+        this.dataSource.data.map((contact: ContactDTO) => {
+          contact.firstName += " " + contact.lastName
+        })
+        this.dataSource.paginator = this.paginator
+        this.showSnackBar("Contacts retrieved successfully!!!")
+      },
+        error => {
+          this.showSnackBar(error)
+        })
   }
 
   loadContactStates() {
@@ -95,7 +98,9 @@ export class ContactsComponent {
   }
 
   private showSnackBar(error: string): void {
-    this.snackBar.open( error, 'Close', { duration: 5000, verticalPosition: 'top', 
-      horizontalPosition: 'center', panelClass: ["custom-snackbar"]} );
+    this.snackBar.open(error, 'Close', {
+      duration: 5000, verticalPosition: 'top',
+      horizontalPosition: 'center', panelClass: ["custom-snackbar"]
+    });
   }
 }
