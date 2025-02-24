@@ -856,7 +856,7 @@
   "advertisements": "Anuncios",
   "language": "Lenguaje",
   "advertisementstate": "Estado del anuncio",
-  "grantorprojectid": "ID Proyecto Cedente",
+  "publicinweb": "Publicado a la web",
   "publicationdate": "Fecha de publicación",
   "createAdvertisement": "Crear nuevo anuncio",
 
@@ -866,6 +866,7 @@
   "publish": "Publicado",
   "unpublish": "No publicado",
   "adDescription": "Descripción del anuncio",
+  "adExperience": "Experiencia profesional y competencias",
   "cas": "Castellano",
   "cat": "Catalán",
   "en": "Inglés",

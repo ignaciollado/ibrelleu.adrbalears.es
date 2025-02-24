@@ -863,7 +863,7 @@
   "advertisements": "Anuncis",
   "language": "Llenguatge",
   "advertisementstate": "Estat de l'anunci",
-  "grantorprojectid": "ID Projecte Cedent",
+  "publicinweb": "Publicat a la web",
   "publicationdate": "Data de publicació",
   "createAdvertisement": "Crear nou anunci",
 
@@ -873,6 +873,7 @@
   "publish": "Publicat",
   "unpublish": "No publicat",
   "adDescription": "Descripció de l'anunci",
+  "adExperience": "Experiència professional i competències",
   "cas": "Castellà",
   "cat": "Català",
   "en": "Anglés",
