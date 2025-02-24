@@ -1,4 +1,8 @@
 <h1>{{'accounts' | translate}}</h1>
+<section ngClass="createButton">
+  <button mat-raised-button color="primary" [routerLink]="['/account-detail']">{{'createNewAccount' |
+    translate}}</button>
+</section>
 <section ngClass="filter-area">
   <mat-form-field>
     <mat-label>{{'legalForm' | translate}}</mat-label>

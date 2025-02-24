@@ -867,6 +867,9 @@
   "publicationdate": "Data de publicació",
   "createAdvertisement": "Crear nou anunci",
 
+  "createContact": "Crear nou contacte",
+  "createNewAccount": "Crear nou compte",
+
   "adForm": "Formulari anunci",
   "marketPlaceInterest": "Interès en publicar anunci al MarketPlace?",
   "adTitle": "Títol de l'anunci",

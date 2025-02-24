@@ -33,11 +33,29 @@ const routes: Routes = [
   { path: 'settings', component: BodyComponent, canActivate: [AuthGuard] },
 
   { path: 'body', component: BodyComponent },
-  { path: 'accounts', component: AccountComponent, canActivate: [AuthGuard] },
   { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
+  { path: 'accounts', component: AccountComponent, canActivate: [AuthGuard] },
+  { path: 'ibrelleu-projects', component: IbrelleuProjectsComponent, canActivate: [AuthGuard] },
+  { path: 'grantor-projects', component: GrantorProjectsComponent, canActivate: [AuthGuard] },
+  { path: 'advertisements-grantor', component: AdvertisementsComponent, canActivate: [AuthGuard] },
+  { path: 'advertisements-relleu', component: AdvertisementsRelleuComponent, canActivate: [AuthGuard] },
+  { path: 'success-stories', component: SuccessStoriesComponent, canActivate: [AuthGuard] },
+  { path: 'interests', component: InterestComponent, canActivate: [AuthGuard] },
+  {
+    path: 'contact-detail',
+    component: ContactDetailComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
   {
     path: 'contact-detail/:id',
     component: ContactDetailComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'account-detail',
+    component: AccountDetailComponent,
     canDeactivate: [CanDeactivateGuard],
     canActivate: [AuthGuard],
   },
@@ -48,8 +66,20 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'grantor-projects',
-    component: GrantorProjectsComponent,
+    path: 'ibrelleu-project-detail',
+    component: IbrelleuProjectDetailComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'ibrelleu-project-detail/:id',
+    component: IbrelleuProjectDetailComponent,
+    canDeactivate: [CanDeactivateGuard],
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'grantor-project-detail',
+    component: GrantorProjectDetailComponent,
     canDeactivate: [CanDeactivateGuard],
     canActivate: [AuthGuard],
   },
@@ -60,12 +90,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'advertisements-grantor',
-    component: AdvertisementsComponent,
-    canDeactivate: [CanDeactivateGuard],
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'advertisement-grantor-detail',
     component: AdvertisementDetailComponent,
     canDeactivate: [CanDeactivateGuard],
@@ -74,12 +98,6 @@ const routes: Routes = [
   {
     path: 'advertisement-grantor-detail/:id',
     component: AdvertisementDetailComponent,
-    canDeactivate: [CanDeactivateGuard],
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'advertisements-relleu',
-    component: AdvertisementsRelleuComponent,
     canDeactivate: [CanDeactivateGuard],
     canActivate: [AuthGuard]
   },
@@ -96,24 +114,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'ibrelleu-projects',
-    component: IbrelleuProjectsComponent,
-    canDeactivate: [CanDeactivateGuard],
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'ibrelleu-project-detail/:id',
-    component: IbrelleuProjectDetailComponent,
-    canDeactivate: [CanDeactivateGuard],
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'interests',
-    component: InterestComponent,
-    canDeactivate: [CanDeactivateGuard],
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'interests-detail/:id',
     component: InterestDetailComponent,
     canDeactivate: [CanDeactivateGuard],
@@ -122,11 +122,6 @@ const routes: Routes = [
   {
     path: 'protected',
     component: ProtectedComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'success-stories',
-    component: SuccessStoriesComponent,
     canActivate: [AuthGuard],
   },
   {

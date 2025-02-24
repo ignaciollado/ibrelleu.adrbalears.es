@@ -1,9 +1,9 @@
-@use '../../../_adr-colors';
+@use "../../../_adr-colors";
 
 .filter-area {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
 }
 
 .bold-title {
@@ -16,7 +16,7 @@
 }
 
 .small-data {
-  font-size: .75rem;
+  font-size: 0.75rem;
   color: orange;
 }
 
@@ -27,29 +27,35 @@
 
 .Pending {
   display: block;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   background-color: orangered;
-  padding: .2rem;
+  padding: 0.2rem;
   color: #fff;
   min-width: 4rem;
 }
 
 .Active {
   display: block;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   background-color: greenyellow;
-  padding: .2rem;
+  padding: 0.2rem;
   color: #000;
   min-width: 4rem;
 }
 
 .ContactAgain {
   display: block;
-  border-radius: .2rem;
+  border-radius: 0.2rem;
   background-color: darkmagenta;
-  padding: .2rem;
+  padding: 0.2rem;
   color: #fff;
   min-width: 4rem;
+}
+
+.createButton {
+  margin: 10px;
+  display: grid;
+  justify-content: end;
 }
 
 @media only screen and (max-width: 760px) {

@@ -860,6 +860,9 @@
   "publicationdate": "Fecha de publicación",
   "createAdvertisement": "Crear nuevo anuncio",
 
+  "createContact": "Crear nuevo contacto",
+  "createNewAccount": "Crear nueva cuenta",
+
   "adForm": "Formulario anuncio",
   "marketPlaceInterest": "¿Interés en publicar anuncio en MarketPlace?",
   "adTitle": "Título del anuncio",
