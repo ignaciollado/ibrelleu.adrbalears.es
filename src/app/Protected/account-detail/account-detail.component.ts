@@ -27,7 +27,7 @@ export class AccountDetailComponent implements CanComponentDeactivate {
   legalFormList: any[] = [];
   filteredOptions: Observable<ZipCodesIBDTO[]>;
   options: ZipCodesIBDTO[] = [];
-  id: string = this.route.snapshot.paramMap.get('id');
+  id: string | null = this.route.snapshot.paramMap.get('id');
 
   consultantList: string[] = [];
 
@@ -213,10 +213,12 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     );
 
     // Datos producción
-    this.accountService.getAccounts().subscribe((accounts: AccountDTO[]) => {
-      let targetAccount = accounts.find(account => account.id.toString() === this.id)
-      this.loadFormData(targetAccount)
-    })
+    if (this.id) {
+      this.accountService.getAccounts().subscribe((accounts: AccountDTO[]) => {
+        let targetAccount = accounts.find(account => account.id.toString() === this.id)
+        this.loadFormData(targetAccount)
+      })
+    }
 
     // Datos mockeados
     // this.dataService.getAllAccounts().subscribe((accounts: AccountDTO[]) => {

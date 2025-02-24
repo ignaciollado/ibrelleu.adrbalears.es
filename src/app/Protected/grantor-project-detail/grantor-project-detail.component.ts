@@ -13,7 +13,7 @@ import { ZipCodesIBDTO } from '../../Models/zip-codes-ib.dto';
   styleUrl: './grantor-project-detail.component.scss',
 })
 export class GrantorProjectDetailComponent {
-  id: string = this.route.snapshot.paramMap.get('id');
+  id: string | null = this.route.snapshot.paramMap.get('id');
   grantorProjectForm: FormGroup;
   selectedIndex: number;
   filteredOptions: Observable<ZipCodesIBDTO[]>;
@@ -195,10 +195,12 @@ export class GrantorProjectDetailComponent {
         })
       );
 
-    this.dataService.getAllGrantorProjects().subscribe((grantorProjects: GrantorProjectsDTO[]) => {
-      let targetProject = grantorProjects.find(grantorProject => grantorProject.id.toString() === this.id)
-      this.loadProjectFormInfo(targetProject)
-    })
+    if (this.id) {
+      this.dataService.getAllGrantorProjects().subscribe((grantorProjects: GrantorProjectsDTO[]) => {
+        let targetProject = grantorProjects.find(grantorProject => grantorProject.id.toString() === this.id)
+        this.loadProjectFormInfo(targetProject)
+      })
+    }
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
