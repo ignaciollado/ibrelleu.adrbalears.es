@@ -14,7 +14,7 @@ import { AdvertisementDTO } from '../../Models/advertisement.dto';
 })
 export class AdvertisementDetailComponent {
 
-  id: string | null = null
+  id: string | null = this.route.snapshot.paramMap.get('id');
 
   adForm: FormGroup;
 
@@ -35,15 +35,13 @@ export class AdvertisementDetailComponent {
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.id = params.get('id')
-      if (this.id) {
-        this.adService.getAllAdvertisements().subscribe((ads: AdvertisementDTO[]) => {
-          let targetAd: AdvertisementDTO = ads.find(ad => ad.id.toString() === this.id)
-          this.loadAdFormInfo(targetAd)
-        })
-      }
-    })
+    if (this.id) {
+      this.adService.getAllAdvertisements().subscribe((ads: AdvertisementDTO[]) => {
+        let targetAd: AdvertisementDTO = ads.find(ad => ad.id.toString() === this.id)
+        this.loadAdFormInfo(targetAd)
+      })
+    }
+
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {

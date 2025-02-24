@@ -221,10 +221,12 @@ export class AccountDetailComponent implements CanComponentDeactivate {
     }
 
     // Datos mockeados
+    // if (this.id){
     // this.dataService.getAllAccounts().subscribe((accounts: AccountDTO[]) => {
     //   let targetAccount = accounts.find(account => account.id.toString() === this.id)
     //   this.loadFormData(targetAccount)
     // })
+    // }
 
 
   }
