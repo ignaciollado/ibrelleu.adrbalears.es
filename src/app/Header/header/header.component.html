@@ -39,8 +39,12 @@
         | translate }}</a>
       <a ngClass="ibrelleu-menu-item" routerLink="grantor-projects" (click)="menuTrigger.close()">{{ "cedingProjects" |
         translate }}</a>
-      <a ngClass="ibrelleu-menu-item" routerLink="advertisements" (click)="menuTrigger.close()">{{ "advertisements" |
-        translate }}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="advertisements-grantor" (click)="menuTrigger.close()">{{
+        "advertisements" |
+        translate }} {{'grantorProject' | translate | lowercase}}</a>
+      <a ngClass="ibrelleu-menu-item" routerLink="advertisements-relleu" (click)="menuTrigger.close()">{{
+        "advertisements" |
+        translate }} {{'ibrelleuProject' | translate | lowercase}}</a>
       <a ngClass="ibrelleu-menu-item" routerLink="#" (click)="menuTrigger.close()">{{ "processes" | translate }}</a>
       <a ngClass="ibrelleu-menu-item" routerLink="#" (click)="menuTrigger.close()">{{ "meetings" | translate }}</a>
       <a ngClass="ibrelleu-menu-item" routerLink="success-stories" (click)="menuTrigger.close()">{{ "successStories" |

@@ -12,6 +12,7 @@
     "experienciaCompetencies": "",
     "publicinweb": true,
     "notes": "",
+    "projecttype": "Grantor",
     "grantorprojectid": 1
   },
   {
@@ -27,6 +28,7 @@
     "experienciaCompetencies": "",
     "publicinweb": true,
     "notes": "",
+    "projecttype": "Grantor",
     "grantorprojectid": 2
   },
   {
@@ -42,6 +44,54 @@
     "experienciaCompetencies": "",
     "publicinweb": false,
     "notes": "",
+    "projecttype": "Grantor",
     "grantorprojectid": 3
+  },
+  {
+    "id": 4,
+    "advertisement": "",
+    "code": "",
+    "publicinmarketplace": "1",
+    "advertisementstate": "publish",
+    "language": "282310001",
+    "title": "Busco bar Restaurante mallorquín en la Mancomunidad des Raiguer",
+    "publicationdate": "2022-08-24",
+    "description": "Es busca activament la compra d'un bar restaurant de menjar mallorquí amb una trajectòria de més de 30 anys i una clientela consolidada. El negoci ideal seria aquell gestionat per un empresari autònom, amb una plantilla de quatre treballadors (tres a jornada completa i un a jornada parcial). Es valora especialment que el local estigui completament equipat per a la continuïtat del servei i compti amb una superfície aproximada de 260 m² distribuïts en dues plantes. L'estabilitat del negoci i la seva baixa afectació per l'estacionalitat, gràcies a la seva clientela principalment resident a l'illa, són aspectes clau. Es busca adquirir tant el local com l'activitat. El motiu de la recerca és l'expansió d'un grup empresarial en el sector de la restauració.",
+    "experienciaCompetencies": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "publicinweb": true,
+    "notes": "",
+    "projecttype": "Relleu",
+    "relleuprojectid": 1
+  },
+  {
+    "id": 5,
+    "advertisement": "",
+    "code": "",
+    "publicinmarketplace": "1",
+    "advertisementstate": "publish",
+    "language": "282310000",
+    "title": "Busco bar Restaurante mallorquín en la Mancomunidad des Raiguer",
+    "publicationdate": "2022-08-24",
+    "description": "Se busca activamente la compra de un bar restaurante de comida mallorquina con una trayectoria de más de 30 años y una clientela consolidada. El negocio ideal sería aquel gestionado por un empresario autónomo, con una plantilla de cuatro trabajadores (tres a jornada completa y uno a jornada parcial). Se valora especialmente que el local esté completamente equipado para la continuidad del servicio y cuente con una superficie aproximada de 260 m² distribuidos en dos plantas. La estabilidad del negocio y su baja afectación por la estacionalidad, gracias a su clientela principalmente residente en la isla, son aspectos clave. Se busca adquirir tanto el local como la actividad. El motivo de la búsqueda es la expansión de un grupo empresarial en el sector de la restauración.",
+    "experienciaCompetencies": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "notes": "",
+    "projecttype": "Relleu",
+    "relleuprojectid": 2
+  },
+  {
+    "id": 6,
+    "advertisement": "",
+    "code": "",
+    "publicinmarketplace": "0",
+    "advertisementstate": "unpublish",
+    "language": "282310002",
+    "title": "Busco bar Restaurante mallorquín en la Mancomunidad des Raiguer",
+    "publicationdate": "2022-08-24",
+    "description": "Actively seeking to purchase a Mallorcan cuisine bar restaurant with over 30 years of established business and a loyal clientele. The ideal business would be managed by a self-employed entrepreneur, with a staff of four employees (three full-time and one part-time). Premises fully equipped for continued service and approximately 260 m² distributed over two floors are highly valued. The stability of the business and its low impact from seasonality, due to its primarily island-resident clientele, are key aspects. We seek to acquire both the premises and the business. The reason for the search is the expansion of a business group in the restaurant sector.",
+    "experienciaCompetencies": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "publicinweb": false,
+    "notes": "",
+    "projecttype": "Relleu",
+    "relleuprojectid": 3
   }
 ]

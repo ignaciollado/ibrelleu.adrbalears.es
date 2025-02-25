@@ -1,18 +1,23 @@
-@use '../../../_adr-colors';
+@use "../../../_adr-colors";
 
 .filter-area {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: .5rem;
+  column-gap: 0.5rem;
 }
 
 .small-data {
-  font-size: .75rem;
+  font-size: 0.75rem;
   color: orange;
 }
 
 .url-link {
   color: adr-colors.$secondary-adr;
+}
+.createButton {
+  margin: 10px;
+  display: grid;
+  justify-content: end;
 }
 
 @media only screen and (max-width: 992px) {

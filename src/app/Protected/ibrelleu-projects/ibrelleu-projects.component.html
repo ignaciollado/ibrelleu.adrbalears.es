@@ -1,4 +1,8 @@
 <h1>{{'ibrelleuProjects' | translate}}</h1>
+<section ngClass="createButton">
+    <button mat-raised-button color="primary" [routerLink]="['/ibrelleu-project-detail']">{{'createProject' |
+        translate}}</button>
+</section>
 <section>
     <mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">

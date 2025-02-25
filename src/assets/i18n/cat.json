@@ -68,6 +68,7 @@
   "contactWorkingMode": "Per compte propi o d'un altre?",
   "workingModeOwn": "Propi",
   "workingModeForOther": "D'un altre",
+  "unemployeementStartDate": "Data inici atur",
   "contactStudyObservation": "Observacions formació completada",
   "contactBusinessFormation": "Formació en gestió empresarial",
   "businessFormationTypology": "Tipologia de formació en gestió empresarial",
@@ -183,6 +184,9 @@
   "lostGainDocs": "Pèrdues i guanys dels 3 últims anys",
   "situationBalanceDocs": "Balanç de situació dels 3 últims anys",
   "societyTax200": "Impost de societats (model 200) dels 3 últims anys",
+  "marketRules": "Reglament del mercat",
+  "comercialEstablishmentRules": "Normativa establiment comercial de titularitat municipal",
+  "sportConcessionsRules": "Normativa municipal de les concessions dels bars i les instal·lacions esportives municipals",
 
   "process": "Procés",
   "ibrelleuProject": "Projecte IBRelleu",
@@ -534,6 +538,11 @@
   "projectContactName": "Persona de contacte del projecte",
   "howKnowUs": "Com ens ha conegut?",
   "cancelReason": "Motiu de l'estat cancel·lat",
+  "standbyReason": "Motiu de l'estat standby",
+  "pendingDocumentation": "Pendent rebre documentació",
+  "atentionPointDerivation": "Derivat a un punt d'atenció",
+  "comercialDerivation": "Derivat a comercial",
+  "successReenterprise": "Reempresa d'èxit pendent de formalitzar",
   "projectStatusObservations": "Observacions de l'estat del projecte",
   "activeBusiness": "Empresa en funcionament?",
   "localTypology": "Tipologia de l'establiment",
@@ -541,7 +550,7 @@
   "establecimentTitularitatMunicipal": "Establiment comercial de titularitat municipal disponible",
   "concessioBarEsportives": "Concessió administrativa del bar de les instal·lacions esportives",
   "cessionType": "Tipus de cessió",
-  "transferTypology": "Tipología de la transmissio",
+  "transferTypology": "Tipologia de la transmissio",
   "workerTransmission": "Transmissió a treballador",
   "thirdTransmission": "Transmissió a tercers",
   "familiarSuccession": "Successió familiar",
@@ -759,7 +768,7 @@
 
   "morning": "Matí",
   "afternoon": "Tarda",
-  "allDay": "Tot el día",
+  "allDay": "Tot el dia",
 
   "Banc": "Banc",
   "Seguretat Social": "Seguretat Social",
@@ -863,9 +872,13 @@
   "advertisements": "Anuncis",
   "language": "Llenguatge",
   "advertisementstate": "Estat de l'anunci",
-  "grantorprojectid": "ID Projecte Cedent",
+  "publicinweb": "Publicat a la web",
   "publicationdate": "Data de publicació",
   "createAdvertisement": "Crear nou anunci",
+
+  "createContact": "Crear nou contacte",
+  "createNewAccount": "Crear nou compte",
+  "createProject": "Crear nou projecte",
 
   "adForm": "Formulari anunci",
   "marketPlaceInterest": "Interès en publicar anunci al MarketPlace?",
@@ -873,6 +886,7 @@
   "publish": "Publicat",
   "unpublish": "No publicat",
   "adDescription": "Descripció de l'anunci",
+  "adExperience": "Experiència professional i competències",
   "cas": "Castellà",
   "cat": "Català",
   "en": "Anglés",
@@ -903,5 +917,16 @@
   "codiPCDesitjat": "Codi PC Desitjat",
   "consultorProjecteDesitjat": "Consultor del projecte desitjat",
   "delegacioProjecteDesitjat": "Oficina del projecte desitjat",
-  "dataGeneracio": "Data de generació"
+  "dataGeneracio": "Data de generació",
+
+  "professionalSchool": "Col·legi professional",
+  "fundation": "Fundació",
+  "businessOrganization": "Organització empresarial",
+  "privateCompany": "Empresa privada",
+  "asociation": "Associació",
+  "publicEntity": "Entitat pública",
+  "formationEntity": "Entitat formativa",
+
+  "entityTypology": "Tipologia d'entitat",
+  "collaborationActivity": "Activitat que desenvolupa"
 }

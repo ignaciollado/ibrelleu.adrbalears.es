@@ -13,7 +13,7 @@ import { IBRelleuProjectsDTO } from '../../Models/ibrelleuproject.dto';
   styleUrl: './ibrelleu-project-detail.component.scss',
 })
 export class IbrelleuProjectDetailComponent {
-  id: string = this.route.snapshot.paramMap.get('id');
+  id: string | null = this.route.snapshot.paramMap.get('id');
   ibrelleuProjectForm: FormGroup;
   selectedIndex: number;
   filteredOptions: Observable<ZipCodesIBDTO[]>;
@@ -41,6 +41,7 @@ export class IbrelleuProjectDetailComponent {
       delegation: new FormControl(''),
       projectStatus: new FormControl(''),
       cancelReason: new FormControl(''),
+      standbyReason: new FormControl(''),
       projectStatusObservation: new FormControl(''),
       howKnowUs: new FormControl(''),
 
@@ -87,10 +88,12 @@ export class IbrelleuProjectDetailComponent {
 
   ngOnInit() {
     this.selectedIndex = +sessionStorage.getItem('currentIbrelleuProjectTab');
-    this.dataService.getAllIbRelleuProjects().subscribe((projects: IBRelleuProjectsDTO[]) => {
-      let targetProject = projects.find(project => project.id.toString() === this.id)
-      this.loadProjectFormInfo(targetProject)
-    })
+    if (this.id) {
+      this.dataService.getAllIbRelleuProjects().subscribe((projects: IBRelleuProjectsDTO[]) => {
+        let targetProject = projects.find(project => project.id.toString() === this.id)
+        this.loadProjectFormInfo(targetProject)
+      })
+    }
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {

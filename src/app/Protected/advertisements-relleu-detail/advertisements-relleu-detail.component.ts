@@ -1,37 +1,38 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { IBRelleuProjectsDTO } from '../../Models/ibrelleuproject.dto';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { DataService } from '../../Services/data.service';
-import { GrantorProjectsDTO } from '../../Models/grantorProject.dto';
 import { AdvertisementService } from '../../Services/advertisement.service';
 import { AdvertisementDTO } from '../../Models/advertisement.dto';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'adr-advertisement-detail',
-  templateUrl: './advertisement-detail.component.html',
-  styleUrl: './advertisement-detail.component.scss'
+  selector: 'adr-advertisements-relleu-detail',
+  templateUrl: './advertisements-relleu-detail.component.html',
+  styleUrl: './advertisements-relleu-detail.component.scss'
 })
-export class AdvertisementDetailComponent {
-
+export class AdvertisementsRelleuDetailComponent {
   id: string | null = this.route.snapshot.paramMap.get('id');
 
   adForm: FormGroup;
 
-  grantorProjectList: GrantorProjectsDTO[] = []
+  ibrelleuProjectList: IBRelleuProjectsDTO[] = []
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private adService: AdvertisementService) {
     this.adForm = new FormGroup({
-      grantorProject: new FormControl(''),
+      ibrelleuProject: new FormControl(''),
       publicinmarketplace: new FormControl(''),
       title: new FormControl(''),
       advertisementstate: new FormControl(''),
       description: new FormControl(''),
+      professionalExperiences: new FormControl(''),
       language: new FormControl(''),
       publicinweb: new FormControl(''),
     })
 
-    this.loadAllGrantorProjects()
+    this.loadAllIBRelleuProjects();
+
   }
 
   ngOnInit() {
@@ -41,7 +42,6 @@ export class AdvertisementDetailComponent {
         this.loadAdFormInfo(targetAd)
       })
     }
-
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
@@ -52,23 +52,24 @@ export class AdvertisementDetailComponent {
   }
 
   onSubmit() {
-    console.log("Submit grantor")
+    console.log("Submit relleu")
 
   }
 
-  loadAllGrantorProjects() {
-    this.dataService.getAllGrantorProjects().subscribe((grantorProjects: GrantorProjectsDTO[]) => {
-      this.grantorProjectList = grantorProjects
+  loadAllIBRelleuProjects() {
+    this.dataService.getAllIbRelleuProjects().subscribe((ibrelleuProjects: IBRelleuProjectsDTO[]) => {
+      this.ibrelleuProjectList = ibrelleuProjects
     })
   }
 
   loadAdFormInfo(ad: AdvertisementDTO) {
     this.adForm.patchValue({
-      grantorProject: ad.grantorprojectid,
+      ibrelleuProject: ad.relleuprojectid,
       publicinmarketplace: ad.publicinmarketplace,
       title: ad.title,
       advertisementstate: ad.advertisementstate,
       description: ad.description,
+      professionalExperiences: ad.experienciaCompetencies,
       language: ad.language,
       publicinweb: ad.publicinweb
     })

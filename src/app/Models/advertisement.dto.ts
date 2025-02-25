@@ -10,11 +10,13 @@ export class AdvertisementDTO {
   experienciaCompetencies?: string;
   publicinweb?: boolean;
   notes?: string;
-  grantorprojectid: number;
+  grantorprojectid?: number;
+  relleuprojectid?: number;
+  projecttype: string;
   id: number;
 
   constructor(
-    grantorprojectid: number,
+    projecttype: string,
     id: number,
     advertisement?: string,
     code?: string,
@@ -27,8 +29,10 @@ export class AdvertisementDTO {
     experienciaCompetencies?: string,
     publicinweb?: boolean,
     notes?: string,
+    grantorprojectid?: number,
+    relleuprojectid?: number
   ) {
-    this.grantorprojectid = grantorprojectid;
+    this.projecttype = projecttype;
     this.id = id;
     this.advertisement = advertisement;
     this.code = code;
@@ -41,6 +45,8 @@ export class AdvertisementDTO {
     this.experienciaCompetencies = experienciaCompetencies;
     this.publicinweb = publicinweb;
     this.notes = notes;
+    this.grantorprojectid = grantorprojectid;
+    this.relleuprojectid = relleuprojectid;
   }
 }
 
@@ -58,8 +64,8 @@ export const advertisementColumnsBBDD = [
     type: "scope",
   },
   {
-    key: "grantorprojectid",
-    type: "scope",
+    key: "publicinweb",
+    type: "webBoolean",
   },
   {
     key: "publicationdate",

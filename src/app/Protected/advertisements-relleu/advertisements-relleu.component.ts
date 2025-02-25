@@ -5,11 +5,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { AdvertisementService } from '../../Services/advertisement.service';
 
 @Component({
-  selector: 'adr-advertisements',
-  templateUrl: './advertisements.component.html',
-  styleUrl: './advertisements.component.scss'
+  selector: 'adr-advertisements-relleu',
+  templateUrl: './advertisements-relleu.component.html',
+  styleUrl: './advertisements-relleu.component.scss'
 })
-export class AdvertisementsComponent {
+export class AdvertisementsRelleuComponent {
 
   columnsDisplayed: string[] = advertisementColumnsBBDD.map((col) => col.key)
   columnsSchema: any = advertisementColumnsBBDD;
@@ -26,7 +26,7 @@ export class AdvertisementsComponent {
 
   loadAllAdvertisements() {
     this.advertisementsService.getAllAdvertisements().subscribe((advertisements: AdvertisementDTO[]) => {
-      advertisements = advertisements.filter(ads => ads.projecttype === "Grantor")
+      advertisements = advertisements.filter(ads => ads.projecttype === "Relleu")
 
       this.dataSource.data = advertisements
       this.dataSource.paginator = this.paginator

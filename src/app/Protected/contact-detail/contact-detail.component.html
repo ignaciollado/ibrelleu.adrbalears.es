@@ -177,11 +177,17 @@
             }
           </mat-select>
         </mat-form-field>
+        <!-- Este campo solo aparece si employmentStatus es Active-->
         <mat-label>{{'contactWorkingMode' | translate}}</mat-label>
         <mat-radio-group formControlName="workingMode">
           <mat-radio-button value="282310000">{{'workingModeOwn' | translate}}</mat-radio-button>
           <mat-radio-button value="282310001">{{'workingModeForOther' | translate}}</mat-radio-button>
         </mat-radio-group>
+        <!-- Si employmentStatus es unemployeed, aparece este campo en vez del anterior-->
+        <mat-form-field>
+          <mat-label>{{'unemployeementStartDate' | translate }}</mat-label>
+          <input type="date" matInput formControlName="unemployeementStartDate">
+        </mat-form-field>
         <mat-form-field class="textArea">
           <mat-label>{{'contactStudyObservation' | translate}}</mat-label>
           <textarea matInput formControlName="formationObservations"></textarea>

@@ -59,6 +59,17 @@
                         <mat-option value="121370003">{{'ns/nc'| translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <!-- Aparece si projectStatus es Standby-->
+                <mat-form-field>
+                    <mat-label>{{'standbyReason' | translate}}</mat-label>
+                    <mat-select formControlName="standbyReason">
+                        <mat-option value="pendingDocumentation">{{'pendingDocumentation' | translate}}</mat-option>
+                        <mat-option value="atentionPointDerivation">{{'atentionPointDerivation' |
+                            translate}}</mat-option>
+                        <mat-option value="comercialDerivation">{{'comercialDerivation' | translate}}</mat-option>
+                        <mat-option value="successReenterprise">{{'successReenterprise' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
                 <section>
                     <mat-label>{{'delegation' | translate}}</mat-label>
@@ -90,6 +101,9 @@
                 </section>
 
                 <!-- Si activeBusiness = 0, debe aparecer este campo-->
+                <!-- Este radio tiene un caso especial donde, dependiendo del valor,
+                 realiza unos cambios u otros. Se desarrollará posteriormente como parte de la 
+                 lógica -->
                 <section>
                     <mat-label>{{'localTypology' | translate}}</mat-label>
                     <mat-radio-group formControlName="localTypology">

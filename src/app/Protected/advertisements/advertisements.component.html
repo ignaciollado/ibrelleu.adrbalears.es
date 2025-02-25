@@ -1,7 +1,7 @@
-<h1>{{'advertisements' | translate}}</h1>
+<h1>{{'advertisements' | translate}} {{'grantorProject' | translate | lowercase}}</h1>
 
-<section ngClass="createAdButton">
-  <button mat-raised-button color="primary" [routerLink]="['/advertisement-detail']">{{'createAdvertisement' |
+<section ngClass="createButton">
+  <button mat-raised-button color="primary" [routerLink]="['/advertisement-grantor-detail']">{{'createAdvertisement' |
     translate}}</button>
 </section>
 
@@ -13,7 +13,8 @@
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <section [ngSwitch]="col.type" *ngIf="!element.isEdit">
-          <a *ngSwitchCase="'url'" ngClass="small-data url-link" [routerLink]="['/advertisement-detail', element.id]"
+          <a *ngSwitchCase="'url'" ngClass="small-data url-link"
+            [routerLink]="['/advertisement-grantor-detail', element.id]"
             title="Click to view & edit account detail">{{element[col.key]}}</a>
           <span *ngSwitchCase="'date'" ngClass="date-data">{{element[col.key] | date : "dd-MM-YYYY"}}</span>
           <span *ngSwitchCase="'language'" ngClass="small-data">
@@ -24,6 +25,12 @@
             } @else {
             {{'en'| translate}}
             }
+          </span>
+          <span *ngSwitchCase="'webBoolean'" ngClass="small-data">
+            @if (element[col.key] == true) {
+            Si}
+            @else {
+            No}
           </span>
           <span *ngSwitchDefault ngClass="small-data">{{ element[col.key] | translate }}</span>
         </section>

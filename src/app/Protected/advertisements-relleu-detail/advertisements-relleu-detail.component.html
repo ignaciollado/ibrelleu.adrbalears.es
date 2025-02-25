@@ -1,11 +1,11 @@
-<h1>{{'adForm' | translate}} {{'grantorProject' | translate | lowercase}}</h1>
+<h1>{{'adForm' | translate}} {{'ibrelleuProject' | translate | lowercase}}</h1>
 <form [formGroup]="adForm" (ngSubmit)="onSubmit()">
     <section>
         <mat-form-field>
-            <mat-label>{{'grantorProject' |translate}}</mat-label>
-            <mat-select formControlName="grantorProject">
-                @for (grantorProject of grantorProjectList; track grantorProject) {
-                <mat-option [value]="grantorProject.id">{{grantorProject.nomProjecte}}</mat-option>
+            <mat-label>{{'ibrelleuProject' |translate}}</mat-label>
+            <mat-select formControlName="ibrelleuProject">
+                @for (ibrelleuProject of ibrelleuProjectList; track ibrelleuProject) {
+                <mat-option [value]="ibrelleuProject.id">{{ibrelleuProject.nomProjecte}}</mat-option>
                 }
             </mat-select>
         </mat-form-field>
@@ -30,6 +30,10 @@
         <mat-form-field ngClass="textArea">
             <mat-label>{{'adDescription' | translate}}</mat-label>
             <textarea matInput rows="4" formControlName="description"></textarea>
+        </mat-form-field>
+        <mat-form-field ngClass="textArea">
+            <mat-label>{{'adExperience' | translate}}</mat-label>
+            <textarea matInput rows="4" formControlName="professionalExperiences"></textarea>
         </mat-form-field>
         <section>
             <mat-label>{{'language' | translate}}</mat-label>
