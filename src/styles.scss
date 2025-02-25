@@ -57,11 +57,12 @@ mat-tab-group {
 }
 
 adr-root {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-content: space-between;
   min-height: 100vh;
 }
-
+/*
 adr-body,
 adr-contacts,
 adr-contact-detail,
@@ -79,6 +80,12 @@ adr-success-stories,
 adr-success-stories-detail,
 adr-sign-up-external-user {
   flex: 1.75 0 auto;
+}
+ */
+.createButton {
+  display: grid;
+  grid-template-columns: 1fr .1fr;
+  justify-content: space-between;
 }
 
 adr-footer {

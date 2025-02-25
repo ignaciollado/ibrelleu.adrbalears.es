@@ -1,4 +1,9 @@
+<section ngClass="createButton">
 <h1>{{'contacts' | translate}}</h1>
+
+  <button mat-raised-button color="primary" [routerLink]="['/contact-detail']">{{'create' |
+    translate}}</button>
+</section>
 <section ngClass="filter-area">
   <mat-form-field>
     <mat-label>Estat contacte</mat-label>
