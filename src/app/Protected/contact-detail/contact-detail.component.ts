@@ -156,6 +156,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
   getContactById(id: number) {
     this.contactService.getContactById(id).subscribe(
       (contact: ContactDTO) => {
+        console.log (contact)
         this.theForm.patchValue({
           nombre: contact.firstName,
           apellidos: contact.lastName,
