@@ -10,14 +10,11 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
 body {
   font-family: Inter, sans-serif;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
 }
 
 html {
@@ -58,10 +55,9 @@ mat-tab-group {
 
 adr-root {
   display: grid;
-  grid-template-rows: 1fr;
-  justify-content: space-between;
+  grid-template-rows: auto auto 1fr;
   min-height: 100vh;
-}
+} 
 /*
 adr-body,
 adr-contacts,
@@ -88,11 +84,12 @@ adr-sign-up-external-user {
   justify-content: space-between;
 }
 
-adr-footer {
+/* adr-footer {
   padding-top: 25px;
   flex-shrink: 0;
 }
+ */
 
-h1 {
+/* h1 {
   margin: 0.5rem;
-}
+} */
