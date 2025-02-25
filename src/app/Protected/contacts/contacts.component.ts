@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+
 import { contactColumns, contactColumnsBBDD, ContactDTO } from '../../Models/contact.dto';
 import { DataService } from '../../Services/data.service';
 import { ContactService } from '../../Services/contact.service';
@@ -39,15 +41,21 @@ export class ContactsComponent {
   dataSource = new MatTableDataSource();
   valid: any = {};
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+
   constructor(private dataService: DataService, private contactService: ContactService, private snackBar: MatSnackBar) {
-    this.loadContactStates();
-    this.loadAllContacts();
+    this.loadContactStates()
+    this.loadAllContacts()
+    this.dataSource.paginator = this.paginator
   }
 
   loadAllContacts() {
     this.contactService.getContacts()
     .subscribe((contacts: ContactDTO[]) => {
       this.dataSource.data = contacts
+      this.dataSource.paginator = this.paginator
+
       this.dataSource.data.map( (contact: ContactDTO) => {
         contact.firstName += " "+contact.lastName
       })
