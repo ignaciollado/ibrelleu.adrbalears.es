@@ -19,7 +19,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './contact-detail.component.scss',
 })
 export class ContactDetailComponent implements CanComponentDeactivate {
-  id: string | null = this.route.snapshot.paramMap.get('id');
+  id: string = this.route.snapshot.paramMap.get('id');
   selectedIndex: number;
 
   expandedIndex = 0;
@@ -109,7 +109,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
     this.getAllZipCodes();
     this.getLevelOfEducationList();
     this.loadConsultantAndDelegationInfo();
-    if (this.id) { this.getContactById(+this.id); }
+    this.getContactById(+this.id)
   }
 
   ngOnInit() {

@@ -52,12 +52,6 @@
   min-width: 4rem;
 }
 
-.createButton {
-  margin: 10px;
-  display: grid;
-  justify-content: end;
-}
-
 @media only screen and (max-width: 760px) {
   .filter-area {
     grid-template-columns: 1fr;
