@@ -58,6 +58,8 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       collaborationCompanys: new FormControl(''),
       councilTitularity: new FormControl(''),
       sportConcessions: new FormControl(''),
+      entityTypology: new FormControl(''),
+      collaborationActivity: new FormControl(''),
       activeBusiness: new FormControl(''),
       creationYear: new FormControl('', [
         Validators.minLength(4),
@@ -191,7 +193,10 @@ export class AccountDetailComponent implements CanComponentDeactivate {
       documentationSocietyScriptures: new FormControl(''),
       documentationLostGain: new FormControl(''),
       documentationSituationBalance: new FormControl(''),
-      documentationSocietyTax200: new FormControl('')
+      documentationSocietyTax200: new FormControl(''),
+      documentationMarketRules: new FormControl(''),
+      documentationComercialRules: new FormControl(''),
+      documentationSportConcessions: new FormControl('')
     });
 
     this.getCountries();

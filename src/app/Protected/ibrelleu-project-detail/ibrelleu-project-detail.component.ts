@@ -41,6 +41,7 @@ export class IbrelleuProjectDetailComponent {
       delegation: new FormControl(''),
       projectStatus: new FormControl(''),
       cancelReason: new FormControl(''),
+      standbyReason: new FormControl(''),
       projectStatusObservation: new FormControl(''),
       howKnowUs: new FormControl(''),
 

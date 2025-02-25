@@ -60,6 +60,25 @@
             <mat-radio-button value="0">No</mat-radio-button>
           </mat-radio-group>
         </section>
+        <!-- Este campo y el próximo solo aparecen si collaborationCompany resulta en 'Sí'. Además, desde parades hasta sportConcession, si cualquiera de estos 
+         resulta en 'Sí', se quitan los campos workingCompany y constitutionYear-->
+        <mat-form-field>
+          <mat-label>{{'entityTypology' | translate}}</mat-label>
+          <mat-select formControlName="entityTypology">
+            <mat-option value="282310000">{{'professionalSchool' | translate}}</mat-option>
+            <mat-option value="282310001">{{'fundation' | translate}}</mat-option>
+            <mat-option value="282310002">{{'businessOrganization' | translate}}</mat-option>
+            <mat-option value="282310003">{{'privateCompany' | translate}}</mat-option>
+            <mat-option value="282310004">{{'asociation' | translate}}</mat-option>
+            <mat-option value="282310005">{{'publicEntity' | translate}}</mat-option>
+            <mat-option value="282310006">{{'formationEntity' | translate}}</mat-option>
+            <mat-option value="282310007">{{'Altres' | translate}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{'collaborationActivity' | translate}}</mat-label>
+          <textarea matInput formControlName="collaborationActivity"></textarea>
+        </mat-form-field>
         <section>
           <mat-label>{{'workingCompany' | translate}}</mat-label>
           <mat-radio-group formControlName="activeBusiness">
@@ -466,6 +485,19 @@
         <mat-checkbox formControlName="documentationSituationBalance">{{'situationBalanceDocs' |
           translate}}</mat-checkbox>
         <mat-checkbox formControlName="documentationSocietyTax200">{{'societyTax200' | translate}}</mat-checkbox>
+
+        <!-- Estos documentos solo aparecen cuando se cumple la condición indicada.
+         Sustityuyen a los otros documentos, y se pueden mezclar entre ellos-->
+        <!-- Si Parades Mercat es 'Sí', aparece este documento-->
+        <mat-checkbox formControlName="documentationMarketRules">{{'marketRules' | translate}}</mat-checkbox>
+
+        <!-- Si Estableciment comercial es 'Sí', aparece este documento-->
+        <mat-checkbox formControlName="documentationComercialRules">{{'comercialEstablishmentRules' |
+          translate}}</mat-checkbox>
+
+        <!-- Si sportConcessions es 'Sí', aparece este documento-->
+        <mat-checkbox formControlName="documentationSportConcessions">{{'sportConcessionsRules' |
+          translate}}</mat-checkbox>
       </section>
 
       <app-document id="{{id}}" origin="account"></app-document>

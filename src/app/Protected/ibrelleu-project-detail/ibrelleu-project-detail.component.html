@@ -63,11 +63,22 @@
                         <mat-option value="Finished">{{'Finished' | translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <!-- Aparece si projectStatus es Cancelled-->
                 <mat-form-field>
                     <mat-label>{{'cancelReason' | translate}}</mat-label>
                     <mat-select formControlName="cancelReason">
                         <mat-option value="NoBusinessInterested">{{'noBusinessInterested' | translate}}</mat-option>
                         <mat-option value="newBusinessCreation">{{'newBusinessCreation' | translate}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <!-- Aparece si projectStatus es Standby-->
+                <mat-form-field>
+                    <mat-label>{{'standbyReason' | translate}}</mat-label>
+                    <mat-select formControlName="standbyReason">
+                        <mat-option value="pendingDocumentation">{{'pendingDocumentation' | translate}}</mat-option>
+                        <mat-option value="atentionPointDerivation">{{'atentionPointDerivation' |
+                            translate}}</mat-option>
+                        <mat-option value="successReenterprise">{{'successReenterprise' | translate}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="textArea">
@@ -157,6 +168,8 @@
         </mat-tab>
         <mat-tab label="{{'inversionCapacity' | translate }}">
             <section>
+                <!-- Hardcodeo este y no el de grantor debido a que 
+                 este dato no aparece en el listado de proyectos relleu-->
                 <mat-form-field>
                     <mat-label>{{'transferPriceInterval' | translate}}</mat-label>
                     <mat-select formControlName="transferInterval">
@@ -165,6 +178,20 @@
                         <mat-option value="282310001">5.000 € - 10.000 €</mat-option>
                         <mat-option value="282310002">20.000 € - 30.000 €</mat-option>
                         <mat-option value="282310003">30.000 € - 40.000 €</mat-option>
+                        <mat-option value="282310004">40.000 € - 50.000 €</mat-option>
+                        <mat-option value="282310005">50.000 € - 75.000 €</mat-option>
+                        <mat-option value="282310006">75.000 € - 100.000 €</mat-option>
+                        <mat-option value="282310007">100.000 € - 150.000 €</mat-option>
+                        <mat-option value="282310008">150.000 € - 200.000 €</mat-option>
+                        <mat-option value="282310009">200.000 € - 300.000 €</mat-option>
+                        <mat-option value="282310010">300.000 € - 400.000 €</mat-option>
+                        <mat-option value="282310011">400.000 € - 500.000 €</mat-option>
+                        <mat-option value="282310012">500.000 € - 750.000 €</mat-option>
+                        <mat-option value="282310014">750.000 € - 1.000.000 €</mat-option>
+                        <mat-option value="282310015">1.000.000 € - 1.500.000 €</mat-option>
+                        <mat-option value="282310016">1.500.000 € - 2.000.000 €</mat-option>
+                        <mat-option value="282310017">2.000.000 € - 3.000.000 €</mat-option>
+                        <mat-option value="282310013">> de 3.000.000 €</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>

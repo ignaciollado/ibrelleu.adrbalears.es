@@ -48,6 +48,7 @@ export class GrantorProjectDetailComponent {
       howKnowUs: new FormControl(''),
       projectStatus: new FormControl(''),
       cancelReason: new FormControl(''),
+      stanbyReason: new FormControl(''),
       delegation: new FormControl(''),
       consultant: new FormControl(''),
       projectStatusObservations: new FormControl(''),

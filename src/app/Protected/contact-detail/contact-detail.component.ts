@@ -96,6 +96,7 @@ export class ContactDetailComponent implements CanComponentDeactivate {
       // Información laboral y curricular
       employmentStatus: new FormControl(''),
       levelOfEducation: new FormControl(''),
+      unemployeementStartDate: new FormControl(''),
       workingMode: new FormControl(''),
       formationObservations: new FormControl(''),
       businessFormationCheck: new FormControl(''),
